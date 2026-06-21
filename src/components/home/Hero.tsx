@@ -1,15 +1,14 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { ArrowDown } from "lucide-react";
 
 const trustLogos = [
   "Southwest Gases",
   "GoHappy Club",
-  "Meridian Realty",
-  "Northwind Logistics",
-  "Highline Growth",
-  "Orbit Health",
+  "SBA.gov",
+  "Marketing Agencies",
 ];
 
 const words = ["custom", "problems", "require", "customized", "software."];
@@ -22,9 +21,42 @@ const outcomeTags = [
 ];
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const overlay = overlayRef.current;
+    if (!section || !overlay) return;
+
+    let raf = 0;
+    const onMove = (e: MouseEvent) => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const rect = section.getBoundingClientRect();
+        const px = e.clientX - rect.left;
+        const py = e.clientY - rect.top;
+        overlay.style.backgroundImage = `radial-gradient(560px circle at ${px}px ${py}px, rgba(0,48,73,0.09) 0%, transparent 65%)`;
+      });
+    };
+    const onLeave = () => {
+      cancelAnimationFrame(raf);
+      overlay.style.backgroundImage = "none";
+    };
+
+    section.addEventListener("mousemove", onMove, { passive: true });
+    section.addEventListener("mouseleave", onLeave);
+    return () => {
+      cancelAnimationFrame(raf);
+      section.removeEventListener("mousemove", onMove);
+      section.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
+
   return (
-    <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden border-b border-[var(--color-border)] pb-20 pt-12 md:min-h-screen md:pt-20">
+    <section ref={sectionRef} className="relative isolate flex min-h-[88vh] items-center overflow-hidden border-b border-[var(--color-border)] pb-20 pt-12 md:min-h-screen md:pt-20">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-60" />
+      <div ref={overlayRef} aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ backgroundImage: "none" }} />
 
       {/* animated corner marks */}
       <motion.span

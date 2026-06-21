@@ -32,10 +32,11 @@ const offerings = [
       "Custom AI automation for Shopify stores, DTC brands, and Amazon sellers — cart recovery, confirmation calls, lead generation, and workflow automation that compounds revenue.",
     solved: [
       "Cart recovery automation",
-      "Instagram comment automation",
+      "Instagram comments automation",
       "Order confirmation calls",
       "Personalized AI chatbot",
       "Lead generation systems",
+      "Brand-aware inbound & outbound voice bots",
     ],
     href: "/what-we-offer#ecommerce",
     accentClass: "border-[var(--color-accent)] text-[var(--color-accent)]",

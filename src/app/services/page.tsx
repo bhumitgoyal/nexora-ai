@@ -25,8 +25,8 @@ export default function ServicesPage() {
         <div className="container-x relative z-10">
           <SectionHeader
             eyebrow="Services"
-            title="Six end-to-end AI services. One agency that owns the outcome."
-            subtitle="Pick a starting point or talk to us about a bundle. Everything is custom-fit, integrated into your stack, and instrumented for measurable impact."
+            title="AI Services Customers Are Already Using"
+            subtitle="No matter how niche your workflow is, we're here to automate it with AI. Pick a starting point or talk to us about a bundle — everything is custom-fit, integrated into your stack, and instrumented for measurable impact."
           />
         </div>
       </section>

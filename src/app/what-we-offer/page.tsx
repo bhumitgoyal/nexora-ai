@@ -1,12 +1,53 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Factory, Megaphone, ShoppingBag, Utensils, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import {
+  Factory,
+  Megaphone,
+  ShoppingBag,
+  Utensils,
+  ArrowRight,
+  Sparkles,
+  // Marketing icons
+  BarChart3,
+  Search,
+  TrendingUp,
+  UserCheck,
+  Send,
+  // E-commerce icons
+  Zap,
+  ShoppingCart,
+  MessageSquare,
+  Phone,
+  Bot,
+  Target,
+  Mic,
+  // Manufacturing icons
+  Package,
+  BookOpen,
+  ClipboardList,
+  Wrench,
+  Mail,
+  // Restaurant icons
+  Star,
+  Calculator,
+  Calendar,
+  BarChart2,
+  LayoutGrid,
+} from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 
 export const metadata: Metadata = {
   title: "What We Offer",
   description:
     "Custom AI automation built for marketing agencies, e-commerce brands, manufacturers, and restaurants. Problem-specific AI tools that actually fit your workflow.",
+};
+
+type SolvedItem = {
+  task: string;
+  detail: string;
+  icon?: LucideIcon;
+  isNew?: boolean;
 };
 
 const sections = [
@@ -26,13 +67,13 @@ const sections = [
       "Manual prospecting eating into delivery time",
     ],
     solved: [
-      { task: "Unified AI Reporting Engine", detail: "Connects to all your ad platforms, generates branded client reports on schedule, and flags anomalies in plain English — automatically." },
-      { task: "AI SEO Engine", detail: "Mines keyword gaps, generates content briefs, creates programmatic pages, and monitors rankings — turning SEO from a sprint into a compounding loop." },
-      { task: "AI Ad Campaign Optimizer", detail: "Monitors performance every few hours, auto-rotates fatigued creatives, reallocates budget to top performers, and sends a daily Slack summary." },
-      { task: "AI Onboarding Agent", detail: "Handles new client intake from first email to structured brief — forms, asset collection, async Q&A — all without a single manual email." },
-      { task: "Client Outreach Automation", detail: "Find and reach clients with personalized messages automatically — without pressing a single button. Built on your ICP with CRM integration." },
-      { task: "Your problem next", detail: "We build custom AI solutions for the specific delivery bottlenecks inside your agency — not template tools repackaged for marketing.", isNew: true },
-    ],
+      { task: "Unified AI Reporting Engine", icon: BarChart3, detail: "Connects to all your ad platforms, generates branded client reports on schedule, and flags anomalies in plain English — automatically." },
+      { task: "AI SEO Engine", icon: Search, detail: "Mines keyword gaps, generates content briefs, creates programmatic pages, and monitors rankings — turning SEO from a sprint into a compounding loop." },
+      { task: "AI Ad Campaign Optimizer", icon: TrendingUp, detail: "Monitors performance every few hours, auto-rotates fatigued creatives, reallocates budget to top performers, and sends a daily Slack summary." },
+      { task: "AI Onboarding Agent", icon: UserCheck, detail: "Handles new client intake from first email to structured brief — forms, asset collection, async Q&A — all without a single manual email." },
+      { task: "Client Outreach Automation", icon: Send, detail: "Find and reach clients with personalized messages automatically — without pressing a single button. Built on your ICP with CRM integration." },
+      { task: "Your problem next", icon: Sparkles, detail: "We build custom AI solutions for the specific delivery bottlenecks inside your agency — not template tools repackaged for marketing.", isNew: true },
+    ] as SolvedItem[],
   },
   {
     id: "ecommerce",
@@ -50,14 +91,15 @@ const sections = [
       "Customer questions going unanswered outside business hours",
     ],
     solved: [
-      { task: "Workflow Automation", detail: "Build custom AI workflows that complete repetitive work for you — order processing, CRM updates, inventory alerts — without manual intervention." },
-      { task: "Cart Recovery Automation", detail: "Don't let visitors forget what they were about to buy. Automatically send personalized reminders featuring the exact products they viewed." },
-      { task: "Instagram Comment Automation", detail: "Reply instantly to Instagram comments that would otherwise go unnoticed, using your brand's unique tone of voice — within seconds of posting." },
-      { task: "Confirmation Call Automation", detail: "Automated voice calls for order confirmations, delivery updates, and follow-ups — placed within minutes, fully personalized to each customer." },
-      { task: "Personalized AI Chatbot", detail: "24/7 support trained on your product catalog and brand tone. Converts browsers into buyers, handles support tickets, and escalates to humans seamlessly." },
-      { task: "Lead Generation System", detail: "Automated lead capture, qualification, and CRM enrichment — conversion-focused from day one. High-intent leads are surfaced to your team immediately." },
-      { task: "Your problem next", detail: "Every e-commerce brand is different. We build personalized AI tools around your specific revenue and ops challenges.", isNew: true },
-    ],
+      { task: "Workflow Automation", icon: Zap, detail: "Build custom AI workflows that complete repetitive work for you — order processing, CRM updates, inventory alerts — without manual intervention." },
+      { task: "Cart Recovery Automation", icon: ShoppingCart, detail: "Don't let visitors forget what they were about to buy. Automatically send personalized reminders featuring the exact products they viewed." },
+      { task: "Instagram Comments Automation", icon: MessageSquare, detail: "Reply instantly to Instagram comments that would otherwise go unnoticed, using your brand's unique tone of voice — within seconds of posting." },
+      { task: "Confirmation Call Automation", icon: Phone, detail: "Automated voice calls for order confirmations, delivery updates, and follow-ups — placed within minutes, fully personalized to each customer." },
+      { task: "Personalized AI Chatbot", icon: Bot, detail: "24/7 support trained on your product catalog and brand tone. Converts browsers into buyers, handles support tickets, and escalates to humans seamlessly." },
+      { task: "Lead Generation System", icon: Target, detail: "Automated lead capture, qualification, and CRM enrichment — conversion-focused from day one. High-intent leads are surfaced to your team immediately." },
+      { task: "Incoming & Outgoing Brand-Aware Voice Bots", icon: Mic, detail: "AI voice agents that answer inbound calls, make outbound follow-up calls, speak in your brand's tone, qualify leads, collect customer information, and route conversations intelligently." },
+      { task: "Your problem next", icon: Sparkles, detail: "Every e-commerce brand is different. We build personalized AI tools around your specific revenue and ops challenges.", isNew: true },
+    ] as SolvedItem[],
   },
   {
     id: "manufacturers",
@@ -75,13 +117,13 @@ const sections = [
       "Vendor communication falling through the cracks",
     ],
     solved: [
-      { task: "AI Inventory Reconciliation Agent", detail: "Cross-references POs, GRNs, and stock counts in real time. Flags discrepancies and auto-triggers reorder alerts without manual effort." },
-      { task: "AI SOP / Internal Knowledge Copilot", detail: "Indexes all your SOPs, safety manuals, and training docs into a searchable AI brain. Workers get accurate, cited answers in plain English — instantly." },
-      { task: "Production & Quality Reports", detail: "Automatically pulls production line data, calculates yield and defect KPIs, and distributes formatted reports at the end of every shift." },
-      { task: "Maintenance Scheduling", detail: "Predicts service needs from equipment usage and history, generates a forward-looking maintenance calendar, and alerts the right technician before breakdowns occur." },
-      { task: "Vendor Communication Logs", detail: "Monitors supplier emails and messages, extracts commitments and action items, and surfaces overdue responses with daily alerts." },
-      { task: "Your problem next", detail: "We build custom AI tools to fit your exact manufacturing workflow — not generic software rebranded for the factory floor.", isNew: true },
-    ],
+      { task: "AI Inventory Reconciliation Agent", icon: Package, detail: "Cross-references POs, GRNs, and stock counts in real time. Flags discrepancies and auto-triggers reorder alerts without manual effort." },
+      { task: "AI SOP / Internal Knowledge Copilot", icon: BookOpen, detail: "Indexes all your SOPs, safety manuals, and training docs into a searchable AI brain. Workers get accurate, cited answers in plain English — instantly." },
+      { task: "Production & Quality Reports", icon: ClipboardList, detail: "Automatically pulls production line data, calculates yield and defect KPIs, and distributes formatted reports at the end of every shift." },
+      { task: "Maintenance Scheduling", icon: Wrench, detail: "Predicts service needs from equipment usage and history, generates a forward-looking maintenance calendar, and alerts the right technician before breakdowns occur." },
+      { task: "Vendor Communication Logs", icon: Mail, detail: "Monitors supplier emails and messages, extracts commitments and action items, and surfaces overdue responses with daily alerts." },
+      { task: "Your problem next", icon: Sparkles, detail: "We build custom AI tools to fit your exact manufacturing workflow — not generic software rebranded for the factory floor.", isNew: true },
+    ] as SolvedItem[],
   },
   {
     id: "restaurants",
@@ -99,14 +141,14 @@ const sections = [
       "Food waste from inaccurate prep planning",
     ],
     solved: [
-      { task: "AI Marketing Automation", detail: "Identifies slow periods and sends personalized promotions to the right guest segments via email or SMS — automatically, based on visit history." },
-      { task: "Reconciliation Agent", detail: "Reconciles POS, payment gateways, and delivery platforms daily and flags discrepancies before your accountant notices." },
-      { task: "Review & Feedback Mining Agent", detail: "Monitors all review platforms in real time, categorizes sentiment, surfaces recurring themes, and drafts manager responses for one-click approval." },
-      { task: "AI Staff Scheduling Agent", detail: "Analyzes footfall patterns, bookings, and local events to generate optimal shift schedules — cutting labor costs without leaving a shift short." },
-      { task: "Demand Forecasting Model", detail: "Predicts daily covers and dish demand using historical data, weather, and events. Your kitchen gets a daily prep guide to cut waste and prep smarter." },
-      { task: "Reservation & Table Optimization Agent", detail: "Consolidates all booking platforms, assigns tables to maximize capacity, sends automated reminders to cut no-shows, and manages the waitlist." },
-      { task: "Your problem next", detail: "Every restaurant is different. We build custom AI tools around your specific operation — not generic hospitality software.", isNew: true },
-    ],
+      { task: "AI Marketing Automation", icon: Megaphone, detail: "Identifies slow periods and sends personalized promotions to the right guest segments via email or SMS — automatically, based on visit history." },
+      { task: "Reconciliation Agent", icon: Calculator, detail: "Reconciles POS, payment gateways, and delivery platforms daily and flags discrepancies before your accountant notices." },
+      { task: "Review & Feedback Mining Agent", icon: Star, detail: "Monitors all review platforms in real time, categorizes sentiment, surfaces recurring themes, and drafts manager responses for one-click approval." },
+      { task: "AI Staff Scheduling Agent", icon: Calendar, detail: "Analyzes footfall patterns, bookings, and local events to generate optimal shift schedules — cutting labor costs without leaving a shift short." },
+      { task: "Demand Forecasting Model", icon: BarChart2, detail: "Predicts daily covers and dish demand using historical data, weather, and events. Your kitchen gets a daily prep guide to cut waste and prep smarter." },
+      { task: "Reservation & Table Optimization Agent", icon: LayoutGrid, detail: "Consolidates all booking platforms, assigns tables to maximize capacity, sends automated reminders to cut no-shows, and manages the waitlist." },
+      { task: "Your problem next", icon: Sparkles, detail: "Every restaurant is different. We build custom AI tools around your specific operation — not generic hospitality software.", isNew: true },
+    ] as SolvedItem[],
   },
 ];
 
@@ -181,7 +223,7 @@ export default function WhatWeOfferPage() {
           <section
             key={section.id}
             id={section.id}
-            className="border-b border-[var(--color-border)] py-24 md:py-32"
+            className="border border-[var(--color-border)] border-t-0 py-24 md:py-32"
             style={{ background: idx % 2 === 1 ? "var(--color-bg-elev)" : "var(--color-bg)" }}
           >
             <div className="container-x">
@@ -229,43 +271,53 @@ export default function WhatWeOfferPage() {
                 </Reveal>
 
                 <Reveal delay={0.08}>
-                  <div className="flex flex-col gap-0">
-                    <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                      Problems already solved
-                    </p>
-                    {regularItems.map((a) => (
-                      <div
-                        key={a.task}
-                        className="flex gap-4 border border-[var(--color-border)] border-b-0 p-5 last:border-b transition-all hover:bg-[var(--color-bg-elev)] hover:border-[var(--color-brand)]"
-                      >
-                        <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[var(--color-brand)]" />
-                        <div className="flex flex-col gap-1">
-                          <span className="text-sm font-semibold text-[var(--color-fg)]">{a.task}</span>
-                          <span className="text-sm text-[var(--color-fg-muted)]">{a.detail}</span>
-                        </div>
-                      </div>
-                    ))}
+                  {/* Bordered container for solved items */}
+                  <div className="overflow-hidden border border-[var(--color-border)]">
+                    {/* Header row */}
+                    <div className="border-b border-[var(--color-border)] bg-[var(--color-bg-elev)] px-5 py-3">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+                        Problems already solved
+                      </p>
+                    </div>
 
-                    {/* Your Problem Next — primary CTA row */}
-                    {ctaItem && (
-                      <Link href="/contact" className="block">
-                        <div className="group mt-3 flex items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-6 transition-all duration-200 hover:bg-[var(--color-brand)]">
-                          <Sparkles className="mt-0.5 size-5 shrink-0 text-[var(--color-brand)] transition-colors group-hover:text-white" />
+                    {regularItems.map((a) => {
+                      const ItemIcon = a.icon;
+                      return (
+                        <div
+                          key={a.task}
+                          className="flex gap-4 border-b border-[var(--color-border)] p-5 last:border-b-0 transition-colors hover:bg-[var(--color-bg-elev)]"
+                        >
+                          {ItemIcon && (
+                            <ItemIcon className="mt-0.5 size-4 shrink-0 text-[var(--color-accent)]" />
+                          )}
                           <div className="flex flex-col gap-1">
-                            <span className="font-display text-lg font-semibold tracking-tight text-[var(--color-brand)] transition-colors group-hover:text-white">
-                              Your Problem Next?
-                            </span>
-                            <span className="text-sm text-[var(--color-fg-muted)] transition-colors group-hover:text-white/80">
-                              {ctaItem.detail}
-                            </span>
-                            <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-brand)] transition-colors group-hover:text-white">
-                              Describe your problem <ArrowRight className="size-3" />
-                            </span>
+                            <span className="text-sm font-semibold text-[var(--color-fg)]">{a.task}</span>
+                            <span className="text-sm text-[var(--color-fg-muted)]">{a.detail}</span>
                           </div>
                         </div>
-                      </Link>
-                    )}
+                      );
+                    })}
                   </div>
+
+                  {/* Your Problem Next — primary CTA row (outside bordered box, visually distinct) */}
+                  {ctaItem && (
+                    <Link href="/contact" className="mt-3 block">
+                      <div className="group flex items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-6 transition-all duration-200 hover:bg-[var(--color-brand)]">
+                        <Sparkles className="mt-0.5 size-5 shrink-0 text-[var(--color-brand)] transition-colors group-hover:text-white" />
+                        <div className="flex flex-col gap-1">
+                          <span className="font-display text-lg font-semibold tracking-tight text-[var(--color-brand)] transition-colors group-hover:text-white">
+                            Your Problem Next?
+                          </span>
+                          <span className="text-sm text-[var(--color-fg-muted)] transition-colors group-hover:text-white/80">
+                            {ctaItem.detail}
+                          </span>
+                          <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-brand)] transition-colors group-hover:text-white">
+                            Describe your problem <ArrowRight className="size-3" />
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  )}
                 </Reveal>
               </div>
             </div>
