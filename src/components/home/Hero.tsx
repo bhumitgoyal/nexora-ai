@@ -7,8 +7,10 @@ import { ArrowDown } from "lucide-react";
 const trustLogos = [
   "Southwest Gases",
   "GoHappy Club",
-  "SBA.gov",
-  "Marketing Agencies",
+  "Welders Supply USA",
+  "Marketrz Agency",
+  "CarBuddy Delhi",
+  "Velocity Watches",
 ];
 
 const words = ["custom", "problems", "require", "customized", "software."];

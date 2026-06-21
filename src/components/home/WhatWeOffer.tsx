@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { ArrowUpRight, Factory, Megaphone, ShoppingBag } from "lucide-react";
+import { ArrowUpRight, Building2, Factory, Megaphone, ShoppingBag } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 
@@ -57,6 +57,23 @@ const offerings = [
     href: "/what-we-offer#manufacturers",
     accentClass: "border-[var(--color-fg)] text-[var(--color-fg)]",
   },
+  {
+    icon: Building2,
+    label: "Real Estate & Property",
+    tagline: "Close faster. Manage smarter.",
+    description:
+      "Custom AI automation for property managers, agents, and developers — tenant communication, lead nurturing, listing generation, and document workflows that run 24/7 without your team touching them.",
+    solved: [
+      "Tenant inquiry & lease renewal automation",
+      "AI-powered property lead nurturing",
+      "Rental payment reminders & follow-ups",
+      "Listing description generation",
+      "Maintenance request routing",
+      "Property inspection report automation",
+    ],
+    href: "/what-we-offer#realestate",
+    accentClass: "border-[var(--color-success)] text-[var(--color-success)]",
+  },
 ];
 
 function AnimatedYour() {
@@ -86,7 +103,7 @@ export function WhatWeOffer() {
           subtitle="We don't do generic AI. We understand your industry and build problem-specific AI tools around the exact workflows slowing you down."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-0 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-px bg-[var(--color-border)] border border-[var(--color-border)] md:grid-cols-2">
           {offerings.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -94,7 +111,7 @@ export function WhatWeOffer() {
                 <motion.div
                   whileHover={{ y: -2 }}
                   transition={{ duration: 0.2 }}
-                  className="group flex h-full flex-col border border-[var(--color-border)] border-r-0 p-8 last:border-r transition-all hover:bg-[var(--color-bg-elev)] hover:border-[var(--color-brand)] md:border-r-0 md:last:border-r"
+                  className="group relative flex h-full flex-col bg-[var(--color-bg)] p-8 transition-all hover:z-10 hover:bg-[var(--color-bg-elev)] hover:ring-1 hover:ring-inset hover:ring-[var(--color-brand)]"
                 >
                   <div className="mb-6 flex items-start justify-between">
                     <span className={`inline-flex size-12 items-center justify-center border-2 ${item.accentClass}`}>
