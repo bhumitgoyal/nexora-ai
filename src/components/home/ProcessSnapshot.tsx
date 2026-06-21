@@ -16,17 +16,19 @@ export function ProcessSnapshot() {
           <div className="grid grid-cols-1 gap-0 md:grid-cols-5">
             {processSteps.map((step, i) => (
               <Reveal key={step.number} delay={i * 0.08}>
-                <div className="relative flex h-full flex-col gap-4 border border-[var(--color-border)] border-b-0 last:border-b md:border-b md:border-r-0 md:last:border-r p-6 transition-all hover:bg-[var(--color-bg-elev)] hover:border-[var(--color-brand)]">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-[var(--color-brand)]">{step.number}</span>
-                    <span className="border border-[var(--color-border)] px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[var(--color-fg-subtle)]">
+                <div className="relative flex h-full flex-col border border-[var(--color-border)] border-b-0 last:border-b md:border-b md:border-r-0 md:last:border-r p-6 transition-all hover:bg-[var(--color-bg-elev)] hover:border-[var(--color-brand)]">
+                  <div className="mb-4 flex items-start justify-between">
+                    <span className="font-mono text-4xl font-bold leading-none text-[var(--color-brand)]">
+                      {step.number}
+                    </span>
+                    <span className="border border-[var(--color-border)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-[var(--color-fg-subtle)]">
                       {step.duration}
                     </span>
                   </div>
                   <h3 className="font-display text-xl font-semibold tracking-tight">
                     {step.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-[var(--color-fg-muted)]">
+                  <p className="mt-3 text-sm leading-relaxed text-[var(--color-fg-muted)]">
                     {step.summary}
                   </p>
                 </div>

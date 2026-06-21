@@ -76,7 +76,7 @@ export function Navbar() {
           <div className="hidden items-center gap-2 md:flex">
             <Link
               href="/booklet"
-              className="inline-flex items-center gap-1.5 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2 text-sm font-semibold text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+              className="inline-flex min-h-[44px] items-center gap-1.5 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2 text-sm font-semibold text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
             >
               <FileText className="size-3.5 text-[var(--color-accent)]" />
               Booklet

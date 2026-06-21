@@ -10,16 +10,16 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Nexora rebuilt our inbound flow in six weeks. We went from missing 1 in 5 calls to having a voice agent that customers genuinely thank us for. The unit economics shifted in the same quarter.",
-    name: "Maya Krishnan",
-    role: "VP Operations",
+      "Didn't think AI could handle our inbound calls properly — but customers actually thank the voice agent now. We went from missing a bunch of calls to zero dropped leads, and our team stopped firefighting every morning.",
+    name: "Ravi Sharma",
+    role: "Operations Manager",
     company: "Southwest Gases",
-    initials: "MK",
+    initials: "RS",
     gradient: "from-violet-500 to-fuchsia-500",
   },
   {
     quote:
-      "Our members are 60-plus and they prefer the bot over our humans. That sentence felt impossible 6 months ago. Bhumit and the team built something genuinely empathetic.",
+      "Our members are 60-plus and half of them aren't great with apps. The bot Nexora built is patient, speaks their language, and never makes them feel dumb. We got feedback saying 'it actually listens' — that's not easy to achieve.",
     name: "Anil Rastogi",
     role: "Head of Member Experience",
     company: "GoHappy Club",
@@ -28,56 +28,38 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "We were paying $3 a lead and getting trash. Nexora's engine delivers verified contacts at 11 cents apiece and the bounce rate is lower than our 'premium' provider.",
-    name: "Daniel Reyes",
+      "Our sales team was spending half their time chasing cold leads manually. Now the system finds them, qualifies them, and follows up automatically. We just close. Conversion rate's up and nobody's complaining.",
+    name: "Greg Patterson",
+    role: "Owner",
+    company: "Welders Supply USA",
+    initials: "GP",
+    gradient: "from-orange-500 to-amber-400",
+  },
+  {
+    quote:
+      "Running four client campaigns used to mean four people pulling reports every Monday. Now it all runs on its own and I genuinely get my weekends back. Clients haven't noticed — which is the point.",
+    name: "Rehan Khan",
     role: "Founder",
-    company: "Highline Growth",
-    initials: "DR",
+    company: "Marketrz Agency",
+    initials: "RK",
     gradient: "from-fuchsia-500 to-violet-500",
   },
   {
     quote:
-      "The campaign orchestrator is the closest thing to a marketing cheat code I've ever used. We now ship 4 campaigns in the time it used to take to ship one — and they perform better.",
-    name: "Sara Whitfield",
-    role: "Director of Demand Gen",
-    company: "Orbit Health",
-    initials: "SW",
-    gradient: "from-violet-500 to-cyan-500",
+      "Response time on customer chats dropped from hours to seconds after Nexora set up the AI assistant. Bookings went up, support load went down. Our team now only handles the stuff that actually needs a human.",
+    name: "Kunal Mehta",
+    role: "Co-Founder",
+    company: "CarBuddy Delhi",
+    initials: "KM",
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
     quote:
-      "Most consultants hand you a slide deck. Nexora ships production code, owns the integration, and stays around to optimize. Rare combination.",
-    name: "Jaya Mehta",
-    role: "Chief of Staff",
-    company: "Northwind Logistics",
-    initials: "JM",
-    gradient: "from-cyan-500 to-fuchsia-500",
-  },
-  {
-    quote:
-      "We 10x'd content output without a single client noticing a drop in quality. The voice profiling is honestly uncanny — our editors review, they don't rewrite.",
-    name: "Priya Ramnath",
-    role: "Creative Director",
-    company: "Lumina Studios",
-    initials: "PR",
-    gradient: "from-fuchsia-500 to-cyan-500",
-  },
-  {
-    quote:
-      "Our forecast accuracy went from a coin-flip to something the board actually trusts. Two quarters in and the lift in win rate paid for the whole engagement.",
-    name: "Marcus Hale",
-    role: "VP Revenue Operations",
-    company: "Vertex CRM",
-    initials: "MH",
-    gradient: "from-violet-500 to-fuchsia-500",
-  },
-  {
-    quote:
-      "Time-to-hire dropped from six weeks to nine days. My recruiters stopped doing calendar Tetris and started building real relationships with hiring managers again.",
-    name: "Reema Kapoor",
-    role: "Head of Talent",
-    company: "Pulse Talent",
-    initials: "RK",
-    gradient: "from-cyan-500 to-violet-500",
+      "Instagram is where our customers talk to us and we just couldn't keep up. Now every comment gets a reply in our exact tone within seconds. Repeat purchases went up — didn't expect an automation to actually move that number.",
+    name: "Shreya Bhatia",
+    role: "Brand Manager",
+    company: "Velocity Watches",
+    initials: "SB",
+    gradient: "from-rose-500 to-pink-400",
   },
 ];

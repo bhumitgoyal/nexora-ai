@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useMotionValue, animate, type PanInfo } from "motion/react";
 import Link from "next/link";
-import { ArrowUpRight, ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight, ExternalLink, Mic, Bot, Megaphone, Truck, Target, Search } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 
 const CARD_GAP = 20;
@@ -17,6 +17,7 @@ type WorkItem = {
   highlights: string[];
   impact: { metric: string; label: string }[];
   gradient: string;
+  icon: React.ElementType;
   badge?: string;
   openSource?: boolean;
 };
@@ -27,6 +28,7 @@ const workItems: WorkItem[] = [
     client: "Southwest Gases",
     industry: "Energy & Utilities",
     headline: "AI Voice Agent That Handles Inbound Calls & Instantly Follows Up New Leads",
+    icon: Mic,
     highlights: [
       "Answers inbound calls 24/7, first ring every time",
       "Auto-calls new leads within seconds of enquiry",
@@ -45,6 +47,7 @@ const workItems: WorkItem[] = [
     client: "GoHappy Club",
     industry: "Senior Wellness · D2C",
     headline: "AI Assistant Built For India's Senior Citizen Community",
+    icon: Bot,
     highlights: [
       "Understands Hinglish and 5 other Indian languages",
       "Smart semantic caching for sub-50ms repeat responses",
@@ -63,6 +66,7 @@ const workItems: WorkItem[] = [
     client: "Marketing Agencies",
     industry: "Marketing & Media",
     headline: "Launch Complete Marketing Campaigns From A Single Input",
+    icon: Megaphone,
     highlights: [
       "Generates ad copy across all major platforms",
       "Creates personalised customer email sequences",
@@ -81,6 +85,7 @@ const workItems: WorkItem[] = [
     client: "Southwest Gases",
     industry: "Energy & Utilities",
     headline: "Real-Time Delivery Operations Without Endless Phone Calls",
+    icon: Truck,
     highlights: [
       "Manage all delivery routes from one central portal",
       "Push live status updates to drivers instantly",
@@ -99,6 +104,7 @@ const workItems: WorkItem[] = [
     client: "Multi-Client Deployment",
     industry: "B2B SaaS & Agencies",
     headline: "Fully Automated Lead Generation & Outreach Engine",
+    icon: Target,
     highlights: [
       "Finds and qualifies leads without human input",
       "Enriches each prospect with contextual data",
@@ -117,6 +123,7 @@ const workItems: WorkItem[] = [
     client: "SBA.gov Research Workflow",
     industry: "Government & SMB Data",
     headline: "Automated Discovery Of Hard-To-Find U.S. SMBs",
+    icon: Search,
     highlights: [
       "Scrapes SBA listings for registered small businesses",
       "Surfaces hidden businesses not indexed by Google",
@@ -170,9 +177,14 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
 
       {/* Body */}
       <div className="flex flex-1 flex-col gap-5 p-5">
-        <p className="font-display text-[15px] font-semibold leading-snug tracking-tight text-[var(--color-fg)]">
-          {item.headline}
-        </p>
+        <div className="flex items-start gap-2.5">
+          <span className="mt-0.5 shrink-0 text-[var(--color-brand)]">
+            <item.icon className="size-4" />
+          </span>
+          <p className="font-display text-[15px] font-semibold leading-snug tracking-tight text-[var(--color-fg)]">
+            {item.headline}
+          </p>
+        </div>
 
         <ul className="flex flex-col gap-2 border-t border-[var(--color-border)] pt-4">
           {item.highlights.map((h) => (

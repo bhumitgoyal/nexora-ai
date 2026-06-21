@@ -10,6 +10,26 @@ import {
   Factory,
   ShoppingBag,
   Utensils,
+  BarChart2,
+  Search,
+  TrendingUp,
+  UserPlus,
+  Send,
+  Zap,
+  ShoppingCart,
+  Phone,
+  Bot,
+  Target,
+  MessageCircle,
+  Package,
+  BookOpen,
+  ClipboardList,
+  Wrench,
+  FileText,
+  Calculator,
+  Star,
+  CalendarDays,
+  LayoutGrid,
 } from "lucide-react";
 import { sectors } from "@/content/sectors";
 import { SectionHeader } from "@/components/shared/SectionHeader";
@@ -22,8 +42,34 @@ const sectorIcons: Record<string, React.ElementType> = {
   restaurants: Utensils,
 };
 
+const serviceIcons: Record<string, React.ElementType> = {
+  "Unified AI Reporting Engine": BarChart2,
+  "AI SEO Engine": Search,
+  "AI Ad Campaign Optimizer": TrendingUp,
+  "AI Onboarding Agent": UserPlus,
+  "Client Outreach Automation": Send,
+  "Workflow Automation": Zap,
+  "Cart Recovery Automation": ShoppingCart,
+  "Confirmation Call Automation": Phone,
+  "Personalized AI Chatbot": Bot,
+  "Lead Generation System": Target,
+  "Instagram Comment Automation": MessageCircle,
+  "AI Inventory Reconciliation Agent": Package,
+  "AI SOP / Internal Knowledge Copilot": BookOpen,
+  "Production & Quality Reports": ClipboardList,
+  "Maintenance Scheduling": Wrench,
+  "Vendor Communication Logs": FileText,
+  "AI Marketing Automation": Megaphone,
+  "Reconciliation Agent": Calculator,
+  "Review & Feedback Mining Agent": Star,
+  "AI Staff Scheduling Agent": CalendarDays,
+  "Demand Forecasting Model": TrendingUp,
+  "Reservation & Table Optimization Agent": LayoutGrid,
+};
+
 function ServiceCard({ service, index }: { service: { name: string; tagline: string; how: string }; index: number }) {
   const [open, setOpen] = useState(false);
+  const Icon = serviceIcons[service.name];
 
   return (
     <motion.div
@@ -41,11 +87,18 @@ function ServiceCard({ service, index }: { service: { name: string; tagline: str
         onClick={() => setOpen((v) => !v)}
         className="flex w-full items-start justify-between gap-4 p-5 text-left"
       >
-        <div className="flex flex-col gap-1">
-          <span className="font-display text-[15px] font-semibold tracking-tight text-[var(--color-fg)]">
-            {service.name}
-          </span>
-          <span className="text-xs text-[var(--color-fg-muted)]">{service.tagline}</span>
+        <div className="flex items-start gap-3">
+          {Icon && (
+            <span className="mt-0.5 shrink-0 text-[var(--color-brand)]">
+              <Icon className="size-4" />
+            </span>
+          )}
+          <div className="flex flex-col gap-1">
+            <span className="font-display text-[15px] font-semibold tracking-tight text-[var(--color-fg)]">
+              {service.name}
+            </span>
+            <span className="text-xs text-[var(--color-fg-muted)]">{service.tagline}</span>
+          </div>
         </div>
         <motion.span
           animate={{ rotate: open ? 180 : 0 }}
