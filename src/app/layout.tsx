@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ChromeShell } from "@/components/layout/ChromeShell";
 import { NoiseOverlay } from "@/components/shared/NoiseOverlay";
 import { LoadingScreen } from "@/components/shared/LoadingScreen";
+import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -82,6 +83,7 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
     >
       <body className="relative min-h-screen antialiased">
+        <ScrollProgressBar />
         <LoadingScreen />
         <NoiseOverlay />
         <ChromeShell navbar={<Navbar />} footer={<Footer />}>

@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
+
+const MotionLink = motion.create(Link);
 
 type GlowButtonProps = {
   href: string;
@@ -22,6 +27,8 @@ export function GlowButton({
   withArrow = false,
   external = false,
 }: GlowButtonProps) {
+  const prefersReduced = useReducedMotion();
+
   const sizes = {
     sm: "min-h-[44px] px-4 py-2 text-sm",
     md: "px-5 py-2.5 text-sm",
@@ -51,8 +58,10 @@ export function GlowButton({
     : {};
 
   return (
-    <Link
+    <MotionLink
       href={href}
+      whileTap={prefersReduced ? {} : { scale: 0.97 }}
+      transition={{ duration: 0.1 }}
       className={cn(base, sizes[size], variants[variant], className)}
       {...linkProps}
     >
@@ -60,6 +69,6 @@ export function GlowButton({
       {withArrow ? (
         <ArrowRight className="relative z-10 size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
       ) : null}
-    </Link>
+    </MotionLink>
   );
 }

@@ -146,7 +146,8 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.06 * index, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative flex shrink-0 flex-col overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elev)] transition-colors hover:border-[var(--color-brand)] ${CARD_CLASSES}`}
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
+      className={`relative flex shrink-0 flex-col overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elev)] transition-colors hover:border-[var(--color-brand)] hover:shadow-[0_8px_24px_-4px_rgba(193,18,31,0.12)] ${CARD_CLASSES}`}
     >
       {/* Gradient banner */}
       <div className={`relative h-[110px] bg-gradient-to-br ${item.gradient} overflow-hidden`}>

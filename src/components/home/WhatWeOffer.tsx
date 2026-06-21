@@ -2,12 +2,22 @@
 
 import Link from "next/link";
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
-import { ArrowUpRight, Building2, Factory, Megaphone, ShoppingBag } from "lucide-react";
+import { useRef, useCallback } from "react";
+import { ArrowUpRight, Building2, Factory, Megaphone, ShoppingBag, type LucideIcon } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 
-const offerings = [
+type Offering = {
+  icon: LucideIcon;
+  label: string;
+  tagline: string;
+  description: string;
+  solved: string[];
+  href: string;
+  accentClass: string;
+};
+
+const offerings: Offering[] = [
   {
     icon: Megaphone,
     label: "Marketing Agencies",
@@ -93,6 +103,106 @@ function AnimatedYour() {
   );
 }
 
+function OfferingCard({ item, index }: { item: Offering; index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef(0);
+  const Icon = item.icon;
+
+  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      if (!cardRef.current || !overlayRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      overlayRef.current.style.backgroundImage = `radial-gradient(320px circle at ${x}px ${y}px, rgba(193,18,31,0.07) 0%, transparent 65%)`;
+    });
+  }, []);
+
+  const onMouseLeave = useCallback(() => {
+    cancelAnimationFrame(rafRef.current);
+    if (overlayRef.current) overlayRef.current.style.backgroundImage = "none";
+  }, []);
+
+  return (
+    <Reveal delay={index * 0.08}>
+      <motion.div
+        ref={cardRef}
+        whileHover={{ y: -2 }}
+        transition={{ duration: 0.2 }}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+        className="group relative flex h-full flex-col bg-[var(--color-bg)] p-8 transition-all hover:z-10 hover:bg-[var(--color-bg-elev)] hover:ring-1 hover:ring-inset hover:ring-[var(--color-brand)]"
+      >
+        {/* cursor spotlight */}
+        <div
+          ref={overlayRef}
+          aria-hidden
+          className="pointer-events-none absolute inset-0 transition-opacity duration-300"
+          style={{ backgroundImage: "none" }}
+        />
+
+        <div className="mb-6 flex items-start justify-between">
+          <span className={`inline-flex size-12 items-center justify-center border-2 ${item.accentClass}`}>
+            <Icon className="size-5" />
+          </span>
+          <Link
+            href={item.href}
+            className="inline-flex size-8 items-center justify-center border border-[var(--color-border)] text-[var(--color-fg-subtle)] transition-all group-hover:border-[var(--color-brand)] group-hover:text-[var(--color-brand)]"
+          >
+            <ArrowUpRight className="size-4" />
+          </Link>
+        </div>
+
+        <h3 className="font-display text-2xl font-semibold tracking-tight">
+          {item.label}
+        </h3>
+        <p className="mt-1 text-sm font-medium text-[var(--color-fg-muted)]">
+          {item.tagline}
+        </p>
+        <p className="mt-4 text-sm leading-relaxed text-[var(--color-fg-muted)]">
+          {item.description}
+        </p>
+
+        <div className="mt-6 border-t border-[var(--color-border)] pt-6">
+          <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+            Problems already solved
+          </p>
+          <ul className="flex flex-col gap-2">
+            {item.solved.map((a, idx) => (
+              <li key={idx} className="flex items-center gap-2.5 text-sm text-[var(--color-fg-muted)]">
+                <span className="size-1.5 shrink-0 bg-[var(--color-brand)]" />
+                {a}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-auto pt-6">
+          <Link href={item.href} className="block">
+            <motion.div
+              whileHover={{ x: 2 }}
+              transition={{ duration: 0.15 }}
+              className="group/cta border-2 border-dashed border-[var(--color-border)] p-5 transition-all duration-200 hover:border-[var(--color-brand)] hover:bg-[var(--color-bg)]"
+            >
+              <p className="font-display text-xl font-semibold tracking-tight text-[var(--color-fg)] transition-colors group-hover/cta:text-[var(--color-brand)]">
+                <AnimatedYour />{" "}Problem Next?
+              </p>
+              <p className="mt-1 text-xs text-[var(--color-fg-subtle)] transition-colors group-hover/cta:text-[var(--color-fg-muted)]">
+                Tell us your challenge — we build for it.
+              </p>
+              <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-brand)]">
+                Get a custom solution <ArrowUpRight className="size-3" />
+              </span>
+            </motion.div>
+          </Link>
+        </div>
+      </motion.div>
+    </Reveal>
+  );
+}
+
 export function WhatWeOffer() {
   return (
     <section className="relative border-t border-[var(--color-border)] py-24 md:py-32">
@@ -104,75 +214,9 @@ export function WhatWeOffer() {
         />
 
         <div className="mt-16 grid grid-cols-1 gap-px bg-[var(--color-border)] border border-[var(--color-border)] md:grid-cols-2">
-          {offerings.map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <Reveal key={item.label} delay={i * 0.08}>
-                <motion.div
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
-                  className="group relative flex h-full flex-col bg-[var(--color-bg)] p-8 transition-all hover:z-10 hover:bg-[var(--color-bg-elev)] hover:ring-1 hover:ring-inset hover:ring-[var(--color-brand)]"
-                >
-                  <div className="mb-6 flex items-start justify-between">
-                    <span className={`inline-flex size-12 items-center justify-center border-2 ${item.accentClass}`}>
-                      <Icon className="size-5" />
-                    </span>
-                    <Link
-                      href={item.href}
-                      className="inline-flex size-8 items-center justify-center border border-[var(--color-border)] text-[var(--color-fg-subtle)] transition-all group-hover:border-[var(--color-brand)] group-hover:text-[var(--color-brand)]"
-                    >
-                      <ArrowUpRight className="size-4" />
-                    </Link>
-                  </div>
-
-                  <h3 className="font-display text-2xl font-semibold tracking-tight">
-                    {item.label}
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-[var(--color-fg-muted)]">
-                    {item.tagline}
-                  </p>
-                  <p className="mt-4 text-sm leading-relaxed text-[var(--color-fg-muted)]">
-                    {item.description}
-                  </p>
-
-                  <div className="mt-6 border-t border-[var(--color-border)] pt-6">
-                    <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                      Problems already solved
-                    </p>
-                    <ul className="flex flex-col gap-2">
-                      {item.solved.map((a, idx) => (
-                        <li key={idx} className="flex items-center gap-2.5 text-sm text-[var(--color-fg-muted)]">
-                          <span className="size-1.5 shrink-0 bg-[var(--color-brand)]" />
-                          {a}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Your Problem Next — primary CTA within each card */}
-                  <div className="mt-auto pt-6">
-                    <Link href={item.href} className="block">
-                      <motion.div
-                        whileHover={{ x: 2 }}
-                        transition={{ duration: 0.15 }}
-                        className="group/cta border-2 border-dashed border-[var(--color-border)] p-5 transition-all duration-200 hover:border-[var(--color-brand)] hover:bg-[var(--color-bg)]"
-                      >
-                        <p className="font-display text-xl font-semibold tracking-tight text-[var(--color-fg)] transition-colors group-hover/cta:text-[var(--color-brand)]">
-                          <AnimatedYour />{" "}Problem Next?
-                        </p>
-                        <p className="mt-1 text-xs text-[var(--color-fg-subtle)] transition-colors group-hover/cta:text-[var(--color-fg-muted)]">
-                          Tell us your challenge — we build for it.
-                        </p>
-                        <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-brand)]">
-                          Get a custom solution <ArrowUpRight className="size-3" />
-                        </span>
-                      </motion.div>
-                    </Link>
-                  </div>
-                </motion.div>
-              </Reveal>
-            );
-          })}
+          {offerings.map((item, i) => (
+            <OfferingCard key={item.label} item={item} index={i} />
+          ))}
         </div>
 
         <Reveal delay={0.2}>

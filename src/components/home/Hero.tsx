@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { ArrowDown } from "lucide-react";
 
 const trustLogos = [
@@ -25,6 +25,14 @@ const outcomeTags = [
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const prefersReduced = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const contentY = useTransform(scrollYProgress, [0, 1], prefersReduced ? [0, 0] : [0, -40]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], prefersReduced ? [1, 1] : [1, 0.5]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -74,7 +82,7 @@ export function Hero() {
         className="absolute bottom-24 right-6 hidden h-12 w-12 border-l-2 border-t-2 border-[var(--color-brand)] opacity-30 md:block"
       />
 
-      <div className="container-x relative z-10 flex flex-col items-center text-center">
+      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="container-x relative z-10 flex flex-col items-center text-center">
         {/* eyebrow badge */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -202,7 +210,7 @@ export function Hero() {
         >
           <ArrowDown className="size-4 animate-bounce text-[var(--color-fg-muted)]" />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
