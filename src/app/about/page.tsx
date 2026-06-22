@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Linkedin, Github, Instagram, Mail, Phone } from "lucide-react";
 import { site } from "@/content/site";
 import { principles, aboutStats } from "@/content/techStack";
@@ -60,9 +61,15 @@ export default function AboutPage() {
               <div className="relative mx-auto aspect-square w-full max-w-sm">
                 <div className="absolute inset-0 rounded-3xl bg-[linear-gradient(135deg,var(--color-brand),var(--color-accent))] opacity-60 blur-3xl" />
                 <div className="relative flex h-full w-full flex-col items-center justify-center gap-5 rounded-3xl border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] p-8">
-                  <span className="flex size-32 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--color-brand),var(--color-accent))] font-display text-5xl font-semibold text-white shadow-[0_0_60px_-12px_rgba(139,92,246,0.6)]">
-                    BG
-                  </span>
+                  <div className="relative size-32 overflow-hidden rounded-full border-2 border-(--color-brand) shadow-[0_0_40px_-8px_rgba(193,18,31,0.4)]">
+                    <Image
+                      src="/bhumit.png"
+                      alt="Bhumit Goyal"
+                      fill
+                      className="object-cover object-top"
+                      priority
+                    />
+                  </div>
                   <div className="flex flex-col items-center gap-1 text-center">
                     <span className="font-display text-xl font-semibold tracking-tight">
                       {site.founder.name}
