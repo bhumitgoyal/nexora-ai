@@ -1,28 +1,28 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowUpRight, Quote } from "lucide-react";
+import { Zap, Search } from "lucide-react";
 import { Poster } from "@/components/booklet/Poster";
 import { PosterDecor } from "@/components/booklet/PosterDecor";
 
-const results = [
-  { metric: "10×", label: "monthly content output increase" },
-  { metric: "0 drop", label: "in client NPS or retention" },
-  { metric: "+$420k", label: "ARR from retainer expansions post-launch" },
+const primaryStats = [
+  { metric: "~15 min", label: "to go from feature brief to a full campaign kit, down from ~2 days" },
+  { metric: "Multi-client", label: "built to run the same workflow across many brand voices without adding headcount" },
+  { metric: "100%", label: "consistent brand voice across every channel, every time" },
 ];
 
-const approach = [
-  "Brand-voice training per client account, not one generic model",
-  "Pipeline: brief → outline → draft → SEO pass → review → publish",
-  "Multi-format repurposing across 6+ channels from one source asset",
-  "Editorial guardrails + fact-check layer before anything ships",
+const howWeBuilt = [
+  "One input, the feature or campaign details, fans out into a complete multi-channel content kit",
+  "Each output is auto-tailored to its platform's format (ad copy reads differently from a push notification)",
+  "Brand voice and tonality matched per client, not a single generic model output",
+  "Packaged for agencies as custom tooling, with a per-client analytics dashboard layered on top",
 ];
 
-const tech = ["Claude", "Notion", "Buffer", "LangChain", "Webflow", "Supabase"];
+const primaryTech = ["GPT API", "Claude", "Multi-Tenant Dashboards", "Custom Tooling"];
 
 export function MktCaseStudy() {
   return (
-    <Poster page="06 / 08" section="Case Study · Lumina Studios">
+    <Poster page="06 / 08" section="Proof">
       <PosterDecor
         grid
         orbs={[
@@ -31,97 +31,72 @@ export function MktCaseStudy() {
         ]}
       />
 
-      <div className="flex items-start justify-between">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="poster-eyebrow"
-        >
-          Proof · A real build, not a hypothetical pitch.
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.6 }}
-          className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-muted)]"
-        >
-          <span>2024</span>
-          <span className="text-[var(--color-fg-subtle)]">·</span>
-          <span>6 weeks</span>
-        </motion.div>
-      </div>
-
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15, duration: 0.6 }}
-        className="mt-6 flex items-end justify-between gap-6"
+        transition={{ duration: 0.6 }}
+        className="poster-eyebrow"
       >
-        <div>
-          <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent-strong)]">
-            Creative Agency
-          </div>
-          <h2 className="poster-title mt-2 text-[34px] leading-[1.08] tracking-tight">
-            <span className="text-gradient">Lumina Studios</span>
-          </h2>
-        </div>
-        <ArrowUpRight className="size-5 shrink-0 text-[var(--color-fg-subtle)]" />
+        Proof
       </motion.div>
 
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
+      <motion.h2
+        initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.25, duration: 0.65 }}
-        className="mt-3 max-w-[170mm] font-display text-[17px] leading-[1.3] tracking-tight text-[var(--color-fg)]"
+        transition={{ delay: 0.1, duration: 0.7 }}
+        className="poster-title mt-6 text-[40px] leading-[1.05]"
       >
-        End-to-end AI content engine, brand-voice locked across clients
-      </motion.p>
+        <span className="text-gradient">Real builds,</span>{" "}
+        <span className="text-[var(--color-fg-muted)]">not a hypothetical pitch.</span>
+      </motion.h2>
 
       <motion.p
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.6 }}
-        className="mt-3 max-w-[170mm] text-[12px] leading-[1.55] text-[var(--color-fg-muted)]"
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="mt-4 max-w-[170mm] text-[12px] leading-[1.55] text-[var(--color-fg-muted)]"
       >
-        Lumina Studios came to us buried under client demand for content their team physically
-        couldn&rsquo;t produce fast enough. We built an end-to-end AI content engine, locked
-        to their brand voice — the same architecture we&rsquo;d wire into a content or
-        reporting workflow for any agency.
+        These three are pulled from a longer list of systems we&rsquo;ve actually shipped across
+        voice, content, internal operations, and lead generation, for clients whose problems
+        didn&rsquo;t show up anywhere on a services page. We&rsquo;re showing these because
+        they&rsquo;re the closest fit to how agencies actually run client work. If your problem
+        looks different, tell us. That&rsquo;s usually where the better build is.
       </motion.p>
 
-      <div className="mt-6 grid grid-cols-3 gap-3">
-        {results.map((r, i) => (
-          <motion.div
-            key={r.label}
-            initial={{ opacity: 0, y: 12, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 0.4 + i * 0.1, duration: 0.55 }}
-            className="relative overflow-hidden rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-4"
-          >
-            <div className="absolute -right-10 -top-10 size-32 rounded-full bg-[rgba(34,211,238,0.22)] blur-3xl" />
-            <div className="text-gradient-brand font-display text-[36px] font-semibold leading-none tracking-tight">
-              {r.metric}
-            </div>
-            <div className="mt-2.5 text-[11px] leading-[1.45] text-[var(--color-fg-muted)]">
-              {r.label}
-            </div>
-          </motion.div>
-        ))}
-      </div>
+      {/* PRIMARY CASE CARD */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
+        className="mt-5 rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-5"
+      >
+        <div className="flex items-center justify-between">
+          <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent-strong)]">
+            Primary Case Study
+          </div>
+        </div>
+        <h3 className="mt-2 font-display text-[18px] font-semibold tracking-tight text-[var(--color-fg)]">
+          <span className="text-gradient">AI Content &amp; Campaign Engine</span>{" "}
+          <span className="text-[var(--color-fg-muted)]">· Multi-Client Deployment</span>
+        </h3>
+        <p className="mt-2 font-display text-[13px] leading-[1.4] tracking-tight text-[var(--color-fg)]">
+          Type a new feature&rsquo;s details once. Get a full go-to-market kit back: ad copy,
+          customer emails, WhatsApp messages, and push notifications, each tailored to the platform
+          and matched to the client&rsquo;s brand voice.
+        </p>
+        <p className="mt-3 text-[11px] leading-[1.5] text-[var(--color-fg-muted)]">
+          <span className="font-semibold text-[var(--color-fg-subtle)]">The problem:</span>{" "}
+          Launching a single feature used to mean manually writing the same message five different
+          ways for five different channels. It was slow, inconsistent, and impossible to scale once
+          you&rsquo;re running this for more than one client.
+        </p>
 
-      <div className="mt-5 grid grid-cols-2 gap-4">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.55 }}
-          className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4"
-        >
+        <div className="mt-4">
           <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
             How we built it
           </div>
           <ul className="mt-2 flex flex-col gap-1.5">
-            {approach.map((a) => (
+            {howWeBuilt.map((a) => (
               <li
                 key={a}
                 className="flex items-start gap-1.5 text-[10.5px] leading-[1.45] text-[var(--color-fg-muted)]"
@@ -131,42 +106,27 @@ export function MktCaseStudy() {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.65, duration: 0.55 }}
-          className="flex flex-col gap-4"
-        >
-          <div className="flex-1 rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.12),rgba(34,211,238,0.08))] p-4">
-            <Quote className="size-4 text-[var(--color-accent)] opacity-70" />
-            <p className="mt-2 text-[11px] leading-[1.6] text-[var(--color-fg)]">
-              &ldquo;Most consultants hand you a slide deck. Nuvero ships production code,
-              owns the integration, and stays around to optimize. Rare combination.&rdquo;
-            </p>
-            <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-              — Chief of Staff, Northwind Logistics
-            </p>
-          </div>
-          <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3">
-            <p className="text-[10px] leading-[1.55] text-[var(--color-fg-muted)]">
-              This is the same playbook we&rsquo;d run for your agency: your brand voice in,
-              your client&rsquo;s data wired in, and a clean handoff so your team owns the
-              system going forward.
-            </p>
-          </div>
-        </motion.div>
-      </div>
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          {primaryStats.map((s) => (
+            <div
+              key={s.label}
+              className="relative overflow-hidden rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-3"
+            >
+              <div className="absolute -right-8 -top-8 size-24 rounded-full bg-[rgba(34,211,238,0.18)] blur-3xl" />
+              <div className="text-gradient-brand font-display text-[18px] font-semibold leading-none tracking-tight">
+                {s.metric}
+              </div>
+              <div className="mt-1.5 text-[9px] leading-tight text-[var(--color-fg-muted)]">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.85, duration: 0.5 }}
-        className="mt-4 flex items-center justify-between"
-      >
-        <div className="flex flex-wrap items-center gap-1.5">
-          {tech.map((t) => (
+        <div className="mt-3 flex flex-wrap items-center gap-1.5">
+          {primaryTech.map((t) => (
             <span
               key={t}
               className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--color-fg-muted)]"
@@ -175,9 +135,97 @@ export function MktCaseStudy() {
             </span>
           ))}
         </div>
-        <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
-          nuvero-ai · case lumina
-        </span>
+      </motion.div>
+
+      {/* SECONDARY CASE CARDS */}
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55, duration: 0.55 }}
+          className="rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-4"
+        >
+          <div className="flex items-center gap-2">
+            <span className="grid size-8 shrink-0 place-items-center rounded-lg border border-[var(--color-border-strong)] bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.28),transparent_70%)]">
+              <Zap className="size-4 text-[var(--color-brand-strong)]" />
+            </span>
+            <h4 className="font-display text-[13px] font-semibold tracking-tight text-[var(--color-fg)]">
+              Autonomous Outbound Sales Engine
+            </h4>
+          </div>
+          <p className="mt-2.5 text-[10.5px] leading-[1.5] text-[var(--color-fg-muted)]">
+            Identifies qualified leads from Google Maps, enriches each with email, LinkedIn,
+            Instagram and other socials, then reaches out with a personalized pitch. It calls
+            prospects at their preferred time using ElevenLabs voice AI to capture requirements with
+            zero human intervention.
+          </p>
+          <div className="mt-3 rounded-lg border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-2.5">
+            <div className="text-[9.5px] leading-[1.45] text-[var(--color-fg-muted)]">
+              <span className="font-semibold text-[var(--color-accent-strong)]">Result:</span>{" "}
+              Fully automated the top of the sales funnel end-to-end. Generates sales-ready, enriched leads
+              with zero manual research.
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.55 }}
+          className="rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-4"
+        >
+          <div className="flex items-center gap-2">
+            <span className="grid size-8 shrink-0 place-items-center rounded-lg border border-[var(--color-border-strong)] bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.25),transparent_70%)]">
+              <Search className="size-4 text-[var(--color-accent-strong)]" />
+            </span>
+            <h4 className="font-display text-[13px] font-semibold tracking-tight text-[var(--color-fg)]">
+              US SMB Lead Scraper (SBA.gov)
+            </h4>
+          </div>
+          <p className="mt-2.5 text-[10.5px] leading-[1.5] text-[var(--color-fg-muted)]">
+            Give it an industry name. It scrapes verified listings from the U.S. Small Business
+            Administration, surfacing SMBs invisible to normal Google search, then pulls each
+            company&rsquo;s website and social handles into one clean list.
+          </p>
+          <div className="mt-3 rounded-lg border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-2.5">
+            <div className="text-[9.5px] leading-[1.45] text-[var(--color-fg-muted)]">
+              <span className="font-semibold text-[var(--color-accent-strong)]">Result:</span>{" "}
+              Turned hours of daily manual research into a minutes-long automated run, at zero tool
+              cost. Open-sourced on GitHub.
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* CLOSING LINE */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
+        className="mt-4 rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.10),rgba(34,211,238,0.06))] p-3.5"
+      >
+        <p className="text-[11px] leading-[1.55] text-[var(--color-fg-muted)]">
+          This is the same playbook we&rsquo;d run for your agency: your brand voice in, your
+          client&rsquo;s data wired in, and a clean handoff so your team owns the system going
+          forward.
+        </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.5 }}
+        className="mt-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-3"
+      >
+        <div className="font-mono text-[8.5px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)] mb-1.5">
+          Also in the build log
+        </div>
+        <p className="text-[10px] leading-[1.55] text-[var(--color-fg-muted)]">
+          Brand-aware customer support assistants for D2C clients · internal delivery and ops
+          dashboards · cold-call and inbound voice agents · public-data lead scraping and enrichment
+          tools. If it&rsquo;s repetitive, judgment-heavy, or eating someone&rsquo;s time, it&rsquo;s
+          probably buildable, for you or for a client you&rsquo;d resell it to.
+        </p>
       </motion.div>
     </Poster>
   );

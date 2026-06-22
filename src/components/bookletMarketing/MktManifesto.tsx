@@ -9,12 +9,12 @@ const quadrants = [
   {
     no: "01",
     label: "Client Reporting",
-    body: "Live dashboards that pull from ad platforms, CRMs, and analytics — branded as yours, updated without anyone touching a spreadsheet.",
+    body: "Live dashboards that pull from ad platforms, CRMs, and analytics. Branded as yours and updated without anyone touching a spreadsheet.",
   },
   {
     no: "02",
     label: "Workflow Automation",
-    body: "Onboarding, approvals, content repurposing, and campaign QA — the repetitive 80% of account management, automated.",
+    body: "Onboarding, approvals, content repurposing, and campaign QA. We automate the repetitive 80% of account management.",
   },
   {
     no: "03",
@@ -31,7 +31,7 @@ const quadrants = [
 const stats = [
   { value: "20–60h", label: "manual hours/week reclaimed per account team" },
   { value: "2 weeks", label: "time to first live dashboard or agent" },
-  { value: "100%", label: "white-label — everything ships under your agency's name" },
+  { value: "100%", label: "white-label: everything ships under your agency's name" },
 ];
 
 export function MktManifesto() {
@@ -78,8 +78,20 @@ export function MktManifesto() {
         staff repurposing the same content five different ways, and a founder who&rsquo;s the
         only one who can explain ROI to a client on a call. We build the{" "}
         <span className="text-[var(--color-fg)]">infrastructure layer underneath your service
-        offering</span> — wired into the tools you already run client work through — so your
+        offering</span>, wired into the tools you already run client work through. That means your
         senior team&rsquo;s time goes to strategy, not spreadsheets.
+      </motion.p>
+
+      <motion.p
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.35, duration: 0.7 }}
+        className="mt-3 max-w-[155mm] text-[12.5px] leading-[1.6] text-[var(--color-fg-muted)] italic"
+      >
+        The four categories below are where most agency engagements start, but they aren&rsquo;t where
+        they&rsquo;re limited to. If what&rsquo;s actually slowing your team down doesn&rsquo;t
+        fit neatly into reporting, workflow, client-facing AI, or internal ops, that&rsquo;s
+        fine. We scope around the real bottleneck, not a service menu.
       </motion.p>
 
       <div className="mt-8 grid grid-cols-2 gap-3">

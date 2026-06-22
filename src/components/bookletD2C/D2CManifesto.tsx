@@ -9,29 +9,29 @@ const quadrants = [
   {
     no: "01",
     label: "Acquisition",
-    body: "Cart-abandonment recovery, personalized win-back offers, and an AI concierge that greets every new visitor by intent, not by script.",
+    body: "Cart-abandonment recovery, personalized win-back offers, and an AI concierge that greets every new visitor based on intent, not a canned script.",
   },
   {
     no: "02",
     label: "Styling & Discovery",
-    body: "An AI stylist trained on your own catalog — answers \"how do I style this?\" using your actual SKUs, not generic fashion advice.",
+    body: "An AI stylist trained on your own catalog that answers \"how do I style this?\" using your actual SKUs instead of generic fashion advice.",
   },
   {
     no: "03",
     label: "Retention",
-    body: "Brand-aware, customer-aware messaging that remembers past orders, sizes, and preferences — every single time, on every channel.",
+    body: "Brand-aware, customer-aware messaging that remembers past orders, sizes, and preferences. Every single time, on every channel.",
   },
   {
     no: "04",
     label: "Operations",
-    body: "Voice agents that confirm orders before dispatch, killing fake/random COD orders before they cost you a delivery.",
+    body: "Voice agents that confirm orders before dispatch, catching fake and random COD orders before they cost you a delivery.",
   },
 ];
 
 const stats = [
   { value: "60–70%", label: "average cart abandonment rate D2C brands lose to silence" },
   { value: "3 weeks", label: "time to first live agent on your store" },
-  { value: "Zero", label: "vendor lock-in — you own the integration" },
+  { value: "Zero", label: "vendor lock-in. You own the integration." },
 ];
 
 export function D2CManifesto() {
@@ -76,10 +76,22 @@ export function D2CManifesto() {
       >
         Most D2C brands treat AI like a chat widget bolted onto checkout. The real leverage
         is when AI becomes part of the{" "}
-        <span className="text-[var(--color-fg)]">buying journey itself</span> — recommending
+        <span className="text-[var(--color-fg)]">buying journey itself</span>: recommending
         the right product, recovering the cart that almost converted, confirming the order
         before it ships, and remembering every customer&rsquo;s taste the next time they
         come back.
+      </motion.p>
+
+      <motion.p
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.35, duration: 0.7 }}
+        className="mt-3 max-w-[155mm] text-[12.5px] leading-[1.6] text-[var(--color-fg-muted)] italic"
+      >
+        The four categories below are where most D2C engagements start, but they&rsquo;re
+        not where they end. If your store&rsquo;s bottleneck doesn&rsquo;t fit neatly into
+        one of these, that&rsquo;s normal. We scope around the actual problem, not a
+        service menu.
       </motion.p>
 
       <div className="mt-8 grid grid-cols-2 gap-3">

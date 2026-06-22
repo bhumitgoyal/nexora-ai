@@ -46,21 +46,14 @@ export function MktCover() {
         </div>
 
         <div>
-          <motion.span
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-mono text-[11px] uppercase tracking-[0.3em] text-[var(--color-fg-muted)]"
-          >
-            White-label automation —
-          </motion.span>
-
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
             className="poster-title mt-5 text-[56px] leading-[0.96]"
           >
+            <span className="text-gradient-brand">White-label automation</span>
+            <br />
             <span className="text-gradient">and dashboards</span>
             <br />
             that make your agency
@@ -74,8 +67,8 @@ export function MktCover() {
             transition={{ delay: 0.45, duration: 0.7 }}
             className="mt-7 max-w-[150mm] text-pretty text-[14px] leading-[1.55] text-[var(--color-fg-muted)]"
           >
-            A boutique AI consultancy building the workflow automation, dashboards, and client
-            reporting infrastructure that agencies resell under their own name — so your team
+            A boutique AI consultancy building the workflow automation, client
+            dashboards, and reporting infrastructure that agencies resell under their own name. This means your team
             spends less time on manual ops and more time on the work clients actually pay for.
           </motion.p>
         </div>

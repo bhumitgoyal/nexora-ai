@@ -46,21 +46,14 @@ export function D2CCover() {
         </div>
 
         <div>
-          <motion.span
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="font-mono text-[11px] uppercase tracking-[0.3em] text-[var(--color-fg-muted)]"
-          >
-            An AI store team —
-          </motion.span>
-
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
             className="poster-title mt-5 text-[60px] leading-[0.96]"
           >
+            <span className="text-gradient-brand">An AI store team</span>
+            <br />
             <span className="text-gradient">that knows every</span>
             <br />
             customer
@@ -74,10 +67,10 @@ export function D2CCover() {
             transition={{ delay: 0.45, duration: 0.7 }}
             className="mt-7 max-w-[150mm] text-pretty text-[14px] leading-[1.55] text-[var(--color-fg-muted)]"
           >
-            A boutique AI consultancy building brand-aware chatbots, AI stylists, voice
+            A boutique AI consultancy that builds brand-aware chatbots, AI stylists, voice
             order-confirmation agents, and full-funnel retention systems for D2C and
-            e-commerce brands — wired directly into Shopify, WhatsApp, and your existing
-            stack.
+            e-commerce brands. Everything wires directly into Shopify, WhatsApp, and your
+            existing stack.
           </motion.p>
         </div>
 

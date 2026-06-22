@@ -10,42 +10,42 @@ const services = [
     no: "01",
     icon: Bot,
     title: "Brand-Aware Customer Chatbot",
-    tagline: "A WhatsApp + web assistant trained on your catalog, FAQs, and tone — remembers every past order and preference per customer.",
+    tagline: "A WhatsApp + web assistant trained on your catalog, FAQs, and tone. It remembers every past order and preference per customer.",
     accent: "brand" as const,
   },
   {
     no: "02",
     icon: Sparkles,
     title: "AI Stylist / Product Advisor",
-    tagline: "Ask \"how do I style this?\" and get an answer pulled from your real catalog — outfit pairing, sizing logic, and \"customers also bought.\"",
+    tagline: "Ask \"how do I style this?\" and get an answer pulled from your real catalog: outfit pairing, sizing logic, and \"customers also bought.\"",
     accent: "accent" as const,
   },
   {
     no: "03",
     icon: ShoppingCart,
     title: "Cart Recovery & Win-Back Agent",
-    tagline: "Personalized nudges the moment a cart is abandoned — channel-aware, time-aware, with the right discount at the right moment, not a blanket coupon.",
+    tagline: "Personalized nudges the moment a cart is abandoned. Channel-aware, time-aware, with the right discount at the right moment instead of a blanket coupon.",
     accent: "brand" as const,
   },
   {
     no: "04",
     icon: PhoneCall,
     title: "Order Confirmation Voice Agent",
-    tagline: "An outbound voice call before dispatch that confirms address, size, and intent — kills fake COD orders before they cost you a return shipment.",
+    tagline: "An outbound voice call before dispatch that confirms address, size, and intent. It catches fake COD orders before they cost you a return shipment.",
     accent: "accent" as const,
   },
   {
     no: "05",
     icon: Truck,
     title: "WhatsApp Order Tracking Bot",
-    tagline: "\"Where's my order?\" answered instantly, pulled live from your courier + order system — no human, no hold.",
+    tagline: "\"Where's my order?\" answered instantly, pulled live from your courier + order system. No human needed, no hold time.",
     accent: "brand" as const,
   },
   {
     no: "06",
     icon: Heart,
     title: "Retention & Personalization Engine",
-    tagline: "Post-purchase flows that adapt per customer — replenishment nudges, restock alerts, loyalty messaging that actually reflects what they bought.",
+    tagline: "Post-purchase flows that adapt per customer: replenishment nudges, restock alerts, and loyalty messaging that actually reflects what they bought.",
     accent: "accent" as const,
   },
 ];
@@ -76,10 +76,10 @@ export function D2CServices() {
         transition={{ delay: 0.1, duration: 0.7 }}
         className="poster-title mt-6 text-[42px] leading-[1.05]"
       >
-        Six builds.{" "}
-        <span className="text-gradient">One always-on store team</span>
+        Seven builds we ship often.{" "}
+        <span className="text-gradient">Not the only seven</span>
         <br />
-        behind your brand.
+        we build.
       </motion.h2>
 
       <motion.p
@@ -88,8 +88,9 @@ export function D2CServices() {
         transition={{ delay: 0.2, duration: 0.6 }}
         className="mt-4 max-w-[160mm] text-[12.5px] leading-[1.55] text-[var(--color-fg-muted)]"
       >
-        Every service below is a production system, not a pilot. Pick what&rsquo;s costing
-        you revenue today — we&rsquo;ll build it.
+        Every service below is a production system we&rsquo;ve actually shipped for a D2C brand,
+        not a pilot or a concept deck. They&rsquo;re listed because they&rsquo;re common, not
+        because they&rsquo;re the only options.
       </motion.p>
 
       <div className="mt-6 grid grid-cols-3 gap-2.5">
@@ -132,8 +133,21 @@ export function D2CServices() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+        className="mt-5 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.025),rgba(255,255,255,0.005))] px-5 py-4"
+      >
+        <p className="text-[11.5px] leading-[1.55] text-[var(--color-fg-muted)] italic">
+          Don&rsquo;t see your problem here? Good. That usually means it&rsquo;s specific to your
+          store, which is exactly the kind of build we like best. Tell us what&rsquo;s actually
+          broken and we&rsquo;ll scope it for free before you commit to anything.
+        </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ delay: 0.95, duration: 0.6 }}
-        className="mt-6 flex items-center justify-between rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.10),rgba(34,211,238,0.06))] px-5 py-4"
+        className="mt-3 flex items-center justify-between rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.10),rgba(34,211,238,0.06))] px-5 py-4"
       >
         <p className="font-display text-[14px] tracking-tight text-[var(--color-fg)]">
           The next two pages go deep on the four builds that move revenue fastest for D2C brands.

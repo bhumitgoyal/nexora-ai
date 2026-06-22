@@ -17,42 +17,42 @@ const services = [
     no: "01",
     icon: LayoutDashboard,
     title: "White-Label Client Dashboards",
-    tagline: "Live, branded dashboards pulling from Google Ads, Meta, GA4, and your CRM — clients see real-time numbers without a single manual report.",
+    tagline: "Live, branded dashboards pulling from Google Ads, Meta, GA4, and your CRM. Clients see real-time numbers without a single manual report.",
     accent: "brand" as const,
   },
   {
     no: "02",
     icon: GitBranch,
     title: "Workflow & Approval Automation",
-    tagline: "Client onboarding, content approvals, campaign QA checklists, and status updates — wired into Slack, Notion, and email so nothing waits on a human to notice.",
+    tagline: "Client onboarding, content approvals, campaign QA checklists, and status updates. We wire everything into Slack, Notion, and email so nothing waits on a human to notice.",
     accent: "accent" as const,
   },
   {
     no: "03",
     icon: Repeat2,
     title: "AI Content Repurposing Engine",
-    tagline: "One long-form asset becomes 12 channel-ready cuts — blog to social, webinar to email — in your client's brand voice, not a generic AI tone.",
+    tagline: "One long-form asset becomes 12 channel-ready cuts, from blog to social to webinar to email. Delivered in your client's brand voice, not a generic AI tone.",
     accent: "brand" as const,
   },
   {
     no: "04",
     icon: TrendingUp,
     title: "Campaign Analytics & Anomaly Alerts",
-    tagline: "Plain-English Q-and-A on top of client ad accounts — flags budget pacing issues, CPA spikes, and underperforming creatives before the client asks.",
+    tagline: "Plain-English Q-and-A on top of client ad accounts. It flags budget pacing issues, CPA spikes, and underperforming creatives before the client asks.",
     accent: "accent" as const,
   },
   {
     no: "05",
     icon: Bot,
     title: "White-Label Chatbots & Voice Agents",
-    tagline: "Resell conversational AI and voice concierges to your own clients under your agency's brand — we build it, you own the client relationship and the margin.",
+    tagline: "Resell conversational AI and voice concierges to your own clients under your agency's brand. We build it, and you own the client relationship and the margin.",
     accent: "brand" as const,
   },
   {
     no: "06",
     icon: Users,
     title: "Internal Capacity & Margin Dashboard",
-    tagline: "See which accounts are over-serviced before the client does — hours logged vs. retainer value, scope creep and team utilization in one view.",
+    tagline: "See which accounts are over-serviced before the client does. View hours logged vs. retainer value, scope creep flags, and team utilization in one view.",
     accent: "accent" as const,
   },
 ];
@@ -83,10 +83,10 @@ export function MktServices() {
         transition={{ delay: 0.1, duration: 0.7 }}
         className="poster-title mt-6 text-[42px] leading-[1.05]"
       >
-        Six builds.{" "}
-        <span className="text-gradient">One operating layer</span>
+        Six builds we ship often.{" "}
+        <span className="text-gradient">Not the only six</span>
         <br />
-        behind every client account.
+        we build.
       </motion.h2>
 
       <motion.p
@@ -95,8 +95,9 @@ export function MktServices() {
         transition={{ delay: 0.2, duration: 0.6 }}
         className="mt-4 max-w-[160mm] text-[12.5px] leading-[1.55] text-[var(--color-fg-muted)]"
       >
-        Every service below is a production system, not a pilot. Pick what&rsquo;s eating
-        your team&rsquo;s billable hours — we&rsquo;ll build it.
+        Every service below is a production system we&rsquo;ve actually shipped for an agency, not
+        a pilot or a concept deck. They&rsquo;re listed because they&rsquo;re common requests,
+        not because they&rsquo;re the only ones we take on.
       </motion.p>
 
       <div className="mt-6 grid grid-cols-3 gap-2.5">
@@ -139,8 +140,21 @@ export function MktServices() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+        className="mt-5 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.025),rgba(255,255,255,0.005))] px-5 py-4"
+      >
+        <p className="text-[11.5px] leading-[1.55] text-[var(--color-fg-muted)] italic">
+          Running into something that doesn&rsquo;t match this list? That&rsquo;s usually the most
+          valuable kind of build: something specific to how your agency actually works. Tell us
+          what&rsquo;s broken and we&rsquo;ll scope it for free before you commit to anything.
+        </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ delay: 0.95, duration: 0.6 }}
-        className="mt-6 flex items-center justify-between rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.10),rgba(34,211,238,0.06))] px-5 py-4"
+        className="mt-3 flex items-center justify-between rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.10),rgba(34,211,238,0.06))] px-5 py-4"
       >
         <p className="font-display text-[14px] tracking-tight text-[var(--color-fg)]">
           The next two pages go deep on the four builds agencies ask for first.

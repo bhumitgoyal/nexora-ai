@@ -13,7 +13,7 @@ const results = [
 
 const approach = [
   "Unified brain over the brand's CRM, event calendar, and knowledge base",
-  "Per-member long-term memory — the bot remembers last week's questions and preferences",
+  "Per-member long-term memory: the bot remembers last week's questions and preferences",
   "Tone-detection layer that mirrors each member's pace, language, and formality",
   "Strict escalation: any finance or medical query routes to a human within 2 minutes",
 ];
@@ -85,8 +85,12 @@ export function D2CCaseStudy() {
         className="mt-3 max-w-[170mm] text-[12px] leading-[1.55] text-[var(--color-fg-muted)]"
       >
         GoHappy Club came to us with a support team buried in repeat questions across 6
-        languages. We built a brand-aware WhatsApp + in-app assistant with per-member memory
-        — the same architecture we&rsquo;d wire into a customer chatbot for any D2C brand.
+        languages. These two are pulled from a longer list of systems we&rsquo;ve actually
+        shipped across voice, WhatsApp, internal ops, and lead generation, for clients who
+        came to us with problems that didn&rsquo;t look like anything in a services list.
+        We&rsquo;re showing these two because they&rsquo;re the closest fit to a D2C
+        store&rsquo;s day-to-day. If your problem looks different, that&rsquo;s the point.
+        Tell us what it is.
       </motion.p>
 
       <div className="mt-6 grid grid-cols-3 gap-3">
@@ -145,14 +149,25 @@ export function D2CCaseStudy() {
               sentence felt impossible 6 months ago.&rdquo;
             </p>
             <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-              — Head of Member Experience, GoHappy Club
+              Head of Member Experience, GoHappy Club
             </p>
           </div>
           <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3">
             <p className="text-[10px] leading-[1.55] text-[var(--color-fg-muted)]">
-              This is the same playbook we&rsquo;d run for your store: brand voice in,
-              customer memory in, your catalog wired in — and a clean handoff to your team
+              This is the same playbook we&rsquo;d run for your store: brand voice in, customer
+              memory in, your catalog or call flow wired in, and a clean handoff to your team
               whenever a human is genuinely the better answer.
+            </p>
+          </div>
+          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3">
+            <div className="font-mono text-[8.5px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)] mb-1.5">
+              Also in the build log
+            </div>
+            <p className="text-[9.5px] leading-[1.55] text-[var(--color-fg-muted)]">
+              Internal delivery-ops dashboards · multi-client campaign content engines ·
+              autonomous outbound lead-gen and sales calling · public data scraping and lead
+              enrichment tools. If it&rsquo;s repetitive, judgment-heavy, or eating your
+              team&rsquo;s time, it&rsquo;s probably buildable.
             </p>
           </div>
         </motion.div>
@@ -175,7 +190,7 @@ export function D2CCaseStudy() {
           ))}
         </div>
         <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
-          nuvero-ai · case gohappy
+          nuvero · case gohappy
         </span>
       </motion.div>
     </Poster>
