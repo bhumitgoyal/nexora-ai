@@ -52,7 +52,16 @@ const agencies = [
 
 export default function BookletSelectorPage() {
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center bg-[var(--color-bg)] px-6 py-24">
+    <div className="relative flex min-h-dvh flex-col items-center justify-center bg-[var(--color-bg)] px-6 py-24">
+      <Link
+        href="/"
+        className="absolute top-6 left-6 flex items-center gap-2 text-sm font-semibold text-[var(--color-brand)] hover:text-[var(--color-brand-strong)] transition-colors duration-200"
+      >
+        <svg viewBox="0 0 16 16" fill="currentColor" className="size-4">
+          <path fillRule="evenodd" d="M14 8a.75.75 0 0 1-.75.75H3.56l3.22 3.22a.75.75 0 1 1-1.06 1.06l-4.5-4.5a.75.75 0 0 1 0-1.06l4.5-4.5a.75.75 0 0 1 1.06 1.06L3.56 7.25H13.25A.75.75 0 0 1 14 8Z" clipRule="evenodd" />
+        </svg>
+        Back
+      </Link>
       <div className="w-full max-w-4xl">
         <div className="mb-12 text-center">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-brand)]">
