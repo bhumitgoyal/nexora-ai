@@ -8,7 +8,6 @@ import { GradientOrb } from "@/components/shared/GradientOrb";
 import { GridBackground } from "@/components/shared/GridBackground";
 import { Reveal } from "@/components/shared/Reveal";
 import { CtaBanner } from "@/components/home/CtaBanner";
-import { cn } from "@/lib/utils";
 import { Progress } from "@/components/ui/progress";
 import {
   Breadcrumb,
@@ -97,7 +96,7 @@ export default async function CaseStudyPage({
               </div>
             </Reveal>
             <Reveal delay={0.05}>
-              <p className="font-mono text-sm text-[var(--color-accent)]">{study.client}</p>
+              <p className="font-mono text-sm text-[var(--color-brand)]">{study.client}</p>
             </Reveal>
             <Reveal delay={0.1}>
               <h1 className="max-w-4xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
@@ -115,11 +114,21 @@ export default async function CaseStudyPage({
 
       <section className="container-x">
         <Reveal>
-          <div className={cn("overflow-hidden rounded-2xl", !study.image && cn("relative aspect-[16/7] bg-gradient-to-br", study.gradient))}>
+          <div className="relative overflow-hidden rounded-2xl bg-[var(--color-brand)] border-4 border-[var(--color-brand)]">
             {study.image ? (
-              <Image src={study.image} alt={study.client} width={0} height={0} sizes="100vw" className="w-full h-auto" priority />
+              <Image
+                src={study.image}
+                alt={study.client}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-full h-auto"
+                priority
+              />
             ) : (
-              <div className="absolute inset-0 grid-bg opacity-30" />
+              <div className="aspect-[16/7]">
+                <div className="absolute inset-0 grid-bg opacity-20" />
+              </div>
             )}
           </div>
         </Reveal>

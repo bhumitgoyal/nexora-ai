@@ -8,19 +8,23 @@ import { cn } from "@/lib/utils";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const budgets = [
-  "< $2k",
-  "$2k – $5k",
-  "$5k – $15k",
-  "$15k+",
-  "Let's talk",
+  "$100 – $500 (₹8,000 – ₹42,000)",
+  "$500 – $1,000 (₹42,000 – ₹84,000)",
+  "$1,000 – $1,500 (₹84,000 – ₹1,25,000)",
+  "$1,500 – $2,000 (₹1,25,000 – ₹1,70,000)",
+  "$2,000+ (₹1,70,000+)",
 ];
 
 const services = [
+  "Custom Automation / Service",
   "AI Voice Agents",
-  "Agentic Workflows",
-  "RAG / Knowledge Systems",
-  "Marketing Automation",
-  "AI Strategy Consulting",
+  "WhatsApp Automation",
+  "Chatbot / AI Assistant",
+  "Campaign and Marketing Automation",
+  "Lead Generation System",
+  "Content and SEO Automation",
+  "Workflow Automation",
+  "Reporting and Analytics",
   "Other",
 ];
 
@@ -61,7 +65,7 @@ export function ContactForm() {
     } catch (err) {
       setStatus("error");
       toast.error("Something went wrong.", {
-        description: err instanceof Error ? err.message : "Try emailing us directly at bhumitgoyal.bg@gmail.com",
+        description: err instanceof Error ? err.message : "Try emailing us directly at nuveroai@gmail.com",
       });
     }
   }

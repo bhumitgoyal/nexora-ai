@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUpRight, ExternalLink, Mic, Bot, Megaphone, Truck, Target, Search } from "lucide-react";
+import { ArrowUpRight, Mic, Bot, Megaphone, Truck, Target, Search } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Marquee } from "@/components/shared/Marquee";
 
@@ -138,39 +138,32 @@ const workItems: WorkItem[] = [
 
 function WorkCard({ item }: { item: WorkItem }) {
   return (
-    <div className="relative flex w-[340px] shrink-0 flex-col overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elev)] transition-colors hover:border-[var(--color-brand)] cursor-pointer select-none">
-      <div className={`relative h-[110px] overflow-hidden bg-gradient-to-br ${item.gradient}`}>
-        <div className="absolute inset-0 grid-bg opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-elev)]/60 to-transparent" />
+    <div className="relative flex w-[340px] h-[430px] shrink-0 flex-col overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elev)] transition-colors hover:border-[var(--color-brand)] cursor-pointer select-none">
+      <div className="relative h-[110px] overflow-hidden bg-[var(--color-brand)]">
+        <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-4">
           <div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--color-fg-muted)]/80">
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/70">
               {item.industry}
             </span>
-            <div className="mt-0.5 font-display text-sm font-semibold text-[var(--color-fg)]">
+            <div className="mt-0.5 font-display text-sm font-semibold text-white">
               {item.client}
             </div>
           </div>
           <div className="flex items-center gap-1.5">
-            {item.openSource && (
-              <span className="inline-flex items-center gap-1 border border-[var(--color-accent)] bg-[var(--color-bg-elev)] px-2 py-0.5 font-mono text-[8.5px] uppercase tracking-[0.16em] text-[var(--color-accent)]">
-                <ExternalLink className="size-2.5" />
-                Open Source
-              </span>
-            )}
-            <span className="font-mono text-[10px] font-semibold text-[var(--color-fg-muted)]/60">
+            <span className="font-mono text-[10px] font-semibold text-white/60">
               {item.no}
             </span>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-5 p-5">
+      <div className="flex flex-1 flex-col gap-5 p-5 overflow-hidden">
         <div className="flex items-start gap-2.5">
           <span className="mt-0.5 shrink-0 text-[var(--color-brand)]">
             <item.icon className="size-4" />
           </span>
-          <p className="font-display text-[15px] font-semibold leading-snug tracking-tight text-[var(--color-fg)]">
+          <p className="font-display text-base font-semibold leading-snug tracking-tight text-[var(--color-fg)]">
             {item.headline}
           </p>
         </div>

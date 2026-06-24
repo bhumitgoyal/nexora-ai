@@ -37,7 +37,7 @@ function ScrollRow({ text, direction }: { text: string; direction: 1 | -1 }) {
           {repeated.split("Built to").map((part, i) =>
             i === 0 ? null : (
               <span key={i}>
-                <span className="text-[var(--color-fg-subtle)]">Built to</span>
+                <span className="text-[var(--color-brand)]">Built to</span>
                 {part}
               </span>
             )

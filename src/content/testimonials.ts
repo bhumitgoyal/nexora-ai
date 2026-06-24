@@ -47,10 +47,10 @@ export const testimonials: Testimonial[] = [
   {
     quote:
       "Response time on customer chats dropped from hours to seconds after Nuvero set up the AI assistant. Bookings went up, support load went down. Our team now only handles the stuff that actually needs a human.",
-    name: "Kunal Mehta",
+    name: "Rajesh Goyal",
     role: "Co-Founder",
     company: "CarBuddy Delhi",
-    initials: "KM",
+    initials: "RG",
     gradient: "from-blue-500 to-cyan-500",
   },
   {

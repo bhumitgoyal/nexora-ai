@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { caseStudies, allIndustries, type CaseStudy } from "@/content/caseStudies";
@@ -69,13 +68,9 @@ function WorkCard({ study }: { study: CaseStudy }) {
       href={`/work/${study.slug}`}
       className="group relative flex h-full flex-col overflow-hidden card-surface"
     >
-      <div className={cn("relative aspect-[16/9] overflow-hidden", study.image ? "bg-black" : cn("bg-gradient-to-br", study.gradient))}>
-        {study.image ? (
-          <Image src={study.image} alt={study.client} fill className="object-cover opacity-85 transition-transform duration-500 group-hover:scale-105" />
-        ) : (
-          <div className="absolute inset-0 grid-bg opacity-40" />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-elev)] via-transparent to-transparent" />
+      <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-brand)]">
+        <div className="absolute inset-0 grid-bg opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
         <div className="absolute left-5 top-5 flex items-center gap-2">
           <span className="rounded-full bg-black/40 backdrop-blur px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/80">
             {study.industry}

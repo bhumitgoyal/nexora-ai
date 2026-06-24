@@ -60,6 +60,12 @@ const trustLogos = [
     slug: null,
   },
   {
+    name: "The Health Factory",
+    industry: "Health & Wellness",
+    metric: "Patient intake and follow-up flows fully automated",
+    slug: null,
+  },
+  {
     name: "Arch Design",
     industry: "Architecture & Design",
     metric: "Client intake and project scoping automated",

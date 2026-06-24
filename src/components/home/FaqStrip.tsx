@@ -22,9 +22,9 @@ export function FaqStrip() {
               </p>
               <Link
                 href="/contact"
-                className="mt-3 inline-flex text-sm font-medium text-[var(--color-accent)] underline-offset-4 hover:underline"
+                className="mt-3 inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
               >
-                Ask anything →
+                Ask anything
               </Link>
             </Reveal>
           </div>
