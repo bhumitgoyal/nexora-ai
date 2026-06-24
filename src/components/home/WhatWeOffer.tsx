@@ -229,7 +229,19 @@ export function WhatWeOffer() {
           subtitle="We don't do generic AI. We understand your industry and build problem-specific AI tools around the exact workflows slowing you down."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-px bg-[var(--color-border)] border border-[var(--color-border)] md:grid-cols-2">
+        {/* Mobile: horizontal scroll */}
+        <div className="mt-16 md:hidden -mx-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-4 px-4" style={{ width: "max-content" }}>
+            {offerings.map((item, i) => (
+              <div key={item.label} className="w-[85vw] shrink-0 border border-[var(--color-border)] bg-[var(--color-bg)]">
+                <OfferingCard item={item} index={i} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: grid */}
+        <div className="mt-16 hidden md:grid grid-cols-2 gap-px bg-[var(--color-border)] border border-[var(--color-border)]">
           {offerings.map((item, i) => (
             <OfferingCard key={item.label} item={item} index={i} />
           ))}

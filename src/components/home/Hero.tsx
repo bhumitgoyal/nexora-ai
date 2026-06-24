@@ -4,11 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+import { Marquee } from "@/components/shared/Marquee";
 
 const trustLogos = [
   {
@@ -255,37 +251,32 @@ export function Hero() {
           <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
             Trusted by teams shipping with us
           </span>
-          <div className="grid w-full grid-cols-2 gap-2 md:flex md:gap-0 md:border md:border-[var(--color-border)] md:bg-[var(--color-bg-elev)] md:divide-x md:divide-[var(--color-border)]">
-            {trustLogos.map((logo) => (
-              <HoverCard key={logo.name} openDelay={200} closeDelay={100}>
-                <HoverCardTrigger asChild>
-                  <span className="cursor-default font-display text-xs font-semibold tracking-tight text-[var(--color-fg)] transition-colors duration-200 hover:text-[var(--color-brand)] px-5 py-3 md:text-sm border border-[var(--color-border)] bg-[var(--color-bg-elev)] flex items-center justify-center text-center md:border-0 md:bg-transparent md:flex-1">
+          {/* Mobile: auto-sliding single line */}
+          <div className="md:hidden w-full">
+            <Marquee pauseOnHover={false}>
+              {trustLogos.map((logo) => (
+                <span key={logo.name} className="flex items-center gap-4">
+                  <span className="font-display text-sm font-semibold tracking-tight text-[var(--color-brand)] whitespace-nowrap">
                     {logo.name}
                   </span>
-                </HoverCardTrigger>
-                <HoverCardContent
-                  side="top"
-                  className="w-64 rounded-none border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4 shadow-[4px_4px_0_var(--color-brand)]"
-                >
-                  <div className="flex flex-col gap-2">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                      {logo.industry}
-                    </p>
-                    <p className="text-sm font-medium leading-snug text-[var(--color-fg)]">
-                      {logo.metric}
-                    </p>
-                    {logo.slug && (
-                      <Link
-                        href={`/work/${logo.slug}`}
-                        className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-brand)] hover:text-[var(--color-brand-strong)]"
-                      >
-                        See case study <ArrowUpRight className="size-3" />
-                      </Link>
-                    )}
-                  </div>
-                </HoverCardContent>
-              </HoverCard>
-            ))}
+                  <span className="size-1.5 rounded-full bg-[var(--color-brand)] shrink-0" />
+                </span>
+              ))}
+            </Marquee>
+          </div>
+
+          {/* Desktop: same scrolling style */}
+          <div className="hidden md:block w-full">
+            <Marquee pauseOnHover={false}>
+              {trustLogos.map((logo) => (
+                <span key={logo.name} className="flex items-center gap-5">
+                  <span className="font-display text-sm font-semibold tracking-tight text-[var(--color-brand)] whitespace-nowrap">
+                    {logo.name}
+                  </span>
+                  <span className="size-1.5 rounded-full bg-[var(--color-brand)] shrink-0" />
+                </span>
+              ))}
+            </Marquee>
           </div>
         </motion.div>
 
