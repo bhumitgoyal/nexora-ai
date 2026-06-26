@@ -10,7 +10,7 @@ import { SocialLinks } from "@/components/shared/SocialLinks";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book a discovery call with Nuvero AI. We'll walk through your workflows, surface the top 3 AI opportunities, and tell you whether we're the right fit.",
+    "Tell us your workflow problem. We'll scope an AI solution, estimate the time savings, and tell you if it's the right fit — all in a 30-minute call.",
 };
 
 const channels = [

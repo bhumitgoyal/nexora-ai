@@ -11,7 +11,7 @@ export const processSteps: ProcessStep[] = [
     number: "01",
     title: "Understand",
     duration: "Week 1",
-    summary: "We sit with you and understand what's slowing you down no jargon, just a straight look at your current workflow and where things break.",
+    summary: "We sit with you and understand what's slowing you down. No jargon, just a straight look at your current workflow and where things break.",
     bullets: [
       "Stakeholder interviews across ops, sales, and support",
       "Workflow inventory + opportunity scoring",

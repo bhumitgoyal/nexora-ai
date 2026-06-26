@@ -71,7 +71,12 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-[var(--color-border)] pt-8 text-xs text-[var(--color-fg-subtle)] md:flex-row md:items-center">
           <span>© {new Date().getFullYear()} Nuvero AI. Built to run while you sleep.</span>
-          <span className="font-mono">shipping_at_velocity()</span>
+          <div className="flex items-center gap-5">
+            <Link href="/security" className="hover:text-[var(--color-brand)] transition-colors">Security & Data</Link>
+            <Link href="/privacy" className="hover:text-[var(--color-brand)] transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-[var(--color-brand)] transition-colors">Terms of Service</Link>
+            <span className="font-mono">shipping_at_velocity()</span>
+          </div>
         </div>
       </div>
     </footer>

@@ -31,6 +31,13 @@ export function RoiEstimator() {
 
   const weeklyHoursLost = teamSize[0] * manualHours[0];
   const daysPerYear = Math.round((weeklyHoursLost * 52) / 8);
+  const annualCostINR = weeklyHoursLost * 52 * 350;
+  const formattedCost =
+    annualCostINR >= 10_000_000
+      ? `₹${(annualCostINR / 10_000_000).toFixed(1)} Cr`
+      : annualCostINR >= 100_000
+      ? `₹${(annualCostINR / 100_000).toFixed(1)}L`
+      : `₹${(annualCostINR / 1000).toFixed(0)}K`;
   const score = Math.min(
     100,
     Math.round(
@@ -43,7 +50,7 @@ export function RoiEstimator() {
   const target = getTarget(teamSize[0], manualHours[0], handoffs[0]);
 
   return (
-    <section className="border-t border-[var(--color-border)] py-24 md:py-32">
+    <section id="automation-audit" className="border-t border-[var(--color-border)] py-24 md:py-32">
       <div className="container-x">
         <SectionHeader
           eyebrow="Automation Audit"
@@ -160,6 +167,14 @@ export function RoiEstimator() {
                     <p className="mt-1 font-display text-3xl font-bold tracking-tight text-[var(--color-fg)]">
                       {daysPerYear} days
                     </p>
+                  </div>
+
+                  <div className="border border-[var(--color-brand)] bg-[var(--color-brand)]/5 p-4">
+                    <p className="text-xs text-[var(--color-fg-muted)]">Estimated annual staff cost on automatable work</p>
+                    <p className="mt-1 font-display text-3xl font-bold tracking-tight text-[var(--color-brand)]">
+                      ≈ {formattedCost}<span className="text-base font-normal text-[var(--color-fg-subtle)]">/yr</span>
+                    </p>
+                    <p className="mt-1 text-[10px] text-[var(--color-fg-subtle)]">Based on ₹350/hr avg. fully-loaded cost</p>
                   </div>
 
                   <div>

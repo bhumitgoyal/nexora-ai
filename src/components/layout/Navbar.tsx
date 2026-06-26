@@ -132,7 +132,7 @@ export function Navbar() {
               Booklet
             </Link>
             <GlowButton href="/contact" size="sm" withArrow className="!h-11 !w-36 !px-0">
-              Book a call
+              Book a free call
             </GlowButton>
           </div>
 

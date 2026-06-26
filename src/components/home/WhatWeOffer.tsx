@@ -37,7 +37,7 @@ const offerings: Offering[] = [
   {
     icon: ShoppingBag,
     label: "E-commerce Brands",
-    tagline: "More revenue. Less manual work. Built to scale.",
+    tagline: "Recover 15–20% of abandoned carts automatically — while you sleep.",
     description:
       "Custom AI automation for Shopify stores, DTC brands, and Amazon sellers cart recovery, confirmation calls, lead generation, and workflow automation that compounds revenue.",
     solved: [
@@ -87,7 +87,7 @@ const offerings: Offering[] = [
   {
     icon: Stethoscope,
     label: "Healthcare & Clinics",
-    tagline: "Less admin. More patient care.",
+    tagline: "Cut front-desk admin by ~30% — every reminder, intake form, and follow-up runs itself.",
     description:
       "Intelligent automation for clinics, diagnostic centres, and health providers appointment scheduling, patient reminders, intake forms, and follow-up workflows that reduce no-shows and free your staff.",
     solved: [
@@ -209,7 +209,7 @@ function OfferingCard({ item, index }: { item: Offering; index: number }) {
                 Tell us your challenge we build for it.
               </p>
               <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-brand)]">
-                Get a custom solution <ArrowUpRight className="size-3" />
+                Book a free 30-min call <ArrowUpRight className="size-3" />
               </span>
             </motion.div>
           </Link>

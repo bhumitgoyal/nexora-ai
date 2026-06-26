@@ -118,7 +118,7 @@ export default async function CaseStudyPage({
             {study.image ? (
               <Image
                 src={study.image}
-                alt={study.client}
+                alt={`${study.client} — AI automation workflow built by Nuvero AI`}
                 width={0}
                 height={0}
                 sizes="100vw"

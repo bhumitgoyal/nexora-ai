@@ -24,15 +24,15 @@ export function CtaBanner() {
               </h2>
               <p className="max-w-xl text-pretty text-[var(--color-fg-muted)] md:text-lg">
                 Book a 30-minute discovery call. We'll walk through your workflows, surface the top
-                3 opportunities, and tell you whether we're the right fit no slides, no sales theatre.
+                3 opportunities, and tell you whether we're the right fit. No slides, no sales theatre.
               </p>
               <div className="mt-3 flex flex-col items-center gap-3 sm:flex-row">
                 <GlowButton href="/contact" size="lg" withArrow>
-                  Book a discovery call
+                  Book a free 30-min call
                 </GlowButton>
-                <GlowButton href="/booklet" size="lg" variant="secondary">
-                  Open services booklet
-                </GlowButton>
+                <a href="/booklet" className="text-sm text-[var(--color-fg-muted)] hover:text-[var(--color-brand)] transition-colors underline underline-offset-4">
+                  View services booklet
+                </a>
               </div>
             </div>
           </div>

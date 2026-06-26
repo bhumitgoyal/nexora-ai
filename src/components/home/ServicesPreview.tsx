@@ -223,13 +223,13 @@ export function ServicesPreview() {
                 href="/contact"
                 className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)]"
               >
-                Describe your problem <ArrowRight className="size-4" />
+                Book a free 30-min call <ArrowRight className="size-4" />
               </Link>
               <Link
-                href="/what-we-offer"
+                href="/work"
                 className="inline-flex items-center gap-2 border-2 border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
               >
-                See all sectors
+                See our work
               </Link>
             </div>
           </div>

@@ -175,7 +175,7 @@ export const caseStudies: CaseStudy[] = [
     results: [
       { metric: "4×", label: "increase in showings booked per month" },
       { metric: "58s", label: "median first-response time" },
-      { metric: "₹2.4Cr", label: "additional GMV in the first quarter" },
+      { metric: "₹2.4 Cr", label: "additional GMV in the first quarter (~$290k)" },
     ],
     tech: ["Vapi", "WhatsApp Cloud API", "Cal.com", "OpenAI", "Supabase", "n8n"],
   },
@@ -269,7 +269,7 @@ export const caseStudies: CaseStudy[] = [
     results: [
       { metric: "52%", label: "reduction in vacancy turnaround time" },
       { metric: "89%", label: "of tenant queries resolved without human involvement" },
-      { metric: "₹1.1Cr", label: "in recovered revenue from renewed leases in Q1" },
+      { metric: "₹1.1 Cr", label: "in recovered lease revenue in Q1 (~$130k)" },
     ],
     tech: ["WhatsApp Cloud API", "n8n", "Supabase", "Claude", "Cal.com", "Google Sheets"],
   },

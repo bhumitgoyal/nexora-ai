@@ -14,7 +14,7 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Nuvero AI is led by Bhumit Goyal an AI engineer obsessed with shipping agentic systems that move real business metrics.",
+    "Nuvero AI is led by Bhumit Goyal — 45 custom AI systems shipped, 92% client retention, 11 industries served. Learn how we work and why clients keep coming back.",
 };
 
 export default function AboutPage() {
@@ -41,7 +41,7 @@ export default function AboutPage() {
               <Reveal delay={0.1}>
                 <p className="max-w-2xl text-pretty text-base leading-relaxed text-[var(--color-fg-muted)] md:text-lg">
                   Nuvero AI was founded on a simple belief: most businesses don't need
-                  another AI vendor they need a small, senior team that will design,
+                  another AI vendor. They need a small, senior team that will design,
                   build, integrate, and own AI systems end-to-end. That's exactly what we do.
                 </p>
               </Reveal>
@@ -64,7 +64,7 @@ export default function AboutPage() {
                   <div className="relative size-32 overflow-hidden rounded-full border-2 border-(--color-brand) shadow-[0_0_40px_-8px_rgba(193,18,31,0.4)]">
                     <Image
                       src="/bhumit.png"
-                      alt="Bhumit Goyal"
+                      alt="Bhumit Goyal, Founder of Nuvero AI"
                       fill
                       className="object-cover object-top"
                       priority

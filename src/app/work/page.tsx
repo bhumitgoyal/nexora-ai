@@ -8,7 +8,7 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Selected case studies AI voice agents, conversational copilots, lead-gen engines, and marketing automation systems we've shipped.",
+    "45 custom AI systems shipped across energy, wellness, e-commerce, real estate, and more — with real client metrics.",
 };
 
 export default function WorkPage() {
@@ -21,6 +21,7 @@ export default function WorkPage() {
 
         <div className="container-x relative z-10">
           <SectionHeader
+            as="h1"
             eyebrow="Selected work"
             title="Systems shipped. Numbers moved."
             subtitle="A few of the AI builds we're proudest of and the metrics they shifted for our clients."

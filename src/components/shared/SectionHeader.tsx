@@ -8,6 +8,7 @@ type SectionHeaderProps = {
   subtitle?: string;
   align?: "left" | "center";
   className?: string;
+  as?: "h1" | "h2";
 };
 
 export function SectionHeader({
@@ -16,6 +17,7 @@ export function SectionHeader({
   subtitle,
   align = "center",
   className,
+  as: Heading = "h2",
 }: SectionHeaderProps) {
   return (
     <div
@@ -34,9 +36,9 @@ export function SectionHeader({
         </Reveal>
       ) : null}
       <Reveal delay={0.05}>
-        <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-5xl">
+        <Heading className="text-balance text-3xl font-semibold tracking-tight md:text-5xl">
           {title}
-        </h2>
+        </Heading>
       </Reveal>
       {subtitle ? (
         <Reveal delay={0.1}>

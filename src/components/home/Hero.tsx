@@ -75,7 +75,7 @@ const trustLogos = [
   },
 ];
 
-const words = ["custom", "problems", "require", "customized", "software."];
+const words = ["Your", "team", "closes", "deals.", "AI", "handles", "the", "rest."];
 
 const outcomeTags = [
   "Revenue growth",
@@ -157,7 +157,7 @@ export function Hero() {
         </motion.div>
 
         {/* animated word-by-word headline */}
-        <div className="mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-4 gap-y-1 font-display text-5xl font-semibold leading-none tracking-tight md:text-7xl lg:text-[80px]">
+        <h1 className="mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-4 gap-y-1 font-display text-5xl font-semibold leading-none tracking-tight md:text-7xl lg:text-[80px]">
           {words.map((word, i) => (
             <motion.span
               key={word + i}
@@ -169,7 +169,7 @@ export function Hero() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               className={
-                word === "customized" || word === "custom"
+                word === "AI"
                   ? "text-[var(--color-brand)]"
                   : "text-[var(--color-fg)]"
               }
@@ -177,7 +177,7 @@ export function Hero() {
               {word}
             </motion.span>
           ))}
-        </div>
+        </h1>
 
         {/* sub-paragraph */}
         <motion.p
@@ -186,9 +186,9 @@ export function Hero() {
           transition={{ delay: 0.75, duration: 0.6 }}
           className="mt-7 max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg"
         >
-          Nuvero AI builds custom AI agents and end-to-end workflow automations for
-          e-commerce brands, agencies, and operators compounding revenue, cutting manual
-          ops, and scaling your business without scaling your team.
+          Custom AI that cuts 8+ hours of manual work per person every week — and answers
+          your customers in under 60 seconds, 24/7. Built in your stack. Shipped in 6 weeks.
+          You own it forever.
         </motion.p>
 
         {/* outcome tags */}
@@ -217,10 +217,10 @@ export function Hero() {
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
         >
           <a
-            href="/contact"
+            href="/#automation-audit"
             className="group inline-flex w-full items-center justify-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)] sm:w-auto"
           >
-            Get a custom AI solution
+            Get your free automation audit
             <motion.svg
               className="size-4"
               fill="none"
@@ -234,12 +234,22 @@ export function Hero() {
             </motion.svg>
           </a>
           <a
-            href="/what-we-offer"
+            href="/work"
             className="inline-flex w-full items-center justify-center gap-2 border-2 border-[var(--color-border)] bg-transparent px-7 py-3.5 text-base font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)] sm:w-auto"
           >
-            See problems we've solved
+            See our work
           </a>
         </motion.div>
+
+        {/* pricing anchor */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.0, duration: 0.6 }}
+          className="mt-2 text-xs text-[var(--color-fg-subtle)]"
+        >
+          Builds from ₹1,20,000 · retainers from ₹40,000/mo · if we miss the agreed KPI, we rebuild free
+        </motion.p>
 
         {/* trust logos with hover cards */}
         <motion.div

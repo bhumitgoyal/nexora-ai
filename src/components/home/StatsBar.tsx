@@ -2,9 +2,9 @@ import { CountUp } from "@/components/shared/CountUp";
 import { Reveal } from "@/components/shared/Reveal";
 
 const stats = [
-  { value: 47, suffix: "+", label: "Custom AI systems shipped" },
+  { value: 45, suffix: "+", label: "Custom AI systems shipped" },
   { value: 1.4, suffix: "M+", label: "AI interactions handled per month", decimals: 1 },
-  { value: 94, suffix: "%", label: "client retention rate" },
+  { value: 92, suffix: "%", label: "client retention rate" },
   { value: 11, suffix: "", label: "industries served end-to-end" },
 ];
 

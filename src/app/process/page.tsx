@@ -10,7 +10,7 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 export const metadata: Metadata = {
   title: "Process",
   description:
-    "Our 5-step engagement process from discovery to scale. Ship working software every week, instrument every build with KPIs.",
+    "How Nuvero ships in 6 weeks: a 5-phase engagement model with weekly demos, KPIs tracked from day one, and no deliverable without a metric attached.",
 };
 
 export default function ProcessPage() {
@@ -23,6 +23,7 @@ export default function ProcessPage() {
 
         <div className="container-x relative z-10">
           <SectionHeader
+            as="h1"
             eyebrow="Our process"
             title="A repeatable engagement model that ships value every week."
             subtitle="No slide-ware. No mystery. Five phases, weekly demos, KPI-instrumented from day one."
