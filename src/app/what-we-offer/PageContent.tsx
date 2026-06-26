@@ -361,8 +361,8 @@ export function WhatWeOfferContent() {
               {services.map((service) => {
                 const Icon = service.icon;
                 return (
-                  <Reveal key={service.slug}>
-                    <div className="flex flex-col gap-4 bg-[var(--color-bg)] p-8 transition-colors hover:bg-[var(--color-bg-elev)]">
+                  <Reveal key={service.slug} className="h-full">
+                    <div className="flex h-full flex-col gap-4 bg-[var(--color-bg)] p-8 transition-colors hover:bg-[var(--color-bg-elev)]">
                       <span className="inline-flex size-10 items-center justify-center border-2 border-[var(--color-brand)] text-[var(--color-brand)]">
                         <Icon className="size-5" />
                       </span>
