@@ -241,16 +241,6 @@ export function Hero() {
           </a>
         </motion.div>
 
-        {/* pricing anchor */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.0, duration: 0.6 }}
-          className="mt-2 text-xs text-[var(--color-fg-subtle)]"
-        >
-          Builds from ₹1,20,000 · retainers from ₹40,000/mo · if we miss the agreed KPI, we rebuild free
-        </motion.p>
-
         {/* trust logos with hover cards */}
         <motion.div
           initial={{ opacity: 0 }}
