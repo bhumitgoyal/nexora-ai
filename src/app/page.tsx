@@ -18,6 +18,7 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { TechStackMarquee } from "@/components/home/TechStackMarquee";
 import { FaqStrip } from "@/components/home/FaqStrip";
 import { CtaBanner } from "@/components/home/CtaBanner";
+import { TrustStrip } from "@/components/home/TrustStrip";
 
 export default function HomePage() {
   return (
@@ -29,6 +30,7 @@ export default function HomePage() {
       <ServicesPreview />
       <FeaturedWork />
       <StatsBar />
+      <TrustStrip />
       <ProcessSnapshot />
       <RoiEstimator />
       <Testimonials />

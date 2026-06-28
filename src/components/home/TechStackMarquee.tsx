@@ -48,7 +48,6 @@ export function TechStackMarquee() {
         </Marquee>
       </div>
 
-      {/* Integration partners strip — hidden until ready to enable
       <div className="mt-16 border-t border-[var(--color-border)] pt-12">
         <p className="container-x mb-6 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
           Integration partners &amp; platforms
@@ -59,7 +58,6 @@ export function TechStackMarquee() {
           ))}
         </Marquee>
       </div>
-      */}
     </section>
   );
 }

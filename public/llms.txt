@@ -1,0 +1,32 @@
+# Nuvero AI — llms.txt
+# https://nuvero.space
+
+## Who we are
+Nuvero AI is a custom AI automation studio based in India, building and shipping production-ready AI systems for businesses. We are a small, senior team — not a tool, not a platform.
+
+## What we build
+- AI voice agents (inbound + outbound, built on Vapi / Twilio / ElevenLabs)
+- Conversational AI & chatbots (WhatsApp, web, Instagram, in-app)
+- Custom AI workflows & integrations (n8n, Make, Zapier, LangChain)
+- AI-powered lead generation engines
+- AI marketing automation systems
+- AI content production pipelines
+- Internal knowledge copilots (RAG over Notion, Drive, Slack, Confluence)
+- Sales operations copilots
+
+## Key facts
+- 45+ AI systems shipped; clients own 100% of the code
+- 1.4M+ AI interactions handled per month across deployments
+- 92% client retention rate
+- 11 industries automated end-to-end
+- Built in 6 weeks · shipped in your stack · you own it forever
+- We never retain your operational data or train on it without explicit written consent
+
+## Industries served
+Marketing agencies, e-commerce / D2C brands, real estate & property, restaurants & hospitality, healthcare & clinics, energy & utilities, B2B SaaS
+
+## Trust & security
+AES-256 encryption at rest; TLS 1.2+ in transit. NDA + DPA available on request. BAA available for HIPAA clients. No vendor lock-in.
+
+## Contact
+hello@nuvero.space | https://nuvero.space/contact

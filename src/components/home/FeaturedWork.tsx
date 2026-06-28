@@ -23,7 +23,7 @@ const workItems: WorkItem[] = [
     no: "01",
     client: "Southwest Gases",
     industry: "Energy & Utilities",
-    headline: "AI Voice Agent That Handles Inbound Calls & Instantly Follows Up New Leads",
+    headline: "Every inbound call answered in <60s — every new lead followed up in <5 min",
     icon: Mic,
     highlights: [
       "Answers inbound calls 24/7, first ring every time",
@@ -42,7 +42,7 @@ const workItems: WorkItem[] = [
     no: "02",
     client: "GoHappy Club",
     industry: "Senior Wellness · D2C",
-    headline: "AI Assistant Built For India's Senior Citizen Community",
+    headline: "92% of queries self-served in 6 languages — LLM cost down ~60%",
     icon: Bot,
     highlights: [
       "Understands Hinglish and 5 other Indian languages",
@@ -61,7 +61,7 @@ const workItems: WorkItem[] = [
     no: "03",
     client: "Marketing Agencies",
     industry: "Marketing & Media",
-    headline: "Launch Complete Marketing Campaigns From A Single Input",
+    headline: "Full campaign kit in <15 min — down from 2 days, across 6+ channels",
     icon: Megaphone,
     highlights: [
       "Generates ad copy across all major platforms",
@@ -80,7 +80,7 @@ const workItems: WorkItem[] = [
     no: "04",
     client: "Southwest Gases",
     industry: "Energy & Utilities",
-    headline: "Real-Time Delivery Operations Without Endless Phone Calls",
+    headline: "Zero daily ops calls — 100% route visibility, full audit trail",
     icon: Truck,
     highlights: [
       "Manage all delivery routes from one central portal",
@@ -99,7 +99,7 @@ const workItems: WorkItem[] = [
     no: "05",
     client: "Multi-Client Deployment",
     industry: "B2B SaaS & Agencies",
-    headline: "Fully Automated Lead Generation & Outreach Engine",
+    headline: "100% automated top-of-funnel — $0.11 per verified lead, zero manual research",
     icon: Target,
     highlights: [
       "Finds and qualifies leads without human input",
@@ -118,7 +118,7 @@ const workItems: WorkItem[] = [
     no: "06",
     client: "SBA.gov Research Workflow",
     industry: "Government & SMB Data",
-    headline: "Automated Discovery Of Hard-To-Find U.S. SMBs",
+    headline: "1,000s of hidden SMBs found per run — hours of research collapsed to minutes",
     icon: Search,
     highlights: [
       "Scrapes SBA listings for registered small businesses",

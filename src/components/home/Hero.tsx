@@ -241,6 +241,16 @@ export function Hero() {
           </a>
         </motion.div>
 
+        {/* risk-reversal kicker */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.0, duration: 0.6 }}
+          className="mt-2 text-xs text-[var(--color-fg-subtle)]"
+        >
+          15 min · no slides · keep the code whatever you decide
+        </motion.p>
+
         {/* trust logos with hover cards */}
         <motion.div
           initial={{ opacity: 0 }}
