@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { MessageCircle, Mail, Phone, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import {
@@ -13,6 +14,9 @@ import { site } from "@/content/site";
 
 export function QuickContact() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/booklet")) return null;
 
   return (
     <>
