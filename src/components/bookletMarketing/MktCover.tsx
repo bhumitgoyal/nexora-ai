@@ -26,10 +26,7 @@ export function MktCover() {
             </span>
             <div className="flex flex-col leading-none">
               <span className="font-display text-base font-semibold tracking-tight text-[var(--color-fg)]">
-                Nexora AI
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
-                est. 2024 · remote · india
+                Nuvero AI
               </span>
             </div>
           </div>
@@ -41,7 +38,7 @@ export function MktCover() {
             className="poster-eyebrow"
           >
             <Megaphone className="size-3 text-[var(--color-accent)]" />
-            For Marketing &amp; Digital Agencies · 2026 Edition
+            Services Booklet · 2026 Edition
           </motion.div>
         </div>
 
@@ -103,7 +100,7 @@ export function MktCover() {
             </span>
             <span className="inline-flex items-center gap-1.5 text-[11px] text-[var(--color-fg-muted)]">
               <Globe className="size-3 text-[var(--color-accent)]" />
-              nexora-ai.vercel.app
+              nuvero.space
             </span>
             <span className="inline-flex items-center gap-1.5 text-[11px] text-[var(--color-fg-muted)]">
               <Phone className="size-3 text-[var(--color-accent)]" />

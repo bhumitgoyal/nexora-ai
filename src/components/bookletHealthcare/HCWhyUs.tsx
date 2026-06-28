@@ -48,7 +48,7 @@ const processSteps = [
 
 export function HCWhyUs() {
   return (
-    <Poster page="07 / 08" section="Why Nexora">
+    <Poster page="07 / 08" section="Why Nuvero">
       <PosterDecor
         grid
         orbs={[
@@ -64,7 +64,7 @@ export function HCWhyUs() {
         className="poster-eyebrow"
       >
         <Sparkles className="size-3 text-[var(--color-accent)]" />
-        Why Nexora
+        Why Nuvero
       </motion.div>
 
       <motion.h2

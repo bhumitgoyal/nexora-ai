@@ -149,10 +149,10 @@ export default function TermsPage() {
             <p className="text-sm leading-relaxed">
               For any questions about these Terms, contact us at{" "}
               <a
-                href="mailto:nuveroai@gmail.com"
+                href="mailto:hello@nuvero.space"
                 className="text-[var(--color-brand)] hover:underline"
               >
-                nuveroai@gmail.com
+                hello@nuvero.space
               </a>
               .
             </p>

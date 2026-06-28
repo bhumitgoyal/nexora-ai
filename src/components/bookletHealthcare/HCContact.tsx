@@ -41,7 +41,7 @@ const channels = [
   {
     icon: Globe,
     label: "Website",
-    value: "nexora-ai.vercel.app",
+    value: "nuvero.space",
     href: site.url,
     note: "Live work, services & booking",
   },
@@ -198,7 +198,7 @@ export function HCContact() {
               </div>
               <div className="flex flex-col items-end">
                 <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
-                  © {new Date().getFullYear()} Nexora AI · Healthcare Edition
+                  © {new Date().getFullYear()} Nuvero AI · Healthcare Edition
                 </div>
                 <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
                   08 / 08 · Healthcare Services Booklet

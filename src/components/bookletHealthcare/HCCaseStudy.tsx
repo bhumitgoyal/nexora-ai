@@ -169,7 +169,7 @@ export function HCCaseStudy() {
           ))}
         </div>
         <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
-          nexora-ai · healthcare concept
+          nuvero ai · healthcare concept
         </span>
       </motion.div>
     </Poster>
