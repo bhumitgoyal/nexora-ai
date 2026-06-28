@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion } from "motion/react";
 import { LayoutDashboard, GitBranch } from "lucide-react";
@@ -54,12 +54,12 @@ export function MktSpotlight1() {
             icon: LayoutDashboard,
             tone: "brand",
             title: "White-Label Client Dashboards",
-            tagline: "Live data from every ad platform in one branded view auto-refreshed, never stale.",
+            tagline: "Live data from every ad platform in one branded view, auto-refreshed and never stale.",
             problem:
-              "Account managers spend hours every week pulling numbers into slide decks that are stale the moment they're sent and clients ask the same \"how are we doing\" question anyway.",
+              "Account managers spend hours every week pulling numbers into slide decks that are stale the moment they're sent, and clients ask the same \"how are we doing\" question anyway.",
             solution: [
               "Live data from Google Ads, Meta, GA4, CRM in one branded view",
-              "Auto-refreshed no one touches a spreadsheet to update it",
+              "Auto-refreshed. No one touches a spreadsheet to update it",
               "AI-written weekly summary in plain English, not just charts",
               "Shipped under your agency's branding, not ours",
             ],
@@ -73,12 +73,12 @@ export function MktSpotlight1() {
             icon: GitBranch,
             tone: "accent",
             title: "Workflow & Approval Automation",
-            tagline: "Onboarding, sign-offs, and QA that trigger themselves not a PM chasing Slack.",
+            tagline: "Onboarding, sign-offs, and QA that trigger themselves, not a PM chasing Slack.",
             problem:
-              "Client onboarding, content sign-offs, and campaign QA all currently run through someone's memory and a shared inbox which is exactly where things get missed.",
+              "Client onboarding, content sign-offs, and campaign QA all currently run through someone's memory and a shared inbox. That is exactly where things get missed.",
             solution: [
               "Onboarding checklists that trigger themselves, not a PM",
-              "Content approval flows wired into Notion, Slack, or email",
+              "Content approval flows wired into Slack, Notion, or email",
               "Campaign QA checks before anything goes live",
               "Status visibility for clients without a status-update call",
             ],

@@ -54,7 +54,7 @@ const socials = [
   { icon: Twitter, label: "Twitter / X", value: "@bhumitgoyal", href: site.socials.twitter },
 ];
 
-export function MktContact() {
+export function HCContact() {
   return (
     <Poster page="08 / 08" section="The Next Move" showWatermark={false}>
       <PosterDecor
@@ -81,11 +81,11 @@ export function MktContact() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.7 }}
-          className="poster-title mt-7 text-[44px] leading-[1.02]"
+          className="poster-title mt-7 text-[50px] leading-[1.0]"
         >
-          Let&rsquo;s build the layer
+          Let&rsquo;s give your practice
           <br />
-          <span className="text-gradient">behind your next retainer.</span>
+          <span className="text-gradient">the team it deserves.</span>
         </motion.h2>
 
         <motion.p
@@ -94,10 +94,10 @@ export function MktContact() {
           transition={{ delay: 0.25, duration: 0.65 }}
           className="mt-5 max-w-[160mm] text-[13px] leading-[1.6] text-[var(--color-fg-muted)]"
         >
-          We don&rsquo;t start from a service list. We start from whatever&rsquo;s actually
-          slowing your team or your clients down. One 30-minute discovery call, no slides, no NDA.
-          We&rsquo;ll map the two or three highest-leverage automation or dashboard opportunities
-          across your client accounts and tell you straight whether it&rsquo;s worth building,
+          We don&rsquo;t start from a service list. We start from your actual
+          bottleneck. One 20–30 minute discovery call, no slides, no NDA.
+          We&rsquo;ll map the two or three highest-leverage AI opportunities in
+          your practice and tell you straight whether it&rsquo;s worth shipping,
           what it&rsquo;ll cost, and how fast we can have it live.
         </motion.p>
 
@@ -117,8 +117,8 @@ export function MktContact() {
               >
                 <div className="absolute -right-12 -top-12 size-32 rounded-full bg-[rgba(139,92,246,0.28)] blur-3xl opacity-0 transition-opacity group-hover:opacity-100" />
                 <div className="flex items-center gap-3">
-                  <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-[var(--color-border-strong)] bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.28),transparent_70%)]">
-                    <Icon className="size-5 text-[var(--color-brand-strong)]" />
+                  <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-[var(--color-border-strong)] bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.28),transparent_70%)]">
+                    <Icon className="size-5 text-[var(--color-accent-strong)]" />
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
@@ -160,7 +160,7 @@ export function MktContact() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-2 transition-colors hover:border-[var(--color-brand)]/60"
+                  className="flex items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-2 transition-colors hover:border-[var(--color-accent)]/60"
                 >
                   <Icon className="size-3.5 shrink-0 text-[var(--color-fg-muted)]" />
                   <div className="min-w-0">
@@ -198,10 +198,10 @@ export function MktContact() {
               </div>
               <div className="flex flex-col items-end">
                 <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
-                  © 2026 NEXORA AI · AGENCY EDITION
+                  © {new Date().getFullYear()} Nexora AI · Healthcare Edition
                 </div>
                 <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                  08 / 08 · Agency Services Booklet
+                  08 / 08 · Healthcare Services Booklet
                 </div>
               </div>
             </div>

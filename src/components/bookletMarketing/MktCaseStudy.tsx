@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Zap, Search } from "lucide-react";
+import { Zap, Search, Quote } from "lucide-react";
 import { Poster } from "@/components/booklet/Poster";
 import { PosterDecor } from "@/components/booklet/PosterDecor";
 
@@ -63,7 +63,7 @@ export function MktCaseStudy() {
         looks different, tell us. That&rsquo;s usually where the better build is.
       </motion.p>
 
-      {/* PRIMARY CASE CARD */}
+      {/* --- PRIMARY CASE CARD --- */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -109,7 +109,7 @@ export function MktCaseStudy() {
         </div>
 
         <div className="mt-4 grid grid-cols-3 gap-2">
-          {primaryStats.map((s) => (
+          {primaryStats.map((s, i) => (
             <div
               key={s.label}
               className="relative overflow-hidden rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-3"
@@ -137,7 +137,7 @@ export function MktCaseStudy() {
         </div>
       </motion.div>
 
-      {/* SECONDARY CASE CARDS */}
+      {/* --- SECONDARY CASE CARDS --- */}
       <div className="mt-4 grid grid-cols-2 gap-3">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -197,7 +197,7 @@ export function MktCaseStudy() {
         </motion.div>
       </div>
 
-      {/* CLOSING LINE */}
+      {/* --- CLOSING LINE --- */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

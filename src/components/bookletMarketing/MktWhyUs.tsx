@@ -37,7 +37,7 @@ const timeline = [
 
 export function MktWhyUs() {
   return (
-    <Poster page="07 / 08" section="Why Nuvero">
+    <Poster page="07 / 08" section="Why Nexora">
       <PosterDecor
         grid
         orbs={[
@@ -52,7 +52,7 @@ export function MktWhyUs() {
         transition={{ duration: 0.6 }}
         className="poster-eyebrow"
       >
-        Why Nuvero · Built for agencies, not enterprise
+        Why Nexora · Built for agencies, not enterprise
       </motion.div>
 
       <motion.h2
@@ -89,7 +89,7 @@ export function MktWhyUs() {
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
                 {p.no}
               </span>
-              <span className="size-1.5 rounded-full bg-[var(--color-brand)]" />
+              <span className="size-1.5 rounded-full bg-[var(--color-brand)] shadow-[0_0_10px_2px_rgba(139,92,246,0.6)]" />
             </div>
             <h3 className="mt-3 font-display text-[15px] font-semibold tracking-tight text-[var(--color-fg)]">
               {p.label}

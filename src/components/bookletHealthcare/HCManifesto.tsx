@@ -8,40 +8,52 @@ import { PosterDecor } from "@/components/booklet/PosterDecor";
 const quadrants = [
   {
     no: "01",
-    label: "Client Reporting",
-    body: "Live dashboards that pull from ad platforms, CRMs, and analytics. Branded as yours and updated without anyone touching a spreadsheet.",
+    label: "Scheduling & Access",
+    body: "Voice booking agents, calendar sync, and smart waitlists that fill cancellations automatically — so patients get seen sooner and your front desk isn't buried in calls.",
   },
   {
     no: "02",
-    label: "Workflow Automation",
-    body: "Onboarding, approvals, content repurposing, and campaign QA. We automate the repetitive 80% of account management.",
+    label: "Patient Communication",
+    body: "Appointment reminders, pre-visit intake forms over WhatsApp, and post-visit follow-ups that happen without a single manual message from your staff.",
   },
   {
     no: "03",
-    label: "Client-Facing AI",
-    body: "Chatbots, voice agents, and lead-gen systems you can resell to your own clients under your agency's brand.",
+    label: "Care Continuity",
+    body: "Preventive care recall, prescription refill nudges, and lab-result follow-up workflows that keep patients on track between visits — not just during them.",
   },
   {
     no: "04",
-    label: "Internal Ops",
-    body: "Capacity planning, scope-creep alerts, and resource allocation dashboards so you know which accounts are bleeding hours before the client does.",
+    label: "Practice Operations",
+    body: "Insurance pre-auth assistance, billing claims routing, and internal dashboards that surface the operational bottlenecks eating your margin.",
   },
 ];
 
 const stats = [
-  { value: "20–60h", label: "manual hours/week reclaimed per account team" },
-  { value: "2 weeks", label: "time to first live dashboard or agent" },
-  { value: "100%", label: "white-label: everything ships under your agency's name" },
+  {
+    value: "20–23%",
+    label: "average no-show rate across U.S. outpatient clinics",
+    source: "DexCare / BMJ, 2024",
+  },
+  {
+    value: "2 hrs/day",
+    label: "spent by physicians on after-hours EHR documentation",
+    source: "AMA, 2024",
+  },
+  {
+    value: "$150B",
+    label: "annual cost of missed appointments to U.S. healthcare",
+    source: "Curogram / Appointment Reminder, 2024",
+  },
 ];
 
-export function MktManifesto() {
+export function HCManifesto() {
   return (
     <Poster page="02 / 08" section="Manifesto">
       <PosterDecor
         grid
         orbs={[
-          { tone: "accent", size: 380, className: "-top-32 -left-20", animated: true },
-          { tone: "brand", size: 320, className: "-bottom-24 -right-16", animated: true },
+          { tone: "brand", size: 380, className: "-top-32 -left-20", animated: true },
+          { tone: "accent", size: 320, className: "-bottom-24 -right-16", animated: true },
         ]}
       />
 
@@ -61,11 +73,11 @@ export function MktManifesto() {
         transition={{ delay: 0.15, duration: 0.7 }}
         className="poster-title mt-6 text-[46px] leading-[1.0]"
       >
-        <span className="text-[var(--color-fg-muted)]">Your clients don&rsquo;t pay you</span>
+        <span className="text-[var(--color-fg-muted)]">Your patients trust you.</span>
         <br />
-        <span className="text-gradient">to copy-paste</span>
+        <span className="text-gradient">Your admin</span>
         <br />
-        between tabs.
+        shouldn&rsquo;t slow you down.
       </motion.h2>
 
       <motion.p
@@ -74,12 +86,13 @@ export function MktManifesto() {
         transition={{ delay: 0.3, duration: 0.7 }}
         className="mt-6 max-w-[155mm] text-[13.5px] leading-[1.65] text-[var(--color-fg-muted)]"
       >
-        Every agency runs the same hidden tax: account managers pulling reports by hand, junior
-        staff repurposing the same content five different ways, and a founder who&rsquo;s the
-        only one who can explain ROI to a client on a call. We build the{" "}
-        <span className="text-[var(--color-fg)]">infrastructure layer underneath your service
-        offering</span>, wired into the tools you already run client work through. That means your
-        senior team&rsquo;s time goes to strategy, not spreadsheets.
+        Most clinics treat AI like a chatbot bolted onto booking. The real leverage
+        is when AI removes the{" "}
+        <span className="text-[var(--color-fg)]">repetitive admin</span>: reminders,
+        intake, recall, paperwork — while keeping every diagnosis- or
+        treatment-related conversation{" "}
+        <span className="text-[var(--color-fg)]">human-led</span>. The doctor stays
+        in the room. AI handles the waiting room.
       </motion.p>
 
       <motion.p
@@ -88,10 +101,10 @@ export function MktManifesto() {
         transition={{ delay: 0.35, duration: 0.7 }}
         className="mt-3 max-w-[155mm] text-[12.5px] leading-[1.6] text-[var(--color-fg-muted)] italic"
       >
-        The four categories below are where most agency engagements start, but they aren't where
-        they&rsquo;re limited to. If what&rsquo;s actually slowing your team down doesn&rsquo;t
-        fit neatly into reporting, workflow, client-facing AI, or internal ops, that&rsquo;s
-        fine. We scope around the real bottleneck, not a service menu.
+        The four categories below are where most healthcare engagements start, but
+        they&rsquo;re not where they end. If your clinic&rsquo;s bottleneck
+        doesn&rsquo;t fit neatly into one of these, that&rsquo;s normal. We scope
+        around the actual problem, not a service menu.
       </motion.p>
 
       <div className="mt-8 grid grid-cols-2 gap-3">
@@ -130,11 +143,14 @@ export function MktManifesto() {
             key={s.value}
             className="rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-4"
           >
-            <div className="text-gradient-brand font-display text-[26px] font-semibold leading-none tracking-tight">
+            <div className="text-gradient-brand font-display text-[28px] font-semibold leading-none tracking-tight">
               {s.value}
             </div>
             <div className="mt-2 text-[10px] leading-tight text-[var(--color-fg-muted)]">
               {s.label}
+            </div>
+            <div className="mt-1.5 text-[8px] leading-tight text-[var(--color-fg-subtle)] italic">
+              Source: {s.source}
             </div>
           </div>
         ))}
