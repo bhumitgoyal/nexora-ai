@@ -5,7 +5,7 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
 }
 
-const TO_EMAIL = "hello@nuvero.space";
+const TO_EMAIL = "nuveroai@gmail.com";
 const FROM_EMAIL = "onboarding@resend.dev";
 
 // Simple in-memory rate limiter: max 5 requests per IP per 5 minutes

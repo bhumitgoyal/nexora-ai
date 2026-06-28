@@ -13,7 +13,7 @@ export const site = {
     location: "Remote · India",
   },
   contact: {
-    email: "hello@nuvero.space",
+    email: "nuveroai@gmail.com",
     phone: "+91 98186 46823",
     phoneRaw: "+919818646823",
     whatsapp: "+919818646823",

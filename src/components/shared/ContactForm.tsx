@@ -65,7 +65,7 @@ export function ContactForm() {
     } catch (err) {
       setStatus("error");
       toast.error("Something went wrong.", {
-        description: err instanceof Error ? err.message : "Try emailing us directly at hello@nuvero.space",
+        description: err instanceof Error ? err.message : "Try emailing us directly at nuveroai@gmail.com",
       });
     }
   }

@@ -138,10 +138,10 @@ export default function PrivacyPage() {
               You have the right to access, correct, or request deletion of personal information
               we hold about you. To exercise any of these rights, email us at{" "}
               <a
-                href="mailto:hello@nuvero.space"
+                href="mailto:nuveroai@gmail.com"
                 className="text-[var(--color-brand)] hover:underline"
               >
-                hello@nuvero.space
+                nuveroai@gmail.com
               </a>
               .
             </p>
@@ -165,10 +165,10 @@ export default function PrivacyPage() {
             <p className="text-sm leading-relaxed">
               For any privacy-related questions, contact us at{" "}
               <a
-                href="mailto:hello@nuvero.space"
+                href="mailto:nuveroai@gmail.com"
                 className="text-[var(--color-brand)] hover:underline"
               >
-                hello@nuvero.space
+                nuveroai@gmail.com
               </a>
               .
             </p>
