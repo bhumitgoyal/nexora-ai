@@ -50,12 +50,6 @@ const trustLogos = [
     slug: null,
   },
   {
-    name: "Signature Global",
-    industry: "Real Estate",
-    metric: "AI-driven buyer engagement across channels",
-    slug: null,
-  },
-  {
     name: "The Health Factory",
     industry: "Health & Wellness",
     metric: "Patient intake and follow-up flows fully automated",

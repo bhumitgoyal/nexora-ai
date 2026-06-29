@@ -241,38 +241,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ["Claude", "GPT-4o", "Notion", "Webflow", "Descript", "n8n"],
   },
-  {
-    slug: "signature-global-tenant-ops",
-    client: "Signature Global",
-    industry: "Real Estate",
-    title: "Full-stack real estate automation that eliminated manual ops across 1,200 units and recovered crores in lease revenue.",
-    summary:
-      "A complete AI operations layer for a large residential developer covering inbound lead nurturing, tenant communication, lease renewals, maintenance routing, and payment reminders. Built to run without a dedicated ops team.",
-    duration: "10 weeks",
-    year: "2026",
-    gradient: "from-teal-500/40 via-cyan-500/20 to-violet-500/30",
-    challenge:
-      "Signature Global managed 1,200+ residential units across 6 projects with a three-person property team. Inbound buyer leads went cold within hours due to slow follow-up, renewal windows were missed because tracking was manual, WhatsApp messages from tenants piled up unanswered, and maintenance tickets regularly fell through the cracks.",
-    approach: [
-      "Built an AI lead response layer that replied to every inbound inquiry on WhatsApp, the website, and Instagram within 60 seconds and qualified buyers by budget and timeline.",
-      "Mapped every tenant lifecycle stage (onboarding, maintenance, renewals, payment reminders, move-out) into automated WhatsApp sequences.",
-      "Designed a lease renewal engine that triggered personalized offers at 90, 60, and 30 days before expiry with auto e-sign on acceptance.",
-      "Wired a vendor dispatch system that triaged maintenance requests by severity, assigned from an approved vendor list, and sent tenants live status updates at every stage.",
-    ],
-    solution: [
-      "AI lead agent responding to buyer inquiries 24/7 across WhatsApp, website chat, and Instagram, booking site visits directly into agent calendars.",
-      "Automated tenant communication handling all inbound queries, payment reminders, and maintenance updates without manual replies.",
-      "Lease renewal sequences with e-sign integration triggering 90 days before expiry, reducing vacancy windows from 90 days to under 30.",
-      "Maintenance routing system assigning vendors, tracking completion, and keeping tenants informed from ticket to resolution.",
-      "Weekly ops digest for the property manager showing open tickets, upcoming renewals, payment status, and flagged escalations.",
-    ],
-    results: [
-      { metric: "52%", label: "reduction in vacancy turnaround time" },
-      { metric: "89%", label: "of tenant queries resolved without human involvement" },
-      { metric: "₹1.1 Cr", label: "in recovered lease revenue in Q1 (~$130k)" },
-    ],
-    tech: ["WhatsApp Cloud API", "n8n", "Supabase", "Claude", "Cal.com", "Google Sheets"],
-  },
 ];
 
 export const featuredCaseStudies = caseStudies.filter((c) => c.featured);
