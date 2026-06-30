@@ -29,14 +29,14 @@ export function SectionHeader({
     >
       {eyebrow ? (
         <Reveal>
-          <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
+          <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
             <span className="size-1.5 bg-[var(--color-brand)]" />
             {eyebrow}
           </span>
         </Reveal>
       ) : null}
       <Reveal delay={0.05}>
-        <Heading className="text-balance text-3xl font-semibold tracking-tight md:text-5xl">
+        <Heading className="text-balance text-3xl font-semibold tracking-[-0.03em] md:text-5xl">
           {title}
         </Heading>
       </Reveal>

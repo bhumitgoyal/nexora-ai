@@ -95,7 +95,7 @@ export function PosterServiceSpotlight2() {
         className="mt-5 grid grid-cols-4 gap-2"
       >
         {[
-          { v: "$0.11", l: "average cost per verified lead" },
+          { v: "94%", l: "lower lead cost vs. manual research" },
           { v: "2.4%", l: "bounce rate across 480k+ verified" },
           { v: "80%", l: "reduction in campaign setup time" },
           { v: "3.1×", l: "lift in positive reply rate" },

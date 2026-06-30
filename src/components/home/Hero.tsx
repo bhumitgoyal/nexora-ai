@@ -144,14 +144,14 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-fg-muted)]"
+          className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]"
         >
           <span className="size-1.5 bg-[var(--color-brand)]" />
           Custom AI · Built in your stack · Shipped in weeks
         </motion.div>
 
         {/* animated word-by-word headline */}
-        <h1 className="mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-4 gap-y-1 font-display text-5xl font-semibold leading-none tracking-tight md:text-7xl lg:text-[80px]">
+        <h1 className="mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-x-4 gap-y-1 font-display text-5xl font-semibold leading-none tracking-[-0.04em] md:text-7xl lg:text-[80px]">
           {words.map((word, i) => (
             <motion.span
               key={word + i}
@@ -180,7 +180,7 @@ export function Hero() {
           transition={{ delay: 0.75, duration: 0.6 }}
           className="mt-7 max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg"
         >
-          Custom AI that cuts 8+ hours of manual work per person every week — and answers
+          Custom AI that takes repetitive work off your team&apos;s plate entirely, and answers
           your customers in under 60 seconds, 24/7. Built in your stack. Shipped in 6 weeks.
           You own it forever.
         </motion.p>
@@ -195,7 +195,7 @@ export function Hero() {
           {outcomeTags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]"
+              className="inline-flex items-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[9px] font-normal uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]"
             >
               <span className="size-1 bg-[var(--color-brand)]" />
               {tag}

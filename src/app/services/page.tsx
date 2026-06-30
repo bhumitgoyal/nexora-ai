@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "AI voice agents, WhatsApp automation, lead generation, campaign automation, and custom AI workflows — every Nuvero service is built end-to-end and instrumented for measurable ROI.",
+    "AI voice agents, WhatsApp automation, lead generation, campaign automation, and custom AI workflows. Every Nuvero service is built end-to-end and instrumented for measurable ROI.",
 };
 
 export default function ServicesPage() {

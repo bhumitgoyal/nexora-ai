@@ -10,7 +10,7 @@ import { SocialLinks } from "@/components/shared/SocialLinks";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Tell us your workflow problem. We'll scope an AI solution, estimate the time savings, and tell you if it's the right fit — all in a 30-minute call.",
+    "Tell us your workflow problem. We'll scope an AI solution, estimate the time savings, and tell you if it's the right fit. All in a 30-minute call.",
 };
 
 const channels = [

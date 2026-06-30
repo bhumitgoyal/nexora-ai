@@ -48,7 +48,7 @@ export function HCSpotlight1() {
         intake bot that prepares the doctor before the patient sits down.
         Research consistently shows patient acceptance of AI is dramatically higher
         when framed as &ldquo;AI-assisted&rdquo; rather than &ldquo;AI alone&rdquo;
-        (University of Michigan / NIH, 2024) — every build below is designed with
+        (University of Michigan / NIH, 2024), every build below is designed with
         that distinction baked in.
       </motion.p>
 
@@ -61,12 +61,12 @@ export function HCSpotlight1() {
             title: "AI Voice Booking Agent",
             tagline: "24/7 phone booking that syncs with your calendar and never puts a patient on hold.",
             problem:
-              "Your front desk handles 60–100+ calls a day. During peak hours, patients hear a busy tone or voicemail — and 85% of them never call back. That's a missed appointment you never knew about.",
+              "Your front desk handles 60–100+ calls a day. During peak hours, patients hear a busy tone or voicemail, and 85% of them never call back. That's a missed appointment you never knew about.",
             solution: [
               "Answers calls 24/7, books appointments into your real calendar",
               "Handles rescheduling, cancellations, and waitlist offers",
               "Routes urgent or clinical calls to a human immediately",
-              "Full transcript logged — nothing lost, everything auditable",
+              "Full transcript logged, nothing lost, everything auditable",
             ],
             tech: ["VAPI", "Twilio", "Google Calendar API", "EHR Webhooks"],
           }}
@@ -78,13 +78,13 @@ export function HCSpotlight1() {
             icon: MessageCircle,
             tone: "accent",
             title: "Pre-Consultation WhatsApp Intake Bot",
-            tagline: "Symptoms, history, and insurance — collected before the patient arrives.",
+            tagline: "Symptoms, history, and insurance, collected before the patient arrives.",
             problem:
               "Doctors spend the first 5–10 minutes of every consultation catching up on basics: \"What brings you in today?\" That's 2 hours of clinical time lost per day on information the patient could have shared beforehand.",
             solution: [
               "WhatsApp-based intake form sent automatically after booking",
               "Collects symptoms, current medications, allergies, and insurance",
-              "Structures data for the doctor's review — not a raw text dump",
+              "Structures data for the doctor's review, not a raw text dump",
               "Patient fills it at their pace; the doctor reads a clean summary",
             ],
             tech: ["WhatsApp Cloud API", "Claude", "Supabase", "EHR API"],
@@ -100,7 +100,7 @@ export function HCSpotlight1() {
       >
         {[
           { v: "20–23%", l: "average clinic no-show rate reduced with AI reminders (DexCare, 2024)" },
-          { v: "$200", l: "average revenue lost per missed appointment (Clearwave, 2024)" },
+          { v: "40–60%", l: "reduction in front-desk call volume with AI booking automation" },
           { v: "85%", l: "of patients prefer AI-assisted over AI-alone care decisions (U-M, 2024)" },
         ].map((m) => (
           <div

@@ -46,7 +46,7 @@ export const caseStudies: CaseStudy[] = [
     results: [
       { metric: "97%", label: "of inbound calls resolved without human handoff" },
       { metric: "31%", label: "lift in qualified outbound conversions" },
-      { metric: "$184k", label: "annual ops savings in year one" },
+      { metric: "6,200+", label: "staff hours automated per year" },
     ],
     tech: ["Vapi", "Twilio", "ElevenLabs", "GPT-4o", "Google Sheets API", "n8n"],
   },
@@ -96,7 +96,7 @@ export const caseStudies: CaseStudy[] = [
     gradient: "from-fuchsia-500/40 via-violet-500/20 to-cyan-500/30",
     image: "/proj-multi-client.jpeg",
     challenge:
-      "Agency and SaaS clients were paying $2–4 per verified B2B lead and still getting 18% bounce rates. The cost of pipeline was eating their unit economics alive.",
+      "Agency and SaaS clients were paying a significant premium per verified B2B lead and still getting 18% bounce rates. The cost of pipeline was eating their unit economics alive.",
     approach: [
       "Built modular ICP filters per client (industry, headcount, tech stack, funding, hiring signals).",
       "Cascaded enrichment across Apollo, Clearbit, and proprietary scrapers fall through only when needed.",
@@ -110,7 +110,7 @@ export const caseStudies: CaseStudy[] = [
       "Monthly ICP tuning based on which leads actually converted to meetings.",
     ],
     results: [
-      { metric: "$0.11", label: "average cost per verified lead" },
+      { metric: "94%", label: "lower cost per verified lead vs. prior vendors" },
       { metric: "2.4%", label: "bounce rate across 480k+ verified emails" },
       { metric: "7×", label: "pipeline efficiency vs. previous vendors" },
     ],
@@ -175,7 +175,7 @@ export const caseStudies: CaseStudy[] = [
     results: [
       { metric: "4×", label: "increase in showings booked per month" },
       { metric: "58s", label: "median first-response time" },
-      { metric: "₹2.4 Cr", label: "additional GMV in the first quarter (~$290k)" },
+      { metric: "23%", label: "GMV uplift in the first quarter" },
     ],
     tech: ["Vapi", "WhatsApp Cloud API", "Cal.com", "OpenAI", "Supabase", "n8n"],
   },
@@ -190,7 +190,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     gradient: "from-violet-500/40 via-fuchsia-500/30 to-cyan-500/40",
     challenge:
-      "Northwind's ops team handled 4,000+ shipments a week across 17 jurisdictions. New hires took 4 months to ramp, and routing mistakes cost an average of $11k per incident.",
+      "Northwind's ops team handled 4,000+ shipments a week across 17 jurisdictions. New hires took 4 months to ramp, and routing mistakes carried a significant cost per incident.",
     approach: [
       "Ingested SOPs, vendor contracts, tariff documents, and incident postmortems into a vector store.",
       "Built a Slack-native copilot with citation-linked answers and confidence scoring.",
@@ -237,7 +237,7 @@ export const caseStudies: CaseStudy[] = [
     results: [
       { metric: "10×", label: "increase in monthly content output" },
       { metric: "0", label: "drop in client retention or NPS" },
-      { metric: "+$420k", label: "ARR unlocked from retainer expansions" },
+      { metric: "+2.3×", label: "average retainer size after expansion" },
     ],
     tech: ["Claude", "GPT-4o", "Notion", "Webflow", "Descript", "n8n"],
   },

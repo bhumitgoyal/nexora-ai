@@ -45,7 +45,7 @@ const pillars = [
 const breakdown = [
   { tag: "Voice", line: "97% of inbound calls resolved without human handoff" },
   { tag: "Chat", line: "92% of first-touch member queries answered by AI" },
-  { tag: "Lead-gen", line: "$0.11 per verified lead · 2.4% bounce rate at scale" },
+  { tag: "Lead-gen", line: "94% lower lead cost vs. industry baseline · 2.4% bounce rate at scale" },
   { tag: "Marketing", line: "80% reduction in campaign setup time · 3.1× reply lift" },
   { tag: "Sales-ops", line: "Forecast accuracy 76% → 94% in two quarters" },
   { tag: "Recruiting", line: "Time-to-hire collapsed from 6 weeks to 9 days" },

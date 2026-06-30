@@ -14,7 +14,7 @@ export function CtaBanner() {
             <span className="absolute bottom-0 right-0 block h-8 w-8 border-l-2 border-t-2 border-[var(--color-brand)] translate-x-[2px] translate-y-[2px]" />
 
             <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-6">
-              <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
+              <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
                 <span className="size-1.5 bg-[var(--color-brand)]" />
                 Let's build your AI advantage
               </span>

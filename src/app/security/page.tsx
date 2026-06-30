@@ -6,23 +6,23 @@ import { GridBackground } from "@/components/shared/GridBackground";
 export const metadata: Metadata = {
   title: "Security & Data",
   description:
-    "How Nuvero AI handles your data — encryption, ownership, access controls, and compliance. You own everything we build.",
+    "How Nuvero AI handles your data: encryption, ownership, access controls, and compliance. You own everything we build.",
 };
 
 const pillars = [
   {
     icon: Lock,
     title: "Encryption at every layer",
-    body: "All data in transit is protected with TLS 1.2+. Data at rest is encrypted with AES-256. Credentials and secrets are stored in isolated vaults — never in source code or plain config files.",
+    body: "All data in transit is protected with TLS 1.2+. Data at rest is encrypted with AES-256. Credentials and secrets are stored in isolated vaults, never in source code or plain config files.",
   },
   {
     icon: Database,
-    title: "You own the data — always",
+    title: "You own the data, always",
     body: "Every database, vector store, and model fine-tune we build is provisioned in your cloud account or handed over at project close. We never retain copies of your operational data after engagement ends.",
   },
   {
     icon: ShieldCheck,
-    title: "You own the code — always",
+    title: "You own the code, always",
     body: "All source code, prompts, agent logic, and integration configs are committed to a repository you control from day one. No black-box SaaS dependency, no per-seat licence, no lock-in.",
   },
   {
@@ -57,7 +57,7 @@ export default function SecurityPage() {
           </h1>
           <p className="mt-4 text-base text-[var(--color-fg-muted)]">
             We build AI systems that touch customer data, call recordings, and business operations.
-            Here is exactly how we handle it — no marketing language, no vague assurances.
+            Here is exactly how we handle it. No marketing language, no vague assurances.
           </p>
         </div>
       </section>
@@ -89,7 +89,7 @@ export default function SecurityPage() {
             <div>
               <h2 className="font-display text-xl font-semibold tracking-tight">Your AI never trains on your data</h2>
               <p className="mt-3 text-sm leading-relaxed text-[var(--color-fg-muted)]">
-                Models we deploy use API inference — your data is never used to retrain or fine-tune
+                Models we deploy use API inference. Your data is never used to retrain or fine-tune
                 any foundation model without your explicit written consent. If we do fine-tune a model
                 for you, that model belongs to you.
               </p>
@@ -101,7 +101,7 @@ export default function SecurityPage() {
           <div>
             <p className="font-display text-lg font-semibold tracking-tight">Have a specific compliance requirement?</p>
             <p className="mt-1 text-sm text-[var(--color-fg-muted)]">
-              We&apos;ll review it before scoping. NDA, DPA, and custom data agreements are standard — not add-ons.
+              We&apos;ll review it before scoping. NDA, DPA, and custom data agreements are standard, not add-ons.
             </p>
           </div>
           <Link

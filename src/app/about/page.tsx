@@ -14,7 +14,7 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Nuvero AI is led by Bhumit Goyal — 45 custom AI systems shipped, 92% client retention, 11 industries served. Learn how we work and why clients keep coming back.",
+    "Nuvero AI is led by Bhumit Goyal. 45 custom AI systems shipped, 92% client retention, 11 industries served. Learn how we work and why clients keep coming back.",
 };
 
 export default function AboutPage() {

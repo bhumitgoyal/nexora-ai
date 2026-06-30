@@ -73,8 +73,8 @@ export default function TermsPage() {
               3. Intellectual Property
             </h2>
             <p className="text-sm leading-relaxed">
-              All content on this Website — including text, design, graphics, case study
-              summaries, and code — is the property of Nuvero AI and is protected by applicable
+              All content on this Website (including text, design, graphics, case study
+              summaries, and code) is the property of Nuvero AI and is protected by applicable
               intellectual property laws. You may not reproduce or redistribute any content
               without prior written consent.
             </p>
@@ -90,7 +90,7 @@ export default function TermsPage() {
             </h2>
             <p className="text-sm leading-relaxed">
               We make reasonable efforts to keep the information on this Website accurate and
-              up to date. However, we make no warranties — express or implied — regarding the
+              up to date. However, we make no warranties, express or implied, regarding the
               completeness, accuracy, or suitability of any information on this Website for any
               particular purpose.
             </p>

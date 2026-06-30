@@ -36,9 +36,9 @@
   --color-ring: #C1121F;
   --radius: 0rem;
 
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, monospace;
 
   --shadow-glow-brand: 0 0 0 2px #C1121F;
   --shadow-glow-accent: 0 0 0 2px #669BBC;
@@ -103,6 +103,7 @@
     background: transparent;
     color: var(--color-fg);
     font-family: var(--font-sans);
+    line-height: 1.65;
     overflow-x: hidden;
   }
 
@@ -113,7 +114,9 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
   }
 
   *:focus-visible {

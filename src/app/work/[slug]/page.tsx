@@ -36,7 +36,7 @@ export async function generateMetadata({
   const study = getCaseStudy(slug);
   if (!study) return {};
   return {
-    title: `${study.client} — ${study.industry}`,
+    title: `${study.client} · ${study.industry}`,
     description: study.summary,
   };
 }
@@ -118,7 +118,7 @@ export default async function CaseStudyPage({
             {study.image ? (
               <Image
                 src={study.image}
-                alt={`${study.client} — AI automation workflow built by Nuvero AI`}
+                alt={`${study.client} · AI automation workflow built by Nuvero AI`}
                 width={0}
                 height={0}
                 sizes="100vw"

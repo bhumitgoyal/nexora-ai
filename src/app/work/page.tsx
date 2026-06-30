@@ -8,7 +8,7 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "45 custom AI systems shipped across energy, wellness, e-commerce, real estate, and more — with real client metrics.",
+    "45 custom AI systems shipped across energy, wellness, e-commerce, real estate, and more, with real client metrics.",
 };
 
 export default function WorkPage() {

@@ -9,7 +9,7 @@ const quadrants = [
   {
     no: "01",
     label: "Scheduling & Access",
-    body: "Voice booking agents, calendar sync, and smart waitlists that fill cancellations automatically — so patients get seen sooner and your front desk isn't buried in calls.",
+    body: "Voice booking agents, calendar sync, and smart waitlists that fill cancellations automatically, so patients get seen sooner and your front desk isn't buried in calls.",
   },
   {
     no: "02",
@@ -19,7 +19,7 @@ const quadrants = [
   {
     no: "03",
     label: "Care Continuity",
-    body: "Preventive care recall, prescription refill nudges, and lab-result follow-up workflows that keep patients on track between visits — not just during them.",
+    body: "Preventive care recall, prescription refill nudges, and lab-result follow-up workflows that keep patients on track between visits, not just during them.",
   },
   {
     no: "04",
@@ -40,9 +40,9 @@ const stats = [
     source: "AMA, 2024",
   },
   {
-    value: "$150B",
-    label: "annual cost of missed appointments to U.S. healthcare",
-    source: "Curogram / Appointment Reminder, 2024",
+    value: "1-in-4",
+    label: "appointments missed at clinics without proactive reminder systems",
+    source: "DexCare / BMJ, 2024",
   },
 ];
 
@@ -89,7 +89,7 @@ export function HCManifesto() {
         Most clinics treat AI like a chatbot bolted onto booking. The real leverage
         is when AI removes the{" "}
         <span className="text-[var(--color-fg)]">repetitive admin</span>: reminders,
-        intake, recall, paperwork — while keeping every diagnosis- or
+        intake, recall, paperwork, while keeping every diagnosis- or
         treatment-related conversation{" "}
         <span className="text-[var(--color-fg)]">human-led</span>. The doctor stays
         in the room. AI handles the waiting room.
@@ -114,13 +114,13 @@ export function HCManifesto() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 + i * 0.08, duration: 0.55 }}
-            className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-5"
+            className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.005))] p-5"
           >
             <div className="flex items-center justify-between">
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
                 {q.no}
               </span>
-              <span className="size-1.5 rounded-full bg-[var(--color-accent)] shadow-[0_0_12px_2px_rgba(34,211,238,0.7)]" />
+              <span className="size-1.5 rounded-full bg-[var(--color-accent)] shadow-[0_0_12px_2px_rgba(34, 211, 238, 0.7)]" />
             </div>
             <h3 className="mt-3 font-display text-[16px] font-semibold tracking-tight text-[var(--color-fg)]">
               {q.label}

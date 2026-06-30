@@ -98,7 +98,7 @@ export function PosterServiceSpotlight3() {
           { v: "1,800h", l: "ops time recovered annually per team" },
           { v: "94%", l: "forecast accuracy, up from 76%" },
           { v: "23%", l: "lift in win rate on stage-3+ deals" },
-          { v: "$1.8M", l: "additional ARR closed in two quarters" },
+          { v: "+38%", l: "accounts closed in two quarters vs. prior period" },
         ].map((m) => (
           <div
             key={m.l}

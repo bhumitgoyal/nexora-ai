@@ -37,7 +37,7 @@ const offerings: Offering[] = [
   {
     icon: ShoppingBag,
     label: "E-commerce Brands",
-    tagline: "Recover 15–20% of abandoned carts automatically — while you sleep.",
+    tagline: "Recover 15–20% of abandoned carts automatically, while you sleep.",
     description:
       "Custom AI automation for Shopify stores, DTC brands, and Amazon sellers cart recovery, confirmation calls, lead generation, and workflow automation that compounds revenue.",
     solved: [
@@ -87,7 +87,7 @@ const offerings: Offering[] = [
   {
     icon: Stethoscope,
     label: "Healthcare & Clinics",
-    tagline: "Cut front-desk admin by ~30% — every reminder, intake form, and follow-up runs itself.",
+    tagline: "Cut front-desk admin by ~30%. Every reminder, intake form, and follow-up runs itself.",
     description:
       "Intelligent automation for clinics, diagnostic centres, and health providers appointment scheduling, patient reminders, intake forms, and follow-up workflows that reduce no-shows and free your staff.",
     solved: [

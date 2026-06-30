@@ -1,5 +1,5 @@
 const stats = [
-  { value: "45+", label: "AI systems shipped — owned by clients forever" },
+  { value: "45+", label: "AI systems shipped, owned by clients forever" },
   { value: "1.4M+", label: "AI interactions handled per month" },
   { value: "92%", label: "client retention rate" },
   { value: "11", label: "industries automated end-to-end" },

@@ -8,7 +8,7 @@ const approach = [
   "Voice booking agent wired into the clinic's calendar and EHR system",
   "Multi-channel reminder workflow: SMS + WhatsApp + optional voice call",
   "Pre-visit intake bot collecting symptoms, medications, and insurance via WhatsApp",
-  "Doctor-approved message templates — nothing clinical is sent without human review",
+  "Doctor-approved message templates, nothing clinical is sent without human review",
   "Smart waitlist: cancelled slots auto-offered to next-in-line patients",
 ];
 
@@ -77,7 +77,7 @@ export function HCCaseStudy() {
       >
         This is a detailed walkthrough of what a full implementation looks like for
         a clinic handling 80–120 patient calls per day across multiple specialties.
-        This is presented as a concept build — clearly labeled because we believe
+        This is presented as a concept build, clearly labeled because we believe
         in showing realistic scope, not inventing results. Every component below
         uses the same playbook we&rsquo;d run for your practice.
       </motion.p>
@@ -86,7 +86,7 @@ export function HCCaseStudy() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.35, duration: 0.6 }}
-        className="mt-4 rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.08),rgba(34,211,238,0.05))] px-5 py-3"
+        className="mt-4 rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(34, 211, 238, 0.05))] px-5 py-3"
       >
         <p className="text-[11px] leading-[1.6] text-[var(--color-fg)]">
           <span className="font-semibold">Note:</span> This is a concept/pilot
@@ -125,7 +125,7 @@ export function HCCaseStudy() {
           transition={{ delay: 0.45, duration: 0.55 }}
           className="flex flex-col gap-4"
         >
-          <div className="flex-1 rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.12),rgba(34,211,238,0.08))] p-4">
+          <div className="flex-1 rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(34, 211, 238, 0.08))] p-4">
             <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
               Expected impact
             </div>
@@ -145,7 +145,7 @@ export function HCCaseStudy() {
             <p className="text-[10px] leading-[1.55] text-[var(--color-fg-muted)]">
               This is the same playbook we&rsquo;d run for your practice: your
               calendar in, your EHR in, your phone line wired in, and a clean
-              handoff to your team whenever a patient needs a human — which is
+              handoff to your team whenever a patient needs a human, which is
               always for anything clinical.
             </p>
           </div>

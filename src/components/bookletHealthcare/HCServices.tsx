@@ -10,7 +10,7 @@ const services = [
     no: "01",
     icon: Phone,
     title: "AI Voice Booking Agent",
-    tagline: "Patients call, an AI assistant answers — books, reschedules, and confirms appointments 24/7 without a single hold tone.",
+    tagline: "Patients call, an AI assistant answers, books, reschedules, and confirms appointments 24/7 without a single hold tone.",
     accent: "brand" as const,
   },
   {
@@ -89,7 +89,7 @@ export function HCServices() {
         className="mt-4 max-w-[160mm] text-[12.5px] leading-[1.55] text-[var(--color-fg-muted)]"
       >
         Every service below is designed to support and extend the doctor&rsquo;s
-        existing relationship with the patient — never to substitute for the
+        existing relationship with the patient, never to substitute for the
         consultation itself. AI handles the admin; the clinician stays in charge.
       </motion.p>
 
@@ -101,15 +101,15 @@ export function HCServices() {
             ? "text-[var(--color-brand-strong)]"
             : "text-[var(--color-accent-strong)]";
           const accentBg = isBrand
-            ? "bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.28),transparent_70%)]"
-            : "bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.25),transparent_70%)]";
+            ? "bg-[radial-gradient(circle_at_center, rgba(139, 92, 246, 0.28), transparent_70%)]"
+            : "bg-[radial-gradient(circle_at_center, rgba(34, 211, 238, 0.25), transparent_70%)]";
           return (
             <motion.div
               key={s.no}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 + i * 0.06, duration: 0.45 }}
-              className="relative overflow-hidden rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-3.5"
+              className="relative overflow-hidden rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.005))] p-3.5"
             >
               <div className="flex items-start justify-between">
                 <span className={`grid size-9 place-items-center rounded-lg border border-[var(--color-border-strong)] ${accentBg}`}>
@@ -134,7 +134,7 @@ export function HCServices() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        className="mt-5 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.025),rgba(255,255,255,0.005))] px-5 py-4"
+        className="mt-5 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005))] px-5 py-4"
       >
         <p className="text-[11.5px] leading-[1.55] text-[var(--color-fg-muted)] italic">
           Don&rsquo;t see your problem here? Good. That usually means it&rsquo;s specific to your
@@ -147,7 +147,7 @@ export function HCServices() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.95, duration: 0.6 }}
-        className="mt-3 flex items-center justify-between rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.10),rgba(34,211,238,0.06))] px-5 py-4"
+        className="mt-3 flex items-center justify-between rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg, rgba(139, 92, 246, 0.10), rgba(34, 211, 238, 0.06))] px-5 py-4"
       >
         <p className="font-display text-[14px] tracking-tight text-[var(--color-fg)]">
           The next two pages go deep on the four builds that save the most time for clinics.

@@ -1,5 +1,5 @@
 ﻿import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, Space_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ChromeShell } from "@/components/layout/ChromeShell";
@@ -14,21 +14,16 @@ import { DotGridWrapper } from "@/components/shared/DotGridWrapper";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const spaceMono = Space_Mono({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
+  variable: "--font-space-mono",
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -85,7 +80,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrains.variable}`}
+      className={`${dmSans.variable} ${spaceMono.variable}`}
     >
       <body className="relative min-h-screen antialiased">
         <DotGridWrapper />

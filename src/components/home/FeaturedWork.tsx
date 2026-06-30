@@ -23,7 +23,7 @@ const workItems: WorkItem[] = [
     no: "01",
     client: "Southwest Gases",
     industry: "Energy & Utilities",
-    headline: "Every inbound call answered in <60s — every new lead followed up in <5 min",
+    headline: "Every inbound call answered in <60s · every new lead followed up in <5 min",
     icon: Mic,
     highlights: [
       "Answers inbound calls 24/7, first ring every time",
@@ -42,7 +42,7 @@ const workItems: WorkItem[] = [
     no: "02",
     client: "GoHappy Club",
     industry: "Senior Wellness · D2C",
-    headline: "92% of queries self-served in 6 languages — LLM cost down ~60%",
+    headline: "92% of queries self-served in 6 languages · LLM cost down ~60%",
     icon: Bot,
     highlights: [
       "Understands Hinglish and 5 other Indian languages",
@@ -61,7 +61,7 @@ const workItems: WorkItem[] = [
     no: "03",
     client: "Marketing Agencies",
     industry: "Marketing & Media",
-    headline: "Full campaign kit in <15 min — down from 2 days, across 6+ channels",
+    headline: "Full campaign kit in <15 min · down from 2 days, across 6+ channels",
     icon: Megaphone,
     highlights: [
       "Generates ad copy across all major platforms",
@@ -80,7 +80,7 @@ const workItems: WorkItem[] = [
     no: "04",
     client: "Southwest Gases",
     industry: "Energy & Utilities",
-    headline: "Zero daily ops calls — 100% route visibility, full audit trail",
+    headline: "Zero daily ops calls · 100% route visibility, full audit trail",
     icon: Truck,
     highlights: [
       "Manage all delivery routes from one central portal",
@@ -99,7 +99,7 @@ const workItems: WorkItem[] = [
     no: "05",
     client: "Multi-Client Deployment",
     industry: "B2B SaaS & Agencies",
-    headline: "100% automated top-of-funnel — $0.11 per verified lead, zero manual research",
+    headline: "100% automated top-of-funnel · near-zero marginal lead cost, zero manual research",
     icon: Target,
     highlights: [
       "Finds and qualifies leads without human input",
@@ -110,7 +110,7 @@ const workItems: WorkItem[] = [
     impact: [
       { metric: "100%", label: "automated top-of-funnel prospecting" },
       { metric: "Zero", label: "manual prospect research hours" },
-      { metric: "$0.11", label: "average cost per verified lead" },
+      { metric: "94%", label: "lower lead cost vs. prior vendors" },
     ],
     gradient: "from-cyan-500/25 via-fuchsia-500/20 to-violet-500/25",
   },
@@ -118,7 +118,7 @@ const workItems: WorkItem[] = [
     no: "06",
     client: "SBA.gov Research Workflow",
     industry: "Government & SMB Data",
-    headline: "1,000s of hidden SMBs found per run — hours of research collapsed to minutes",
+    headline: "1,000s of hidden SMBs found per run · hours of research collapsed to minutes",
     icon: Search,
     highlights: [
       "Scrapes SBA listings for registered small businesses",

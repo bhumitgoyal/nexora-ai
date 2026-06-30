@@ -46,7 +46,7 @@ export function HCSpotlight2() {
         Two builds that protect both revenue and patient outcomes at the two
         moments clinics lose the most: the appointment that gets forgotten, and
         the lab result that never gets discussed. Every build below supports the
-        doctor&rsquo;s relationship with the patient — it never substitutes for
+        doctor&rsquo;s relationship with the patient, it never substitutes for
         clinical judgment.
       </motion.p>
 
@@ -62,7 +62,7 @@ export function HCSpotlight2() {
               "A 20% no-show rate means one in five appointment slots generates zero revenue while blocking access for other patients. Most clinics send one SMS reminder and hope for the best.",
             solution: [
               "Multi-channel reminders at 72h, 24h, and 2h (SMS, WhatsApp, voice)",
-              "One-tap rescheduling link — no phone call needed",
+              "One-tap rescheduling link, no phone call needed",
               "Cancelled slots offered to waitlisted patients automatically",
               "No-show patterns flagged for proactive outreach by your team",
             ],
@@ -76,12 +76,12 @@ export function HCSpotlight2() {
             icon: FileText,
             tone: "accent",
             title: "Lab-Result & Follow-Up Communication",
-            tagline: "Close the loop between the lab and the next appointment — automatically.",
+            tagline: "Close the loop between the lab and the next appointment, automatically.",
             problem:
               "Lab results come back. The patient doesn't know. The doctor's staff is supposed to call, but the task falls through the cracks. The patient drifts, and a treatable finding gets delayed.",
             solution: [
               "Automated WhatsApp notification when results are ready",
-              "Doctor-approved summary template — no raw data sent to patients",
+              "Doctor-approved summary template, no raw data sent to patients",
               "One-tap follow-up booking if results require a conversation",
               "Escalation to staff for any critical or abnormal findings",
             ],
