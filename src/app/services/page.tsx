@@ -10,9 +10,9 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Systems",
   description:
-    "AI voice agents, WhatsApp automation, lead generation, campaign automation, and custom AI workflows. Every Nuvero service is built end-to-end and instrumented for measurable ROI.",
+    "The systems that make up Nuvero's AI infrastructure — voice agents, conversational AI, workflow orchestration, lead engines, and knowledge layers. Built into your stack, instrumented for measurable impact, owned by you.",
 };
 
 export default function ServicesPage() {
@@ -26,9 +26,9 @@ export default function ServicesPage() {
         <div className="container-x relative z-10">
           <SectionHeader
             as="h1"
-            eyebrow="Services"
-            title="AI Services Customers Are Already Using"
-            subtitle="No matter how niche your workflow is, we're here to automate it with AI. Pick a starting point or talk to us about a bundle everything is custom-fit, integrated into your stack, and instrumented for measurable impact."
+            eyebrow="The systems"
+            title="The building blocks of your AI infrastructure."
+            subtitle="These aren't packaged services — they're the systems we compose your intelligence layer from. Every one is custom-built into your stack, trained on how your company works, and instrumented for measurable impact. No matter how niche the workflow, it can run on this layer."
           />
         </div>
       </section>

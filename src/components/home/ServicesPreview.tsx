@@ -151,9 +151,9 @@ export function ServicesPreview() {
     <section className="relative border-t border-[var(--color-border)] py-24 md:py-32">
       <div className="container-x">
         <SectionHeader
-          eyebrow="Problems we have already solved"
-          title="Custom AI tools, built around your problem."
-          subtitle="Either choose from existing solved problems, or contact us for custom AI tools we build to fit, not the other way around."
+          eyebrow="Systems in production"
+          title="Infrastructure modules, built around your workflows."
+          subtitle="These systems are already running inside real businesses. Start from a proven module, or bring us a workflow no one has automated yet — the infrastructure adapts to you, not the other way around."
         />
 
         <Reveal delay={0.12}>
@@ -207,15 +207,15 @@ export function ServicesPreview() {
           <div className="mt-10 flex flex-col items-center gap-6 border-2 border-dashed border-[var(--color-border)] bg-[var(--color-bg-elev)] p-8 text-center md:p-12">
             <div className="flex flex-col gap-2">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                Doesn't match your needs?
+                Don't see your workflow here?
               </p>
               <h3 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
-                Your problem is still{" "}
-                <span className="text-[var(--color-brand)]">solvable.</span>
+                If it&apos;s manual, it&apos;s{" "}
+                <span className="text-[var(--color-brand)]">automatable.</span>
               </h3>
               <p className="mx-auto max-w-xl text-sm text-[var(--color-fg-muted)] md:text-base">
-                Give us a call or fill the form we build personalized AI solutions to your
-                exact problem, not generic tools dressed up for your industry.
+                There is no fixed catalogue. We design the agents and orchestration around your
+                exact operation — whatever the workflow, the infrastructure gets built for it.
               </p>
             </div>
             <div className="flex flex-col items-center gap-3 sm:flex-row">
@@ -229,7 +229,7 @@ export function ServicesPreview() {
                 href="/work"
                 className="inline-flex items-center gap-2 border-2 border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
               >
-                See our work
+                See deployed systems
               </Link>
             </div>
           </div>

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
 
 export const metadata: Metadata = {
-  title: "Custom AI Agents Built for Your Business",
+  title: "AI Infrastructure for Your Business",
   description:
-    "Nuvero AI builds custom AI agents that follow up leads in 60 seconds, generate campaign reports in 15 minutes, and run your ops 24/7. Shipped in 6 weeks. Built in your stack.",
+    "Nuvero AI builds the AI infrastructure your business runs on — agents trained on your workflows, wired into your stack, running your operations 24/7. Any manual work, automated. You own the whole layer.",
 };
 import { WhatWeOffer } from "@/components/home/WhatWeOffer";
 import { ComparisonTable } from "@/components/home/ComparisonTable";

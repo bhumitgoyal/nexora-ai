@@ -17,9 +17,9 @@ import { caseStudies } from "@/content/caseStudies";
 import { services } from "@/content/services";
 
 const pages = [
-  { label: "What We Offer", href: "/what-we-offer", icon: LayoutGrid },
-  { label: "Services", href: "/services", icon: FileText },
-  { label: "Work & Case Studies", href: "/work", icon: Briefcase },
+  { label: "Infrastructure", href: "/what-we-offer", icon: LayoutGrid },
+  { label: "Systems", href: "/services", icon: FileText },
+  { label: "Deployments & Case Studies", href: "/work", icon: Briefcase },
   { label: "Our Process", href: "/process", icon: FileText },
   { label: "About", href: "/about", icon: FileText },
   { label: "Book a Call", href: "/contact", icon: Phone },
@@ -100,7 +100,7 @@ export function CommandPalette() {
 
             <CommandSeparator className="bg-[var(--color-border)]" />
 
-            <CommandGroup heading="Services">
+            <CommandGroup heading="Systems">
               {services.map((s) => {
                 const Icon = s.icon;
                 return (

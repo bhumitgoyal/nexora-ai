@@ -1,9 +1,9 @@
 export const site = {
   name: "Nuvero AI",
   shortName: "Nuvero",
-  tagline: "You run it, we handle it.",
+  tagline: "The AI infrastructure your business runs on.",
   description:
-    "Nuvero AI is a boutique AI consultancy designing agentic systems, voice agents, and intelligent workflows that compound revenue, slash manual ops, and put your business on autopilot.",
+    "Nuvero AI builds AI infrastructure — agentic systems trained on how your company actually works, wired into your stack, so manual work disappears and any workflow can run itself. Not a product. Not a service. The intelligence layer underneath your operations.",
   url: "https://nuvero.space",
   ogImage: "/og.png",
   founder: {
@@ -26,9 +26,9 @@ export const site = {
     twitter: "https://twitter.com/bhumitgoyal",
   },
   nav: [
-    { label: "What We Offer", href: "/what-we-offer" },
-    { label: "Services", href: "/services" },
-    { label: "Work", href: "/work" },
+    { label: "Infrastructure", href: "/what-we-offer" },
+    { label: "Systems", href: "/services" },
+    { label: "Deployments", href: "/work" },
     { label: "Process", href: "/process" },
     { label: "About", href: "/about" },
   ],

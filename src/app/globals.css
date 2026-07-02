@@ -52,6 +52,16 @@
   --animate-tab-fade-in: tab-fade-in 0.25s ease-out;
 }
 
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-spin {
+  to { --beam-angle: 360deg; }
+}
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -151,6 +161,48 @@
   .dot-bg {
     background-image: radial-gradient(rgba(0, 48, 73, 0.12) 1px, transparent 1px);
     background-size: 24px 24px;
+  }
+
+  /* outlined display text — award-site marquee treatment */
+  .text-stroke-fg {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-fg);
+  }
+
+  .text-stroke-brand {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-brand);
+  }
+
+  /* animated beam tracing the element border */
+  .border-beam {
+    position: relative;
+  }
+
+  .border-beam::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    padding: 2px;
+    pointer-events: none;
+    background: conic-gradient(
+      from var(--beam-angle, 0deg),
+      transparent 0deg 300deg,
+      var(--color-brand) 330deg,
+      transparent 360deg
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: beam-spin 5s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .border-beam::before {
+      display: none;
+    }
   }
 
   /* flat glass no blur, just solid surface */

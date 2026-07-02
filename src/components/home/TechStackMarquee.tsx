@@ -29,9 +29,9 @@ export function TechStackMarquee() {
     <section className="relative border-t border-[var(--color-border)] py-24 md:py-32">
       <div className="container-x">
         <SectionHeader
-          eyebrow="Our toolkit"
-          title="Services we automate for your business."
-          subtitle="From sales follow-ups to invoice processing we take repetitive tasks off your plate so you can focus on what matters."
+          eyebrow="What runs on the layer"
+          title="Manual work we've already made disappear."
+          subtitle="From sales follow-ups to invoice processing — once a workflow moves onto the infrastructure, your team never touches it again."
         />
       </div>
 

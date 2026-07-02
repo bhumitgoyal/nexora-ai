@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ChromeShell } from "@/components/layout/ChromeShell";
 import { NoiseOverlay } from "@/components/shared/NoiseOverlay";
 import { LoadingScreen } from "@/components/shared/LoadingScreen";
+import { SmoothScroll } from "@/components/shared/SmoothScroll";
 import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -35,8 +36,9 @@ export const metadata: Metadata = {
   },
   description: site.description,
   keywords: [
-    "AI agency",
-    "AI consultancy",
+    "AI infrastructure",
+    "agentic infrastructure",
+    "AI systems",
     "AI voice agents",
     "conversational AI",
     "agentic AI",
@@ -83,6 +85,7 @@ export default function RootLayout({
       className={`${dmSans.variable} ${spaceMono.variable}`}
     >
       <body className="relative min-h-screen antialiased">
+        <SmoothScroll />
         <DotGridWrapper />
         <TooltipProvider delayDuration={300}>
           <ScrollProgressBar />

@@ -5,6 +5,8 @@ import { motion, useScroll, useTransform, useReducedMotion } from "motion/react"
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Marquee } from "@/components/shared/Marquee";
+import { Magnetic } from "@/components/shared/Magnetic";
+import { NetworkField } from "@/components/home/NetworkField";
 
 const trustLogos = [
   {
@@ -69,13 +71,14 @@ const trustLogos = [
   },
 ];
 
-const words = ["Your", "team", "closes", "deals.", "AI", "handles", "the", "rest."];
+const words = ["The", "AI", "infrastructure", "your", "business", "runs", "on."];
+const highlightWords = new Set(["AI", "infrastructure"]);
 
 const outcomeTags = [
-  "Revenue growth",
-  "Ops automation",
-  "E-commerce scale",
-  "Lead generation",
+  "Agentic systems",
+  "Workflow orchestration",
+  "Deep stack integration",
+  "24/7 autonomous ops",
 ];
 
 export function Hero() {
@@ -122,6 +125,9 @@ export function Hero() {
   return (
     <section ref={sectionRef} className="relative isolate flex min-h-[88vh] items-center overflow-hidden border-b border-[var(--color-border)] pb-20 pt-12 md:min-h-screen md:pt-20">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-60" />
+      <div className="absolute inset-0 -z-10">
+        <NetworkField />
+      </div>
       <div ref={overlayRef} aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ backgroundImage: "none" }} />
 
       {/* animated corner marks */}
@@ -147,7 +153,7 @@ export function Hero() {
           className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]"
         >
           <span className="size-1.5 bg-[var(--color-brand)]" />
-          Custom AI · Built in your stack · Shipped in weeks
+          AI Infrastructure · Agents that know your work · Deployed in your stack
         </motion.div>
 
         {/* animated word-by-word headline */}
@@ -163,7 +169,7 @@ export function Hero() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               className={
-                word === "AI"
+                highlightWords.has(word)
                   ? "text-[var(--color-brand)]"
                   : "text-[var(--color-fg)]"
               }
@@ -180,9 +186,9 @@ export function Hero() {
           transition={{ delay: 0.75, duration: 0.6 }}
           className="mt-7 max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg"
         >
-          Custom AI that takes repetitive work off your team&apos;s plate entirely, and answers
-          your customers in under 60 seconds, 24/7. Built in your stack. Shipped in 6 weeks.
-          You own it forever.
+          We build the intelligence layer underneath your operations &mdash; agents trained on how
+          your company actually works, wired into the tools you already use. Manual work
+          disappears. Any workflow becomes automatable. You own the whole layer.
         </motion.p>
 
         {/* outcome tags */}
@@ -210,28 +216,30 @@ export function Hero() {
           transition={{ delay: 0.9, duration: 0.5 }}
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
         >
-          <a
-            href="/#automation-audit"
-            className="group inline-flex w-full items-center justify-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)] sm:w-auto"
-          >
-            Get your free automation audit
-            <motion.svg
-              className="size-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2.2}
-              viewBox="0 0 24 24"
-              animate={{ x: [0, 3, 0] }}
-              transition={{ repeat: Infinity, repeatDelay: 2, duration: 0.5 }}
+          <Magnetic className="w-full sm:w-auto">
+            <a
+              href="/#automation-audit"
+              className="group inline-flex w-full items-center justify-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)] sm:w-auto"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </motion.svg>
-          </a>
+              Map your infrastructure — free audit
+              <motion.svg
+                className="size-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.2}
+                viewBox="0 0 24 24"
+                animate={{ x: [0, 3, 0] }}
+                transition={{ repeat: Infinity, repeatDelay: 2, duration: 0.5 }}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </motion.svg>
+            </a>
+          </Magnetic>
           <a
             href="/work"
             className="inline-flex w-full items-center justify-center gap-2 border-2 border-[var(--color-border)] bg-transparent px-7 py-3.5 text-base font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)] sm:w-auto"
           >
-            See our work
+            See deployed systems
           </a>
         </motion.div>
 
@@ -253,7 +261,7 @@ export function Hero() {
           className="mt-20 flex w-full flex-col items-center gap-5"
         >
           <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
-            Trusted by teams shipping with us
+            Businesses running on Nuvero infrastructure
           </span>
           {/* Mobile: auto-sliding single line */}
           <div className="md:hidden w-full">

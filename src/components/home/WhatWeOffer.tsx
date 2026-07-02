@@ -183,7 +183,7 @@ function OfferingCard({ item, index }: { item: Offering; index: number }) {
 
         <div className="mt-6 border-t border-[var(--color-border)] pt-6">
           <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-            Problems already solved
+            Systems already running in production
           </p>
           <ul className="flex flex-col gap-2">
             {item.solved.map((a, idx) => (
@@ -203,10 +203,10 @@ function OfferingCard({ item, index }: { item: Offering; index: number }) {
               className="group/cta border-2 border-dashed border-[var(--color-border)] p-5 transition-all duration-200 hover:border-[var(--color-brand)] hover:bg-[var(--color-bg)]"
             >
               <p className="font-display text-xl font-semibold tracking-tight text-[var(--color-fg)] transition-colors group-hover/cta:text-[var(--color-brand)]">
-                <AnimatedYour />{" "}Problem Next?
+                <AnimatedYour />{" "}Workflow Next?
               </p>
               <p className="mt-1 text-xs text-[var(--color-fg-subtle)] transition-colors group-hover/cta:text-[var(--color-fg-muted)]">
-                Tell us your challenge we build for it.
+                If a human does it manually today, we can build the system that runs it.
               </p>
               <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-brand)]">
                 Book a free 30-min call <ArrowUpRight className="size-3" />
@@ -224,9 +224,9 @@ export function WhatWeOffer() {
     <section className="relative border-t border-[var(--color-border)] py-24 md:py-32">
       <div className="container-x">
         <SectionHeader
-          eyebrow="What we offer"
-          title={<>Custom <span className="text-[var(--color-brand)]">AI</span>, built for your business type.</>}
-          subtitle="We don't do generic AI. We understand your industry and build problem-specific AI tools around the exact workflows slowing you down."
+          eyebrow="The infrastructure"
+          title={<>One <span className="text-[var(--color-brand)]">AI layer</span>, shaped to how your industry works.</>}
+          subtitle="We don't sell tools. We build the intelligence layer under your operations — agents that learn your workflows, your systems, your edge cases — so the manual work in your industry simply stops being manual."
         />
 
         {/* Mobile: horizontal scroll */}
@@ -253,7 +253,7 @@ export function WhatWeOffer() {
               href="/what-we-offer"
               className="inline-flex items-center gap-2 border-2 border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
             >
-              See full breakdown for each business type
+              See the full infrastructure map per industry
               <ArrowUpRight className="size-4" />
             </Link>
           </div>

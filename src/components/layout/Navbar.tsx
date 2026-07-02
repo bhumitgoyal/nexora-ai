@@ -18,8 +18,8 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const plainNavItems = [
-  { label: "What We Offer", href: "/what-we-offer" },
-  { label: "Work", href: "/work" },
+  { label: "Infrastructure", href: "/what-we-offer" },
+  { label: "Deployments", href: "/work" },
   { label: "Process", href: "/process" },
   { label: "About", href: "/about" },
 ];
@@ -80,20 +80,20 @@ export function Navbar() {
           {/* Desktop nav NavigationMenu */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList className="gap-0 space-x-0">
-              {/* What We Offer */}
+              {/* Infrastructure */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/what-we-offer" className={navLinkClass("/what-we-offer")}>
-                    What We Offer
+                    Infrastructure
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
-              {/* Services plain link */}
+              {/* Systems plain link */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/services" className={navLinkClass("/services")}>
-                    Services
+                    Systems
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>

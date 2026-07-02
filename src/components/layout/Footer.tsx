@@ -37,15 +37,15 @@ export function Footer() {
           </div>
 
           <FooterColumn title="Company">
-            <FooterLink href="/what-we-offer">What We Offer</FooterLink>
+            <FooterLink href="/what-we-offer">Infrastructure</FooterLink>
             <FooterLink href="/about">About</FooterLink>
             <FooterLink href="/process">Process</FooterLink>
-            <FooterLink href="/work">Work</FooterLink>
-            <FooterLink href="/booklet">Services booklet</FooterLink>
+            <FooterLink href="/work">Deployments</FooterLink>
+            <FooterLink href="/booklet">Systems booklet</FooterLink>
             <FooterLink href="/contact">Contact</FooterLink>
           </FooterColumn>
 
-          <FooterColumn title="Services">
+          <FooterColumn title="Systems">
             {services.slice(0, 4).map((s) => (
               <FooterLink key={s.slug} href={`/services#${s.slug}`}>
                 {outcomeLabel[s.slug] ?? s.title}

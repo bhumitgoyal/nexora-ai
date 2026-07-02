@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
+import { MaskReveal } from "./MaskReveal";
 
 type SectionHeaderProps = {
   eyebrow?: string;
@@ -35,11 +36,11 @@ export function SectionHeader({
           </span>
         </Reveal>
       ) : null}
-      <Reveal delay={0.05}>
+      <MaskReveal delay={0.08}>
         <Heading className="text-balance text-3xl font-semibold tracking-[-0.03em] md:text-5xl">
           {title}
         </Heading>
-      </Reveal>
+      </MaskReveal>
       {subtitle ? (
         <Reveal delay={0.1}>
           <p className="text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">

@@ -49,8 +49,8 @@ export function ComparisonTable() {
       <div className="container-x">
         <SectionHeader
           eyebrow="The difference"
-          title="What actually changes when AI runs your ops."
-          subtitle="Side by side every workflow where Nuvero replaces the manual grind with something that just runs."
+          title="What changes when your ops run on AI infrastructure."
+          subtitle="Side by side — every workflow where the manual grind gets replaced by a system that knows the work and just runs it."
         />
 
         <Reveal delay={0.1}>

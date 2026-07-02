@@ -164,19 +164,20 @@ export function WhatWeOfferContent() {
           <Reveal>
             <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
               <span className="size-1.5 bg-[var(--color-brand)]" />
-              What we offer
+              The infrastructure
             </span>
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="mt-6 max-w-4xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-              Custom AI, built for{" "}
-              <span className="text-[var(--color-brand)]">your</span> problem.
+              AI infrastructure, shaped to{" "}
+              <span className="text-[var(--color-brand)]">your</span> operation.
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-5 max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
-              We don&apos;t do generic AI. We go deep on your industry, understand your exact
-              workflow, and build AI solutions around the specific pain points costing you the most.
+              We don&apos;t sell tools off a shelf. We go deep on your industry, map how the work
+              actually flows, and build the intelligence layer that absorbs it &mdash; agents that
+              know your workflows, your systems, and your edge cases.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
@@ -191,7 +192,7 @@ export function WhatWeOfferContent() {
                 href="/work"
                 className="inline-flex items-center gap-2 border-2 border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
               >
-                See our work
+                See deployed systems
               </Link>
             </div>
           </Reveal>
@@ -409,13 +410,13 @@ export function WhatWeOfferContent() {
             <Reveal>
               <div className="flex flex-col items-center gap-6 border-2 border-dashed border-[var(--color-border)] bg-[var(--color-bg-elev)] p-10 text-center md:p-16">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                  Doesn&apos;t match your needs?
+                  Don&apos;t see your workflow here?
                 </p>
                 <h2 className="font-display text-3xl font-semibold tracking-tight md:text-5xl">
-                  Your problem is still <span className="text-[var(--color-brand)]">solvable.</span>
+                  If it&apos;s manual, it&apos;s <span className="text-[var(--color-brand)]">automatable.</span>
                 </h2>
                 <p className="max-w-xl text-base text-[var(--color-fg-muted)]">
-                  Give us a call or fill the form. We build AI solutions to your exact problem, not generic tools dressed up for your industry.
+                  There is no fixed catalogue. We design the agents and orchestration around your exact operation — whatever the workflow, the infrastructure gets built for it.
                 </p>
                 <Link
                   href="/contact"

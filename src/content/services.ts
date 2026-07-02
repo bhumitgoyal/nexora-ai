@@ -248,8 +248,8 @@ export const services: Service[] = [
   },
   {
     slug: "ai-strategy-consulting",
-    title: "AI Strategy & Consulting",
-    tagline: "From shiny-object overwhelm to a roadmap your CFO signs off on.",
+    title: "AI Infrastructure Strategy",
+    tagline: "The blueprint for your intelligence layer — a roadmap your CFO signs off on.",
     problem:
       "Every vendor pitches AI. Your team isn't sure what to build, what to buy, or where the ROI actually compounds. Decisions get deferred.",
     solution: [
