@@ -8,7 +8,7 @@ import { processSteps } from "@/content/process";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 import { Badge } from "@/components/ui/badge";
-import { EASE } from "@/lib/motion";
+import { EASE, useIsomorphicLayoutEffect } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +17,7 @@ function PinnedProcess() {
   const railRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const section = sectionRef.current;
     const rail = railRef.current;
     if (!section || !rail) return;
@@ -41,7 +41,9 @@ function PinnedProcess() {
             setActive((prev) => (prev === idx ? prev : idx));
           },
         });
-        return () => st.kill();
+        // revert (true) un-wraps the pin-spacer so React's unmount
+        // finds the DOM exactly as it rendered it
+        return () => st.kill(true);
       }
     );
     return () => mm.revert();

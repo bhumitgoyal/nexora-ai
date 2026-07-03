@@ -16,16 +16,20 @@ import { StatsBar } from "@/components/home/StatsBar";
 import { ProcessSnapshot } from "@/components/home/ProcessSnapshot";
 import { RoiEstimator } from "@/components/home/RoiEstimator";
 import { Testimonials } from "@/components/home/Testimonials";
-import { TechStackMarquee } from "@/components/home/TechStackMarquee";
+import { Switchboard } from "@/components/home/Switchboard";
+import { WiringDiagram } from "@/components/home/WiringDiagram";
 import { FaqStrip } from "@/components/home/FaqStrip";
 import { CtaBanner } from "@/components/home/CtaBanner";
 import { TrustStrip } from "@/components/home/TrustStrip";
+import { Perforation } from "@/components/shared/Perforation";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
       <OpsLedger />
+      <Switchboard />
+      <Perforation label="The record continues" />
       <AgentRoster />
       <WhatWeOffer />
       <ComparisonTable />
@@ -36,7 +40,7 @@ export default function HomePage() {
       <ProcessSnapshot />
       <RoiEstimator />
       <Testimonials />
-      <TechStackMarquee />
+      <WiringDiagram />
       <FaqStrip />
       <CtaBanner />
     </>

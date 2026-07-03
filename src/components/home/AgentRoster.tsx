@@ -118,7 +118,7 @@ function CommissionRecord() {
 
 export function AgentRoster() {
   return (
-    <section className="relative border-t border-[var(--color-border)] py-20 md:py-32">
+    <section className="relative py-20 md:py-32">
       <div className="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
         {/* copy */}
         <div>

@@ -43,13 +43,19 @@ Single source of truth: `src/lib/motion.ts` — `EASE = [0.22, 1, 0.36, 1]`, `DU
 | `home/OpsLedger.tsx` | Pinned day-sheet ledger (the layer takes over each row on scroll) |
 | `home/AgentRoster.tsx` | Commissioning-record card with live-ticking counters + stamp |
 | Hero `JobTicket` | Cycling work-order chip stamped "AUTOMATED" |
+| `home/Switchboard.tsx` | Telex-style live ops feed (timestamped lines print themselves) |
+| `home/WiringDiagram.tsx` | Blueprint schematic — tools wired into THE LAYER |
+| `shared/SchematicBeam.tsx` | Ref-measured 90° elbow connector with travelling red pulse |
+| `shared/Perforation.tsx` + CSS `.perforation` | Tear-off divider strip between sections |
 
 ### Hard-won gotchas
 
 1. **Mask reveals**: the IntersectionObserver must watch the *outer unclipped wrapper*, never the translated inner element — a fully clipped element never intersects, so it never reveals. `MaskReveal` already does this plus a 2s on-screen fail-safe. Follow the same pattern for any new clip animation.
 2. **GSAP pinning** (`ProcessSnapshot.tsx` is the reference): use `gsap.matchMedia()` gated to `(min-width: 768px) and (prefers-reduced-motion: no-preference)`, always render a stacked fallback for mobile/reduced-motion, and kill triggers on cleanup.
-3. Lenis is desktop-only (skipped for coarse pointers and reduced motion). ScrollTrigger stays in sync via `lenis.on("scroll", ScrollTrigger.update)` — already wired.
-4. Canvas effects: cap `devicePixelRatio` at 2, halve particle counts on mobile, pause via IntersectionObserver when offscreen.
+3. **Pins MUST use `useIsomorphicLayoutEffect` (from `src/lib/motion.ts`) and `kill(true)`.** GSAP pin reparents the section into a `pin-spacer` div. `useEffect` cleanups run AFTER React removes DOM on unmount → client-side navigation crashes with `removeChild NotFoundError` ("Application error" page; refresh works). Layout-effect cleanup + `scrollTrigger.kill(true)` reverts the pin-spacer before React unmounts. Never create a pin inside plain `useEffect`.
+4. **Never write `document.body.style` on mount** (e.g. scroll locks) — setting it while hydration is in flight trips React's body-attribute hydration mismatch. Only touch body style inside the open-state branch, and clean up with `removeProperty`.
+5. Lenis is desktop-only (skipped for coarse pointers and reduced motion). ScrollTrigger stays in sync via `lenis.on("scroll", ScrollTrigger.update)` — already wired.
+6. Canvas effects: cap `devicePixelRatio` at 2, halve particle counts on mobile, pause via IntersectionObserver when offscreen.
 
 ## Component registries (shadcn MCP)
 

@@ -46,9 +46,13 @@ export function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    // only touch body when the menu is actually open — writing style on
+    // mount stamps a style attribute onto <body> mid-hydration and trips
+    // React's hydration mismatch warning
+    if (!open) return;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.removeProperty("overflow");
     };
   }, [open]);
 

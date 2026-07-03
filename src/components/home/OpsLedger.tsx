@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeader } from "@/components/shared/SectionHeader";
+import { useIsomorphicLayoutEffect } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +23,7 @@ const LEDGER = [
 export function OpsLedger() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
@@ -60,7 +61,9 @@ export function OpsLedger() {
         tl.to(tally, { opacity: 1, y: 0, duration: 0.8, ease: "none" }, "+=0.2");
 
         return () => {
-          tl.scrollTrigger?.kill();
+          // revert (true) un-wraps the pin-spacer so React's unmount
+          // finds the DOM exactly as it rendered it
+          tl.scrollTrigger?.kill(true);
           tl.kill();
         };
       }
