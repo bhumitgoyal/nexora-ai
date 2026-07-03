@@ -1,8 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { Mail, Phone, MessageCircle, MapPin, Clock } from "lucide-react";
 import { site } from "@/content/site";
-import { GradientOrb } from "@/components/shared/GradientOrb";
-import { GridBackground } from "@/components/shared/GridBackground";
 import { Reveal } from "@/components/shared/Reveal";
 import { ContactForm } from "@/components/shared/ContactForm";
 import { SocialLinks } from "@/components/shared/SocialLinks";
@@ -39,21 +37,19 @@ export default function ContactPage() {
   return (
     <>
       <section id="book" className="relative isolate overflow-hidden py-24 md:py-32">
-        <GridBackground />
-        <GradientOrb tone="brand" size={520} className="left-[-160px] top-[-100px]" />
-        <GradientOrb tone="accent" size={420} className="right-[-100px] top-[10%]" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
 
         <div className="container-x relative z-10">
           <div className="flex flex-col gap-6">
             <Reveal>
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--color-border-strong)] glass px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
-                <span className="size-1.5 rounded-full bg-[var(--color-success)] shadow-[0_0_8px_var(--color-success)]" />
+              <span className="inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+                <span className="size-1.5 animate-pulse bg-[var(--color-success)]" />
                 Booking discovery calls
               </span>
             </Reveal>
             <Reveal delay={0.05}>
               <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-                Let's <span className="text-gradient">build</span> something that compounds.
+                Open a <span className="text-[var(--color-brand)]">work order</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
@@ -85,14 +81,14 @@ export default function ContactPage() {
                           rel={c.label === "WhatsApp" ? "noopener noreferrer" : undefined}
                           className="group flex items-center gap-4 card-surface p-4"
                         >
-                          <span className="inline-flex size-10 items-center justify-center rounded-xl bg-[linear-gradient(135deg,rgba(139,92,246,0.18),rgba(34,211,238,0.18))] text-[var(--color-accent)]">
+                          <span className="inline-flex size-10 items-center justify-center border-[1.5px] border-[var(--color-brand)] text-[var(--color-brand)]">
                             <Icon className="size-4" />
                           </span>
                           <div className="flex flex-col">
                             <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
                               {c.label}
                             </span>
-                            <span className="text-sm text-[var(--color-fg)] group-hover:text-[var(--color-accent)]">
+                            <span className="text-sm text-[var(--color-fg)] group-hover:text-[var(--color-brand)]">
                               {c.value}
                             </span>
                           </div>
@@ -114,7 +110,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="flex flex-col gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-6 text-sm text-[var(--color-fg-muted)]">
+              <div className="flex flex-col gap-3 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg-elev)] p-6 text-sm text-[var(--color-fg-muted)]">
                 <div className="flex items-center gap-3">
                   <MapPin className="size-4 text-[var(--color-brand-strong)]" />
                   <span>{site.founder.location}</span>

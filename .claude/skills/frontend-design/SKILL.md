@@ -47,6 +47,9 @@ Single source of truth: `src/lib/motion.ts` — `EASE = [0.22, 1, 0.36, 1]`, `DU
 | `home/WiringDiagram.tsx` | Blueprint schematic — tools wired into THE LAYER |
 | `shared/SchematicBeam.tsx` | Ref-measured 90° elbow connector with travelling red pulse |
 | `shared/Perforation.tsx` + CSS `.perforation` | Tear-off divider strip between sections |
+| `process/BuildSheet.tsx` | Manufacturing traveler — red thread draws down through punched eyelets per phase |
+| `services/SystemIndex.tsx` | Parts-catalogue ToC (SYS-01… numbered anchor index) |
+| About "personnel file" card | Stamped record card pattern for people (see about/page.tsx) |
 
 ### Hard-won gotchas
 

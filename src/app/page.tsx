@@ -26,21 +26,24 @@ import { Perforation } from "@/components/shared/Perforation";
 export default function HomePage() {
   return (
     <>
+      {/* Narrative: promise → what it takes over → live proof → what a
+          deployment is → how it wires in → your industry → the systems →
+          the difference → evidence → how we build → estimate → voices → act */}
       <Hero />
       <OpsLedger />
       <Switchboard />
       <Perforation label="The record continues" />
       <AgentRoster />
+      <WiringDiagram />
       <WhatWeOffer />
-      <ComparisonTable />
       <ServicesPreview />
+      <ComparisonTable />
       <FeaturedWork />
       <StatsBar />
       <TrustStrip />
       <ProcessSnapshot />
       <RoiEstimator />
       <Testimonials />
-      <WiringDiagram />
       <FaqStrip />
       <CtaBanner />
     </>

@@ -3,8 +3,6 @@ import Image from "next/image";
 import { Linkedin, Github, Instagram, Mail, Phone } from "lucide-react";
 import { site } from "@/content/site";
 import { principles, aboutStats } from "@/content/techStack";
-import { GradientOrb } from "@/components/shared/GradientOrb";
-import { GridBackground } from "@/components/shared/GridBackground";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { CountUp } from "@/components/shared/CountUp";
@@ -21,21 +19,20 @@ export default function AboutPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden py-24 md:py-32">
-        <GridBackground />
-        <GradientOrb tone="brand" size={520} className="left-[-160px] top-[-100px]" />
-        <GradientOrb tone="accent" size={420} className="right-[-120px] top-[20%]" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
 
         <div className="container-x relative z-10">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
             <div className="flex flex-col gap-6">
               <Reveal>
-                <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--color-border-strong)] glass px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
+                <span className="inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+                  <span className="size-1.5 bg-[var(--color-brand)]" />
                   About Nuvero
                 </span>
               </Reveal>
               <Reveal delay={0.05}>
                 <h1 className="text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-                  We build the <span className="text-gradient">AI infrastructure</span> businesses run on.
+                  We build the <span className="text-[var(--color-brand)]">AI infrastructure</span> businesses run on.
                 </h1>
               </Reveal>
               <Reveal delay={0.1}>
@@ -59,10 +56,21 @@ export default function AboutPage() {
             </div>
 
             <Reveal delay={0.2}>
-              <div className="relative mx-auto aspect-square w-full max-w-sm">
-                <div className="absolute inset-0 rounded-3xl bg-[linear-gradient(135deg,var(--color-brand),var(--color-accent))] opacity-60 blur-3xl" />
-                <div className="relative flex h-full w-full flex-col items-center justify-center gap-5 rounded-3xl border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] p-8">
-                  <div className="relative size-32 overflow-hidden rounded-full border-2 border-(--color-brand) shadow-[0_0_40px_-8px_rgba(193,18,31,0.4)]">
+              {/* personnel file */}
+              <div className="relative mx-auto w-full max-w-sm border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[6px_6px_0_var(--color-brand)]">
+                <span
+                  aria-hidden
+                  className="absolute -right-2 -top-3 rotate-6 border-2 border-[var(--color-brand)] bg-[var(--color-bg)] px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand)]"
+                >
+                  On record
+                </span>
+                <div className="border-b-2 border-[var(--color-border)] px-5 py-2.5">
+                  <span className="font-mono text-[9px] font-bold uppercase tracking-[0.24em] text-[var(--color-fg-subtle)]">
+                    Nuvero · Personnel file
+                  </span>
+                </div>
+                <div className="flex flex-col items-center gap-5 p-7">
+                  <div className="relative size-32 overflow-hidden border-2 border-[var(--color-border)]">
                     <Image
                       src="/bhumit.png"
                       alt="Bhumit Goyal, Founder of Nuvero AI"
@@ -71,24 +79,35 @@ export default function AboutPage() {
                       priority
                     />
                   </div>
-                  <div className="flex flex-col items-center gap-1 text-center">
-                    <span className="font-display text-xl font-semibold tracking-tight">
-                      {site.founder.name}
-                    </span>
-                    <span className="text-xs text-[var(--color-fg-muted)]">
-                      {site.founder.role}
-                    </span>
+                  <div className="grid w-full grid-cols-2 gap-x-4 gap-y-3 border-t border-[var(--color-border)]/60 pt-5">
+                    <div className="col-span-2">
+                      <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">Name</p>
+                      <p className="mt-0.5 font-display text-lg font-semibold tracking-tight">{site.founder.name}</p>
+                    </div>
+                    <div>
+                      <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">Role</p>
+                      <p className="mt-0.5 font-mono text-xs text-[var(--color-fg)]">Founder · Principal AI Engineer</p>
+                    </div>
+                    <div>
+                      <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">Station</p>
+                      <p className="mt-0.5 font-mono text-xs text-[var(--color-fg)]">{site.founder.location}</p>
+                    </div>
                   </div>
-                  <div className="flex gap-2">
-                    <SocialPill href={site.socials.linkedin} label="LinkedIn">
-                      <Linkedin className="size-3.5" />
-                    </SocialPill>
-                    <SocialPill href={site.socials.github} label="GitHub">
-                      <Github className="size-3.5" />
-                    </SocialPill>
-                    <SocialPill href={site.socials.instagram} label="Instagram">
-                      <Instagram className="size-3.5" />
-                    </SocialPill>
+                  <div className="flex w-full items-center justify-between border-t border-[var(--color-border)]/60 pt-4">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+                      Channels
+                    </span>
+                    <div className="flex gap-2">
+                      <SocialPill href={site.socials.linkedin} label="LinkedIn">
+                        <Linkedin className="size-3.5" />
+                      </SocialPill>
+                      <SocialPill href={site.socials.github} label="GitHub">
+                        <Github className="size-3.5" />
+                      </SocialPill>
+                      <SocialPill href={site.socials.instagram} label="Instagram">
+                        <Instagram className="size-3.5" />
+                      </SocialPill>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -126,14 +145,14 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-3 pt-3">
                 <a
                   href={`mailto:${site.contact.email}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-white/[0.02] px-4 py-2 text-sm text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)]"
+                  className="inline-flex items-center gap-2 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2 text-sm text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)]"
                 >
                   <Mail className="size-4 text-[var(--color-accent)]" />
                   {site.contact.email}
                 </a>
                 <a
                   href={`tel:${site.contact.phoneRaw}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-white/[0.02] px-4 py-2 text-sm text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)]"
+                  className="inline-flex items-center gap-2 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2 text-sm text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)]"
                 >
                   <Phone className="size-4 text-[var(--color-accent)]" />
                   {site.contact.phone}
@@ -154,7 +173,7 @@ export default function AboutPage() {
             return (
               <Reveal key={s.label} delay={i * 0.06}>
                 <div className="flex flex-col gap-2 card-surface p-6 text-center">
-                  <span className="text-gradient-brand font-display text-4xl font-semibold tracking-tight md:text-5xl">
+                  <span className="text-[var(--color-brand)] font-display text-4xl font-semibold tracking-tight md:text-5xl">
                     <CountUp value={numeric} suffix={suffix} decimals={s.metric.includes(".") ? 1 : 0} />
                   </span>
                   <span className="text-xs text-[var(--color-fg-muted)]">{s.label}</span>
@@ -207,7 +226,7 @@ function SocialPill({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex size-8 items-center justify-center rounded-full border border-[var(--color-border-strong)] text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-fg)]"
+      className="inline-flex size-9 items-center justify-center border-[1.5px] border-[var(--color-border)] text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
     >
       {children}
     </a>
