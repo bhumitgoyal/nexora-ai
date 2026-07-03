@@ -118,7 +118,7 @@ export function LoadingScreen() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.85, duration: 0.5 }}
-              className="mt-3 text-xs font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]"
+              className="mt-3 max-w-[85vw] px-6 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)] md:text-xs"
             >
               The AI infrastructure your business runs on
             </motion.p>

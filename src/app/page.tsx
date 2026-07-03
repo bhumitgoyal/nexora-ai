@@ -8,7 +8,8 @@ export const metadata: Metadata = {
 };
 import { WhatWeOffer } from "@/components/home/WhatWeOffer";
 import { ComparisonTable } from "@/components/home/ComparisonTable";
-import { ScrollWordHighlight } from "@/components/home/ScrollWordHighlight";
+import { OpsLedger } from "@/components/home/OpsLedger";
+import { AgentRoster } from "@/components/home/AgentRoster";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { FeaturedWork } from "@/components/home/FeaturedWork";
 import { StatsBar } from "@/components/home/StatsBar";
@@ -24,9 +25,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <OpsLedger />
+      <AgentRoster />
       <WhatWeOffer />
       <ComparisonTable />
-      <ScrollWordHighlight />
       <ServicesPreview />
       <FeaturedWork />
       <StatsBar />

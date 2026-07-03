@@ -205,6 +205,7 @@
     }
   }
 
+
   /* flat glass no blur, just solid surface */
   .glass {
     background: var(--color-bg-elev);

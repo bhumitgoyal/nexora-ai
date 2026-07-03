@@ -13,7 +13,8 @@ Nuvero sells **AI infrastructure — the intelligence layer a business runs on**
 
 - Palette (never add a second accent): cream bg `#FDF0D5`, brand red `#C1121F` (`--color-brand`), deep ink `#003049`, steel blue `#669BBC` (`--color-accent`, sparingly). All colors via CSS variables in `src/app/globals.css` `@theme` — never raw hex in components.
 - **Zero border radius.** Square corners, 1.5–2px solid borders, hard offset shadows (`4px 4px 0 var(--color-brand)`). No blur/glassmorphism, no gradients on surfaces.
-- Type: DM Sans (`font-display`) for headings, Space Mono (`font-mono`) for eyebrows/labels/numbers. Eyebrow pattern: mono, 10px, uppercase, `tracking-[0.18em]+`, with a small brand square.
+- Type: DM Sans (`font-display`) for headings, Space Mono (`font-mono`) for eyebrows/labels/numbers — no other typefaces. Accent words in headlines get brand red, nothing else. Eyebrow pattern: mono, 10px, uppercase, `tracking-[0.18em]+`, with a small brand square.
+- Identity concept: **living print-shop** — job tickets, day-sheet ledgers, commissioning records, rubber-stamp moments. Never imitate reference sites' motifs (eclipse rings, serif italics, verb stacks); reinterpret ideas through this print/ledger language.
 - Icons: Lucide only. Never emoji as icons.
 
 ## Motion direction — cinematic, one rhythm
@@ -39,6 +40,9 @@ Single source of truth: `src/lib/motion.ts` — `EASE = [0.22, 1, 0.36, 1]`, `DU
 | `shared/LoadingScreen.tsx` | First-visit preloader (counter + wipe) |
 | CSS `.border-beam` | Animated border light on feature cards |
 | CSS `.text-stroke-fg` / `.text-stroke-brand` | Outlined display text |
+| `home/OpsLedger.tsx` | Pinned day-sheet ledger (the layer takes over each row on scroll) |
+| `home/AgentRoster.tsx` | Commissioning-record card with live-ticking counters + stamp |
+| Hero `JobTicket` | Cycling work-order chip stamped "AUTOMATED" |
 
 ### Hard-won gotchas
 
