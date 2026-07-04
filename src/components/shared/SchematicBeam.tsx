@@ -87,6 +87,17 @@ export function SchematicBeam({
         strokeOpacity={0.35}
         strokeDasharray="4 4"
       />
+      {/* static red accent tick where the route leaves the node — identical
+          on every connector at every breakpoint */}
+      {pathD && (
+        <path
+          d={pathD}
+          pathLength={100}
+          stroke="var(--color-brand)"
+          strokeWidth={2.5}
+          strokeDasharray="8 92"
+        />
+      )}
       {/* travelling pulse */}
       {!prefersReduced && pathD && (
         <motion.path

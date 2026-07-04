@@ -1,38 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
-import {
-  ChevronDown,
-  ArrowRight,
-  Megaphone,
-  Building2,
-  ShoppingBag,
-  Utensils,
-  BarChart2,
-  Search,
-  TrendingUp,
-  UserPlus,
-  Send,
-  Zap,
-  ShoppingCart,
-  Phone,
-  Bot,
-  Target,
-  MessageCircle,
-  Users,
-  FileText,
-  Bell,
-  Home,
-  Wrench,
-  PenLine,
-  Calculator,
-  Star,
-  CalendarDays,
-  LayoutGrid,
-} from "lucide-react";
-import { sectors } from "@/content/sectors";
+import { ArrowRight, Megaphone, Building2, ShoppingBag, Utensils } from "lucide-react";
+import { sectors, type Sector } from "@/content/sectors";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -44,105 +15,124 @@ const sectorIcons: Record<string, React.ElementType> = {
   restaurants: Utensils,
 };
 
-const serviceIcons: Record<string, React.ElementType> = {
-  "Unified AI Reporting Engine": BarChart2,
-  "AI SEO Engine": Search,
-  "AI Ad Campaign Optimizer": TrendingUp,
-  "AI Onboarding Agent": UserPlus,
-  "Client Outreach Automation": Send,
-  "AI Content Engine": PenLine,
-  "Workflow Automation": Zap,
-  "Cart Recovery Automation": ShoppingCart,
-  "Confirmation Call Automation": Phone,
-  "Personalized AI Chatbot": Bot,
-  "Lead Generation System": Target,
-  "Instagram Comment Automation": MessageCircle,
-  "AI Lead Nurturing Agent": Users,
-  "Listing Description Generator": FileText,
-  "Lease Renewal and Reminder Automation": Bell,
-  "Tenant Communication Bot": Home,
-  "Maintenance Request Routing System": Wrench,
-  "Monthly Property Performance Reports": BarChart2,
-  "AI Marketing Automation": Megaphone,
-  "Reconciliation Agent": Calculator,
-  "Review & Feedback Mining Agent": Star,
-  "AI Staff Scheduling Agent": CalendarDays,
-  "Demand Forecasting Model": TrendingUp,
-  "Reservation & Table Optimization Agent": LayoutGrid,
-};
-
-function ServiceCard({ service, index }: { service: { name: string; tagline: string; how: string }; index: number }) {
-  const [open, setOpen] = useState(false);
-  const Icon = serviceIcons[service.name];
+// Ink console: sidebar of systems on the left, the selected system's real
+// workflow rendered as connected nodes on the right. Dark panel uses the
+// brand ink — no off-palette colors.
+function ServiceConsole({ sector }: { sector: Sector }) {
+  const [active, setActive] = useState(0);
+  const svc = sector.services[active];
+  const chipIndex = svc.chip ? Math.min(1, svc.steps.length - 2) : -1;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: index * 0.05 }}
-      className={`border border-[var(--color-border)] transition-all duration-200 ${
-        open
-          ? "border-[var(--color-brand)] bg-[var(--color-bg-elev)]"
-          : "bg-[var(--color-bg)] hover:border-[var(--color-brand)] hover:bg-[var(--color-bg-elev)]"
-      }`}
-    >
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-start justify-between gap-4 p-5 text-left"
-      >
-        <div className="flex items-start gap-3">
-          {Icon && (
-            <span className="mt-0.5 shrink-0 text-[var(--color-brand)]">
-              <Icon className="size-4" />
-            </span>
-          )}
-          <div className="flex flex-col gap-1">
-            <span className="font-display text-[15px] font-semibold tracking-tight text-[var(--color-fg)]">
-              {service.name}
-            </span>
-            <span className="text-xs text-[var(--color-fg-muted)]">{service.tagline}</span>
-          </div>
-        </div>
-        <motion.span
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.25, ease: "easeInOut" }}
-          className="mt-0.5 shrink-0 text-[var(--color-brand)]"
-        >
-          <ChevronDown className="size-4" />
-        </motion.span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            key="detail"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
+    <div className="border border-t-0 border-[var(--color-border)] bg-[var(--color-fg)] text-[var(--color-bg)]">
+      {/* mobile system selector */}
+      <div className="flex gap-2 overflow-x-auto border-b border-[var(--color-bg)]/15 p-3 md:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {sector.services.map((s, i) => (
+          <button
+            key={s.name}
+            onClick={() => setActive(i)}
+            className={`shrink-0 border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] transition-colors ${
+              i === active
+                ? "border-[var(--color-brand)] bg-[var(--color-brand)] text-white"
+                : "border-[var(--color-bg)]/25 text-[var(--color-bg)]/60"
+            }`}
           >
-            <div className="border-t border-[var(--color-border)] px-5 pb-5 pt-4">
-              <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--color-brand)]">
-                How it works
-              </p>
-              <p className="text-sm leading-relaxed text-[var(--color-fg-muted)]">
-                {service.how}
-              </p>
-              <div className="mt-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-brand)] underline underline-offset-4 hover:text-[var(--color-brand-strong)]"
-                >
-                  Build this for my business <ArrowRight className="size-3" />
-                </Link>
+            {s.name}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-[260px_1fr]">
+        {/* sidebar */}
+        <div className="hidden border-r border-[var(--color-bg)]/15 py-2 md:block">
+          {sector.services.map((s, i) => {
+            const isActive = i === active;
+            return (
+              <button
+                key={s.name}
+                onClick={() => setActive(i)}
+                className={`flex w-full items-center justify-between gap-2 border-l-2 px-4 py-3 text-left text-sm transition-colors ${
+                  isActive
+                    ? "border-[var(--color-brand)] bg-[var(--color-bg)]/5 font-semibold text-[var(--color-bg)]"
+                    : "border-transparent text-[var(--color-bg)]/50 hover:border-[var(--color-bg)]/30 hover:text-[var(--color-bg)]"
+                }`}
+              >
+                <span className="min-w-0 flex-1">{s.name}</span>
+                {isActive && s.stat && (
+                  <span className="shrink-0 bg-[var(--color-brand)] px-1.5 py-0.5 font-mono text-[8px] font-bold uppercase tracking-[0.08em] text-white">
+                    {s.stat}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* workflow panel */}
+        <div className="min-w-0 p-5 md:p-7">
+          {/* header line */}
+          <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--color-bg)]/50 md:text-[11px]">
+            <span className="font-bold text-[var(--color-bg)]">{svc.name}</span>
+            {svc.stat && (
+              <>
+                {" "}· Result: <span className="font-bold text-[var(--color-bg)]">{svc.stat}</span>
+              </>
+            )}
+          </p>
+
+          {/* diagram label row */}
+          <div className="mt-6 flex items-center justify-between gap-4 border-b border-[var(--color-bg)]/15 pb-2">
+            <p className="min-w-0 truncate font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-bg)]/40">
+              Real workflow diagram · {svc.steps.map((s) => s.name).join(" · ")}
+            </p>
+            <span className="flex shrink-0 items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-bg)]/60">
+              <span className="size-1.5 animate-pulse bg-[var(--color-brand)]" />
+              live
+            </span>
+          </div>
+
+          {/* nodes */}
+          <div className="mt-4 flex flex-col items-stretch gap-2 pt-6 md:flex-row md:items-center md:gap-0">
+            {svc.steps.map((step, i) => (
+              <div key={step.name} className="contents">
+                <div className="flex min-w-0 flex-1 flex-col gap-0.5 border border-[var(--color-bg)]/25 bg-[var(--color-bg)]/5 px-3 py-2.5">
+                  <span className="truncate text-sm font-bold text-[var(--color-bg)]">{step.name}</span>
+                  <span className="truncate font-mono text-[9px] text-[var(--color-bg)]/45">{step.sub}</span>
+                </div>
+                {i < svc.steps.length - 1 && (
+                  <span className="relative flex shrink-0 items-center justify-center self-center px-1 font-mono text-sm text-[var(--color-bg)]/40 md:px-1.5">
+                    <span className="hidden md:inline">→</span>
+                    <span className="md:hidden">↓</span>
+                    {i === chipIndex && (
+                      <span className="absolute -top-7 left-1/2 hidden -translate-x-1/2 whitespace-nowrap bg-[var(--color-brand)] px-1.5 py-0.5 font-mono text-[8px] font-bold uppercase tracking-[0.08em] text-white md:block">
+                        {svc.chip}
+                      </span>
+                    )}
+                  </span>
+                )}
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+            ))}
+          </div>
+
+          {/* how it works — full copy preserved */}
+          <div className="mt-7">
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--color-bg)]/40">
+              How it works
+            </p>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-bg)]/60">
+              {svc.how}
+            </p>
+          </div>
+
+          <Link
+            href="/work"
+            className="mt-6 inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-[0.1em] text-[var(--color-bg)] underline underline-offset-4 transition-colors hover:text-[var(--color-brand)]"
+          >
+            View case study <ArrowRight className="size-3" />
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -177,26 +167,14 @@ export function ServicesPreview() {
               </TabsList>
             </div>
 
-            {/* Content panels */}
+            {/* Console panels */}
             {sectors.map((s) => (
               <TabsContent
                 key={s.id}
                 value={s.id}
-                className="mt-0 border border-t-0 border-[var(--color-border)] p-6 md:p-8 data-[state=active]:animate-tab-fade-in"
+                className="mt-0 data-[state=active]:animate-tab-fade-in"
               >
-                <div className="mb-6 flex items-start gap-3">
-                  <div className="flex flex-col gap-1">
-                    <span className="font-display text-lg font-semibold tracking-tight text-[var(--color-fg)]">
-                      {s.label}
-                    </span>
-                    <p className="text-sm text-[var(--color-fg-muted)]">{s.description}</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-                  {s.services.map((service, i) => (
-                    <ServiceCard key={service.name} service={service} index={i} />
-                  ))}
-                </div>
+                <ServiceConsole sector={s} />
               </TabsContent>
             ))}
           </Tabs>
@@ -207,7 +185,7 @@ export function ServicesPreview() {
           <div className="mt-10 flex flex-col items-center gap-6 border-2 border-dashed border-[var(--color-border)] bg-[var(--color-bg-elev)] p-8 text-center md:p-12">
             <div className="flex flex-col gap-2">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                Don't see your workflow here?
+                Don&apos;t see your workflow here?
               </p>
               <h3 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
                 If it&apos;s manual, it&apos;s{" "}
