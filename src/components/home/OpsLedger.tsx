@@ -42,6 +42,37 @@ export function OpsLedger() {
         });
         gsap.set(tally, { opacity: 0, y: 14 });
 
+        // live hours counter — starts at 0, ticks up as each row flips to
+        // THE LAYER, reversible on scroll-up, never double counts
+        const counterEl = section.querySelector<HTMLElement>("[data-hours-counter]");
+        const display = { value: 0 };
+        let counterTween: gsap.core.Tween | null = null;
+        if (counterEl) counterEl.textContent = "0.0";
+
+        const retally = () => {
+          let target = 0;
+          rows.forEach((row) => {
+            if (row.dataset.flipped === "true") {
+              target += parseFloat(row.dataset.hours ?? "0");
+            }
+          });
+          counterTween?.kill();
+          counterTween = gsap.to(display, {
+            value: target,
+            duration: 0.5,
+            ease: "power2.out",
+            onUpdate: () => {
+              if (counterEl) counterEl.textContent = display.value.toFixed(1);
+            },
+          });
+        };
+
+        const flip = (row: HTMLElement, on: boolean) => {
+          if ((row.dataset.flipped === "true") === on) return;
+          row.dataset.flipped = on ? "true" : "false";
+          retally();
+        };
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
@@ -56,11 +87,23 @@ export function OpsLedger() {
           const strike = row.querySelector<HTMLElement>("[data-strike]");
           const layer = row.querySelector<HTMLElement>("[data-layer]");
           tl.to(strike, { scaleX: 1, duration: 0.5, ease: "none" });
-          tl.to(layer, { opacity: 1, y: 0, duration: 0.35, ease: "none" }, "<+=0.25");
+          tl.to(
+            layer,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.35,
+              ease: "none",
+              onComplete: () => flip(row, true),
+              onReverseComplete: () => flip(row, false),
+            },
+            "<+=0.25"
+          );
         });
         tl.to(tally, { opacity: 1, y: 0, duration: 0.8, ease: "none" }, "+=0.2");
 
         return () => {
+          counterTween?.kill();
           // revert (true) un-wraps the pin-spacer so React's unmount
           // finds the DOM exactly as it rendered it
           tl.scrollTrigger?.kill(true);
@@ -73,11 +116,13 @@ export function OpsLedger() {
     mm.add("(max-width: 767px), (prefers-reduced-motion: reduce)", () => {
       const rows = section.querySelectorAll<HTMLElement>("[data-ledger-row]");
       const tally = section.querySelector<HTMLElement>("[data-ledger-tally]");
+      const counterEl = section.querySelector<HTMLElement>("[data-hours-counter]");
       rows.forEach((row) => {
         gsap.set(row.querySelector("[data-strike]"), { scaleX: 1 });
         gsap.set(row.querySelector("[data-layer]"), { opacity: 1, y: 0 });
       });
       gsap.set(tally, { opacity: 1, y: 0 });
+      if (counterEl) counterEl.textContent = "31.5";
     });
 
     return () => mm.revert();
@@ -113,6 +158,8 @@ export function OpsLedger() {
             <div
               key={row.time}
               data-ledger-row
+              data-hours={row.hrs}
+              data-flipped="false"
               className="flex items-center justify-between gap-3 border-b border-[var(--color-border)]/50 px-4 py-3 last:border-b-0 md:px-6 md:py-[13px]"
             >
               <div className="flex min-w-0 items-baseline gap-3 md:gap-4">
@@ -152,8 +199,12 @@ export function OpsLedger() {
             <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-fg)] md:text-xs">
               Hours returned to your team
             </span>
-            <span className="font-display text-2xl font-bold tabular-nums text-[var(--color-brand)] md:text-3xl">
-              31.5<span className="ml-1 font-mono text-xs font-normal text-[var(--color-fg-subtle)]">/wk</span>
+            <span className="font-display text-2xl font-bold text-[var(--color-brand)] md:text-3xl">
+              {/* width reserved for the widest value ("31.5") so digits never shift layout */}
+              <span data-hours-counter className="inline-block min-w-[4ch] text-right tabular-nums">
+                31.5
+              </span>
+              <span className="ml-1 font-mono text-xs font-normal text-[var(--color-fg-subtle)]">/wk</span>
             </span>
           </div>
         </div>
