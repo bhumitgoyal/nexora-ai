@@ -16,6 +16,7 @@ import { StatsBar } from "@/components/home/StatsBar";
 import { ProcessSnapshot } from "@/components/home/ProcessSnapshot";
 import { RoiEstimator } from "@/components/home/RoiEstimator";
 import { Testimonials } from "@/components/home/Testimonials";
+import { GlassBox } from "@/components/home/GlassBox";
 import { Switchboard } from "@/components/home/Switchboard";
 import { WiringDiagram } from "@/components/home/WiringDiagram";
 import { FaqStrip } from "@/components/home/FaqStrip";
@@ -44,6 +45,7 @@ export default function HomePage() {
       <ProcessSnapshot />
       <RoiEstimator />
       <Testimonials />
+      <GlassBox />
       <FaqStrip />
       <CtaBanner />
     </>

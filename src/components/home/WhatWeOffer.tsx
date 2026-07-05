@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useInView } from "motion/react";
 import { useRef, useCallback } from "react";
-import { ArrowUpRight, Building2, Megaphone, ShoppingBag, UtensilsCrossed, Stethoscope, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, Building2, Megaphone, ShoppingBag, UtensilsCrossed, Stethoscope, Boxes, type LucideIcon } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 
@@ -99,6 +99,23 @@ const offerings: Offering[] = [
     ],
     href: "/what-we-offer#healthcare",
     accentClass: "border-[var(--color-brand)] text-[var(--color-brand)]",
+  },
+  {
+    icon: Boxes,
+    label: "B2B & SaaS Teams",
+    tagline: "Win back ~40% of your ops team's week the busywork between your tools, gone.",
+    description:
+      "Custom internal tools and operations automation for B2B and SaaS teams the dashboards, CRM hygiene, onboarding, and cross-tool data shuffling that quietly eats the week so your people build pipeline, not spreadsheets.",
+    solved: [
+      "Custom internal tools & dashboards",
+      "CRM hygiene & data enrichment",
+      "Cross-tool workflow automation",
+      "Client onboarding & provisioning",
+      "Automated ops & pipeline reporting",
+      "Renewal & churn-risk alerts",
+    ],
+    href: "/what-we-offer#b2b",
+    accentClass: "border-[var(--color-accent)] text-[var(--color-accent)]",
   },
 ];
 

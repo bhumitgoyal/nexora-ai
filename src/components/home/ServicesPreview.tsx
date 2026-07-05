@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Megaphone, Building2, ShoppingBag, Utensils } from "lucide-react";
+import { ArrowRight, Megaphone, Building2, ShoppingBag, Utensils, Boxes } from "lucide-react";
 import { sectors, type Sector } from "@/content/sectors";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
@@ -13,6 +13,7 @@ const sectorIcons: Record<string, React.ElementType> = {
   ecommerce: ShoppingBag,
   realestate: Building2,
   restaurants: Utensils,
+  b2b: Boxes,
 };
 
 // Ink console: sidebar of systems on the left, the selected system's real
@@ -141,9 +142,9 @@ export function ServicesPreview() {
     <section className="relative border-t border-[var(--color-border)] py-24 md:py-32">
       <div className="container-x">
         <SectionHeader
-          eyebrow="Systems in production"
-          title="Infrastructure modules, built around your workflows."
-          subtitle="These systems are already running inside real businesses. Start from a proven module, or bring us a workflow no one has automated yet — the infrastructure adapts to you, not the other way around."
+          eyebrow="Outcomes in production"
+          title="Results already running, mapped to your workflows."
+          subtitle="Every entry below is an outcome a real business collects today — carts recovered, calls answered, books closed. Start from a proven one, or bring us a workflow no one has automated yet."
         />
 
         <Reveal delay={0.12}>

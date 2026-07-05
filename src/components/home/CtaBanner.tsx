@@ -16,7 +16,7 @@ export function CtaBanner() {
             <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
                 <span className="size-1.5 bg-[var(--color-brand)]" />
-                Let's build your intelligence layer
+                Every week you wait costs another 31.5 hours
               </span>
               <h2 className="text-balance font-display text-4xl font-semibold tracking-tight md:text-6xl">
                 Ready to run on{" "}

@@ -33,6 +33,7 @@ import {
   BarChart2,
   LayoutGrid,
   Stethoscope,
+  Boxes,
 } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { services } from "@/content/services";
@@ -144,6 +145,31 @@ const sections = [
       { task: "Your problem next", icon: Sparkles, detail: "Every restaurant is different. We build custom AI tools around your specific operation not generic hospitality software.", isNew: true },
     ] as SolvedItem[],
   },
+  {
+    id: "b2b",
+    icon: Boxes,
+    label: "B2B & SaaS",
+    eyebrow: "For B2B, SaaS & professional-services teams",
+    headline: "Automate the busywork. Build the pipeline.",
+    description:
+      "B2B and SaaS teams lose entire days to the seams between their tools copying data between CRM and billing, chasing onboarding steps, rebuilding the same reports every month. We build the internal tools you'd normally wait on engineering for, and automate the operations layer underneath so your team spends its week on revenue, not admin.",
+    painPoints: [
+      "Data manually copied between CRM, billing, and support tools",
+      "Internal tool requests stuck in a months-long engineering backlog",
+      "New-client onboarding tracked across scattered spreadsheets",
+      "The same board and investor reports rebuilt by hand each month",
+      "Renewals and churn risks noticed only after the customer is gone",
+    ],
+    solved: [
+      { task: "Custom Internal Tools & Dashboards", icon: LayoutGrid, detail: "The dashboards, portals, and internal apps you'd normally wait on engineering for built around your exact workflow and wired into the tools you already run." },
+      { task: "CRM Hygiene & Enrichment Agent", icon: Users, detail: "Keeps every record clean, deduplicated, and enriched with firmographic and intent data automatically so your pipeline reflects reality, not last quarter." },
+      { task: "Cross-Tool Workflow Automation", icon: Zap, detail: "Connects CRM, billing, support, and Slack into one flow. A closed deal provisions the account, updates finance, and notifies the team no manual handoffs." },
+      { task: "Client Onboarding & Provisioning", icon: UserCheck, detail: "Turns every new contract into a tracked onboarding run accounts provisioned, docs collected, kickoff scheduled without a single status-chase email." },
+      { task: "Automated Ops & Pipeline Reporting", icon: BarChart3, detail: "Pulls from every system and assembles the board deck, pipeline review, and investor update on schedule, with anomalies flagged in plain English." },
+      { task: "Renewal & Churn-Risk Alerts", icon: Bell, detail: "Watches usage, support, and payment signals to surface at-risk accounts before renewal so your team saves the account instead of reading the post-mortem." },
+      { task: "Your problem next", icon: Sparkles, detail: "Every B2B operation runs on its own stack. We build the internal tools and automations around yours not a generic ops suite repackaged.", isNew: true },
+    ] as SolvedItem[],
+  },
 ];
 
 const industryJumpIcons: Record<string, LucideIcon> = {
@@ -151,6 +177,7 @@ const industryJumpIcons: Record<string, LucideIcon> = {
   ecommerce: ShoppingBag,
   realestate: Building2,
   restaurants: Utensils,
+  b2b: Boxes,
 };
 
 export function WhatWeOfferContent() {
@@ -296,7 +323,7 @@ export function WhatWeOfferContent() {
                             href="/contact"
                             className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)]"
                           >
-                            Build custom AI for {section.label.toLowerCase()} <ArrowRight className="size-4" />
+                            Build custom AI for {section.id === "b2b" ? "B2B & SaaS teams" : section.label.toLowerCase()} <ArrowRight className="size-4" />
                           </Link>
                         </div>
                       </div>
