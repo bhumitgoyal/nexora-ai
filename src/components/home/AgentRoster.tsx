@@ -112,6 +112,21 @@ function CommissionRecord() {
           ))}
         </dl>
       </div>
+
+      {/* the system reports for itself — first-person, tied to the live count */}
+      <div className="mt-6 border-t border-[var(--color-border)] pt-4">
+        <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+          Self-report
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-[var(--color-fg)]">
+          &ldquo;I handled{" "}
+          <span className="font-mono font-bold tabular-nums text-[var(--color-brand)]">
+            {calls.toLocaleString("en-US")}
+          </span>{" "}
+          calls in the last 30 days. 3% needed a human. Nobody waited past the
+          first ring.&rdquo;
+        </p>
+      </div>
     </div>
   );
 }

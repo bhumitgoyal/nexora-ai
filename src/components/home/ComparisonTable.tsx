@@ -53,7 +53,41 @@ export function ComparisonTable() {
           subtitle="Side by side — every workflow where the manual grind gets replaced by a system that knows the work and just runs it."
         />
 
-        <Reveal delay={0.1}>
+        {/* Mobile: stacked cards so the payoff column is never cut off */}
+        <div className="mt-12 flex flex-col gap-4 md:hidden">
+          {rows.map((row, i) => (
+            <Reveal key={row.task} delay={i * 0.05}>
+              <div className="border border-[var(--color-border)] bg-[var(--color-bg)]">
+                <div className="border-b border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-3">
+                  <span className="font-display text-sm font-semibold tracking-tight text-[var(--color-fg)]">
+                    {row.task}
+                  </span>
+                </div>
+                <div className="flex items-start gap-2.5 px-4 py-3">
+                  <X className="mt-0.5 size-3.5 shrink-0 text-[var(--color-danger)]" />
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+                      Without Nuvero
+                    </span>
+                    <span className="text-sm text-[var(--color-fg-muted)]">{row.without}</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5 border-t border-[var(--color-border)] bg-[var(--color-brand)]/5 px-4 py-3">
+                  <Check className="mt-0.5 size-3.5 shrink-0 text-[var(--color-brand)]" />
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--color-brand)]">
+                      With Nuvero
+                    </span>
+                    <span className="text-sm font-medium text-[var(--color-fg)]">{row.with}</span>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Desktop: side-by-side table */}
+        <Reveal delay={0.1} className="hidden md:block">
           <div className="mt-14 overflow-x-auto border border-[var(--color-border)]">
             <Table>
               <TableHeader>

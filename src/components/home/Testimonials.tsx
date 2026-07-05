@@ -18,7 +18,7 @@ export function Testimonials() {
           {testimonials.map((t) => (
             <article
               key={t.name}
-              className="flex w-[420px] h-[300px] shrink-0 flex-col gap-5 card-surface p-7 md:w-[460px]"
+              className="flex w-[85vw] max-w-[360px] h-[300px] shrink-0 flex-col gap-5 card-surface p-6 md:w-[460px] md:max-w-none md:p-7"
             >
               <Quote className="size-5 shrink-0 text-[var(--color-brand-strong)]" />
               <p className="text-pretty text-[15px] leading-relaxed text-[var(--color-fg)] line-clamp-5 overflow-hidden">
