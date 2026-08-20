@@ -56,7 +56,7 @@ function LiveTicker() {
     <div className="inline-flex max-w-full items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-1.5 font-mono text-[9px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)] md:text-[10px] md:tracking-[0.22em]">
       <span className="size-1.5 shrink-0 animate-pulse bg-[var(--color-brand)]" />
       <span className="truncate">
-        Running now — calls answered today:{" "}
+        Running now · calls answered today:{" "}
         <span className="font-bold tabular-nums text-[var(--color-fg)]">{calls}</span>
         <span className="hidden sm:inline">
           {" "}· hours returned this week:{" "}
@@ -225,7 +225,7 @@ export function Hero() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mt-6 max-w-xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg"
         >
-          Agents trained on how your company actually works — answering your
+          Agents trained on how your company actually works, answering your
           customers in under 60 seconds and handing your team back 30+ hours
           a week. Manual work disappears. You own the whole layer.
         </motion.p>

@@ -4,7 +4,7 @@ import { Hero } from "@/components/home/Hero";
 export const metadata: Metadata = {
   title: "AI Infrastructure for Your Business",
   description:
-    "Nuvero AI builds the AI infrastructure your business runs on — agents trained on your workflows, wired into your stack, running your operations 24/7. Any manual work, automated. You own the whole layer.",
+    "Nuvero AI builds the AI infrastructure your business runs on. Agents trained on your workflows, wired into your stack, running your operations 24/7. Any manual work, automated. You own the whole layer.",
 };
 import { WhatWeOffer } from "@/components/home/WhatWeOffer";
 import { ComparisonTable } from "@/components/home/ComparisonTable";

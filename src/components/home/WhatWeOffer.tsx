@@ -243,7 +243,7 @@ export function WhatWeOffer() {
         <SectionHeader
           eyebrow="The infrastructure"
           title={<>One <span className="text-[var(--color-brand)]">AI layer</span>, shaped to how your industry works.</>}
-          subtitle="We don't sell tools. We build the intelligence layer under your operations — agents that learn your workflows, your systems, your edge cases — so the manual work in your industry simply stops being manual."
+          subtitle="We don't sell tools. We build the intelligence layer under your operations: agents that learn your workflows, your systems, and your edge cases, so the manual work in your industry simply stops being manual."
         />
 
         {/* Mobile: horizontal scroll */}

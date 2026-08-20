@@ -20,7 +20,7 @@ export default function ProcessPage() {
             as="h1"
             eyebrow="How infrastructure gets built"
             title="Five phases. One thread."
-            subtitle="No slide-ware, no mystery. Every deployment follows the same build sheet — weekly demos, KPI-instrumented from day one, signed off only when the system runs."
+            subtitle="No slide-ware, no mystery. Every deployment follows the same build sheet: weekly demos, KPI-instrumented from day one, signed off only when the system runs."
           />
         </div>
       </section>

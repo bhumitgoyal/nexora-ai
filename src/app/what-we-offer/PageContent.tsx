@@ -203,7 +203,7 @@ export function WhatWeOfferContent() {
           <Reveal delay={0.1}>
             <p className="mt-5 max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
               We don&apos;t sell tools off a shelf. We go deep on your industry, map how the work
-              actually flows, and build the intelligence layer that absorbs it &mdash; agents that
+              actually flows, and build the intelligence layer that absorbs it: agents that
               know your workflows, your systems, and your edge cases.
             </p>
           </Reveal>
@@ -443,7 +443,7 @@ export function WhatWeOfferContent() {
                   If it&apos;s manual, it&apos;s <span className="text-[var(--color-brand)]">automatable.</span>
                 </h2>
                 <p className="max-w-xl text-base text-[var(--color-fg-muted)]">
-                  There is no fixed catalogue. We design the agents and orchestration around your exact operation — whatever the workflow, the infrastructure gets built for it.
+                  There is no fixed catalogue. We design the agents and orchestration around your exact operation. Whatever the workflow, the infrastructure gets built for it.
                 </p>
                 <Link
                   href="/contact"

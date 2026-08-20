@@ -7,7 +7,7 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 export const metadata: Metadata = {
   title: "Deployments",
   description:
-    "45 systems deployed across energy, wellness, e-commerce, real estate, and more — with the real metrics each one moved.",
+    "45 systems deployed across energy, wellness, e-commerce, real estate, and more, with the real metrics each one moved.",
 };
 
 export default function WorkPage() {
@@ -21,7 +21,7 @@ export default function WorkPage() {
             as="h1"
             eyebrow="The deployment log"
             title="Systems shipped. Numbers moved."
-            subtitle="Every deployment on this log runs in production today — with the metric it was commissioned to move, and the proof it moved it."
+            subtitle="Every deployment on this log runs in production today, with the metric it was commissioned to move and the proof it moved it."
           />
         </div>
       </section>

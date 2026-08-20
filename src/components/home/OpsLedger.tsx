@@ -139,7 +139,7 @@ export function OpsLedger() {
         <SectionHeader
           eyebrow="The day sheet"
           title="A normal Tuesday, off your team's plate."
-          subtitle="Scroll the ledger — every line a real workflow the layer runs today, with the hours it hands back each week."
+          subtitle="Scroll the ledger. Every line is a real workflow the layer runs today, with the hours it hands back each week."
         />
 
         {/* the ledger */}

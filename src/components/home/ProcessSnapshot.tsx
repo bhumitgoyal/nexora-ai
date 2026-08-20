@@ -57,7 +57,7 @@ function PinnedProcess() {
         <SectionHeader
           eyebrow="How infrastructure gets built"
           title="From workflow map to a system that runs itself."
-          subtitle="Scroll — five phases, weekly demos, KPI-instrumented from day one."
+          subtitle="Scroll through it. Five phases, weekly demos, KPI-instrumented from day one."
         />
 
         <div className="mx-auto mt-16 grid max-w-5xl grid-cols-[1fr_1.6fr] items-center gap-16">

@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = {
   title: "Systems",
   description:
-    "The systems that make up Nuvero's AI infrastructure — voice agents, conversational AI, workflow orchestration, lead engines, and knowledge layers. Built into your stack, instrumented for measurable impact, owned by you.",
+    "The systems that make up Nuvero's AI infrastructure: voice agents, conversational AI, workflow orchestration, lead engines, and knowledge layers. Built into your stack, instrumented for measurable impact, owned by you.",
 };
 
 export default function ServicesPage() {
@@ -26,7 +26,7 @@ export default function ServicesPage() {
             as="h1"
             eyebrow="The systems"
             title="The building blocks of your AI infrastructure."
-            subtitle="These aren't packaged services — they're the systems we compose your intelligence layer from. Every one is custom-built into your stack, trained on how your company works, and instrumented for measurable impact."
+            subtitle="These aren't packaged services. They're the systems we compose your intelligence layer from, each custom-built into your stack, trained on how your company works, and instrumented for measurable impact."
           />
 
           <div className="mt-14">
