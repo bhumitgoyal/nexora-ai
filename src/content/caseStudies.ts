@@ -51,6 +51,69 @@ export const caseStudies: CaseStudy[] = [
     tech: ["Vapi", "Twilio", "ElevenLabs", "GPT-4o", "Google Sheets API", "n8n"],
   },
   {
+    slug: "southwest-gases-erp",
+    client: "Southwest Gases",
+    industry: "Energy & Utilities",
+    title: "A full order-to-cash ERP that runs the whole gas business, from the delivery board to the QuickBooks invoice.",
+    summary:
+      "A custom operations system for a packaged and bulk gas distributor: order entry, a drag-and-drop delivery and pickup board, cylinder rent ledgers, and invoices that generate on delivery and sync straight to QuickBooks, with role-based views that keep every price off the drivers' screens.",
+    duration: "16 weeks",
+    year: "2026",
+    featured: true,
+    gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
+    challenge:
+      "The business ran on spreadsheets, paper bills of lading, and manual QuickBooks entry. Deliveries were scheduled by phone, cylinder rents were tracked by hand, and every invoice was retyped, so numbers drifted, month-end dragged on for days, and drivers routinely saw pricing they were never meant to.",
+    approach: [
+      "Mapped the real order-to-cash flow with the team, from a phoned-in order to a paid invoice, and turned it into one delivery-first workflow.",
+      "Built role-based access from the ground up so office staff see everything and drivers see documents with no price, rate, or balance anywhere, enforced on the server rather than hidden in the UI.",
+      "Modelled cylinder rents as an append-only ledger with derived balances, so a count is never typed twice and history can never be edited away.",
+      "Wired real QuickBooks Online sync with a working fallback, so the system runs end to end in a demo and flips to live accounting with a single connection.",
+    ],
+    solution: [
+      "Order entry with type-ahead customers, inline product creation, and below-list price overrides that log themselves.",
+      "A day and week delivery board with cross-day drag-and-drop, recurring deliveries, drawn signature capture, and auto-generated BOL and shipping-paper PDFs.",
+      "Invoices that build themselves on delivery, carry hazmat and tax correctly, email through the office, and push to QuickBooks under the same number both systems agree on.",
+      "A dashboard of live KPIs, a FIFO cylinder-aging alert, and nightly cron jobs that pull payment status and reconcile anything that failed to sync.",
+    ],
+    results: [
+      { metric: "Days to minutes", label: "month-end invoicing and reconciliation" },
+      { metric: "0", label: "prices, rates, or balances visible to any driver" },
+      { metric: "100%", label: "of invoices reconciled against QuickBooks automatically" },
+    ],
+    tech: ["Next.js", "TypeScript", "Prisma", "QuickBooks Online", "Firebase Auth", "SendGrid", "Google Cloud"],
+  },
+  {
+    slug: "southwest-gases-delivery-schedule",
+    client: "Southwest Gases",
+    industry: "Energy & Utilities",
+    title: "A shared delivery board the whole team runs on, wired to an AI connector that answers 'is it scheduled?' without opening the app.",
+    summary:
+      "A live delivery schedule the office and drivers share in real time, plus a read-only AI connector so anyone can ask ChatGPT or Claude whether an order is on the board or a delivery is done, and get the answer straight from the schedule without touching the app.",
+    duration: "5 weeks",
+    year: "2026",
+    gradient: "from-fuchsia-500/25 via-violet-500/20 to-cyan-500/20",
+    challenge:
+      "Before every route, the office and the drivers burned the morning on phone calls: is this order on today's board, did that delivery actually go out, what changed since yesterday. The answers lived in one person's head and a paper sheet, so nothing was auditable and nobody could check without interrupting someone.",
+    approach: [
+      "Built a single shared board on a real-time database, so a change one person makes shows up instantly for everyone, with no login to slow the team down.",
+      "Kept the whole thing deliberately lightweight, so drivers could open it on a phone and the office could run the day from one screen.",
+      "Layered a read-only AI connector on top that exposes just two questions, whether an order has been entered and whether a delivery has been completed, so the schedule can answer for itself.",
+      "Locked the connector to read-only behind a shared passcode, so an assistant can look but nothing outside the app can ever change a delivery.",
+    ],
+    solution: [
+      "A real-time delivery board shared across the office and drivers, with full status and a change history behind every stop.",
+      "A hosted ChatGPT and Claude connector that answers scheduling questions in plain language, pulling live from the same board.",
+      "Partial, case-insensitive customer search, so a half-remembered name still finds the delivery.",
+      "One central portal for routes, live driver status, and weekly performance summaries that generate on their own.",
+    ],
+    results: [
+      { metric: "0", label: "daily ops coordination calls needed" },
+      { metric: "100%", label: "route visibility in real time" },
+      { metric: "Ask, don't open", label: "schedule answers straight from ChatGPT or Claude" },
+    ],
+    tech: ["React", "Vite", "Firebase Realtime Database", "Vercel", "Model Context Protocol", "ChatGPT", "Claude"],
+  },
+  {
     slug: "gohappy-club-member-assistant",
     client: "GoHappy Club",
     industry: "Senior Wellness · D2C",
@@ -118,7 +181,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "ai-marketing-campaign-orchestrator",
-    client: "Multi-tenant",
+    client: "Marketrz Agency",
     industry: "Marketing Agencies · DTC",
     title: "Campaign orchestrator that cuts setup time by 80% and lifts reply quality across every channel.",
     summary:
