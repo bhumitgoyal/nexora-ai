@@ -15,7 +15,7 @@ export default function NotFound() {
           404 · ROUTE_NOT_FOUND
         </span>
         <h1 className="text-balance font-display text-5xl font-semibold leading-none tracking-tight md:text-7xl">
-          The agent <span className="text-gradient">couldn't route</span> this request.
+          The agent <span className="text-[var(--color-brand)]">couldn&apos;t route</span> this request.
         </h1>
         <p className="max-w-xl text-pretty text-[var(--color-fg-muted)] md:text-lg">
           The page you're looking for doesn't exist, has moved, or was never published.

@@ -76,7 +76,7 @@ export const caseStudies: CaseStudy[] = [
       "A dashboard of live KPIs, a FIFO cylinder-aging alert, and nightly cron jobs that pull payment status and reconcile anything that failed to sync.",
     ],
     results: [
-      { metric: "Days to minutes", label: "month-end invoicing and reconciliation" },
+      { metric: "Days → min", label: "month-end invoicing and reconciliation" },
       { metric: "0", label: "prices, rates, or balances visible to any driver" },
       { metric: "100%", label: "of invoices reconciled against QuickBooks automatically" },
     ],
@@ -109,7 +109,7 @@ export const caseStudies: CaseStudy[] = [
     results: [
       { metric: "0", label: "daily ops coordination calls needed" },
       { metric: "100%", label: "route visibility in real time" },
-      { metric: "Ask, don't open", label: "schedule answers straight from ChatGPT or Claude" },
+      { metric: "24/7", label: "schedule answers straight from ChatGPT or Claude" },
     ],
     tech: ["React", "Vite", "Firebase Realtime Database", "Vercel", "Model Context Protocol", "ChatGPT", "Claude"],
   },

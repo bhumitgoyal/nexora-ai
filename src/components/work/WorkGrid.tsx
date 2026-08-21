@@ -25,10 +25,10 @@ export function WorkGrid() {
             key={f}
             onClick={() => setFilter(f)}
             className={cn(
-              "rounded-full border px-4 py-1.5 text-xs font-medium uppercase tracking-[0.14em] transition-all",
+              "min-h-[36px] border px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] transition-all",
               filter === f
-                ? "border-[var(--color-brand)] bg-[var(--color-brand)]/10 text-[var(--color-fg)]"
-                : "border-[var(--color-border-strong)] text-[var(--color-fg-muted)] hover:border-[var(--color-brand)]/50 hover:text-[var(--color-fg)]",
+                ? "border-[var(--color-brand)] bg-[var(--color-brand)] text-white"
+                : "border-[var(--color-border)] text-[var(--color-fg-muted)] hover:border-[var(--color-brand)] hover:text-[var(--color-fg)]",
             )}
           >
             {f}
@@ -71,11 +71,11 @@ function WorkCard({ study }: { study: CaseStudy }) {
       <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-brand)]">
         <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-        <div className="absolute left-5 top-5 flex items-center gap-2">
-          <span className="rounded-full bg-black/40 backdrop-blur px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/80">
+        <div className="absolute left-4 top-4 flex flex-wrap items-center gap-2">
+          <span className="border border-white/40 bg-black/30 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/90">
             {study.industry}
           </span>
-          <span className="rounded-full bg-black/40 backdrop-blur px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/80">
+          <span className="border border-white/40 bg-black/30 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/90">
             {study.year}
           </span>
         </div>
@@ -94,7 +94,7 @@ function WorkCard({ study }: { study: CaseStudy }) {
         <div className="mt-auto grid grid-cols-3 gap-3 border-t border-[var(--color-border)] pt-4">
           {study.results.map((r) => (
             <div key={r.label} className="flex flex-col gap-0.5">
-              <span className="text-gradient-brand font-display text-lg font-semibold">
+              <span className="font-display text-base font-bold leading-tight tracking-tight text-[var(--color-brand)] md:text-lg">
                 {r.metric}
               </span>
               <span className="text-[10px] leading-tight text-[var(--color-fg-subtle)]">
