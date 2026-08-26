@@ -5,9 +5,9 @@ import { services } from "@/content/services";
 import { Logo } from "./Logo";
 
 const outcomeLabel: Record<string, string> = {
-  "custom-ai-workflows": "Workflow Automation: take repetitive ops off your team's plate",
-  "ai-voice-agents": "Voice Agents:answer every call in <60s",
-  "ai-lead-generation": "Lead-Gen Engine:find & follow up leads 24/7",
+  "custom-ai-workflows": "Workflow Automation",
+  "ai-voice-agents": "Voice Agents",
+  "ai-lead-generation": "Lead Generation",
 };
 
 export function Footer() {
@@ -46,12 +46,12 @@ export function Footer() {
           </FooterColumn>
 
           <FooterColumn title="Systems">
+            <FooterLink href="/what-we-offer#realestate">Real Estate AI</FooterLink>
             {services.slice(0, 4).map((s) => (
               <FooterLink key={s.slug} href={`/services#${s.slug}`}>
                 {outcomeLabel[s.slug] ?? s.title}
               </FooterLink>
             ))}
-            <FooterLink href="/what-we-offer#realestate">Real Estate AI</FooterLink>
           </FooterColumn>
 
           <FooterColumn title="Contact">

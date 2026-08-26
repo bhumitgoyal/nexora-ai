@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
 
   const name = sanitize(body.name ?? "");
   const email = sanitize(body.email ?? "");
+  const phone = sanitize(body.phone ?? "");
   const company = sanitize(body.company ?? "");
   const service = sanitize(body.service ?? "");
   const budget = sanitize(body.budget ?? "");
@@ -65,6 +66,7 @@ export async function POST(req: NextRequest) {
   <table style="width:100%;border-collapse:collapse">
     <tr><td style="padding:6px 0;font-weight:600;width:140px">Name</td><td style="padding:6px 0">${name}</td></tr>
     <tr><td style="padding:6px 0;font-weight:600">Email</td><td style="padding:6px 0"><a href="mailto:${email}" style="color:#C1121F">${email}</a></td></tr>
+    ${phone ? `<tr><td style="padding:6px 0;font-weight:600">Phone</td><td style="padding:6px 0"><a href="tel:${phone}" style="color:#C1121F">${phone}</a></td></tr>` : ""}
     ${company ? `<tr><td style="padding:6px 0;font-weight:600">Company</td><td style="padding:6px 0">${company}</td></tr>` : ""}
     ${service ? `<tr><td style="padding:6px 0;font-weight:600">Service</td><td style="padding:6px 0">${service}</td></tr>` : ""}
     ${budget ? `<tr><td style="padding:6px 0;font-weight:600">Budget</td><td style="padding:6px 0">${budget}</td></tr>` : ""}

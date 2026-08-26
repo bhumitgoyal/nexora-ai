@@ -31,7 +31,7 @@ export function TechStackMarquee() {
         <SectionHeader
           eyebrow="What runs on the layer"
           title="Manual work we've already made disappear."
-          subtitle="From sales follow-ups to invoice processing — once a workflow moves onto the infrastructure, your team never touches it again."
+          subtitle="From sales follow-ups to invoice processing, once a workflow moves onto the infrastructure, your team never touches it again."
         />
       </div>
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Check } from "lucide-react";
+import Link from "next/link";
+import { Check, ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import { services } from "@/content/services";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
@@ -12,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = {
   title: "Systems",
   description:
-    "The systems that make up Nuvero's AI infrastructure — voice agents, conversational AI, workflow orchestration, lead engines, and knowledge layers. Built into your stack, instrumented for measurable impact, owned by you.",
+    "The systems that make up Nuvero's AI infrastructure: voice agents, conversational AI, workflow orchestration, lead engines, and knowledge layers. Built into your stack, instrumented for measurable impact, owned by you.",
 };
 
 export default function ServicesPage() {
@@ -22,11 +23,17 @@ export default function ServicesPage() {
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
 
         <div className="container-x relative z-10">
+          <Link
+            href="/what-we-offer"
+            className="mb-8 inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
+          >
+            <ArrowLeft className="size-4" /> Back to Infrastructure
+          </Link>
           <SectionHeader
             as="h1"
             eyebrow="The systems"
             title="The building blocks of your AI infrastructure."
-            subtitle="These aren't packaged services — they're the systems we compose your intelligence layer from. Every one is custom-built into your stack, trained on how your company works, and instrumented for measurable impact."
+            subtitle="These aren't packaged services. They're the systems we compose your intelligence layer from, each custom-built into your stack, trained on how your company works, and instrumented for measurable impact."
           />
 
           <div className="mt-14">
@@ -124,6 +131,28 @@ export default function ServicesPage() {
               </Reveal>
             );
           })}
+
+          {/* Custom solution card */}
+          <Reveal>
+            <Link href="/contact" className="block">
+              <div className="group flex flex-col items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-8 transition-all duration-200 hover:bg-[var(--color-brand)] md:flex-row md:items-center md:justify-between md:p-10">
+                <div className="flex items-start gap-4">
+                  <Sparkles className="mt-0.5 size-6 shrink-0 text-[var(--color-brand)] transition-colors group-hover:text-white" />
+                  <div className="flex flex-col gap-1.5">
+                    <span className="font-display text-xl font-semibold tracking-tight text-[var(--color-brand)] transition-colors group-hover:text-white md:text-2xl">
+                      Solution to your custom problem
+                    </span>
+                    <span className="max-w-xl text-sm text-[var(--color-fg-muted)] transition-colors group-hover:text-white/80 md:text-base">
+                      Have a workflow, bottleneck, or internal process that doesn&apos;t fit standard systems? We engineer custom AI agents tailored to your exact stack, tools, and operations.
+                    </span>
+                  </div>
+                </div>
+                <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-brand)] transition-colors group-hover:text-white">
+                  Book a free 30-min call <ArrowRight className="size-4" />
+                </span>
+              </div>
+            </Link>
+          </Reveal>
         </div>
       </section>
 

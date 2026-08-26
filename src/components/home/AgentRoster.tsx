@@ -14,7 +14,7 @@ const TRAITS = [
   },
   {
     label: "Trained on your work",
-    body: "your SOPs, your tone, your edge cases — not generic prompts.",
+    body: "your SOPs, your tone, your edge cases, not generic prompts.",
   },
   {
     label: "Accountable in numbers",
@@ -154,7 +154,7 @@ export function AgentRoster() {
             <p className="mt-6 max-w-lg text-base leading-relaxed text-[var(--color-fg-muted)] md:text-lg">
               Every deployment leaves a record like this one: a system with a
               scope, an owner, and numbers it answers for. Not a subscription
-              you log into — a layer that clocks in so your team doesn&apos;t
+              you log into, but a layer that clocks in so your team doesn&apos;t
               have to.
             </p>
           </Reveal>
@@ -164,7 +164,7 @@ export function AgentRoster() {
                 <li className="flex items-start gap-3 text-sm md:text-base">
                   <span className="mt-2 size-1.5 shrink-0 bg-[var(--color-brand)]" />
                   <span>
-                    <strong className="font-semibold text-[var(--color-fg)]">{trait.label} —</strong>{" "}
+                    <strong className="font-semibold text-[var(--color-fg)]">{trait.label}:</strong>{" "}
                     <span className="text-[var(--color-fg-muted)]">{trait.body}</span>
                   </span>
                 </li>

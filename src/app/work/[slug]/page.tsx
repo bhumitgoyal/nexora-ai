@@ -87,10 +87,10 @@ export default async function CaseStudyPage({
           <div className="flex flex-col gap-6">
             <Reveal>
               <div className="flex flex-wrap items-center gap-3 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
-                <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-white/[0.02] px-3 py-1">
+                <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1">
                   <Building2 className="size-3" /> {study.industry}
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-white/[0.02] px-3 py-1">
+                <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1">
                   <Calendar className="size-3" /> {study.duration} · {study.year}
                 </span>
               </div>
@@ -114,7 +114,7 @@ export default async function CaseStudyPage({
 
       <section className="container-x">
         <Reveal>
-          <div className="relative overflow-hidden rounded-2xl bg-[var(--color-brand)] border-4 border-[var(--color-brand)]">
+          <div className="relative overflow-hidden bg-[var(--color-brand)] border-4 border-[var(--color-brand)]">
             {study.image ? (
               <Image
                 src={study.image}
@@ -141,7 +141,7 @@ export default async function CaseStudyPage({
               const pct = parsePercent(r.metric);
               return (
                 <div key={r.label} className="card-surface flex flex-col gap-3 p-7">
-                  <span className="text-gradient-brand font-display text-5xl font-semibold tracking-tight">
+                  <span className="font-display text-4xl font-bold leading-none tracking-tight text-[var(--color-brand)] [overflow-wrap:anywhere] md:text-5xl">
                     {r.metric}
                   </span>
                   <span className="text-sm text-[var(--color-fg-muted)]">{r.label}</span>
@@ -190,7 +190,7 @@ export default async function CaseStudyPage({
             {study.approach.map((a, i) => (
               <Reveal key={a} delay={i * 0.06}>
                 <li className="flex items-start gap-4 card-surface p-5">
-                  <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--color-brand),var(--color-accent))] font-mono text-xs font-semibold text-white">
+                  <span className="inline-flex size-7 shrink-0 items-center justify-center border-2 border-[var(--color-brand)] bg-[var(--color-brand)] font-mono text-xs font-semibold text-white">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-sm leading-relaxed text-[var(--color-fg)] md:text-base">
@@ -216,8 +216,8 @@ export default async function CaseStudyPage({
           <ul className="grid grid-cols-1 gap-3">
             {study.solution.map((s, i) => (
               <Reveal key={s} delay={i * 0.06}>
-                <li className="flex items-start gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-5 text-sm leading-relaxed text-[var(--color-fg)] md:text-base">
-                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" />
+                <li className="flex items-start gap-3 border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-5 text-sm leading-relaxed text-[var(--color-fg)] md:text-base">
+                  <span className="mt-1.5 size-1.5 shrink-0 bg-[var(--color-brand)]" />
                   {s}
                 </li>
               </Reveal>
@@ -236,7 +236,7 @@ export default async function CaseStudyPage({
               {study.tech.map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-[var(--color-border-strong)] bg-white/[0.02] px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-[var(--color-fg-muted)]"
+                  className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-[var(--color-fg-muted)]"
                 >
                   {t}
                 </span>

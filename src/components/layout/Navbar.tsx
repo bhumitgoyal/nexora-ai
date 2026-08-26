@@ -8,6 +8,7 @@ import { Menu, X, FileText, Search } from "lucide-react";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { GlowButton } from "@/components/shared/GlowButton";
+import { Magnetic } from "@/components/shared/Magnetic";
 import { Logo } from "./Logo";
 import { Kbd } from "@/components/ui/kbd";
 import {
@@ -128,16 +129,20 @@ export function Navbar() {
               <Search className="size-3.5" />
               <Kbd className="text-[10px]">⌘K</Kbd>
             </button>
-            <Link
-              href="/booklet"
-              className="inline-flex h-11 w-36 items-center justify-center gap-1.5 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] text-sm font-semibold text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
-            >
-              <FileText className="size-3.5 text-[var(--color-accent)]" />
-              Booklet
-            </Link>
-            <GlowButton href="/contact" size="sm" withArrow className="!h-11 !w-36 !px-0">
-              Book a free call
-            </GlowButton>
+            <Magnetic>
+              <Link
+                href="/booklet"
+                className="inline-flex h-11 w-36 items-center justify-center gap-1.5 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] text-sm font-semibold text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+              >
+                <FileText className="size-3.5 text-[var(--color-accent)]" />
+                Booklet
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <GlowButton href="/contact" size="sm" withArrow className="!h-11 !w-36 !px-0">
+                Book a free call
+              </GlowButton>
+            </Magnetic>
           </div>
 
           <button

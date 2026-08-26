@@ -12,7 +12,7 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Nuvero AI is led by Bhumit Goyal. We build the AI infrastructure businesses run on — 45 systems deployed, 92% client retention, 11 industries. Learn how we work and why clients keep coming back.",
+    "Nuvero AI is led by Bhumit Goyal. We build the AI infrastructure businesses run on: 45 systems deployed, 92% client retention, 11 industries. Learn how we work and why clients keep coming back.",
 };
 
 export default function AboutPage() {
@@ -39,7 +39,7 @@ export default function AboutPage() {
                 <p className="max-w-2xl text-pretty text-base leading-relaxed text-[var(--color-fg-muted)] md:text-lg">
                   Nuvero AI was founded on a simple belief: businesses don't need another
                   AI product or another vendor. They need an intelligence layer underneath
-                  their operations — agents that know the work, systems that run it, and
+                  their operations: agents that know the work, systems that run it, and
                   a small senior team that builds that layer end-to-end. That's what we do.
                 </p>
               </Reveal>

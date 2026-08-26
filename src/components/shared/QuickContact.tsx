@@ -11,6 +11,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { site } from "@/content/site";
+import { Magnetic } from "@/components/shared/Magnetic";
 
 export function QuickContact() {
   const [open, setOpen] = useState(false);
@@ -20,14 +21,16 @@ export function QuickContact() {
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        aria-label="Quick contact"
-        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-4 py-3 text-sm font-semibold text-white shadow-[4px_4px_0_var(--color-brand-strong)] transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)] md:bottom-8 md:right-8"
-      >
-        <MessageCircle className="size-4" />
-        <span className="hidden sm:inline">Get in touch</span>
-      </button>
+      <Magnetic className="fixed bottom-6 right-6 z-40 md:bottom-8 md:right-8">
+        <button
+          onClick={() => setOpen(true)}
+          aria-label="Quick contact"
+          className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-4 py-3 text-sm font-semibold text-white shadow-[4px_4px_0_var(--color-brand-strong)] transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
+        >
+          <MessageCircle className="size-4" />
+          <span className="hidden sm:inline">Get in touch</span>
+        </button>
+      </Magnetic>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="gap-0 rounded-none border border-[var(--color-border)] bg-[var(--color-bg)] p-0 shadow-[8px_8px_0_var(--color-brand)] sm:max-w-sm">

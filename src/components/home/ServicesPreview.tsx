@@ -144,7 +144,7 @@ export function ServicesPreview() {
         <SectionHeader
           eyebrow="Outcomes in production"
           title="Results already running, mapped to your workflows."
-          subtitle="Every entry below is an outcome a real business collects today — carts recovered, calls answered, books closed. Start from a proven one, or bring us a workflow no one has automated yet."
+          subtitle="Every entry below is an outcome a real business collects today: carts recovered, calls answered, books closed. Start from a proven one, or bring us a workflow no one has automated yet."
         />
 
         <Reveal delay={0.12}>
@@ -194,7 +194,7 @@ export function ServicesPreview() {
               </h3>
               <p className="mx-auto max-w-xl text-sm text-[var(--color-fg-muted)] md:text-base">
                 There is no fixed catalogue. We design the agents and orchestration around your
-                exact operation — whatever the workflow, the infrastructure gets built for it.
+                exact operation. Whatever the workflow, the infrastructure gets built for it.
               </p>
             </div>
             <div className="flex flex-col items-center gap-3 sm:flex-row">

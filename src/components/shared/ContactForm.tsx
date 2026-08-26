@@ -33,6 +33,7 @@ export function ContactForm() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     service: "",
     budget: "",
@@ -85,7 +86,7 @@ export function ContactForm() {
           </p>
         </div>
         <button
-          onClick={() => { setStatus("idle"); setForm({ name: "", email: "", company: "", service: "", budget: "", message: "" }); }}
+          onClick={() => { setStatus("idle"); setForm({ name: "", email: "", phone: "", company: "", service: "", budget: "", message: "" }); }}
           className="text-xs text-[var(--color-fg-subtle)] underline underline-offset-4 hover:text-[var(--color-fg-muted)]"
         >
           Send another message
@@ -132,17 +133,31 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-fg-subtle)]">
-          Company / Project
-        </label>
-        <input
-          type="text"
-          placeholder="Acme Corp"
-          value={form.company}
-          onChange={(e) => set("company", e.target.value)}
-          className={inputBase}
-        />
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-fg-subtle)]">
+            Company / Project
+          </label>
+          <input
+            type="text"
+            placeholder="Acme Corp"
+            value={form.company}
+            onChange={(e) => set("company", e.target.value)}
+            className={inputBase}
+          />
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-fg-subtle)]">
+            Phone Number <span className="font-normal lowercase text-[var(--color-fg-subtle)]">(optional)</span>
+          </label>
+          <input
+            type="tel"
+            placeholder="+1 (555) 000-0000"
+            value={form.phone}
+            onChange={(e) => set("phone", e.target.value)}
+            className={inputBase}
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">

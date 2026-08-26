@@ -50,7 +50,7 @@ export function ComparisonTable() {
         <SectionHeader
           eyebrow="The difference"
           title="What changes when your ops run on AI infrastructure."
-          subtitle="Side by side — every workflow where the manual grind gets replaced by a system that knows the work and just runs it."
+          subtitle="Side by side, every workflow where the manual grind gets replaced by a system that knows the work and just runs it."
         />
 
         {/* Mobile: stacked cards so the payoff column is never cut off */}
@@ -88,7 +88,7 @@ export function ComparisonTable() {
 
         {/* Desktop: side-by-side table */}
         <Reveal delay={0.1} className="hidden md:block">
-          <div className="mt-14 overflow-x-auto border border-[var(--color-border)]">
+          <div className="mt-14 overflow-x-auto border border-[var(--color-border)] bg-[var(--color-bg)]">
             <Table>
               <TableHeader>
                 <TableRow className="border-b border-[var(--color-border)] hover:bg-transparent">

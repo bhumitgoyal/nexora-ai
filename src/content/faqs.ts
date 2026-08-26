@@ -5,14 +5,14 @@
 
 export const faqs: Faq[] = [
   {
-    question: "So what exactly are you selling — a product, a service, or something else?",
+    question: "So what exactly are you selling: a product, a service, or something else?",
     answer:
-      "Neither. We build AI infrastructure: the intelligence layer that sits underneath your operations. Agents trained on how your company actually works, wired into the tools you already use, running the manual work your team does today. There's no subscription to a product and no hours-for-money service — you get a working systems layer, deployed in your stack, that you own outright.",
+      "Neither. We build AI infrastructure: the intelligence layer that sits underneath your operations. Agents trained on how your company actually works, wired into the tools you already use, running the manual work your team does today. There's no subscription to a product and no hours-for-money service. You get a working systems layer, deployed in your stack, that you own outright.",
   },
   {
     question: "What kind of work can the infrastructure take over?",
     answer:
-      "Any workflow a human runs manually today. If it follows a pattern — follow-ups, reporting, scheduling, intake, reconciliation, outreach, support — an agent can learn it and run it. The agents are trained on your SOPs, your data, and your edge cases, so they know the work the way your team does. There is no fixed catalogue: we build the automation around your operation.",
+      "Any workflow a human runs manually today. If it follows a pattern like follow-ups, reporting, scheduling, intake, reconciliation, outreach, or support, an agent can learn it and run it. The agents are trained on your SOPs, your data, and your edge cases, so they know the work the way your team does. There is no fixed catalogue: we build the automation around your operation.",
   },
   {
     question: "How long does a typical engagement take?",
@@ -37,7 +37,7 @@ export const faqs: Faq[] = [
   {
     question: "Which industries do you work with?",
     answer:
-      "The infrastructure is industry-agnostic — we've deployed it across energy, senior wellness, real estate, logistics, B2B SaaS, and marketing services. What matters isn't the industry label; it's whether there's repetitive, judgment-heavy manual work the layer can absorb.",
+      "The infrastructure is industry-agnostic. We've deployed it across energy, senior wellness, real estate, logistics, B2B SaaS, and marketing services. What matters isn't the industry label; it's whether there's repetitive, judgment-heavy manual work the layer can absorb.",
   },
   {
     question: "Do you offer ongoing support after launch?",

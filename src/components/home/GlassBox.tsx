@@ -20,7 +20,7 @@ const PLATES: Plate[] = [
   {
     icon: KeyRound,
     title: "You own everything",
-    body: "Code, prompts, data, models — handed over with runbooks at every milestone. No vendor lock-in, no per-seat tax.",
+    body: "Code, prompts, data, and models, all handed over with runbooks at every milestone. No vendor lock-in, no per-seat tax.",
   },
   {
     icon: Server,
@@ -30,7 +30,7 @@ const PLATES: Plate[] = [
   {
     icon: ScrollText,
     title: "Every action logged",
-    body: "The switchboard isn't a metaphor — every call, message, and decision is timestamped and auditable.",
+    body: "The switchboard isn't a metaphor. Every call, message, and decision is timestamped and auditable.",
   },
   {
     icon: UserCheck,
@@ -57,7 +57,7 @@ export function GlassBox() {
         <SectionHeader
           eyebrow="Glass box, not black box"
           title="Infrastructure you can read."
-          subtitle="Black-box AI asks for trust. The layer shows its work — every decision inspectable, every outcome auditable, and all of it yours."
+          subtitle="Black-box AI asks for trust. The layer shows its work: every decision inspectable, every outcome auditable, and all of it yours."
         />
 
         <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-px border border-[var(--color-border)] bg-[var(--color-border)] sm:grid-cols-2 lg:grid-cols-3">
@@ -88,7 +88,7 @@ export function GlassBox() {
 
         <Reveal delay={0.2}>
           <p className="mx-auto mt-8 max-w-md text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
-            Questions on data handling? Ask before kickoff — we&apos;ll put it in writing.
+            Questions on data handling? Ask before kickoff and we&apos;ll put it in writing.
           </p>
         </Reveal>
       </div>

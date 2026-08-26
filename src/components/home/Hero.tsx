@@ -56,7 +56,7 @@ function LiveTicker() {
     <div className="inline-flex max-w-full items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-1.5 font-mono text-[9px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)] md:text-[10px] md:tracking-[0.22em]">
       <span className="size-1.5 shrink-0 animate-pulse bg-[var(--color-brand)]" />
       <span className="truncate">
-        Running now — calls answered today:{" "}
+        Running now · calls answered today:{" "}
         <span className="font-bold tabular-nums text-[var(--color-fg)]">{calls}</span>
         <span className="hidden sm:inline">
           {" "}· hours returned this week:{" "}
@@ -134,7 +134,6 @@ function JobTicket() {
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
   const prefersReduced = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
@@ -144,42 +143,12 @@ export function Hero() {
   const contentY = useTransform(scrollYProgress, [0, 1], prefersReduced ? [0, 0] : [0, -40]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], prefersReduced ? [1, 1] : [1, 0.5]);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const overlay = overlayRef.current;
-    if (!section || !overlay) return;
-
-    let raf = 0;
-    const onMove = (e: MouseEvent) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-        const px = e.clientX - rect.left;
-        const py = e.clientY - rect.top;
-        overlay.style.backgroundImage = `radial-gradient(560px circle at ${px}px ${py}px, rgba(0,48,73,0.09) 0%, transparent 65%)`;
-      });
-    };
-    const onLeave = () => {
-      cancelAnimationFrame(raf);
-      overlay.style.backgroundImage = "none";
-    };
-
-    section.addEventListener("mousemove", onMove, { passive: true });
-    section.addEventListener("mouseleave", onLeave);
-    return () => {
-      cancelAnimationFrame(raf);
-      section.removeEventListener("mousemove", onMove);
-      section.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
-
   return (
     <section ref={sectionRef} className="relative isolate flex min-h-[92svh] items-center overflow-hidden border-b border-[var(--color-border)] pb-16 pt-10 md:min-h-screen md:pt-16">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-60" />
       <div className="absolute inset-0 -z-10">
         <NetworkField />
       </div>
-      <div ref={overlayRef} aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ backgroundImage: "none" }} />
 
       {/* animated corner marks */}
       <motion.span
@@ -225,7 +194,7 @@ export function Hero() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mt-6 max-w-xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg"
         >
-          Agents trained on how your company actually works — answering your
+          Agents trained on how your company actually works, answering your
           customers in under 60 seconds and handing your team back 30+ hours
           a week. Manual work disappears. You own the whole layer.
         </motion.p>

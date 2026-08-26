@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Mic, Bot, Megaphone, Truck, Target, Search } from "lucide-react";
+import { ArrowUpRight, Mic, Bot, Megaphone, Truck, Target, Search, Boxes } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Marquee } from "@/components/shared/Marquee";
 
@@ -59,7 +59,7 @@ const workItems: WorkItem[] = [
   },
   {
     no: "03",
-    client: "Marketing Agencies",
+    client: "Marketrz Agency",
     industry: "Marketing & Media",
     headline: "Full campaign kit in <15 min · down from 2 days, across 6+ channels",
     icon: Megaphone,
@@ -97,6 +97,25 @@ const workItems: WorkItem[] = [
   },
   {
     no: "05",
+    client: "Southwest Gases",
+    industry: "Energy & Utilities",
+    headline: "Month-end from days to minutes · every invoice reconciled to QuickBooks on its own",
+    icon: Boxes,
+    highlights: [
+      "Runs order entry, deliveries, cylinder rents, and invoicing in one system",
+      "Invoices build themselves on delivery and sync straight to QuickBooks",
+      "Drivers see documents with no price, rate, or balance anywhere",
+      "Nightly jobs pull payment status and reconcile any failed sync",
+    ],
+    impact: [
+      { metric: "Days → min", label: "month-end invoicing and reconciliation" },
+      { metric: "0", label: "prices or balances shown to any driver" },
+      { metric: "100%", label: "of invoices reconciled to QuickBooks" },
+    ],
+    gradient: "from-violet-500/30 via-cyan-500/20 to-fuchsia-500/25",
+  },
+  {
+    no: "06",
     client: "Multi-Client Deployment",
     industry: "B2B SaaS & Agencies",
     headline: "100% automated top-of-funnel · near-zero marginal lead cost, zero manual research",
@@ -115,7 +134,7 @@ const workItems: WorkItem[] = [
     gradient: "from-cyan-500/25 via-fuchsia-500/20 to-violet-500/25",
   },
   {
-    no: "06",
+    no: "07",
     client: "SBA.gov Research Workflow",
     industry: "Government & SMB Data",
     headline: "1,000s of hidden SMBs found per run · hours of research collapsed to minutes",
