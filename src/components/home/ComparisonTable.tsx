@@ -88,7 +88,7 @@ export function ComparisonTable() {
 
         {/* Desktop: side-by-side table */}
         <Reveal delay={0.1} className="hidden md:block">
-          <div className="mt-14 overflow-x-auto border border-[var(--color-border)]">
+          <div className="mt-14 overflow-x-auto border border-[var(--color-border)] bg-[var(--color-bg)]">
             <Table>
               <TableHeader>
                 <TableRow className="border-b border-[var(--color-border)] hover:bg-transparent">

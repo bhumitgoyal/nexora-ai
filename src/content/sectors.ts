@@ -22,7 +22,7 @@ export type Sector = {
   services: SectorService[];
 };
 
-export const sectors: Sector[] = [
+const sectorsBase: Sector[] = [
   {
     id: "marketing",
     label: "Marketing Agencies",
@@ -470,4 +470,10 @@ export const sectors: Sector[] = [
       },
     ],
   },
+];
+
+// Real Estate leads the sector line-up.
+export const sectors: Sector[] = [
+  ...sectorsBase.filter((s) => s.id === "realestate"),
+  ...sectorsBase.filter((s) => s.id !== "realestate"),
 ];

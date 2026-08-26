@@ -172,6 +172,12 @@ const sections = [
   },
 ];
 
+// Real Estate leads the infrastructure line-up.
+const orderedSections = [
+  ...sections.filter((s) => s.id === "realestate"),
+  ...sections.filter((s) => s.id !== "realestate"),
+];
+
 const industryJumpIcons: Record<string, LucideIcon> = {
   agencies: Megaphone,
   ecommerce: ShoppingBag,
@@ -250,11 +256,11 @@ export function WhatWeOfferContent() {
             </div>
           </Reveal>
 
-          {/* Quick jump nav — industry tab only */}
+          {/* Quick jump nav - industry tab */}
           {tab === "industry" && (
             <Reveal delay={0.2}>
               <div className="mt-4 flex flex-wrap gap-2">
-                {sections.map((s) => {
+                {orderedSections.map((s) => {
                   const Icon = industryJumpIcons[s.id] ?? Megaphone;
                   return (
                     <a
@@ -270,13 +276,34 @@ export function WhatWeOfferContent() {
               </div>
             </Reveal>
           )}
+
+          {/* Quick jump nav - service tab */}
+          {tab === "service" && (
+            <Reveal delay={0.2}>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {services.map((service) => {
+                  const Icon = service.icon;
+                  return (
+                    <a
+                      key={service.slug}
+                      href={`#service-${service.slug}`}
+                      className="inline-flex items-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2 text-xs font-semibold text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+                    >
+                      <Icon className="size-3.5" />
+                      {service.title}
+                    </a>
+                  );
+                })}
+              </div>
+            </Reveal>
+          )}
         </div>
       </section>
 
       {/* BY INDUSTRY */}
       {tab === "industry" && (
         <>
-          {sections.map((section, idx) => {
+          {orderedSections.map((section, idx) => {
             const Icon = section.icon;
             const regularItems = section.solved.filter((a) => !a.isNew);
             const ctaItem = section.solved.find((a) => a.isNew);
@@ -390,7 +417,7 @@ export function WhatWeOfferContent() {
                 const Icon = service.icon;
                 return (
                   <Reveal key={service.slug} className="h-full">
-                    <div className="flex h-full flex-col gap-4 bg-[var(--color-bg)] p-8 transition-colors hover:bg-[var(--color-bg-elev)]">
+                    <div id={`service-${service.slug}`} className="flex h-full scroll-mt-28 flex-col gap-4 bg-[var(--color-bg)] p-8 transition-colors hover:bg-[var(--color-bg-elev)]">
                       <span className="inline-flex size-10 items-center justify-center border-2 border-[var(--color-brand)] text-[var(--color-brand)]">
                         <Icon className="size-5" />
                       </span>
@@ -416,15 +443,26 @@ export function WhatWeOfferContent() {
               })}
             </div>
 
+            {/* Custom solution card */}
             <Reveal delay={0.1}>
-              <div className="mt-10 flex justify-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)]"
-                >
-                  Book a free 30-min call <ArrowRight className="size-4" />
-                </Link>
-              </div>
+              <Link href="/contact" className="mt-8 block">
+                <div className="group flex flex-col items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-8 transition-all duration-200 hover:bg-[var(--color-brand)] md:flex-row md:items-center md:justify-between md:p-10">
+                  <div className="flex items-start gap-4">
+                    <Sparkles className="mt-0.5 size-6 shrink-0 text-[var(--color-brand)] transition-colors group-hover:text-white" />
+                    <div className="flex flex-col gap-1.5">
+                      <span className="font-display text-xl font-semibold tracking-tight text-[var(--color-brand)] transition-colors group-hover:text-white md:text-2xl">
+                        Solution to your custom problem
+                      </span>
+                      <span className="max-w-xl text-sm text-[var(--color-fg-muted)] transition-colors group-hover:text-white/80 md:text-base">
+                        Have a workflow, bottleneck, or internal process that doesn&apos;t fit standard systems? We engineer custom AI agents tailored to your exact stack, tools, and operations.
+                      </span>
+                    </div>
+                  </div>
+                  <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-brand)] transition-colors group-hover:text-white">
+                    Book a free 30-min call <ArrowRight className="size-4" />
+                  </span>
+                </div>
+              </Link>
             </Reveal>
           </div>
         </section>

@@ -134,7 +134,6 @@ function JobTicket() {
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
   const prefersReduced = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
@@ -144,42 +143,12 @@ export function Hero() {
   const contentY = useTransform(scrollYProgress, [0, 1], prefersReduced ? [0, 0] : [0, -40]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], prefersReduced ? [1, 1] : [1, 0.5]);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const overlay = overlayRef.current;
-    if (!section || !overlay) return;
-
-    let raf = 0;
-    const onMove = (e: MouseEvent) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-        const px = e.clientX - rect.left;
-        const py = e.clientY - rect.top;
-        overlay.style.backgroundImage = `radial-gradient(560px circle at ${px}px ${py}px, rgba(0,48,73,0.09) 0%, transparent 65%)`;
-      });
-    };
-    const onLeave = () => {
-      cancelAnimationFrame(raf);
-      overlay.style.backgroundImage = "none";
-    };
-
-    section.addEventListener("mousemove", onMove, { passive: true });
-    section.addEventListener("mouseleave", onLeave);
-    return () => {
-      cancelAnimationFrame(raf);
-      section.removeEventListener("mousemove", onMove);
-      section.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
-
   return (
     <section ref={sectionRef} className="relative isolate flex min-h-[92svh] items-center overflow-hidden border-b border-[var(--color-border)] pb-16 pt-10 md:min-h-screen md:pt-16">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-60" />
       <div className="absolute inset-0 -z-10">
         <NetworkField />
       </div>
-      <div ref={overlayRef} aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ backgroundImage: "none" }} />
 
       {/* animated corner marks */}
       <motion.span

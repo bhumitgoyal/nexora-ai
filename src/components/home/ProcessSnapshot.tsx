@@ -28,7 +28,7 @@ function PinnedProcess() {
       () => {
         const st = ScrollTrigger.create({
           trigger: section,
-          start: "top top",
+          start: "top top+=15px",
           end: `+=${processSteps.length * 70}%`,
           pin: true,
           scrub: true,
