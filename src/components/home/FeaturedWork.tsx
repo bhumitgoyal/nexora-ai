@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Mic, Bot, Megaphone, Truck, Target, Search, Boxes } from "lucide-react";
+import { ArrowUpRight, Mic, Bot, Megaphone, Truck, Target, Search, Boxes, FileText, Send } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Marquee } from "@/components/shared/Marquee";
 
@@ -152,6 +152,44 @@ const workItems: WorkItem[] = [
     ],
     gradient: "from-teal-500/30 via-cyan-500/20 to-violet-500/20",
     openSource: true,
+  },
+  {
+    no: "08",
+    client: "Adfactors PR",
+    industry: "PR & Communications",
+    headline: "178 wire rate cards to a client-ready PDF quote in minutes, not hours",
+    icon: FileText,
+    highlights: [
+      "One live catalogue of every domestic and international wire",
+      "Single-window builder that prices a request as you go",
+      "Client-ready PDF quotes generated in the browser",
+      "Admin console for Partnerships to edit any rate live",
+    ],
+    impact: [
+      { metric: "178", label: "rate cards unified into one catalogue" },
+      { metric: "Minutes", label: "to a client-ready quote, was hours" },
+      { metric: "1", label: "source of truth, edited in real time" },
+    ],
+    gradient: "from-violet-500/30 via-fuchsia-500/20 to-cyan-500/25",
+  },
+  {
+    no: "09",
+    client: "Nuvero AI",
+    industry: "Sales & Outreach",
+    headline: "A full outreach pipeline reviewed in ~10 minutes a day, with a human gating every send",
+    icon: Send,
+    highlights: [
+      "Discovers, dedupes, and scores leads before you look",
+      "Resolves contacts with provenance and a confidence score",
+      "Drafts each email under strict no-invented-facts guards",
+      "Throttled, capped sending to protect the domain",
+    ],
+    impact: [
+      { metric: "~10 min", label: "daily review to run the pipeline" },
+      { metric: "0", label: "emails sent without human approval" },
+      { metric: "100%", label: "of contacts carry provenance" },
+    ],
+    gradient: "from-cyan-500/30 via-teal-500/20 to-violet-500/25",
   },
 ];
 

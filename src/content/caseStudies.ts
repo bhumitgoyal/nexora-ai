@@ -212,6 +212,68 @@ export const caseStudies: CaseStudy[] = [
     tech: ["n8n", "Instantly", "Smartlead", "Claude", "GPT-4o", "Webflow"],
   },
   {
+    slug: "adfactors-pr-wire-booking",
+    client: "Adfactors PR",
+    industry: "PR & Communications",
+    title: "A single-window wire-booking platform that turns 178 rate cards into a client-ready quote in minutes.",
+    summary:
+      "An internal platform for PR consultants to browse domestic and international press-release wire rate cards, build a single-window booking request, and generate a client-ready PDF quote, with a backend console where Partnerships edits every rate and catalogue item in real time.",
+    duration: "7 weeks",
+    year: "2026",
+    gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
+    challenge:
+      "Consultants hand-built every quote from dozens of regional rate-card spreadsheets, so quotes were slow, error-prone, and inconsistent between people. Partnerships had no single source of truth for rates, and updating a price meant re-sending files to the whole team.",
+    approach: [
+      "Sat with the Partnerships and Operations team and turned the 2026 rate cards, 178 line items across domestic and international wires, into one structured catalogue.",
+      "Designed a single-window request flow so a consultant picks wires, quantities, and add-ons in one place instead of stitching spreadsheets together.",
+      "Built a backend console where Partnerships edits any rate or catalogue item live, so the price a consultant sees is always the current one.",
+      "Generated the quote as a branded, client-ready PDF on the spot, matching the format clients already expect.",
+    ],
+    solution: [
+      "One catalogue of every domestic and international wire, searchable and always current.",
+      "A single-window builder that assembles a full request and prices it as you go.",
+      "Client-ready PDF quotes generated in the browser, with no manual formatting.",
+      "A passcode-gated admin console for Partnerships to manage rates and catalogue items without touching code.",
+    ],
+    results: [
+      { metric: "178", label: "wire rate cards unified into one live catalogue" },
+      { metric: "Minutes", label: "to build a client-ready PDF quote, down from hours" },
+      { metric: "1", label: "source of truth Partnerships edits in real time" },
+    ],
+    tech: ["Next.js", "React", "Tailwind", "PostgreSQL", "Prisma", "jsPDF", "Google Cloud"],
+  },
+  {
+    slug: "nuvero-outreach-engine",
+    client: "Nuvero AI",
+    industry: "Sales & Outreach",
+    title: "An outreach engine that finds prospects, resolves verified contacts, and drafts every email, with a human approving each send.",
+    summary:
+      "Nuvero's own end-to-end outreach engine: it discovers leads across sources, dedupes and scores them, resolves verified contacts with provenance, drafts a personalized email for each under strict no-invented-facts rules, holds every send behind a one-click human approval, then paces delivery to protect the sending domain.",
+    duration: "Ongoing",
+    year: "2025–2026",
+    gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
+    challenge:
+      "The bottleneck in outreach was never writing the email. It was discovery, deduplication, and finding a real contact you could trust, then doing it again every day without burning the domain or emailing the wrong person.",
+    approach: [
+      "Built a daily pipeline that collects, normalizes, dedupes, filters, and scores leads before a human ever looks at them.",
+      "Resolved contacts from multiple sources and attached provenance and a confidence score to every address, so nothing is a guess.",
+      "Composed a personalized email per lead under strict no-invented-facts guards, so the model never fabricates a detail to fill a sentence.",
+      "Put a human approval gate in front of every send, then drained an auto-send queue that is throttled and capped to keep the domain healthy.",
+    ],
+    solution: [
+      "A one-command daily run that turns raw sources into scored, contactable leads.",
+      "An approvals view where each drafted email is read in full with the contact's provenance and confidence before it can go out.",
+      "Deliverability-safe sending that is throttled and capped, with suppression and bounce tracking built in.",
+      "A server-rendered dashboard for run health, contacts, and a live log of every send.",
+    ],
+    results: [
+      { metric: "~10 min", label: "daily review to run the whole outreach pipeline" },
+      { metric: "0", label: "emails sent without a human approving the draft" },
+      { metric: "100%", label: "of contacts carry provenance and a confidence score" },
+    ],
+    tech: ["Python", "OpenAI", "Gmail API", "PostgreSQL", "SSE Dashboard"],
+  },
+  {
     slug: "meridian-realty-inbound-qualifier",
     client: "Meridian Realty",
     industry: "Real Estate",
