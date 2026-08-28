@@ -283,6 +283,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "6 weeks",
     year: "2026",
     gradient: "from-cyan-500/40 via-violet-500/20 to-fuchsia-500/30",
+    image: "/proj-meridian.jpeg",
     challenge:
       "Meridian was losing 60% of inbound leads to slow response times. By the time an agent called back, the buyer had already toured a competitor's listing.",
     approach: [
@@ -314,6 +315,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "8 weeks",
     year: "2025",
     gradient: "from-violet-500/40 via-fuchsia-500/30 to-cyan-500/40",
+    image: "/proj-northwind.jpeg",
     challenge:
       "Northwind's ops team handled 4,000+ shipments a week across 17 jurisdictions. New hires took 4 months to ramp, and routing mistakes carried a significant cost per incident.",
     approach: [
@@ -345,6 +347,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "10 weeks",
     year: "2025",
     gradient: "from-fuchsia-500/40 via-cyan-500/20 to-violet-500/30",
+    image: "/proj-lumina.jpeg",
     challenge:
       "Lumina was turning down retainer expansions because their senior writers were maxed out. Hiring more was slow, expensive, and risked diluting the distinctive voice clients paid premiums for.",
     approach: [

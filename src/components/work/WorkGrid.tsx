@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { caseStudies, allIndustries, type CaseStudy } from "@/content/caseStudies";
@@ -69,21 +70,31 @@ function WorkCard({ study }: { study: CaseStudy }) {
       className="group relative flex h-full flex-col overflow-hidden card-surface"
     >
       <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-brand)]">
-        <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+        {study.image ? (
+          <Image
+            src={study.image}
+            alt={`${study.client} workflow, built by Nuvero AI`}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover object-top"
+          />
+        ) : (
+          <div className="absolute inset-0 grid-bg opacity-20" />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
         <div className="absolute left-4 top-4 flex flex-wrap items-center gap-2">
-          <span className="border border-white/40 bg-black/30 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/90">
+          <span className="border border-white/30 bg-black/55 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/90">
             {study.industry}
           </span>
-          <span className="border border-white/40 bg-black/30 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/90">
+          <span className="border border-white/30 bg-black/55 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/90">
             {study.year}
           </span>
         </div>
         <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
-          <span className="font-display text-2xl font-semibold text-white">
+          <span className="font-display text-2xl font-semibold text-white [text-shadow:0_1px_10px_rgba(0,0,0,0.6)]">
             {study.client}
           </span>
-          <ArrowUpRight className="size-5 text-white/80 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
+          <ArrowUpRight className="size-5 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-4 p-6">
