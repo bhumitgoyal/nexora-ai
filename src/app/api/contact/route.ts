@@ -5,8 +5,12 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
 }
 
-const TO_EMAIL = "nuveroai@gmail.com";
-const FROM_EMAIL = "onboarding@resend.dev";
+// Where enquiries land. Override in the environment once the domain is live.
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "nuveroai@gmail.com";
+// Must be an address on a domain verified at resend.com/domains.
+// Falls back to Resend's shared test sender only if nothing is configured.
+const FROM_EMAIL =
+  process.env.CONTACT_FROM_EMAIL || "Nuvero AI <noreply@nuvero.space>";
 
 // Simple in-memory rate limiter: max 5 requests per IP per 5 minutes
 const rateMap = new Map<string, { count: number; resetAt: number }>();
@@ -78,14 +82,27 @@ export async function POST(req: NextRequest) {
 </div>
 `;
 
+  if (!process.env.RESEND_API_KEY) {
+    console.error("Contact form: RESEND_API_KEY is not set in this environment.");
+    return NextResponse.json(
+      { error: "Email is not configured. Please try again later." },
+      { status: 500 },
+    );
+  }
+
   try {
-    await getResend().emails.send({
+    const { error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       replyTo: email,
       subject: `New enquiry from ${name}${company ? ` (${company})` : ""}`,
       html,
     });
+
+    if (error) {
+      console.error("Resend send error:", error);
+      return NextResponse.json({ error: "Failed to send email. Please try again." }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

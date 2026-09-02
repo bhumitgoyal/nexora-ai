@@ -50,7 +50,7 @@ export function TechStackMarquee() {
 
       <div className="mt-16 border-t border-[var(--color-border)] pt-12">
         <p className="container-x mb-6 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
-          Integration partners &amp; platforms
+          Integration platforms
         </p>
         <Marquee pauseOnHover={false}>
           {integrationPartners.map((p) => (

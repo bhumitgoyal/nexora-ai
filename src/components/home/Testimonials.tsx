@@ -1,4 +1,5 @@
-import { Quote } from "lucide-react";
+import Link from "next/link";
+import { Quote, ArrowUpRight } from "lucide-react";
 import { testimonials } from "@/content/testimonials";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Marquee } from "@/components/shared/Marquee";
@@ -40,6 +41,16 @@ export function Testimonials() {
             </article>
           ))}
         </Marquee>
+      </div>
+
+      <div className="container-x mt-8 flex justify-end">
+        <Link
+          href="/reviews"
+          className="group inline-flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
+        >
+          View all reviews
+          <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </Link>
       </div>
     </section>
   );

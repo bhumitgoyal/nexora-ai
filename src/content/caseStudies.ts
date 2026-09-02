@@ -61,6 +61,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2026",
     featured: true,
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
+    image: "/proj-southwest-voice.jpeg",
     challenge:
       "The business ran on spreadsheets, paper bills of lading, and manual QuickBooks entry. Deliveries were scheduled by phone, cylinder rents were tracked by hand, and every invoice was retyped, so numbers drifted, month-end dragged on for days, and drivers routinely saw pricing they were never meant to.",
     approach: [
@@ -92,7 +93,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "5 weeks",
     year: "2026",
     gradient: "from-fuchsia-500/25 via-violet-500/20 to-cyan-500/20",
-    image: "/proj-southwest-delivery.jpeg",
+    image: "/proj-southwest-voice.jpeg",
     challenge:
       "Before every route, the office and the drivers burned the morning on phone calls: is this order on today's board, did that delivery actually go out, what changed since yesterday. The answers lived in one person's head and a paper sheet, so nothing was auditable and nobody could check without interrupting someone.",
     approach: [
@@ -222,6 +223,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "7 weeks",
     year: "2026",
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
+    image: "/proj-adfactors.jpeg",
     challenge:
       "Consultants hand-built every quote from dozens of regional rate-card spreadsheets, so quotes were slow, error-prone, and inconsistent between people. Partnerships had no single source of truth for rates, and updating a price meant re-sending files to the whole team.",
     approach: [
@@ -253,6 +255,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Ongoing",
     year: "2025–2026",
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
+    image: "/proj-nuvero-outreach.jpeg",
     challenge:
       "The bottleneck in outreach was never writing the email. It was discovery, deduplication, and finding a real contact you could trust, then doing it again every day without burning the domain or emailing the wrong person.",
     approach: [

@@ -6,13 +6,16 @@ import { cn } from "@/lib/utils";
 export function GridBackground({
   variant = "grid",
   className,
+  interactive = true,
 }: {
   variant?: "grid" | "dot";
   className?: string;
+  interactive?: boolean;
 }) {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!interactive) return;
     const overlay = overlayRef.current;
     if (!overlay) return;
 
@@ -44,7 +47,7 @@ export function GridBackground({
       parent.removeEventListener("mousemove", onMouseMove);
       parent.removeEventListener("mouseleave", onMouseLeave);
     };
-  }, []);
+  }, [interactive]);
 
   return (
     <>
@@ -56,12 +59,14 @@ export function GridBackground({
           className,
         )}
       />
-      <div
-        ref={overlayRef}
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{ backgroundImage: "none" }}
-      />
+      {interactive ? (
+        <div
+          ref={overlayRef}
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{ backgroundImage: "none" }}
+        />
+      ) : null}
     </>
   );
 }

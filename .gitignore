@@ -29,3 +29,10 @@ next-env.d.ts
 
 # vercel
 .vercel
+.gstack/
+
+# local agent/dev tooling (never commit)
+.agents/
+.codex/
+AGENTS.md
+public/deck/

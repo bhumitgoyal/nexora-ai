@@ -52,7 +52,7 @@ function PinnedProcess() {
   const step = processSteps[active];
 
   return (
-    <div ref={sectionRef} className="hidden md:flex min-h-screen flex-col justify-center py-20">
+    <div ref={sectionRef} className="hidden md:flex min-h-screen flex-col justify-center pt-16 pb-28">
       <div className="container-x">
         <SectionHeader
           eyebrow="How infrastructure gets built"
@@ -60,7 +60,7 @@ function PinnedProcess() {
           subtitle="Scroll through it. Five phases, weekly demos, KPI-instrumented from day one."
         />
 
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-[1fr_1.6fr] items-center gap-16">
+        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-[1fr_1.6fr] items-center gap-16">
           {/* giant chapter number */}
           <div className="relative flex items-center justify-center">
             <AnimatePresence mode="popLayout">
@@ -120,7 +120,7 @@ function PinnedProcess() {
         </div>
 
         {/* progress rail */}
-        <div className="mx-auto mt-16 max-w-5xl">
+        <div className="mx-auto mt-10 max-w-5xl">
           <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
             {processSteps.map((s, i) => (
               <span key={s.number} className={i === active ? "text-[var(--color-brand)]" : ""}>

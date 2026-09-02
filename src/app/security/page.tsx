@@ -46,7 +46,7 @@ export default function SecurityPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden py-24 md:py-32">
-        <GridBackground />
+        <GridBackground interactive={false} />
         <div className="container-x relative z-10 max-w-3xl mx-auto text-center">
           <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
             <span className="size-1.5 bg-[var(--color-brand)]" />
