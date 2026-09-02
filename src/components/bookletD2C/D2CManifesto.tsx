@@ -101,7 +101,7 @@ export function D2CManifesto() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 + i * 0.08, duration: 0.55 }}
-            className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-5"
+            className="relative overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-5"
           >
             <div className="flex items-center justify-between">
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
@@ -128,7 +128,7 @@ export function D2CManifesto() {
         {stats.map((s) => (
           <div
             key={s.value}
-            className="rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-4"
+            className="border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-4"
           >
             <div className="text-gradient-brand font-display text-[28px] font-semibold leading-none tracking-tight">
               {s.value}

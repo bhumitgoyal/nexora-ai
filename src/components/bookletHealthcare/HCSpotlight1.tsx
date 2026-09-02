@@ -105,7 +105,7 @@ export function HCSpotlight1() {
         ].map((m) => (
           <div
             key={m.l}
-            className="rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-3"
+            className="border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-3"
           >
             <div className="text-gradient-brand font-display text-[22px] font-semibold leading-none tracking-tight">
               {m.v}

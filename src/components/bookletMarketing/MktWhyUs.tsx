@@ -83,13 +83,13 @@ export function MktWhyUs() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 + i * 0.08, duration: 0.55 }}
-            className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-5"
+            className="relative overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-5"
           >
             <div className="flex items-start justify-between">
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
                 {p.no}
               </span>
-              <span className="size-1.5 rounded-full bg-[var(--color-brand)] shadow-[0_0_10px_2px_rgba(139,92,246,0.6)]" />
+              <span className="size-1.5 rounded-full bg-[var(--color-brand)]" />
             </div>
             <h3 className="mt-3 font-display text-[15px] font-semibold tracking-tight text-[var(--color-fg)]">
               {p.label}
@@ -105,7 +105,7 @@ export function MktWhyUs() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7, duration: 0.6 }}
-        className="mt-6 rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.08),rgba(34,211,238,0.05))] p-5"
+        className="mt-6 border border-[var(--color-border-strong)] bg-[var(--color-brand)] p-5"
       >
         <div className="poster-eyebrow mb-4">Process · from kickoff to live</div>
         <div className="relative flex items-start justify-between">
@@ -116,7 +116,7 @@ export function MktWhyUs() {
                 className="relative z-10 size-[26px] rounded-full border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] flex items-center justify-center"
                 style={{
                   background: i === 0
-                    ? "radial-gradient(circle,rgba(139,92,246,0.4),rgba(139,92,246,0.05))"
+                    ? "var(--color-bg-elev)"
                     : undefined,
                 }}
               >

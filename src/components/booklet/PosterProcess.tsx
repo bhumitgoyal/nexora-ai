@@ -48,7 +48,7 @@ export function PosterProcess() {
       </motion.p>
 
       <div className="mt-7 relative">
-        <div className="absolute left-[19px] top-0 bottom-0 w-px bg-[linear-gradient(180deg,var(--color-brand),var(--color-accent),transparent)] opacity-50" />
+        <div className="absolute left-[19px] top-0 bottom-0 w-px bg-[var(--color-brand)] opacity-50" />
 
         <div className="flex flex-col gap-4">
           {processSteps.map((step, i) => (
@@ -62,8 +62,8 @@ export function PosterProcess() {
               <span
                 className={`relative z-10 grid size-10 shrink-0 place-items-center rounded-full border border-[var(--color-border-strong)] ${
                   i % 2 === 0
-                    ? "bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.35),transparent_70%)]"
-                    : "bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.32),transparent_70%)]"
+                    ? "bg-[var(--color-bg-elev)]"
+                    : "bg-[var(--color-bg-elev)]"
                 }`}
               >
                 <span className="font-mono text-[11px] font-semibold text-[var(--color-fg)]">
@@ -71,7 +71,7 @@ export function PosterProcess() {
                 </span>
               </span>
 
-              <div className="flex-1 rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-4">
+              <div className="flex-1 border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4">
                 <div className="flex items-baseline justify-between gap-3">
                   <h3 className="font-display text-[18px] font-semibold tracking-tight text-[var(--color-fg)]">
                     {step.title}

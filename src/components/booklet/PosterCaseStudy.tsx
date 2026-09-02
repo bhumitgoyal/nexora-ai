@@ -88,9 +88,8 @@ export function PosterCaseStudy({ caseStudy, page, index, total }: Props) {
             initial={{ opacity: 0, y: 12, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.4 + i * 0.1, duration: 0.55 }}
-            className="relative overflow-hidden rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-4"
+            className="relative overflow-hidden border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] p-4"
           >
-            <div className="absolute -right-10 -top-10 size-32 rounded-full bg-[rgba(139,92,246,0.28)] blur-3xl" />
             <div className="text-gradient-brand font-display text-[44px] font-semibold leading-none tracking-tight">
               {r.metric}
             </div>
@@ -106,7 +105,7 @@ export function PosterCaseStudy({ caseStudy, page, index, total }: Props) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.55 }}
-          className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4"
+          className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4"
         >
           <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
             The challenge
@@ -120,7 +119,7 @@ export function PosterCaseStudy({ caseStudy, page, index, total }: Props) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.65, duration: 0.55 }}
-          className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4"
+          className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4"
         >
           <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
             How we built it

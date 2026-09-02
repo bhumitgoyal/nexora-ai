@@ -100,9 +100,8 @@ export function D2CCaseStudy() {
             initial={{ opacity: 0, y: 12, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.4 + i * 0.1, duration: 0.55 }}
-            className="relative overflow-hidden rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-4"
+            className="relative overflow-hidden border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] p-4"
           >
-            <div className="absolute -right-10 -top-10 size-32 rounded-full bg-[rgba(139,92,246,0.28)] blur-3xl" />
             <div className="text-gradient-brand font-display text-[40px] font-semibold leading-none tracking-tight">
               {r.metric}
             </div>
@@ -118,7 +117,7 @@ export function D2CCaseStudy() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.55 }}
-          className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4"
+          className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4"
         >
           <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
             How we built it
@@ -142,7 +141,7 @@ export function D2CCaseStudy() {
           transition={{ delay: 0.65, duration: 0.55 }}
           className="flex flex-col gap-4"
         >
-          <div className="flex-1 rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.12),rgba(34,211,238,0.08))] p-4">
+          <div className="flex-1 border border-[var(--color-border-strong)] bg-[var(--color-brand)] p-4">
             <Quote className="size-4 text-[var(--color-accent)] opacity-70" />
             <p className="mt-2 text-[11px] leading-[1.6] text-[var(--color-fg)]">
               &ldquo;Our members are 60-plus and they prefer the bot over our humans. That
@@ -152,14 +151,14 @@ export function D2CCaseStudy() {
               Head of Member Experience, GoHappy Club
             </p>
           </div>
-          <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3">
+          <div className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3">
             <p className="text-[10px] leading-[1.55] text-[var(--color-fg-muted)]">
               This is the same playbook we&rsquo;d run for your store: brand voice in, customer
               memory in, your catalog or call flow wired in, and a clean handoff to your team
               whenever a human is genuinely the better answer.
             </p>
           </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3">
+          <div className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3">
             <div className="font-mono text-[8.5px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)] mb-1.5">
               Also in the build log
             </div>

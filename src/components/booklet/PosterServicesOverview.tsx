@@ -58,21 +58,21 @@ export function PosterServicesOverview() {
               : "text-[var(--color-fg)]";
           const accentBg =
             s.accent === "brand"
-              ? "bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.28),transparent_70%)]"
+              ? "bg-[var(--color-bg-elev)]"
               : s.accent === "accent"
-              ? "bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.25),transparent_70%)]"
-              : "bg-[linear-gradient(135deg,rgba(139,92,246,0.22),rgba(34,211,238,0.18))]";
+              ? "bg-[var(--color-bg-elev)]"
+              : "bg-[var(--color-brand)]";
           return (
             <motion.div
               key={s.slug}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 + i * 0.04, duration: 0.45 }}
-              className="relative overflow-hidden rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-3.5"
+              className="relative overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3.5"
             >
               <div className="flex items-start justify-between">
                 <span
-                  className={`grid size-9 place-items-center rounded-lg border border-[var(--color-border-strong)] ${accentBg}`}
+                  className={`grid size-9 place-items-center border border-[var(--color-border-strong)] ${accentBg}`}
                 >
                   <Icon className={`size-4 ${accentColor}`} />
                 </span>
@@ -95,7 +95,7 @@ export function PosterServicesOverview() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.95, duration: 0.6 }}
-        className="mt-6 flex items-center justify-between rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.10),rgba(34,211,238,0.06))] px-5 py-4"
+        className="mt-6 flex items-center justify-between border border-[var(--color-border-strong)] bg-[var(--color-brand)] px-5 py-4"
       >
         <p className="font-display text-[14px] tracking-tight text-[var(--color-fg)]">
           The next four pages go deep on eight of these with the problem,

@@ -13,7 +13,7 @@ export function PrintBar() {
     <div className="no-print booklet-toolbar">
       <Link
         href="/booklet"
-        className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)]"
+        className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)]"
       >
         <ArrowLeft className="size-3.5" />
         Back
@@ -27,7 +27,7 @@ export function PrintBar() {
       <button
         type="button"
         onClick={onPrint}
-        className="group inline-flex items-center gap-2 rounded-full bg-[var(--color-brand)] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[var(--color-brand-strong)]"
+        className="group inline-flex items-center gap-2 bg-[var(--color-brand)] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[var(--color-brand-strong)]"
       >
         <Printer className="size-3.5" />
         Save as PDF

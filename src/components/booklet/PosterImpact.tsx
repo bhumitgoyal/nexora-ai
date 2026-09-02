@@ -107,13 +107,8 @@ export function PosterImpact() {
               initial={{ opacity: 0, y: 12, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.3 + i * 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="relative overflow-hidden rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-4"
+              className="relative overflow-hidden border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] p-4"
             >
-              <div
-                className={`absolute -right-10 -top-10 size-32 rounded-full blur-3xl ${
-                  isBrand ? "bg-[rgba(139,92,246,0.35)]" : "bg-[rgba(34,211,238,0.32)]"
-                }`}
-              />
               <Icon
                 className={`size-4 ${
                   isBrand ? "text-[var(--color-brand-strong)]" : "text-[var(--color-accent-strong)]"
@@ -137,7 +132,7 @@ export function PosterImpact() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7, duration: 0.6 }}
-        className="mt-6 rounded-2xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-5"
+        className="mt-6 border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-5"
       >
         <div className="flex items-center justify-between">
           <span className="font-display text-[16px] font-semibold tracking-tight text-[var(--color-fg)]">
@@ -172,7 +167,7 @@ export function PosterImpact() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="mt-5 flex items-center justify-between rounded-xl border border-[var(--color-border)] bg-[linear-gradient(135deg,rgba(139,92,246,0.10),rgba(34,211,238,0.06))] px-5 py-3.5"
+        className="mt-5 flex items-center justify-between border border-[var(--color-border)] bg-[var(--color-brand)] px-5 py-3.5"
       >
         <p className="font-display text-[13px] tracking-tight text-[var(--color-fg)]">
           Across 47+ shipped systems, in 11 industries, handling 1.4M+ AI

@@ -28,22 +28,22 @@ export function ServiceSpotlightCard({
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.15 + index * 0.1, duration: 0.55 }}
-      className="relative flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.005))] p-5"
+      className="relative flex flex-col overflow-hidden border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] p-5"
     >
       <div
         className={`absolute inset-x-0 top-0 h-px ${
           isBrand
-            ? "bg-[linear-gradient(90deg,transparent,var(--color-brand),transparent)]"
-            : "bg-[linear-gradient(90deg,transparent,var(--color-accent),transparent)]"
+            ? "bg-[var(--color-brand)]"
+            : "bg-[var(--color-accent)]"
         }`}
       />
 
       <div className="flex items-start justify-between gap-3">
         <span
-          className={`grid size-11 place-items-center rounded-xl border border-[var(--color-border-strong)] ${
+          className={`grid size-11 place-items-center border border-[var(--color-border-strong)] ${
             isBrand
-              ? "bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.3),transparent_70%)]"
-              : "bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.28),transparent_70%)]"
+              ? "bg-[var(--color-bg-elev)]"
+              : "bg-[var(--color-bg-elev)]"
           }`}
         >
           <Icon
@@ -64,7 +64,7 @@ export function ServiceSpotlightCard({
         {service.tagline}
       </p>
 
-      <div className="mt-3.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-2">
+      <div className="mt-3.5 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-2">
         <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
           The pain
         </span>

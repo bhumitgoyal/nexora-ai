@@ -113,11 +113,10 @@ export function MktContact() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 + i * 0.07, duration: 0.5 }}
-                className="group relative overflow-hidden rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.005))] p-4 transition-colors hover:border-[var(--color-brand)]/60"
+                className="group relative overflow-hidden border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] p-4 transition-colors hover:border-[var(--color-brand)]/60"
               >
-                <div className="absolute -right-12 -top-12 size-32 rounded-full bg-[rgba(139,92,246,0.28)] blur-3xl opacity-0 transition-opacity group-hover:opacity-100" />
                 <div className="flex items-center gap-3">
-                  <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-[var(--color-border-strong)] bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.28),transparent_70%)]">
+                  <span className="grid size-10 shrink-0 place-items-center border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)]">
                     <Icon className="size-5 text-[var(--color-brand-strong)]" />
                   </span>
                   <div className="min-w-0 flex-1">
@@ -141,7 +140,7 @@ export function MktContact() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.55 }}
-          className="mt-5 rounded-2xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-4"
+          className="mt-5 border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-4"
         >
           <div className="flex items-center justify-between">
             <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
@@ -160,7 +159,7 @@ export function MktContact() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-2 transition-colors hover:border-[var(--color-brand)]/60"
+                  className="flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-2 transition-colors hover:border-[var(--color-brand)]/60"
                 >
                   <Icon className="size-3.5 shrink-0 text-[var(--color-fg-muted)]" />
                   <div className="min-w-0">
@@ -183,7 +182,7 @@ export function MktContact() {
           transition={{ delay: 0.85, duration: 0.6 }}
           className="mt-auto pt-8"
         >
-          <div className="rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.14),rgba(34,211,238,0.08))] p-5">
+          <div className="border border-[var(--color-border-strong)] bg-[var(--color-brand)] p-5">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">

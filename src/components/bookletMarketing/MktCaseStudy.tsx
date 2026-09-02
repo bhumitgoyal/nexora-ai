@@ -68,7 +68,7 @@ export function MktCaseStudy() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="mt-5 rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-5"
+        className="mt-5 border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] p-5"
       >
         <div className="flex items-center justify-between">
           <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent-strong)]">
@@ -112,9 +112,8 @@ export function MktCaseStudy() {
           {primaryStats.map((s, i) => (
             <div
               key={s.label}
-              className="relative overflow-hidden rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-3"
+              className="relative overflow-hidden border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-3"
             >
-              <div className="absolute -right-8 -top-8 size-24 rounded-full bg-[rgba(34,211,238,0.18)] blur-3xl" />
               <div className="text-gradient-brand font-display text-[18px] font-semibold leading-none tracking-tight">
                 {s.metric}
               </div>
@@ -143,10 +142,10 @@ export function MktCaseStudy() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55, duration: 0.55 }}
-          className="rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-4"
+          className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4"
         >
           <div className="flex items-center gap-2">
-            <span className="grid size-8 shrink-0 place-items-center rounded-lg border border-[var(--color-border-strong)] bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.28),transparent_70%)]">
+            <span className="grid size-8 shrink-0 place-items-center border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)]">
               <Zap className="size-4 text-[var(--color-brand-strong)]" />
             </span>
             <h4 className="font-display text-[13px] font-semibold tracking-tight text-[var(--color-fg)]">
@@ -159,7 +158,7 @@ export function MktCaseStudy() {
             prospects at their preferred time using ElevenLabs voice AI to capture requirements with
             zero human intervention.
           </p>
-          <div className="mt-3 rounded-lg border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-2.5">
+          <div className="mt-3 border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-2.5">
             <div className="text-[9.5px] leading-[1.45] text-[var(--color-fg-muted)]">
               <span className="font-semibold text-[var(--color-accent-strong)]">Result:</span>{" "}
               Fully automated the top of the sales funnel end-to-end. Generates sales-ready, enriched leads
@@ -172,10 +171,10 @@ export function MktCaseStudy() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.55 }}
-          className="rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-4"
+          className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-4"
         >
           <div className="flex items-center gap-2">
-            <span className="grid size-8 shrink-0 place-items-center rounded-lg border border-[var(--color-border-strong)] bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.25),transparent_70%)]">
+            <span className="grid size-8 shrink-0 place-items-center border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)]">
               <Search className="size-4 text-[var(--color-accent-strong)]" />
             </span>
             <h4 className="font-display text-[13px] font-semibold tracking-tight text-[var(--color-fg)]">
@@ -187,7 +186,7 @@ export function MktCaseStudy() {
             Administration, surfacing SMBs invisible to normal Google search, then pulls each
             company&rsquo;s website and social handles into one clean list.
           </p>
-          <div className="mt-3 rounded-lg border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-2.5">
+          <div className="mt-3 border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-2.5">
             <div className="text-[9.5px] leading-[1.45] text-[var(--color-fg-muted)]">
               <span className="font-semibold text-[var(--color-accent-strong)]">Result:</span>{" "}
               Turned hours of daily manual research into a minutes-long automated run, at zero tool
@@ -202,7 +201,7 @@ export function MktCaseStudy() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="mt-4 rounded-xl border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(139,92,246,0.10),rgba(34,211,238,0.06))] p-3.5"
+        className="mt-4 border border-[var(--color-border-strong)] bg-[var(--color-brand)] p-3.5"
       >
         <p className="text-[11px] leading-[1.55] text-[var(--color-fg-muted)]">
           This is the same playbook we&rsquo;d run for your agency: your brand voice in, your
@@ -215,7 +214,7 @@ export function MktCaseStudy() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.5 }}
-        className="mt-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-3"
+        className="mt-3 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-3"
       >
         <div className="font-mono text-[8.5px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)] mb-1.5">
           Also in the build log

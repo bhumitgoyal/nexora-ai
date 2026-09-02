@@ -94,19 +94,14 @@ export function PosterWhyUs() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + i * 0.08, duration: 0.5 }}
-              className="relative overflow-hidden rounded-2xl border border-[var(--color-border-strong)] bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.005))] p-4"
+              className="relative overflow-hidden border border-[var(--color-border-strong)] bg-[var(--color-bg-elev)] p-4"
             >
-              <div
-                className={`absolute -right-10 -top-10 size-32 rounded-full blur-3xl ${
-                  isBrand ? "bg-[rgba(139,92,246,0.3)]" : "bg-[rgba(34,211,238,0.28)]"
-                }`}
-              />
               <div className="flex items-start gap-3">
                 <span
-                  className={`grid size-10 shrink-0 place-items-center rounded-xl border border-[var(--color-border-strong)] ${
+                  className={`grid size-10 shrink-0 place-items-center border border-[var(--color-border-strong)] ${
                     isBrand
-                      ? "bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.3),transparent_70%)]"
-                      : "bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.28),transparent_70%)]"
+                      ? "bg-[var(--color-bg-elev)]"
+                      : "bg-[var(--color-bg-elev)]"
                   }`}
                 >
                   <Icon
@@ -138,7 +133,7 @@ export function PosterWhyUs() {
         {principles.map((p) => (
           <div
             key={p.title}
-            className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3"
+            className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3"
           >
             <div className="font-display text-[12.5px] font-semibold tracking-tight text-[var(--color-fg)]">
               {p.title}
@@ -154,7 +149,7 @@ export function PosterWhyUs() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.75, duration: 0.55 }}
-        className="mt-5 rounded-2xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-4"
+        className="mt-5 border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-4"
       >
         <div className="flex items-center justify-between">
           <span className="font-display text-[14px] font-semibold tracking-tight text-[var(--color-fg)]">

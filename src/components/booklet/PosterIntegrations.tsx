@@ -86,18 +86,18 @@ export function PosterIntegrations() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.04, duration: 0.45 }}
-              className="group relative overflow-hidden rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005))] p-3.5"
+              className="group relative overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3.5"
             >
               <div
-                className={`absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,${
-                  d.tone === "brand" ? "var(--color-brand)" : "var(--color-accent)"
-                },transparent)]`}
+                className={`absolute inset-x-0 top-0 h-px ${
+                  d.tone === "brand" ? "bg-[var(--color-brand)]" : "bg-[var(--color-accent)]"
+                }`}
               />
               <span
-                className={`mb-2.5 grid size-8 place-items-center rounded-lg border border-[var(--color-border-strong)] ${
+                className={`mb-2.5 grid size-8 place-items-center border border-[var(--color-border-strong)] ${
                   d.tone === "brand"
-                    ? "bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.25),transparent_70%)]"
-                    : "bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.22),transparent_70%)]"
+                    ? "bg-[var(--color-bg-elev)]"
+                    : "bg-[var(--color-bg-elev)]"
                 }`}
               >
                 <Icon
@@ -132,7 +132,7 @@ export function PosterIntegrations() {
         ].map((m) => (
           <div
             key={m.k}
-            className="rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-3"
+            className="border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-3"
           >
             <div className="text-gradient-brand font-display text-xl font-semibold tracking-tight">
               {m.v}

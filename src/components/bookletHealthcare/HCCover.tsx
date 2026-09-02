@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { Stethoscope, Mail, Phone, Globe } from "lucide-react";
 import { site } from "@/content/site";
@@ -21,9 +22,13 @@ export function HCCover() {
       <div className="flex h-full min-h-[260mm] flex-col justify-between">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <span className="grid size-10 place-items-center rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-surface)]">
-              <span className="text-gradient-brand font-display text-lg font-bold">N</span>
-            </span>
+            <Image
+              src="/brand/mark-red.png"
+              alt=""
+              width={448}
+              height={440}
+              className="h-9 w-auto"
+            />
             <div className="flex flex-col leading-none">
               <span className="font-display text-base font-semibold tracking-tight text-[var(--color-fg)]">
                 Nuvero AI
@@ -110,7 +115,7 @@ export function HCCover() {
           </motion.div>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-brand),var(--color-accent),transparent)] opacity-60" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-[var(--color-brand)] opacity-60" />
       </div>
     </Poster>
   );
