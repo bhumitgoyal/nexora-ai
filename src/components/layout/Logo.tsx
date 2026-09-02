@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -10,19 +11,14 @@ export function Logo({ className }: { className?: string }) {
         className,
       )}
     >
-      <span className="relative inline-flex size-8 items-center justify-center border-2 border-[var(--color-brand)] bg-[var(--color-brand)] text-white">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          className="size-4"
-          stroke="currentColor"
-          strokeWidth={2.4}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M4 20V4l16 16V4" />
-        </svg>
-      </span>
+      <Image
+        src="/brand/mark-red.png"
+        alt=""
+        width={448}
+        height={440}
+        priority
+        className="h-8 w-auto"
+      />
       <span className="text-[var(--color-fg)]">
         Nuvero <span className="text-[var(--color-brand)]">AI</span>
       </span>
