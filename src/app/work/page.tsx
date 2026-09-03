@@ -3,6 +3,7 @@ import { WorkGrid } from "@/components/work/WorkGrid";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Perforation } from "@/components/shared/Perforation";
 import { CtaBanner } from "@/components/home/CtaBanner";
+import { getDeployments } from "@/lib/deployments";
 
 export const metadata: Metadata = {
   title: "Deployments",
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
     "45 systems deployed across energy, wellness, e-commerce, real estate, and more, with the real metrics each one moved.",
 };
 
-export default function WorkPage() {
+export default async function WorkPage() {
+  const deployments = await getDeployments();
+
   return (
     <>
       <section className="relative isolate overflow-hidden py-24 md:py-32">
@@ -29,7 +32,7 @@ export default function WorkPage() {
       <Perforation label="Log entries" />
 
       <section className="container-x pb-24 pt-12">
-        <WorkGrid />
+        <WorkGrid caseStudies={deployments} />
       </section>
 
       <CtaBanner />

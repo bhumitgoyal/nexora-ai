@@ -5,16 +5,21 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import { caseStudies, allIndustries, type CaseStudy } from "@/content/caseStudies";
+import { type CaseStudy } from "@/content/caseStudies";
 import { cn } from "@/lib/utils";
 
-export function WorkGrid() {
+export function WorkGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
   const [filter, setFilter] = useState<string>("All");
+
+  const allIndustries = useMemo(
+    () => Array.from(new Set(caseStudies.map((c) => c.industry))),
+    [caseStudies]
+  );
 
   const filtered = useMemo(() => {
     if (filter === "All") return caseStudies;
     return caseStudies.filter((c) => c.industry === filter);
-  }, [filter]);
+  }, [filter, caseStudies]);
 
   const filters = ["All", ...allIndustries];
 

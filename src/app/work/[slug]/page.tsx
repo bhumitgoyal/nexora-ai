@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, Calendar, Building2 } from "lucide-react";
-import { caseStudies, getCaseStudy } from "@/content/caseStudies";
+import { getDeployments } from "@/lib/deployments";
 import { GradientOrb } from "@/components/shared/GradientOrb";
 import { GridBackground } from "@/components/shared/GridBackground";
 import { Reveal } from "@/components/shared/Reveal";
@@ -23,9 +23,10 @@ function parsePercent(metric: string): number | null {
   return m ? Math.min(100, parseInt(m[1], 10)) : null;
 }
 
-export async function generateStaticParams() {
-  return caseStudies.map((c) => ({ slug: c.slug }));
-}
+// No generateStaticParams: the deployment list is now editable at
+// manage.nuvero.space/deployments without a rebuild, so slugs can't be enumerated at
+// build time. dynamicParams defaults to true, so each page still renders on first
+// request and is then cached/revalidated like any other page here (see getDeployments).
 
 export async function generateMetadata({
   params,
@@ -33,7 +34,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const study = getCaseStudy(slug);
+  const deployments = await getDeployments();
+  const study = deployments.find((c) => c.slug === slug);
   if (!study) return {};
   return {
     title: `${study.client} · ${study.industry}`,
@@ -47,7 +49,8 @@ export default async function CaseStudyPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const study = getCaseStudy(slug);
+  const caseStudies = await getDeployments();
+  const study = caseStudies.find((c) => c.slug === slug);
   if (!study) notFound();
 
   const idx = caseStudies.findIndex((c) => c.slug === slug);
