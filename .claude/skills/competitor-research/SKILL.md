@@ -6,9 +6,16 @@ description: Deep-dive research on competitor or comparable websites (design, co
 # Competitor & design research agent
 
 Input is one or more URLs (competitors, award-winners, or just "sites that look good") and/or
-a topic ("how do other AI-agency sites explain pricing"). Output is never a vague trend report —
-it is a short list of specific, buildable changes to *this* codebase, each one already checked
-against what Nuvero's brand allows.
+a topic ("how do other AI-agency sites explain pricing"), given directly in the request. Output
+is never a vague trend report — it is a short list of specific, buildable changes to *this*
+codebase, each one already checked against what Nuvero's brand allows.
+
+**Input source, unambiguous:** research only the URLs/content the user actually provided in
+this conversation. Never treat the Nuvero Outreach engine's Google Sheets, its prospect/company
+data, or anything else from that separate project as input here — those are sales-prospect
+research for cold outreach, a completely different kind of research with its own agent
+(`nuvero-outreach/backend/app/agents/research_agent.py`) and its own purpose. This skill never
+reads a spreadsheet.
 
 Load `frontend-design` (this repo's `.claude/skills/frontend-design/SKILL.md`) before writing
 any recommendation — every idea below gets filtered through it in step 3.
