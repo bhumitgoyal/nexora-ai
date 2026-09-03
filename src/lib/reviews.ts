@@ -24,10 +24,11 @@ const curated: Review[] = testimonials.map((t) => ({
 }));
 
 /**
- * Reviews shown on /reviews = the curated client testimonials plus any reviews
- * published from the Nuvero outreach agent. The agent is the source of truth
- * for new reviews; set REVIEWS_API_URL to its public reviews endpoint. If it is
- * unset or unreachable, the page still renders the curated set.
+ * Reviews shown on /reviews come from the Nuvero outreach agent, which is the
+ * single source of truth (the original curated testimonials are seeded there
+ * too). Set REVIEWS_API_URL to its public reviews endpoint; it defaults to the
+ * deployed backend. The curated set is only a fallback for when the feed is
+ * empty or unreachable, so nothing is ever duplicated.
  */
 const DEFAULT_REVIEWS_API =
   "https://nuvero-outreach-backend-629748840531.us-central1.run.app/api/reviews/public";
@@ -51,7 +52,9 @@ export async function getReviews(): Promise<Review[]> {
         company: r.company ? String(r.company) : "",
         initials: r.initials ? String(r.initials) : initialsFrom(r.name),
       }));
-    return [...curated, ...fetched];
+    // The agent feed is authoritative once it has anything; curated is only a
+    // fallback, so the seeded originals are never shown twice.
+    return fetched.length > 0 ? fetched : curated;
   } catch {
     return curated;
   }
