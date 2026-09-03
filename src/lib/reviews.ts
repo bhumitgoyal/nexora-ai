@@ -29,8 +29,11 @@ const curated: Review[] = testimonials.map((t) => ({
  * for new reviews; set REVIEWS_API_URL to its public reviews endpoint. If it is
  * unset or unreachable, the page still renders the curated set.
  */
+const DEFAULT_REVIEWS_API =
+  "https://nuvero-outreach-backend-629748840531.us-central1.run.app/api/reviews/public";
+
 export async function getReviews(): Promise<Review[]> {
-  const url = process.env.REVIEWS_API_URL;
+  const url = process.env.REVIEWS_API_URL || DEFAULT_REVIEWS_API;
   if (!url) return curated;
 
   try {
