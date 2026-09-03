@@ -12,15 +12,18 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import { Briefcase, FileText, Phone, ArrowUpRight, LayoutGrid } from "lucide-react";
+import { Briefcase, FileText, Phone, ArrowUpRight, LayoutGrid, Newspaper, MessageSquareQuote } from "lucide-react";
 import { caseStudies } from "@/content/caseStudies";
 import { services } from "@/content/services";
+import { briefings } from "@/content/briefings";
 
 const pages = [
   { label: "Infrastructure", href: "/what-we-offer", icon: LayoutGrid },
   { label: "Systems", href: "/services", icon: FileText },
   { label: "Deployments & Case Studies", href: "/work", icon: Briefcase },
   { label: "Our Process", href: "/process", icon: FileText },
+  { label: "Intelligence Briefings", href: "/briefings", icon: Newspaper },
+  { label: "Client Reviews", href: "/reviews", icon: MessageSquareQuote },
   { label: "About", href: "/about", icon: FileText },
   { label: "Book a Call", href: "/contact", icon: Phone },
 ];
@@ -115,6 +118,25 @@ export function CommandPalette() {
                   </CommandItem>
                 );
               })}
+            </CommandGroup>
+
+            <CommandSeparator className="bg-[var(--color-border)]" />
+
+            <CommandGroup heading="Briefings">
+              {briefings.map((b) => (
+                <CommandItem
+                  key={b.slug}
+                  value={`${b.title} ${b.category}`}
+                  onSelect={() => run(`/briefings/${b.slug}`)}
+                  className="flex cursor-pointer items-center gap-3 px-4 py-2.5 text-[var(--color-fg-muted)] aria-selected:bg-[var(--color-bg-elev)] aria-selected:text-[var(--color-fg)]"
+                >
+                  <Newspaper className="size-4 shrink-0 text-[var(--color-brand)]" />
+                  <div className="flex min-w-0 flex-col">
+                    <span className="truncate text-sm font-medium text-[var(--color-fg)]">{b.title}</span>
+                    <span className="text-xs text-[var(--color-fg-subtle)]">{b.category}</span>
+                  </div>
+                </CommandItem>
+              ))}
             </CommandGroup>
           </CommandList>
         </Command>

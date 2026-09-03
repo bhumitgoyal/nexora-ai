@@ -30,7 +30,6 @@ export const site = {
     { label: "Systems", href: "/services" },
     { label: "Deployments", href: "/work" },
     { label: "Process", href: "/process" },
-    { label: "Briefings", href: "/briefings" },
     { label: "About", href: "/about" },
   ],
 } as const;
