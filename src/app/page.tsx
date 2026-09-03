@@ -12,8 +12,11 @@ import { OpsLedger } from "@/components/home/OpsLedger";
 import { AgentRoster } from "@/components/home/AgentRoster";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { FeaturedWork } from "@/components/home/FeaturedWork";
+import { FromTheWorkshop } from "@/components/home/FromTheWorkshop";
 import { StatsBar } from "@/components/home/StatsBar";
+import { Governance } from "@/components/home/Governance";
 import { ProcessSnapshot } from "@/components/home/ProcessSnapshot";
+import { AuditDeliverables } from "@/components/home/AuditDeliverables";
 import { RoiEstimator } from "@/components/home/RoiEstimator";
 import { Testimonials } from "@/components/home/Testimonials";
 import { GlassBox } from "@/components/home/GlassBox";
@@ -40,9 +43,12 @@ export default function HomePage() {
       <ServicesPreview />
       <ComparisonTable />
       <FeaturedWork />
+      <FromTheWorkshop />
       <StatsBar />
       <TrustStrip />
+      <Governance />
       <ProcessSnapshot />
+      <AuditDeliverables />
       <RoiEstimator />
       <Testimonials />
       <GlassBox />
