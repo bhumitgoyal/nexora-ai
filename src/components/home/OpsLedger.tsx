@@ -131,7 +131,7 @@ export function OpsLedger() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col justify-center overflow-hidden border-t border-[var(--color-border)] py-20 md:min-h-screen md:py-0"
+      className="relative flex flex-col justify-start overflow-hidden border-t border-[var(--color-border)] py-20 md:min-h-screen md:pb-16 md:pt-28"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-40" />
 
@@ -143,7 +143,7 @@ export function OpsLedger() {
         />
 
         {/* the ledger */}
-        <div className="mx-auto mt-10 w-full max-w-3xl border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] md:mt-14">
+        <div className="mx-auto mt-10 w-full max-w-3xl border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] md:mt-8">
           {/* sheet header */}
           <div className="flex items-center justify-between border-b-2 border-[var(--color-border)] px-4 py-2.5 md:px-6">
             <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)] md:text-[10px]">

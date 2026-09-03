@@ -46,8 +46,8 @@ export default function HomePage() {
       <FromTheWorkshop />
       <StatsBar />
       <TrustStrip />
-      <Governance />
       <ProcessSnapshot />
+      <Governance />
       <AuditDeliverables />
       <RoiEstimator />
       <Testimonials />

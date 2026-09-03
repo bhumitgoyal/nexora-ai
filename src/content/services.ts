@@ -11,6 +11,7 @@ import {
   LineChart,
   Users,
   BookOpen,
+  Boxes,
 } from "lucide-react";
 
 export type Service = {
@@ -47,6 +48,28 @@ export const services: Service[] = [
     tech: ["LangGraph", "Temporal", "n8n", "Supabase", "Vercel", "AWS Lambda"],
     icon: Workflow,
     accent: "accent",
+  },
+  {
+    slug: "custom-operations-systems",
+    title: "Custom Operations Systems",
+    tagline: "The software your operation runs on, custom-built with intelligence inside and owned by you.",
+    problem:
+      "Spreadsheets, paper, and manual re-entry hold the business together until they don't. Off-the-shelf ERPs force your process to fit their software, and the 30% that's actually yours never fits.",
+    solution: [
+      "Full order-to-cash and operations systems: order entry, scheduling boards, cylinder and inventory ledgers, and invoicing built around how you actually work.",
+      "Role-based access enforced on the server, so the field sees documents while prices and balances stay with the office.",
+      "Two-way sync with the tools you already run on, from QuickBooks to your CRM, reconciled automatically overnight.",
+      "Optional AI connectors that let ChatGPT or Claude answer straight from the system, read-only and safe.",
+    ],
+    deliverables: [
+      "Order-to-cash / operations flow mapped with your team",
+      "Production web app with role-based access + full audit trail",
+      "Accounting and tooling integrations (e.g. QuickBooks)",
+      "Optional read-only AI connector (MCP) for ChatGPT / Claude",
+    ],
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "QuickBooks", "Model Context Protocol"],
+    icon: Boxes,
+    accent: "brand",
   },
   {
     slug: "ai-voice-agents",
