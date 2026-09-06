@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Calendar, Building2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Building2, MonitorPlay } from "lucide-react";
 import { getDeployments } from "@/lib/deployments";
+import { caseStudies as curatedStudies } from "@/content/caseStudies";
 import { GradientOrb } from "@/components/shared/GradientOrb";
 import { GridBackground } from "@/components/shared/GridBackground";
 import { Reveal } from "@/components/shared/Reveal";
@@ -56,6 +57,9 @@ export default async function CaseStudyPage({
   const idx = caseStudies.findIndex((c) => c.slug === slug);
   const prev = caseStudies[(idx - 1 + caseStudies.length) % caseStudies.length];
   const next = caseStudies[(idx + 1) % caseStudies.length];
+
+  // Demo links live in the local content (the deployments feed doesn't carry them).
+  const demoUrl = study.demoUrl ?? curatedStudies.find((c) => c.slug === slug)?.demoUrl;
 
   return (
     <>
@@ -111,6 +115,25 @@ export default async function CaseStudyPage({
                 {study.summary}
               </p>
             </Reveal>
+            {demoUrl ? (
+              <Reveal delay={0.2}>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href={demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex w-fit items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
+                  >
+                    <MonitorPlay className="size-4" />
+                    Open the live demo
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  </a>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+                    Interactive · runs on sample data only
+                  </span>
+                </div>
+              </Reveal>
+            ) : null}
           </div>
         </div>
       </section>

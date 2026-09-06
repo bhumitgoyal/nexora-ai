@@ -14,6 +14,8 @@
   gradient: string;
   image?: string;
   featured?: boolean;
+  /** Passcode-gated live demo running on sample data (one-click unlock link). */
+  demoUrl?: string;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -94,6 +96,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2026",
     gradient: "from-fuchsia-500/25 via-violet-500/20 to-cyan-500/20",
     image: "/proj-southwest-voice.jpeg",
+    demoUrl: "https://swg-delivery-demo-629748840531.us-central1.run.app/?k=swg2026",
     challenge:
       "Before every route, the office and the drivers burned the morning on phone calls: is this order on today's board, did that delivery actually go out, what changed since yesterday. The answers lived in one person's head and a paper sheet, so nothing was auditable and nobody could check without interrupting someone.",
     approach: [
