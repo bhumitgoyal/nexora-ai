@@ -64,6 +64,7 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
     image: "/proj-southwest-voice.jpeg",
+    demoUrl: "https://swg-erp-demo-629748840531.us-central1.run.app/?k=swg2026",
     challenge:
       "The business ran on spreadsheets, paper bills of lading, and manual QuickBooks entry. Deliveries were scheduled by phone, cylinder rents were tracked by hand, and every invoice was retyped, so numbers drifted, month-end dragged on for days, and drivers routinely saw pricing they were never meant to.",
     approach: [
