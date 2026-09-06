@@ -260,6 +260,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025–2026",
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
     image: "/proj-nuvero-outreach.jpeg",
+    demoUrl: "https://nuvero-outreach-frontend-demo-629748840531.us-central1.run.app/?k=nuvero2026",
     challenge:
       "The bottleneck in outreach was never writing the email. It was discovery, deduplication, and finding a real contact you could trust, then doing it again every day without burning the domain or emailing the wrong person.",
     approach: [
