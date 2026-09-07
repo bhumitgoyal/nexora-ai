@@ -131,6 +131,7 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
     image: "/proj-gohappy.jpeg",
+    demoUrl: "https://gohappy-demo-629748840531.us-central1.run.app/?k=nuvero2026",
     challenge:
       "GoHappy's members range from 55 to 92, message in 6 different languages, and ask everything from event RSVPs to insurance claim status. The support team was overwhelmed and response times were creeping past 8 hours.",
     approach: [
