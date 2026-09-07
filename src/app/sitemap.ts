@@ -5,7 +5,7 @@ import { briefings } from "@/content/briefings";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const routes = ["", "/what-we-offer", "/services", "/work", "/process", "/about", "/contact", "/reviews", "/briefings", "/security"].map(
+  const routes = ["", "/what-we-offer", "/services", "/work", "/demos", "/process", "/about", "/contact", "/reviews", "/briefings", "/security"].map(
     (r) => ({
       url: `${site.url}${r}`,
       lastModified: now,

@@ -64,7 +64,7 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
     image: "/proj-southwest-voice.jpeg",
-    demoUrl: "https://swg-erp-demo-629748840531.us-central1.run.app/?k=swg2026",
+    demoUrl: "https://swg-erp-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     challenge:
       "The business ran on spreadsheets, paper bills of lading, and manual QuickBooks entry. Deliveries were scheduled by phone, cylinder rents were tracked by hand, and every invoice was retyped, so numbers drifted, month-end dragged on for days, and drivers routinely saw pricing they were never meant to.",
     approach: [
@@ -97,7 +97,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2026",
     gradient: "from-fuchsia-500/25 via-violet-500/20 to-cyan-500/20",
     image: "/proj-southwest-voice.jpeg",
-    demoUrl: "https://swg-delivery-demo-629748840531.us-central1.run.app/?k=swg2026",
+    demoUrl: "https://swg-delivery-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     challenge:
       "Before every route, the office and the drivers burned the morning on phone calls: is this order on today's board, did that delivery actually go out, what changed since yesterday. The answers lived in one person's head and a paper sheet, so nothing was auditable and nobody could check without interrupting someone.",
     approach: [
@@ -131,7 +131,7 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
     image: "/proj-gohappy.jpeg",
-    demoUrl: "https://gohappy-demo-629748840531.us-central1.run.app/?k=nuvero2026",
+    demoUrl: "https://gohappy-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     challenge:
       "GoHappy's members range from 55 to 92, message in 6 different languages, and ask everything from event RSVPs to insurance claim status. The support team was overwhelmed and response times were creeping past 8 hours.",
     approach: [
@@ -261,7 +261,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025–2026",
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
     image: "/proj-nuvero-outreach.jpeg",
-    demoUrl: "https://nuvero-outreach-frontend-demo-629748840531.us-central1.run.app/?k=nuvero2026",
+    demoUrl: "https://nuvero-outreach-frontend-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     challenge:
       "The bottleneck in outreach was never writing the email. It was discovery, deduplication, and finding a real contact you could trust, then doing it again every day without burning the domain or emailing the wrong person.",
     approach: [
