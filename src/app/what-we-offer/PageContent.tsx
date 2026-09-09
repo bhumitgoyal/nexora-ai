@@ -34,7 +34,7 @@ import {
   LayoutGrid,
   Stethoscope,
   Boxes,
-  Download,
+  ExternalLink,
 } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { services } from "@/content/services";
@@ -453,14 +453,14 @@ export function WhatWeOfferContent() {
                         >
                           See full details <ArrowRight className="size-3" />
                         </Link>
-                        {service.deckUrl ? (
+                        {service.overviewUrl ? (
                           <a
-                            href={service.deckUrl}
+                            href={service.overviewUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--color-fg-muted)] hover:text-[var(--color-brand)]"
                           >
-                            <Download className="size-3" /> Download the deck
+                            <ExternalLink className="size-3" /> See it in action
                           </a>
                         ) : null}
                       </div>
