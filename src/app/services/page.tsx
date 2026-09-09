@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import { Check, ArrowLeft, ArrowRight, Sparkles, Download } from "lucide-react";
 import { services } from "@/content/services";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
@@ -91,9 +91,21 @@ export default function ServicesPage() {
                           </Badge>
                         ))}
                       </div>
-                      <GlowButton href="/contact" variant="secondary" size="sm" withArrow>
-                        Commission this system
-                      </GlowButton>
+                      <div className="flex flex-wrap items-center gap-4">
+                        <GlowButton href="/contact" variant="secondary" size="sm" withArrow>
+                          Commission this system
+                        </GlowButton>
+                        {service.deckUrl ? (
+                          <a
+                            href={service.deckUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
+                          >
+                            <Download className="size-3.5" /> Download the pitch deck
+                          </a>
+                        ) : null}
+                      </div>
                     </div>
                   </div>
 

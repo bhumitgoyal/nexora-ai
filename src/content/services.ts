@@ -22,6 +22,10 @@ export type Service = {
   solution: string[];
   deliverables: string[];
   tech: string[];
+  /** Path to a downloadable pitch deck for this system, e.g. "/downloads/foo.pdf" (under
+   * public/downloads/, which is tracked in git - public/deck/ is local-only, never committed).
+   * Optional - only a few systems have a dedicated deck, so the link only renders when set. */
+  deckUrl?: string;
   icon: LucideIcon;
   accent: "brand" | "accent" | "mixed";
 };
@@ -112,6 +116,7 @@ export const services: Service[] = [
       "Weekly retraining loop from real chats",
     ],
     tech: ["LangChain", "Pinecone", "Supabase", "WhatsApp Cloud API", "Claude", "GPT-4o"],
+    deckUrl: "/downloads/nuvero-conversational-ai.pdf",
     icon: MessageSquareText,
     accent: "accent",
   },

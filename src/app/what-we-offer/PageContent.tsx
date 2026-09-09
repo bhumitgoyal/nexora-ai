@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -34,6 +34,7 @@ import {
   LayoutGrid,
   Stethoscope,
   Boxes,
+  Download,
 } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { services } from "@/content/services";
@@ -188,6 +189,20 @@ const industryJumpIcons: Record<string, LucideIcon> = {
 
 export function WhatWeOfferContent() {
   const [tab, setTab] = useState<"industry" | "service">("industry");
+
+  // A link like /what-we-offer#service-conversational-ai-chatbots only resolves once the
+  // "By service" tab is active, since that's the only place the matching id renders. The
+  // browser's own anchor-scroll fires once on load and gives up before this state flips,
+  // so switch the tab first, then scroll to the target ourselves once it exists.
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash.startsWith("service-")) return;
+    setTab("service");
+    const raf = requestAnimationFrame(() => {
+      document.getElementById(hash)?.scrollIntoView({ block: "start" });
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   return (
     <>
@@ -431,12 +446,24 @@ export function WhatWeOfferContent() {
                           </li>
                         ))}
                       </ul>
-                      <Link
-                        href={`/services#${service.slug}`}
-                        className="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-brand)] hover:underline"
-                      >
-                        See full details <ArrowRight className="size-3" />
-                      </Link>
+                      <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2">
+                        <Link
+                          href={`/services#${service.slug}`}
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-brand)] hover:underline"
+                        >
+                          See full details <ArrowRight className="size-3" />
+                        </Link>
+                        {service.deckUrl ? (
+                          <a
+                            href={service.deckUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--color-fg-muted)] hover:text-[var(--color-brand)]"
+                          >
+                            <Download className="size-3" /> Download the deck
+                          </a>
+                        ) : null}
+                      </div>
                     </div>
                   </Reveal>
                 );
