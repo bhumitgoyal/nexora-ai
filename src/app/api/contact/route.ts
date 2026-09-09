@@ -6,7 +6,7 @@ function getResend() {
 }
 
 // Where enquiries land. Override in the environment once the domain is live.
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "nuveroai@gmail.com";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "bhumit@nuvero.space";
 // Must be an address on a domain verified at resend.com/domains.
 // Falls back to Resend's shared test sender only if nothing is configured.
 const FROM_EMAIL =
