@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { WorkGrid } from "@/components/work/WorkGrid";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { Perforation } from "@/components/shared/Perforation";
 import { CtaBanner } from "@/components/home/CtaBanner";
 import { getDeployments } from "@/lib/deployments";
 
@@ -28,8 +27,6 @@ export default async function WorkPage() {
           />
         </div>
       </section>
-
-      <Perforation label="Log entries" />
 
       <section className="container-x pb-24 pt-12">
         <WorkGrid caseStudies={deployments} />

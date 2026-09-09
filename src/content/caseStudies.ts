@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     featured: true,
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/proj-southwest-voice.jpeg",
+    image: "/workflows/southwest-gases-voice-concierge.png",
     challenge:
       "Southwest Gases was losing 22% of inbound calls to abandonment during peak hours and burning ops budget on after-hours staffing. The marketing team also had a backlog of warm leads that nobody had time to call.",
     approach: [
@@ -69,7 +69,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2026",
     featured: true,
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/proj-southwest-voice.jpeg",
+    image: "/workflows/southwest-gases-erp.png",
     demoUrl: "https://swg-erp-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/swg-erp.png",
@@ -105,7 +105,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "5 weeks",
     year: "2026",
     gradient: "from-fuchsia-500/25 via-violet-500/20 to-cyan-500/20",
-    image: "/proj-southwest-voice.jpeg",
+    image: "/workflows/southwest-gases-delivery-schedule.png",
     demoUrl: "https://swg-delivery-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/swg-delivery.png",
@@ -142,7 +142,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     featured: true,
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
-    image: "/proj-gohappy.jpeg",
+    image: "/workflows/gohappy-club-member-assistant.png",
     demoUrl: "https://gohappy-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/gohappy.png",
@@ -179,7 +179,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2024–2026",
     featured: true,
     gradient: "from-fuchsia-500/40 via-violet-500/20 to-cyan-500/30",
-    image: "/proj-multi-client.jpeg",
+    image: "/workflows/linkedin-lead-intelligence-engine.png",
     challenge:
       "Agency and SaaS clients were paying a significant premium per verified B2B lead and still getting 18% bounce rates. The cost of pipeline was eating their unit economics alive.",
     approach: [
@@ -211,7 +211,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Ongoing",
     year: "2024–2026",
     gradient: "from-violet-500/40 via-cyan-500/20 to-fuchsia-500/30",
-    image: "/proj-marketing.jpeg",
+    image: "/workflows/ai-marketing-campaign-orchestrator.png",
     challenge:
       "Marketing teams were spending 4–5 days per campaign on copy variants, asset cuts, sequence wiring, and reply triage. Quality varied wildly between SDRs and conversion data took weeks to make sense of.",
     approach: [
@@ -243,7 +243,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "7 weeks",
     year: "2026",
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/proj-adfactors.jpeg",
+    image: "/workflows/adfactors-pr-wire-booking.png",
     challenge:
       "Consultants hand-built every quote from dozens of regional rate-card spreadsheets, so quotes were slow, error-prone, and inconsistent between people. Partnerships had no single source of truth for rates, and updating a price meant re-sending files to the whole team.",
     approach: [
@@ -275,7 +275,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Ongoing",
     year: "2025–2026",
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
-    image: "/proj-nuvero-outreach.jpeg",
+    image: "/workflows/nuvero-outreach-engine.png",
     demoUrl: "https://nuvero-outreach-frontend-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/nuvero-outreach.png",
@@ -311,7 +311,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "6 weeks",
     year: "2026",
     gradient: "from-cyan-500/40 via-violet-500/20 to-fuchsia-500/30",
-    image: "/proj-meridian.jpeg",
+    image: "/workflows/meridian-realty-inbound-qualifier.png",
     challenge:
       "Meridian was losing 60% of inbound leads to slow response times. By the time an agent called back, the buyer had already toured a competitor's listing.",
     approach: [
@@ -343,7 +343,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "8 weeks",
     year: "2025",
     gradient: "from-violet-500/40 via-fuchsia-500/30 to-cyan-500/40",
-    image: "/proj-northwind.jpeg",
+    image: "/workflows/northwind-logistics-ops-copilot.png",
     challenge:
       "Northwind's ops team handled 4,000+ shipments a week across 17 jurisdictions. New hires took 4 months to ramp, and routing mistakes carried a significant cost per incident.",
     approach: [
@@ -375,7 +375,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "10 weeks",
     year: "2025",
     gradient: "from-fuchsia-500/40 via-cyan-500/20 to-violet-500/30",
-    image: "/proj-lumina.jpeg",
+    image: "/workflows/lumina-studios-content-engine.png",
     challenge:
       "Lumina was turning down retainer expansions because their senior writers were maxed out. Hiring more was slow, expensive, and risked diluting the distinctive voice clients paid premiums for.",
     approach: [

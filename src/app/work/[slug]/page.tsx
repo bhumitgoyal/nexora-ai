@@ -65,11 +65,14 @@ export default async function CaseStudyPage({
   const passcode = study.demoPasscode ?? local?.demoPasscode ?? "nuvero.space";
   const runningCost = study.runningCost ?? local?.runningCost;
   const demoDisplayUrl = demoUrl ? demoUrl.split("?")[0] : "";
+  // Show the poster (workflow diagram) beside the challenge, unless it is the same
+  // image as the demo snapshot (the 3 demo-only studies), which would just repeat it.
+  const posterToShow = study.image && study.image !== snapshot ? study.image : null;
 
   return (
     <>
       <section className="relative isolate overflow-hidden">
-        <GridBackground />
+        <GridBackground interactive={false} />
         <GradientOrb tone="brand" size={560} className="left-[-160px] top-[-100px]" />
         <GradientOrb tone="accent" size={460} className="right-[-120px] top-[10%]" />
 
@@ -143,82 +146,68 @@ export default async function CaseStudyPage({
         </div>
       </section>
 
-      <section className="container-x">
-        <Reveal>
-          <div className="relative overflow-hidden bg-[var(--color-brand)] border-4 border-[var(--color-brand)]">
-            {study.image ? (
-              <Image
-                src={study.image}
-                alt={`${study.client} · AI automation workflow built by Nuvero AI`}
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="w-full h-auto"
-                priority
-              />
-            ) : (
-              <div className="aspect-[16/7]">
-                <div className="absolute inset-0 grid-bg opacity-20" />
-              </div>
-            )}
-          </div>
-        </Reveal>
-      </section>
-
       {demoUrl ? (
-        <section className="container-x pt-16 md:pt-24">
+        <section className="container-x pt-4 md:pt-8">
           <Reveal>
             <div className="border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[6px_6px_0_var(--color-brand)]">
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3">
-                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg)]">
-                  <span className="size-1.5 animate-pulse bg-[var(--color-brand)]" />
-                  Live demo · sample data only
-                </span>
-                {runningCost ? (
-                  <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                    <Coins className="size-3.5" /> Approx. running cost {runningCost}
-                  </span>
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {snapshot ? (
+                  <a
+                    href={demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative block overflow-hidden border-b-2 border-[var(--color-border)] lg:border-b-0 lg:border-r-2"
+                  >
+                    <Image
+                      src={snapshot}
+                      alt={`${study.client} live demo screenshot`}
+                      width={0}
+                      height={0}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                      priority
+                    />
+                  </a>
                 ) : null}
-              </div>
 
-              {snapshot ? (
-                <a
-                  href={demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block overflow-hidden border-b-2 border-[var(--color-border)]"
-                >
-                  <Image
-                    src={snapshot}
-                    alt={`${study.client} live demo screenshot`}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
-                  />
-                </a>
-              ) : null}
-
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 p-5">
-                <a
-                  href={demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
-                >
-                  <MonitorPlay className="size-4" />
-                  Open the live demo
-                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                </a>
-                <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-fg-muted)]">
-                  <KeyRound className="size-4 text-[var(--color-brand)]" />
-                  Passcode <span className="font-semibold text-[var(--color-fg)]">{passcode}</span>
-                </span>
-                {demoDisplayUrl ? (
-                  <span className="ml-auto hidden max-w-full truncate font-mono text-[11px] text-[var(--color-fg-subtle)] sm:inline">
-                    {demoDisplayUrl.replace("https://", "")}
-                  </span>
-                ) : null}
+                <div className="flex flex-col justify-between gap-6 p-6 md:p-8">
+                  <div className="flex flex-col gap-4">
+                    <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg)]">
+                      <span className="size-1.5 animate-pulse bg-[var(--color-brand)]" />
+                      Live demo · sample data only
+                    </span>
+                    <p className="text-sm leading-relaxed text-[var(--color-fg-muted)]">
+                      Open the running system and try it yourself. It runs on scrubbed sample
+                      data behind a passcode, so nothing here is a real customer record.
+                    </p>
+                    {runningCost ? (
+                      <span className="inline-flex w-fit items-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+                        <Coins className="size-3.5" /> Approx. running cost {runningCost}
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <a
+                      href={demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex w-fit items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
+                    >
+                      <MonitorPlay className="size-4" />
+                      Open the live demo
+                      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </a>
+                    <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-fg-muted)]">
+                      <KeyRound className="size-4 text-[var(--color-brand)]" />
+                      Passcode <span className="font-semibold text-[var(--color-fg)]">{passcode}</span>
+                    </span>
+                    {demoDisplayUrl ? (
+                      <span className="max-w-full truncate font-mono text-[11px] text-[var(--color-fg-subtle)]">
+                        {demoDisplayUrl.replace("https://", "")}
+                      </span>
+                    ) : null}
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -250,21 +239,51 @@ export default async function CaseStudyPage({
       </section>
 
       <section className="container-x pb-20 md:pb-28">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
-          <div className="flex flex-col gap-3">
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-accent)]">
-              The challenge
-            </span>
-            <h2 className="font-display text-2xl font-semibold md:text-3xl">
-              What we were up against
-            </h2>
+        {posterToShow ? (
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
+              <div className="overflow-hidden border-2 border-[var(--color-border)] bg-[var(--color-surface)] shadow-[6px_6px_0_var(--color-brand)]">
+                <Image
+                  src={posterToShow}
+                  alt={`${study.client} · AI automation workflow built by Nuvero AI`}
+                  width={0}
+                  height={0}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="h-auto w-full"
+                />
+              </div>
+            </Reveal>
+            <div className="flex flex-col gap-4">
+              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-accent)]">
+                The challenge
+              </span>
+              <h2 className="font-display text-2xl font-semibold md:text-3xl">
+                What we were up against
+              </h2>
+              <Reveal>
+                <p className="text-pretty text-base leading-relaxed text-[var(--color-fg)] md:text-lg">
+                  {study.challenge}
+                </p>
+              </Reveal>
+            </div>
           </div>
-          <Reveal>
-            <p className="text-pretty text-base leading-relaxed text-[var(--color-fg)] md:text-lg">
-              {study.challenge}
-            </p>
-          </Reveal>
-        </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
+            <div className="flex flex-col gap-3">
+              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-accent)]">
+                The challenge
+              </span>
+              <h2 className="font-display text-2xl font-semibold md:text-3xl">
+                What we were up against
+              </h2>
+            </div>
+            <Reveal>
+              <p className="text-pretty text-base leading-relaxed text-[var(--color-fg)] md:text-lg">
+                {study.challenge}
+              </p>
+            </Reveal>
+          </div>
+        )}
       </section>
 
       <section className="container-x pb-20 md:pb-28">
