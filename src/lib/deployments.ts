@@ -43,10 +43,11 @@ export async function getDeployments(): Promise<CaseStudy[]> {
     if (!local) return row;
     return {
       ...row,
-      demoUrl: row.demoUrl ?? local.demoUrl,
-      demoPasscode: row.demoPasscode ?? local.demoPasscode,
-      snapshot: row.snapshot ?? local.snapshot,
-      runningCost: row.runningCost ?? local.runningCost,
+      // `||` (not `??`) so the feed's empty-string defaults fall back to local.
+      demoUrl: row.demoUrl || local.demoUrl,
+      demoPasscode: row.demoPasscode || local.demoPasscode,
+      snapshot: row.snapshot || local.snapshot,
+      runningCost: row.runningCost || local.runningCost,
     };
   });
   const feedSlugs = new Set(fetched.map((r) => r.slug));
