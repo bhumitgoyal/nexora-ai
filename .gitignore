@@ -36,3 +36,4 @@ next-env.d.ts
 .codex/
 AGENTS.md
 public/deck/
+.claude/launch.json
