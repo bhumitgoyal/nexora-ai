@@ -13,6 +13,10 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    // /demos was folded into /work (each deployment now shows its own demo).
+    return [{ source: '/demos', destination: '/work', permanent: true }];
+  },
 };
 
 export default nextConfig;

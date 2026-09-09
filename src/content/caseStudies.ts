@@ -16,6 +16,12 @@
   featured?: boolean;
   /** Passcode-gated live demo running on sample data (one-click unlock link). */
   demoUrl?: string;
+  /** Visible passcode shown next to the demo link. */
+  demoPasscode?: string;
+  /** Screenshot of the running demo (shown on the detail page). */
+  snapshot?: string;
+  /** Approximate monthly cost to run the system in production, e.g. "~$35/mo". */
+  runningCost?: string;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -65,6 +71,9 @@ export const caseStudies: CaseStudy[] = [
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
     image: "/proj-southwest-voice.jpeg",
     demoUrl: "https://swg-erp-demo-629748840531.us-central1.run.app/?k=nuvero.space",
+    demoPasscode: "nuvero.space",
+    snapshot: "/demos/swg-erp.png",
+    runningCost: "~$35/mo",
     challenge:
       "The business ran on spreadsheets, paper bills of lading, and manual QuickBooks entry. Deliveries were scheduled by phone, cylinder rents were tracked by hand, and every invoice was retyped, so numbers drifted, month-end dragged on for days, and drivers routinely saw pricing they were never meant to.",
     approach: [
@@ -98,6 +107,9 @@ export const caseStudies: CaseStudy[] = [
     gradient: "from-fuchsia-500/25 via-violet-500/20 to-cyan-500/20",
     image: "/proj-southwest-voice.jpeg",
     demoUrl: "https://swg-delivery-demo-629748840531.us-central1.run.app/?k=nuvero.space",
+    demoPasscode: "nuvero.space",
+    snapshot: "/demos/swg-delivery.png",
+    runningCost: "~$5/mo",
     challenge:
       "Before every route, the office and the drivers burned the morning on phone calls: is this order on today's board, did that delivery actually go out, what changed since yesterday. The answers lived in one person's head and a paper sheet, so nothing was auditable and nobody could check without interrupting someone.",
     approach: [
@@ -132,6 +144,9 @@ export const caseStudies: CaseStudy[] = [
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
     image: "/proj-gohappy.jpeg",
     demoUrl: "https://gohappy-demo-629748840531.us-central1.run.app/?k=nuvero.space",
+    demoPasscode: "nuvero.space",
+    snapshot: "/demos/gohappy.png",
+    runningCost: "~$50/mo at demo volume",
     challenge:
       "GoHappy's members range from 55 to 92, message in 6 different languages, and ask everything from event RSVPs to insurance claim status. The support team was overwhelmed and response times were creeping past 8 hours.",
     approach: [
@@ -262,6 +277,9 @@ export const caseStudies: CaseStudy[] = [
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
     image: "/proj-nuvero-outreach.jpeg",
     demoUrl: "https://nuvero-outreach-frontend-demo-629748840531.us-central1.run.app/?k=nuvero.space",
+    demoPasscode: "nuvero.space",
+    snapshot: "/demos/nuvero-outreach.png",
+    runningCost: "~$45/mo + LLM usage",
     challenge:
       "The bottleneck in outreach was never writing the email. It was discovery, deduplication, and finding a real contact you could trust, then doing it again every day without burning the domain or emailing the wrong person.",
     approach: [
@@ -378,6 +396,114 @@ export const caseStudies: CaseStudy[] = [
       { metric: "+2.3×", label: "average retainer size after expansion" },
     ],
     tech: ["Claude", "GPT-4o", "Notion", "Webflow", "Descript", "n8n"],
+  },
+  {
+    slug: "vitopia-campus-assistant",
+    client: "VITopia (VIT)",
+    industry: "Education · Student Services",
+    title: "A multilingual campus copilot that answers students in seconds, grounded in the university's own knowledge.",
+    summary:
+      "A retrieval-grounded assistant for VIT students that answers questions on FFCS, grading, hostel, faculty, and exams in plain language across English and Hindi, pulling only from a curated campus knowledge base so it never makes things up.",
+    duration: "6 weeks",
+    year: "2026",
+    gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
+    image: "/demos/vit-chatbot.png",
+    demoUrl: "https://vit-chatbot-demo-629748840531.us-central1.run.app/?k=nuvero.space",
+    demoPasscode: "nuvero.space",
+    snapshot: "/demos/vit-chatbot.png",
+    runningCost: "~$25/mo",
+    challenge:
+      "Students hunted through PDFs, notices, and portal pages for answers to the same recurring questions, and the support desk fielded the overflow. Anything time-sensitive, like an FFCS rule or an exam pattern, was slow to find and easy to get wrong.",
+    approach: [
+      "Built a curated campus knowledge base and indexed it into a fast retrieval layer, so every answer is grounded in a real source, not a guess.",
+      "Tuned the assistant to reply in the student's own language, English or Hindi, and to keep answers short and specific.",
+      "Wired it onto Google's Vertex Gemini with no key to leak, running on the university's own cloud footprint.",
+      "Kept personal-record features behind an explicit opt-in, so the public assistant only ever answers general campus questions.",
+    ],
+    solution: [
+      "A web chat copilot that answers FFCS, grading, hostel, faculty, and exam questions with retrieval-grounded replies.",
+      "Multilingual support that mirrors how students actually ask, including Hinglish.",
+      "Cited, knowledge-base-backed answers that stay accurate as the source is updated.",
+      "A lightweight, mobile-friendly interface a student can open between classes.",
+    ],
+    results: [
+      { metric: "24/7", label: "instant answers, no support queue" },
+      { metric: "2", label: "languages handled natively (English + Hindi)" },
+      { metric: "0", label: "invented facts, every answer is grounded" },
+    ],
+    tech: ["FastAPI", "Vertex AI", "Gemini 2.5 Flash", "RAG", "Cloud Run"],
+  },
+  {
+    slug: "swg-delivery-connector",
+    client: "Southwest Gases",
+    industry: "Energy & Utilities · AI Connector",
+    title: "A read-only connector that lets ChatGPT and Claude answer straight from the delivery board.",
+    summary:
+      "A hosted MCP connector for the Southwest Gases delivery schedule, so anyone on the team can ask ChatGPT or Claude whether an order is on the board or a delivery is done and get the answer live, without opening the app or seeing anything they shouldn't.",
+    duration: "2 weeks",
+    year: "2026",
+    gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
+    image: "/demos/swg-mcp.png",
+    demoUrl: "https://swg-mcp-demo-629748840531.us-central1.run.app/?k=nuvero.space",
+    demoPasscode: "nuvero.space",
+    snapshot: "/demos/swg-mcp.png",
+    runningCost: "~$0/mo (serverless)",
+    challenge:
+      "The delivery board answered the team's day-to-day questions, but only if you opened it. People wanted to ask their AI assistant 'is the Riverside order scheduled?' and get a straight answer, without a login and without exposing prices or invoices.",
+    approach: [
+      "Exposed the schedule through the Model Context Protocol as a small set of read-only tools an assistant can call.",
+      "Scoped the tools to answer only whether something is scheduled and its status, never prices, quantities, or invoices.",
+      "Locked the connector to read-only behind OAuth, so an assistant can look but nothing outside the app can change a delivery.",
+      "Hosted it serverless so it costs effectively nothing to keep running.",
+    ],
+    solution: [
+      "Five read-only tools: get deliveries, search, get one delivery, list recurring, and schedule coverage.",
+      "Plain-language answers in ChatGPT or Claude, pulled live from the same board the team runs on.",
+      "A safe surface that never leaks pricing or financial fields.",
+      "A one-line setup for any MCP-capable assistant.",
+    ],
+    results: [
+      { metric: "5", label: "read-only tools exposed to any assistant" },
+      { metric: "0", label: "prices or invoices ever exposed" },
+      { metric: "Live", label: "answers straight from the delivery board" },
+    ],
+    tech: ["Model Context Protocol", "Node.js", "Firebase RTDB", "Vercel", "OAuth"],
+  },
+  {
+    slug: "nuvero-automation-workflows",
+    client: "Nuvero AI",
+    industry: "Automation · Workflows",
+    title: "The workflow automations that run marketing, distribution, and follow-ups while the team sleeps.",
+    summary:
+      "A library of n8n automations Nuvero builds and runs: AI content generation, omnichannel distribution, lead intake, and payment follow-ups, each wired end to end so recurring manual work simply stops being manual.",
+    duration: "Ongoing",
+    year: "2025–2026",
+    gradient: "from-fuchsia-500/40 via-cyan-500/20 to-violet-500/30",
+    image: "/demos/n8n.png",
+    demoUrl: "https://n8n-workflows-demo-629748840531.us-central1.run.app/?k=nuvero.space",
+    demoPasscode: "nuvero.space",
+    snapshot: "/demos/n8n.png",
+    runningCost: "~$15/mo + LLM usage",
+    challenge:
+      "The highest-leverage work was also the most repetitive: drafting content in three formats, fanning approved announcements out to every channel, chasing leads and unpaid invoices. Done by hand it was slow, easy to drop, and impossible to scale.",
+    approach: [
+      "Mapped each recurring process into an explicit, observable workflow with retries and clear failure states.",
+      "Put AI agents where judgement was needed (drafting, rewriting) and plain logic everywhere else.",
+      "Wired the workflows into the tools already in use, from Airtable to Gmail to QuickBooks, with no new logins.",
+      "Kept a human approval gate wherever something left the building.",
+    ],
+    solution: [
+      "Content generation: one record fans out to three AI agents drafting WhatsApp, email, and push copy in parallel.",
+      "Daily distribution: approved announcements delivered to every active user across channels in one run.",
+      "Lead intake and follow-up: new leads emailed, logged, and chased on a schedule.",
+      "Payment follow-ups: QuickBooks checked daily and the right reminder or overdue alert sent automatically.",
+    ],
+    results: [
+      { metric: "0", label: "manual sends once a workflow is live" },
+      { metric: "3", label: "channels generated from one brief" },
+      { metric: "Daily", label: "follow-ups that never get forgotten" },
+    ],
+    tech: ["n8n", "OpenAI", "Airtable", "Gmail API", "QuickBooks", "WhatsApp Cloud API"],
   },
 ];
 

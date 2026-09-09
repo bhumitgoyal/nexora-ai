@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Calendar, Building2, MonitorPlay } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Building2, MonitorPlay, KeyRound, Coins } from "lucide-react";
 import { getDeployments } from "@/lib/deployments";
 import { caseStudies as curatedStudies } from "@/content/caseStudies";
 import { GradientOrb } from "@/components/shared/GradientOrb";
@@ -58,8 +58,13 @@ export default async function CaseStudyPage({
   const prev = caseStudies[(idx - 1 + caseStudies.length) % caseStudies.length];
   const next = caseStudies[(idx + 1) % caseStudies.length];
 
-  // Demo links live in the local content (the deployments feed doesn't carry them).
-  const demoUrl = study.demoUrl ?? curatedStudies.find((c) => c.slug === slug)?.demoUrl;
+  // Demo fields: prefer the feed row, fall back to local content by slug.
+  const local = curatedStudies.find((c) => c.slug === slug);
+  const demoUrl = study.demoUrl ?? local?.demoUrl;
+  const snapshot = study.snapshot ?? local?.snapshot;
+  const passcode = study.demoPasscode ?? local?.demoPasscode ?? "nuvero.space";
+  const runningCost = study.runningCost ?? local?.runningCost;
+  const demoDisplayUrl = demoUrl ? demoUrl.split("?")[0] : "";
 
   return (
     <>
@@ -129,7 +134,7 @@ export default async function CaseStudyPage({
                     <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </a>
                   <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
-                    Interactive · runs on sample data only
+                    Passcode <span className="text-[var(--color-fg-muted)]">{passcode}</span> · runs on sample data
                   </span>
                 </div>
               </Reveal>
@@ -159,6 +164,66 @@ export default async function CaseStudyPage({
           </div>
         </Reveal>
       </section>
+
+      {demoUrl ? (
+        <section className="container-x pt-16 md:pt-24">
+          <Reveal>
+            <div className="border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[6px_6px_0_var(--color-brand)]">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3">
+                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg)]">
+                  <span className="size-1.5 animate-pulse bg-[var(--color-brand)]" />
+                  Live demo · sample data only
+                </span>
+                {runningCost ? (
+                  <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+                    <Coins className="size-3.5" /> Approx. running cost {runningCost}
+                  </span>
+                ) : null}
+              </div>
+
+              {snapshot ? (
+                <a
+                  href={demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block overflow-hidden border-b-2 border-[var(--color-border)]"
+                >
+                  <Image
+                    src={snapshot}
+                    alt={`${study.client} live demo screenshot`}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.01]"
+                  />
+                </a>
+              ) : null}
+
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 p-5">
+                <a
+                  href={demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
+                >
+                  <MonitorPlay className="size-4" />
+                  Open the live demo
+                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                </a>
+                <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-fg-muted)]">
+                  <KeyRound className="size-4 text-[var(--color-brand)]" />
+                  Passcode <span className="font-semibold text-[var(--color-fg)]">{passcode}</span>
+                </span>
+                {demoDisplayUrl ? (
+                  <span className="ml-auto hidden max-w-full truncate font-mono text-[11px] text-[var(--color-fg-subtle)] sm:inline">
+                    {demoDisplayUrl.replace("https://", "")}
+                  </span>
+                ) : null}
+              </div>
+            </div>
+          </Reveal>
+        </section>
+      ) : null}
 
       <section className="container-x py-20 md:py-28">
         <Reveal>

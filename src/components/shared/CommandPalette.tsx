@@ -12,7 +12,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import { Briefcase, FileText, Phone, ArrowUpRight, LayoutGrid, Newspaper, MessageSquareQuote, MonitorPlay } from "lucide-react";
+import { Briefcase, FileText, Phone, ArrowUpRight, LayoutGrid, Newspaper, MessageSquareQuote } from "lucide-react";
 import { caseStudies } from "@/content/caseStudies";
 import { services } from "@/content/services";
 import { briefings } from "@/content/briefings";
@@ -21,7 +21,6 @@ const pages = [
   { label: "Infrastructure", href: "/what-we-offer", icon: LayoutGrid },
   { label: "Systems", href: "/services", icon: FileText },
   { label: "Deployments & Case Studies", href: "/work", icon: Briefcase },
-  { label: "Live Demos", href: "/demos", icon: MonitorPlay },
   { label: "Our Process", href: "/process", icon: FileText },
   { label: "Intelligence Briefings", href: "/briefings", icon: Newspaper },
   { label: "Client Reviews", href: "/reviews", icon: MessageSquareQuote },
