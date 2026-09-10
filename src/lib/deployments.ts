@@ -16,6 +16,18 @@ function isCaseStudy(row: unknown): row is CaseStudy {
   return typeof r.slug === "string" && typeof r.client === "string" && typeof r.title === "string";
 }
 
+// The feed is owner-authored today, but its URL fields still land in <a href> and
+// next/image src on the public site. Only let through what those can safely take:
+// an https:// link, or a same-origin "/..." asset path. Anything else (a
+// "javascript:" href, a host outside next.config's remotePatterns that would throw
+// mid-render) is dropped so the local fallback is used instead.
+function safeLink(value: unknown): string | undefined {
+  return typeof value === "string" && /^https:\/\//i.test(value) ? value : undefined;
+}
+function safeAsset(value: unknown): string | undefined {
+  return typeof value === "string" && /^(\/|https:\/\/)/i.test(value) ? value : undefined;
+}
+
 export async function getDeployments(): Promise<CaseStudy[]> {
   const url = process.env.DEPLOYMENTS_API_URL || DEFAULT_DEPLOYMENTS_API;
   let fetched: CaseStudy[] = [];
@@ -40,14 +52,17 @@ export async function getDeployments(): Promise<CaseStudy[]> {
   const localBySlug = new Map(caseStudies.map((c) => [c.slug, c]));
   const merged = fetched.map((row) => {
     const local = localBySlug.get(row.slug);
-    if (!local) return row;
     return {
       ...row,
+      // URL fields are scheme-checked before they can reach <a href> / next-image.
+      // An unsafe or missing feed value falls back to the local one (which may be
+      // undefined for a feed-only study - that's fine, the field is optional).
+      image: safeAsset(row.image) ?? local?.image,
+      snapshot: safeAsset(row.snapshot) ?? local?.snapshot,
+      demoUrl: safeLink(row.demoUrl) ?? local?.demoUrl,
       // `||` (not `??`) so the feed's empty-string defaults fall back to local.
-      demoUrl: row.demoUrl || local.demoUrl,
-      demoPasscode: row.demoPasscode || local.demoPasscode,
-      snapshot: row.snapshot || local.snapshot,
-      runningCost: row.runningCost || local.runningCost,
+      demoPasscode: row.demoPasscode || local?.demoPasscode,
+      runningCost: row.runningCost || local?.runningCost,
     };
   });
   const feedSlugs = new Set(fetched.map((r) => r.slug));
