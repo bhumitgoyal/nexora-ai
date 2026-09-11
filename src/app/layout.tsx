@@ -14,6 +14,7 @@ import { QuickContact } from "@/components/shared/QuickContact";
 import { DotGridWrapper } from "@/components/shared/DotGridWrapper";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -89,6 +90,7 @@ export default function RootLayout({
       <body className="relative min-h-screen antialiased">
         <JsonLd />
         <Analytics />
+        <SpeedInsights />
         <SmoothScroll />
         <DotGridWrapper />
         <TooltipProvider delayDuration={300}>
