@@ -5,6 +5,7 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 import { getDeployments } from "@/lib/deployments";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work" },
   title: "Deployments",
   description:
     "45 systems deployed across energy, wellness, e-commerce, real estate, and more, with the real metrics each one moved.",

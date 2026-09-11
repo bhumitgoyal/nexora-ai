@@ -11,6 +11,7 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services" },
   title: "Systems",
   description:
     "The systems that make up Nuvero's AI infrastructure: voice agents, conversational AI, workflow orchestration, lead engines, and knowledge layers. Built into your stack, instrumented for measurable impact, owned by you.",

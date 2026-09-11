@@ -5,6 +5,7 @@ import { Reveal } from "@/components/shared/Reveal";
 import { briefings } from "@/content/briefings";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/briefings" },
   title: "Intelligence Briefings",
   description:
     "Nuvero AI's briefings on AI infrastructure: readiness rubrics, field notes, and positions on building the intelligence layer your business runs on.",

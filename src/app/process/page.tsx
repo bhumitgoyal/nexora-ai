@@ -5,6 +5,7 @@ import { TechStackMarquee } from "@/components/home/TechStackMarquee";
 import { CtaBanner } from "@/components/home/CtaBanner";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/process" },
   title: "Process",
   description:
     "How Nuvero ships in 6 weeks: a 5-phase engagement model with weekly demos, KPIs tracked from day one, and no deliverable without a metric attached.",

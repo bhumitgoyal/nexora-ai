@@ -3,6 +3,7 @@ import Link from "next/link";
 import { GridBackground } from "@/components/shared/GridBackground";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/terms" },
   title: "Terms of Service",
   description:
     "Terms governing your use of the Nuvero AI website and the conditions under which we deliver AI automation services.",

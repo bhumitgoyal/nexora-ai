@@ -10,6 +10,7 @@ import { GlowButton } from "@/components/shared/GlowButton";
 import { CtaBanner } from "@/components/home/CtaBanner";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About",
   description:
     "Nuvero AI is led by Bhumit Goyal. We build the AI infrastructure businesses run on: 45 systems deployed, 92% client retention, 11 industries. Learn how we work and why clients keep coming back.",

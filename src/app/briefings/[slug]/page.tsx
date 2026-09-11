@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const b = getBriefing(slug);
   if (!b) return { title: "Briefing not found" };
-  return { title: b.title, description: b.dek };
+  return { title: b.title, description: b.dek, alternates: { canonical: `/briefings/${slug}` } };
 }
 
 function fmt(date: string) {

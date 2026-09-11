@@ -3,6 +3,7 @@ import Link from "next/link";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/booklet" },
   title: `Select Agency ${site.name}`,
   robots: { index: false, follow: false },
 };

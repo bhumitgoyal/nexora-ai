@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/" },
   title: "AI Infrastructure for Your Business",
   description:
     "Nuvero AI builds the AI infrastructure your business runs on. Agents trained on your workflows, wired into your stack, running your operations 24/7. Any manual work, automated. You own the whole layer.",

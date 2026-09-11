@@ -5,6 +5,7 @@ import { Reveal } from "@/components/shared/Reveal";
 import { getReviews } from "@/lib/reviews";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/reviews" },
   title: "Client Reviews",
   description:
     "Every piece of feedback from the businesses running on Nuvero AI infrastructure, in one place.",

@@ -12,6 +12,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { CommandPalette } from "@/components/shared/CommandPalette";
 import { QuickContact } from "@/components/shared/QuickContact";
 import { DotGridWrapper } from "@/components/shared/DotGridWrapper";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -85,6 +86,7 @@ export default function RootLayout({
       className={`${dmSans.variable} ${spaceMono.variable}`}
     >
       <body className="relative min-h-screen antialiased">
+        <JsonLd />
         <SmoothScroll />
         <DotGridWrapper />
         <TooltipProvider delayDuration={300}>

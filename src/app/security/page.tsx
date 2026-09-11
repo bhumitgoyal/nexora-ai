@@ -4,6 +4,7 @@ import { ShieldCheck, Lock, Database, FileText, RefreshCw, Users } from "lucide-
 import { GridBackground } from "@/components/shared/GridBackground";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/security" },
   title: "Security & Data",
   description:
     "How Nuvero AI handles your data: encryption, ownership, access controls, and compliance. You own everything we build.",

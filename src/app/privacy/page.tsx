@@ -3,6 +3,7 @@ import Link from "next/link";
 import { GridBackground } from "@/components/shared/GridBackground";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy" },
   title: "Privacy Policy",
   description:
     "How Nuvero AI collects, uses, and protects information submitted through our website and contact forms.",

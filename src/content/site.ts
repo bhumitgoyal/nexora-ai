@@ -3,7 +3,7 @@ export const site = {
   shortName: "Nuvero",
   tagline: "The AI infrastructure your business runs on.",
   description:
-    "Nuvero AI builds AI infrastructure: agentic systems trained on how your company actually works, wired into your stack, so manual work disappears and any workflow can run itself. Not a product. Not a service. The intelligence layer underneath your operations.",
+    "Nuvero AI builds custom AI infrastructure: agentic systems trained on how your business actually works, wired into your stack to automate real workflows end to end.",
   url: "https://nuvero.space",
   ogImage: "/og.png",
   founder: {
@@ -22,7 +22,7 @@ export const site = {
   socials: {
     linkedin: "https://www.linkedin.com/in/bhumitgoyal",
     github: "https://github.com/bhumitgoyal",
-    instagram: "https://www.instagram.com/bhumitgoyal",
+    instagram: "https://www.instagram.com/nuvero.ai/",
     twitter: "https://twitter.com/bhumitgoyal",
   },
   nav: [
