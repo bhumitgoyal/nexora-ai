@@ -13,6 +13,7 @@ import { CommandPalette } from "@/components/shared/CommandPalette";
 import { QuickContact } from "@/components/shared/QuickContact";
 import { DotGridWrapper } from "@/components/shared/DotGridWrapper";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -87,6 +88,7 @@ export default function RootLayout({
     >
       <body className="relative min-h-screen antialiased">
         <JsonLd />
+        <Analytics />
         <SmoothScroll />
         <DotGridWrapper />
         <TooltipProvider delayDuration={300}>
