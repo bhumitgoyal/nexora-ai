@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     featured: true,
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/workflows/southwest-gases-voice-concierge.png",
+    image: "/workflows/southwest-gases-voice-concierge.webp",
     challenge:
       "Southwest Gases was losing 22% of inbound calls to abandonment during peak hours and burning ops budget on after-hours staffing. The marketing team also had a backlog of warm leads that nobody had time to call.",
     approach: [
@@ -69,10 +69,10 @@ export const caseStudies: CaseStudy[] = [
     year: "2026",
     featured: true,
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/workflows/southwest-gases-erp.png",
+    image: "/workflows/southwest-gases-erp.webp",
     demoUrl: "https://swg-erp-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
-    snapshot: "/demos/swg-erp.png",
+    snapshot: "/demos/swg-erp.webp",
     runningCost: "~$35/mo",
     challenge:
       "The business ran on spreadsheets, paper bills of lading, and manual QuickBooks entry. Deliveries were scheduled by phone, cylinder rents were tracked by hand, and every invoice was retyped, so numbers drifted, month-end dragged on for days, and drivers routinely saw pricing they were never meant to.",
@@ -105,10 +105,10 @@ export const caseStudies: CaseStudy[] = [
     duration: "5 weeks",
     year: "2026",
     gradient: "from-fuchsia-500/25 via-violet-500/20 to-cyan-500/20",
-    image: "/workflows/southwest-gases-delivery-schedule.png",
+    image: "/workflows/southwest-gases-delivery-schedule.webp",
     demoUrl: "https://swg-delivery-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
-    snapshot: "/demos/swg-delivery.png",
+    snapshot: "/demos/swg-delivery.webp",
     runningCost: "~$5/mo",
     challenge:
       "Before every route, the office and the drivers burned the morning on phone calls: is this order on today's board, did that delivery actually go out, what changed since yesterday. The answers lived in one person's head and a paper sheet, so nothing was auditable and nobody could check without interrupting someone.",
@@ -142,10 +142,10 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     featured: true,
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
-    image: "/workflows/gohappy-club-member-assistant.png",
+    image: "/workflows/gohappy-club-member-assistant.webp",
     demoUrl: "https://gohappy-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
-    snapshot: "/demos/gohappy.png",
+    snapshot: "/demos/gohappy.webp",
     runningCost: "~$50/mo at demo volume",
     challenge:
       "GoHappy's members range from 55 to 92, message in 6 different languages, and ask everything from event RSVPs to insurance claim status. The support team was overwhelmed and response times were creeping past 8 hours.",
@@ -179,7 +179,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2024–2026",
     featured: true,
     gradient: "from-fuchsia-500/40 via-violet-500/20 to-cyan-500/30",
-    image: "/workflows/linkedin-lead-intelligence-engine.png",
+    image: "/workflows/linkedin-lead-intelligence-engine.webp",
     challenge:
       "Agency and SaaS clients were paying a significant premium per verified B2B lead and still getting 18% bounce rates. The cost of pipeline was eating their unit economics alive.",
     approach: [
@@ -211,7 +211,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Ongoing",
     year: "2024–2026",
     gradient: "from-violet-500/40 via-cyan-500/20 to-fuchsia-500/30",
-    image: "/workflows/ai-marketing-campaign-orchestrator.png",
+    image: "/workflows/ai-marketing-campaign-orchestrator.webp",
     challenge:
       "Marketing teams were spending 4–5 days per campaign on copy variants, asset cuts, sequence wiring, and reply triage. Quality varied wildly between SDRs and conversion data took weeks to make sense of.",
     approach: [
@@ -243,7 +243,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "7 weeks",
     year: "2026",
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/workflows/adfactors-pr-wire-booking.png",
+    image: "/workflows/adfactors-pr-wire-booking.webp",
     challenge:
       "Consultants hand-built every quote from dozens of regional rate-card spreadsheets, so quotes were slow, error-prone, and inconsistent between people. Partnerships had no single source of truth for rates, and updating a price meant re-sending files to the whole team.",
     approach: [
@@ -275,10 +275,10 @@ export const caseStudies: CaseStudy[] = [
     duration: "Ongoing",
     year: "2025–2026",
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
-    image: "/workflows/nuvero-outreach-engine.png",
+    image: "/workflows/nuvero-outreach-engine.webp",
     demoUrl: "https://nuvero-outreach-frontend-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
-    snapshot: "/demos/nuvero-outreach.png",
+    snapshot: "/demos/nuvero-outreach.webp",
     runningCost: "~$45/mo + LLM usage",
     challenge:
       "The bottleneck in outreach was never writing the email. It was discovery, deduplication, and finding a real contact you could trust, then doing it again every day without burning the domain or emailing the wrong person.",
@@ -311,7 +311,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "6 weeks",
     year: "2026",
     gradient: "from-cyan-500/40 via-violet-500/20 to-fuchsia-500/30",
-    image: "/workflows/meridian-realty-inbound-qualifier.png",
+    image: "/workflows/meridian-realty-inbound-qualifier.webp",
     challenge:
       "Meridian was losing 60% of inbound leads to slow response times. By the time an agent called back, the buyer had already toured a competitor's listing.",
     approach: [
@@ -343,7 +343,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "8 weeks",
     year: "2025",
     gradient: "from-violet-500/40 via-fuchsia-500/30 to-cyan-500/40",
-    image: "/workflows/northwind-logistics-ops-copilot.png",
+    image: "/workflows/northwind-logistics-ops-copilot.webp",
     challenge:
       "Northwind's ops team handled 4,000+ shipments a week across 17 jurisdictions. New hires took 4 months to ramp, and routing mistakes carried a significant cost per incident.",
     approach: [
@@ -375,7 +375,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "10 weeks",
     year: "2025",
     gradient: "from-fuchsia-500/40 via-cyan-500/20 to-violet-500/30",
-    image: "/workflows/lumina-studios-content-engine.png",
+    image: "/workflows/lumina-studios-content-engine.webp",
     challenge:
       "Lumina was turning down retainer expansions because their senior writers were maxed out. Hiring more was slow, expensive, and risked diluting the distinctive voice clients paid premiums for.",
     approach: [
@@ -407,10 +407,10 @@ export const caseStudies: CaseStudy[] = [
     duration: "6 weeks",
     year: "2026",
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
-    image: "/demos/vit-chatbot.png",
+    image: "/demos/vit-chatbot.webp",
     demoUrl: "https://vit-chatbot-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
-    snapshot: "/demos/vit-chatbot.png",
+    snapshot: "/demos/vit-chatbot.webp",
     runningCost: "~$25/mo",
     challenge:
       "Students hunted through PDFs, notices, and portal pages for answers to the same recurring questions, and the support desk fielded the overflow. Anything time-sensitive, like an FFCS rule or an exam pattern, was slow to find and easy to get wrong.",
@@ -443,10 +443,10 @@ export const caseStudies: CaseStudy[] = [
     duration: "2 weeks",
     year: "2026",
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/demos/swg-mcp.png",
+    image: "/demos/swg-mcp.webp",
     demoUrl: "https://swg-mcp-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
-    snapshot: "/demos/swg-mcp.png",
+    snapshot: "/demos/swg-mcp.webp",
     runningCost: "~$0/mo (serverless)",
     challenge:
       "The delivery board answered the team's day-to-day questions, but only if you opened it. People wanted to ask their AI assistant 'is the Riverside order scheduled?' and get a straight answer, without a login and without exposing prices or invoices.",
@@ -479,10 +479,10 @@ export const caseStudies: CaseStudy[] = [
     duration: "Ongoing",
     year: "2025–2026",
     gradient: "from-fuchsia-500/40 via-cyan-500/20 to-violet-500/30",
-    image: "/demos/n8n.png",
+    image: "/demos/n8n.webp",
     demoUrl: "https://n8n-workflows-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
-    snapshot: "/demos/n8n.png",
+    snapshot: "/demos/n8n.webp",
     runningCost: "~$15/mo + LLM usage",
     challenge:
       "The highest-leverage work was also the most repetitive: drafting content in three formats, fanning approved announcements out to every channel, chasing leads and unpaid invoices. Done by hand it was slow, easy to drop, and impossible to scale.",

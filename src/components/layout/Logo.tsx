@@ -17,6 +17,7 @@ export function Logo({ className }: { className?: string }) {
         width={448}
         height={440}
         priority
+        sizes="32px"
         className="h-8 w-auto"
       />
       <span className="text-[var(--color-fg)]">

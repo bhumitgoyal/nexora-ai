@@ -1,4 +1,4 @@
-﻿import type { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Space_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -7,10 +7,9 @@ import { NoiseOverlay } from "@/components/shared/NoiseOverlay";
 import { LoadingScreen } from "@/components/shared/LoadingScreen";
 import { SmoothScroll } from "@/components/shared/SmoothScroll";
 import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar";
+import { ClientOverlays } from "@/components/layout/ClientOverlays";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { CommandPalette } from "@/components/shared/CommandPalette";
-import { QuickContact } from "@/components/shared/QuickContact";
 import { DotGridWrapper } from "@/components/shared/DotGridWrapper";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
@@ -100,8 +99,7 @@ export default function RootLayout({
           <ChromeShell navbar={<Navbar />} footer={<Footer />}>
             {children}
           </ChromeShell>
-          <CommandPalette />
-          <QuickContact />
+          <ClientOverlays />
           <Toaster
             position="bottom-right"
             toastOptions={{

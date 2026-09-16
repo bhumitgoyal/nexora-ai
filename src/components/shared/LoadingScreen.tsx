@@ -68,7 +68,7 @@ export function LoadingScreen() {
               transition={{ duration: 0.45, ease: EASE }}
               className="relative mb-8 flex size-16 items-center justify-center"
             >
-              <Image src="/brand/mark-red.png" alt="" width={448} height={440} priority className="size-14" />
+              <Image src="/brand/mark-red.png" alt="" width={448} height={440} priority sizes="56px" className="size-14" />
               <motion.span
                 className="absolute inset-0 border-2 border-[var(--color-brand)]"
                 initial={{ opacity: 0, scale: 1.3 }}

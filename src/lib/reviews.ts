@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { testimonials } from "@/content/testimonials";
 
 export type Review = {
@@ -33,12 +34,15 @@ const curated: Review[] = testimonials.map((t) => ({
 const DEFAULT_REVIEWS_API =
   "https://nuvero-outreach-backend-629748840531.us-central1.run.app/api/reviews/public";
 
-export async function getReviews(): Promise<Review[]> {
+export const getReviews = cache(async function getReviews(): Promise<Review[]> {
   const url = process.env.REVIEWS_API_URL || DEFAULT_REVIEWS_API;
   if (!url) return curated;
 
   try {
-    const res = await fetch(url, { next: { revalidate: 300 } });
+    const res = await fetch(url, {
+      next: { revalidate: 300 },
+      signal: AbortSignal.timeout(3000),
+    });
     if (!res.ok) return curated;
     const data = await res.json();
     const rows: unknown[] = Array.isArray(data) ? data : (data?.reviews ?? []);
@@ -58,4 +62,4 @@ export async function getReviews(): Promise<Review[]> {
   } catch {
     return curated;
   }
-}
+});

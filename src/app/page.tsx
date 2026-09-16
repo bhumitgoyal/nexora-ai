@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "Nuvero AI builds the AI infrastructure your business runs on. Agents trained on your workflows, wired into your stack, running your operations 24/7. Any manual work, automated. You own the whole layer.",
 };
+import dynamic from "next/dynamic";
 import { WhatWeOffer } from "@/components/home/WhatWeOffer";
-import { ComparisonTable } from "@/components/home/ComparisonTable";
 import { OpsLedger } from "@/components/home/OpsLedger";
 import { AgentRoster } from "@/components/home/AgentRoster";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
@@ -17,16 +17,19 @@ import { FromTheWorkshop } from "@/components/home/FromTheWorkshop";
 import { StatsBar } from "@/components/home/StatsBar";
 import { Governance } from "@/components/home/Governance";
 import { ProcessSnapshot } from "@/components/home/ProcessSnapshot";
-import { AuditDeliverables } from "@/components/home/AuditDeliverables";
-import { RoiEstimator } from "@/components/home/RoiEstimator";
 import { Testimonials } from "@/components/home/Testimonials";
-import { GlassBox } from "@/components/home/GlassBox";
 import { Switchboard } from "@/components/home/Switchboard";
-import { WiringDiagram } from "@/components/home/WiringDiagram";
-import { FaqStrip } from "@/components/home/FaqStrip";
 import { CtaBanner } from "@/components/home/CtaBanner";
 import { TrustStrip } from "@/components/home/TrustStrip";
 import { Perforation } from "@/components/shared/Perforation";
+
+// Below-the-fold heavy components chunked for smaller initial JS payload
+const WiringDiagram = dynamic(() => import("@/components/home/WiringDiagram").then((m) => m.WiringDiagram));
+const ComparisonTable = dynamic(() => import("@/components/home/ComparisonTable").then((m) => m.ComparisonTable));
+const AuditDeliverables = dynamic(() => import("@/components/home/AuditDeliverables").then((m) => m.AuditDeliverables));
+const RoiEstimator = dynamic(() => import("@/components/home/RoiEstimator").then((m) => m.RoiEstimator));
+const GlassBox = dynamic(() => import("@/components/home/GlassBox").then((m) => m.GlassBox));
+const FaqStrip = dynamic(() => import("@/components/home/FaqStrip").then((m) => m.FaqStrip));
 
 export default function HomePage() {
   return (

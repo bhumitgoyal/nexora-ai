@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { caseStudies, type CaseStudy } from "@/content/caseStudies";
 
 /**
@@ -28,12 +29,15 @@ function safeAsset(value: unknown): string | undefined {
   return typeof value === "string" && /^(\/|https:\/\/)/i.test(value) ? value : undefined;
 }
 
-export async function getDeployments(): Promise<CaseStudy[]> {
+export const getDeployments = cache(async function getDeployments(): Promise<CaseStudy[]> {
   const url = process.env.DEPLOYMENTS_API_URL || DEFAULT_DEPLOYMENTS_API;
   let fetched: CaseStudy[] = [];
   if (url) {
     try {
-      const res = await fetch(url, { next: { revalidate: 300 } });
+      const res = await fetch(url, {
+        next: { revalidate: 300 },
+        signal: AbortSignal.timeout(3000),
+      });
       if (res.ok) {
         const data = await res.json();
         fetched = (Array.isArray(data) ? data : []).filter(isCaseStudy) as CaseStudy[];
@@ -68,7 +72,7 @@ export async function getDeployments(): Promise<CaseStudy[]> {
   const feedSlugs = new Set(fetched.map((r) => r.slug));
   const localOnly = caseStudies.filter((c) => !feedSlugs.has(c.slug));
   return [...merged, ...localOnly];
-}
+});
 
 export async function getDeployment(slug: string): Promise<CaseStudy | undefined> {
   const deployments = await getDeployments();

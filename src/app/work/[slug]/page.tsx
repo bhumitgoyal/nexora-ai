@@ -24,10 +24,12 @@ function parsePercent(metric: string): number | null {
   return m ? Math.min(100, parseInt(m[1], 10)) : null;
 }
 
-// No generateStaticParams: the deployment list is now editable at
-// manage.nuvero.space/deployments without a rebuild, so slugs can't be enumerated at
-// build time. dynamicParams defaults to true, so each page still renders on first
-// request and is then cached/revalidated like any other page here (see getDeployments).
+// Pre-render all known case studies at build time for instant (<30ms) edge delivery.
+// dynamicParams defaults to true, so newly added outreach feed deployments still
+// render dynamically on first request and cache via ISR.
+export async function generateStaticParams() {
+  return curatedStudies.map((study) => ({ slug: study.slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -162,8 +164,8 @@ export default async function CaseStudyPage({
                     <Image
                       src={snapshot}
                       alt={`${study.client} live demo screenshot`}
-                      width={0}
-                      height={0}
+                      width={1920}
+                      height={1080}
                       sizes="(min-width: 1024px) 50vw, 100vw"
                       className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                       priority
@@ -247,8 +249,8 @@ export default async function CaseStudyPage({
                 <Image
                   src={posterToShow}
                   alt={`${study.client} · AI automation workflow built by Nuvero AI`}
-                  width={0}
-                  height={0}
+                  width={1920}
+                  height={1080}
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="h-auto w-full"
                 />

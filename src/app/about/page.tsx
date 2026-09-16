@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Linkedin, Github, Instagram, Mail, Phone } from "lucide-react";
 import { site } from "@/content/site";
@@ -73,9 +73,10 @@ export default function AboutPage() {
                 <div className="flex flex-col items-center gap-5 p-7">
                   <div className="relative size-32 overflow-hidden border-2 border-[var(--color-border)]">
                     <Image
-                      src="/bhumit.png"
+                      src="/bhumit.webp"
                       alt="Bhumit Goyal, Founder of Nuvero AI"
                       fill
+                      sizes="128px"
                       className="object-cover object-top"
                       priority
                     />

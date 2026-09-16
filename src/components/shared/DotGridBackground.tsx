@@ -62,6 +62,7 @@ export function DotGridBackground({
     };
 
     let time = 0;
+    let isLooping = false;
 
     const draw = () => {
       const w = canvas.offsetWidth;
@@ -109,15 +110,29 @@ export function DotGridBackground({
         decayFactor = Math.max(0, decayFactor - 0.025);
       }
 
+      // If mouse is away and decay has completed, stop RAF loop to save 100% idle CPU
+      if (mouse.x === -9999 && decayFactor <= 0) {
+        isLooping = false;
+        return;
+      }
+
       rafId = requestAnimationFrame(draw);
+    };
+
+    const startLoop = () => {
+      if (!isLooping) {
+        isLooping = true;
+        rafId = requestAnimationFrame(draw);
+      }
     };
 
     /* Pause when tab hidden */
     const onVisibility = () => {
       if (document.visibilityState === "hidden") {
         cancelAnimationFrame(rafId);
-      } else {
-        rafId = requestAnimationFrame(draw);
+        isLooping = false;
+      } else if (mouse.x !== -9999 || decayFactor > 0) {
+        startLoop();
       }
     };
 
@@ -125,19 +140,21 @@ export function DotGridBackground({
       const rect = canvas.getBoundingClientRect();
       mouse = { x: e.clientX - rect.left, y: e.clientY - rect.top };
       decayFactor = 1;
+      startLoop();
     };
 
     const onMouseLeave = () => {
       mouse = { x: -9999, y: -9999 };
-      // decayFactor drains in draw loop
+      // decayFactor drains in draw loop and will stop loop when done
     };
 
     const ro = new ResizeObserver(() => {
       buildGrid();
+      draw();
     });
 
     buildGrid();
-    rafId = requestAnimationFrame(draw);
+    draw(); // Draw static initial resting grid once
     document.addEventListener("mousemove", onMouseMove, { passive: true });
     document.addEventListener("mouseleave", onMouseLeave);
     document.addEventListener("visibilitychange", onVisibility);
@@ -145,6 +162,7 @@ export function DotGridBackground({
 
     return () => {
       cancelAnimationFrame(rafId);
+      isLooping = false;
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("visibilitychange", onVisibility);
