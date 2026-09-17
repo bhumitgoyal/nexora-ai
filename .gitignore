@@ -37,3 +37,6 @@ next-env.d.ts
 AGENTS.md
 public/deck/
 .claude/launch.json
+
+# generated /brag video artifacts
+brag-output/

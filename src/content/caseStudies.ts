@@ -505,6 +505,38 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ["n8n", "OpenAI", "Airtable", "Gmail API", "QuickBooks", "WhatsApp Cloud API"],
   },
+  {
+    slug: "newish-brand-portal",
+    client: "Newish",
+    industry: "Creator Economy · Payments",
+    title: "A creator-rewards platform rebuilt into a secure, money-moving brand portal, without breaking the app already in users' hands.",
+    summary:
+      "Newish pays creators to post. We took a fragile single-file backend, with the brand portal's APIs never built and money-touching routes wide open, and rebuilt it into a secure, audited platform: brand top-ups in and automated creator payouts out on a double-entry ledger, a role-gated admin and moderation console, and a rebuilt brand portal, all while the mobile app already in users' hands kept running untouched.",
+    duration: "8 weeks",
+    year: "2026",
+    gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
+    image: "/workflows/newish-brand-portal.webp",
+    challenge:
+      "The live product ran on one 1,616-line server.js: the brand portal's APIs returned 404 and were never built, the web portal was a 90% static shell whose few real calls all failed, and the reward engine handed out money as a side effect of an unauthenticated GET, alongside IDOR holes on user data. The mobile app in the field depended on those exact routes, so nothing could be ripped out.",
+    approach: [
+      "Audited the running system and locked a roadmap: freeze the mobile app's existing /api/social/* routes so nothing already installed breaks, and build a new secure surface beside them.",
+      "Hardened the core: JWT with refresh tokens, ownership and IDOR checks, zod validation, rate limiting, helmet, and structured logging, and made the in-request reward engine safe with Mongo transactions, per-user locks, and idempotency.",
+      "Built real money movement: brand top-ups in and automated creator payouts out on a double-entry ledger, with manual KYC review, reconciliation, and idempotent transactions (Razorpay + RazorpayX, INR-native).",
+      "Rebuilt the brand portal and a role-gated admin console: real-time stats, brand approvals, a content-moderation queue, team invites, and a media content vault, all mobile-responsive.",
+    ],
+    solution: [
+      "A backwards-compatible backend: legacy social routes frozen for the live app, a new versioned /api/v1 surface for the portal and admin.",
+      "A brand portal with real analytics, paginated and pinnable posts, role-based team access, and a searchable content vault.",
+      "An admin portal: real-time platform stats, brand approvals, content moderation, and admin-initiated payouts gated behind KYC.",
+      "A hardened, observable service: helmet, rate limits, input sanitization, structured pino logs, and an automated test suite.",
+    ],
+    results: [
+      { metric: "0", label: "breaking changes to the app already in users' hands" },
+      { metric: "92/100", label: "mobile performance score, up from 65" },
+      { metric: "28%", label: "faster initial load, with a 24% smaller bundle" },
+    ],
+    tech: ["Node.js", "Express", "MongoDB", "JWT", "Razorpay / RazorpayX", "React", "Vite", "Cloudinary", "Render"],
+  },
 ];
 
 export const featuredCaseStudies = caseStudies.filter((c) => c.featured);
