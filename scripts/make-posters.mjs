@@ -36,9 +36,31 @@ function fitSize(text, maxWidth, cap = 128, floor = 60, factor = 0.6) {
   return Math.max(floor, Math.min(cap, s));
 }
 
-function poster({ slug, name, subtitle, caps, accent, icon }) {
-  const W = 1600, H = 900;
+// Rasterize a real logo (SVG or PNG) to a transparent PNG data URI, fit in a box.
+async function logoDataUri(file, box = 640) {
+  const isSvg = file.toLowerCase().endsWith(".svg");
+  const buf = await sharp(file, isSvg ? { density: 400 } : {})
+    .resize({ width: box, height: box, fit: "inside", withoutEnlargement: false })
+    .png()
+    .toBuffer();
+  return "data:image/png;base64," + buf.toString("base64");
+}
+
+// The brand-tile markup: an accent square with a white Lucide icon, OR a white
+// square holding the client's real logo (contained with padding).
+function tile({ accent, icon, logo }) {
+  if (logo) {
+    const p = 46; // padding inside the white tile
+    return `<rect x="150" y="300" width="300" height="300" rx="52" fill="#ffffff"/>
+  <image href="${logo}" x="${150 + p}" y="${300 + p}" width="${300 - 2 * p}" height="${300 - 2 * p}" preserveAspectRatio="xMidYMid meet"/>`;
+  }
   const inner = lucideInner(icon);
+  return `<rect x="150" y="300" width="300" height="300" rx="52" fill="${accent}"/>
+  <g transform="translate(300 450) scale(6.2) translate(-12 -12)" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</g>`;
+}
+
+function poster({ slug, name, subtitle, caps, accent, icon, logo }) {
+  const W = 1600, H = 900;
   const nameSize = fitSize(name, 1000, 128, 62);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   <defs>
@@ -49,8 +71,7 @@ function poster({ slug, name, subtitle, caps, accent, icon }) {
   </defs>
   <rect width="${W}" height="${H}" fill="#141416"/>
   <rect width="${W}" height="${H}" fill="url(#glow)"/>
-  <rect x="150" y="300" width="300" height="300" rx="52" fill="${accent}"/>
-  <g transform="translate(300 450) scale(6.2) translate(-12 -12)" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</g>
+  ${tile({ accent, icon, logo })}
   <text x="524" y="${subtitle ? 400 : 470}" font-family="Helvetica, Arial, sans-serif" font-size="${nameSize}" font-weight="700" fill="#ffffff" letter-spacing="-3">${esc(name)}</text>
   <text x="528" y="486" font-family="Helvetica, Arial, sans-serif" font-size="58" font-weight="700" fill="${accent}" letter-spacing="-1">${esc(subtitle)}</text>
   <rect x="530" y="524" width="150" height="7" fill="${accent}"/>
@@ -58,6 +79,15 @@ function poster({ slug, name, subtitle, caps, accent, icon }) {
 </svg>`;
   return sharp(Buffer.from(svg)).webp({ quality: 90 }).toFile(`public/posters/${slug}.webp`);
 }
+
+// Real logos on disk for these clients; accent set to each brand's real colour.
+const LOGOS = {
+  "nuvero-outreach-engine": { file: "public/deck/logo-red.png", accent: "#C1121F" },
+  "nuvero-automation-workflows": { file: "public/deck/logo-red.png", accent: "#C1121F" },
+  "adfactors-pr-wire-booking": { file: "/Users/bhumitgoyal/Downloads/Projects/AdFactors/adfactors-pr-microsite/public/adfactors-logo.svg", accent: "#E28F26" },
+  // VIT: the only logo on disk is a tiny 80x80 white silhouette that won't render
+  // crisply, so this deployment keeps its clean graduation-cap icon tile instead.
+};
 
 const DEPLOYMENTS = [
   { slug: "southwest-gases-voice-concierge", name: "Southwest Gases", subtitle: "Voice Concierge", caps: "INBOUND  ·  OUTBOUND  ·  24/7", accent: "#E4572E", icon: "phone" },
@@ -77,6 +107,11 @@ const DEPLOYMENTS = [
 ];
 
 mkdirSync("public/posters", { recursive: true });
-const res = await Promise.all(DEPLOYMENTS.map((d) => poster(d).then((i) => `${d.slug}: ${i.width}x${i.height}`)));
+const res = await Promise.all(DEPLOYMENTS.map(async (d) => {
+  const L = LOGOS[d.slug];
+  const opts = L ? { ...d, accent: L.accent, logo: await logoDataUri(L.file) } : d;
+  const i = await poster(opts);
+  return `${d.slug}: ${i.width}x${i.height}${L ? "  [real logo]" : ""}`;
+}));
 res.forEach((r) => console.log("  " + r));
 console.log(`done. ${res.length} posters written to public/posters/`);
