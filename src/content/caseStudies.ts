@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     featured: true,
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/workflows/southwest-gases-voice-concierge.webp",
+    image: "/posters/southwest-gases-voice-concierge.webp",
     challenge:
       "Southwest Gases was losing 22% of inbound calls to abandonment during peak hours and burning ops budget on after-hours staffing. The marketing team also had a backlog of warm leads that nobody had time to call.",
     approach: [
@@ -69,7 +69,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2026",
     featured: true,
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/workflows/southwest-gases-erp.webp",
+    image: "/posters/southwest-gases-erp.webp",
     demoUrl: "https://swg-erp-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/swg-erp.webp",
@@ -105,7 +105,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "5 weeks",
     year: "2026",
     gradient: "from-fuchsia-500/25 via-violet-500/20 to-cyan-500/20",
-    image: "/workflows/southwest-gases-delivery-schedule.webp",
+    image: "/posters/southwest-gases-delivery-schedule.webp",
     demoUrl: "https://swg-delivery-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/swg-delivery.webp",
@@ -142,7 +142,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     featured: true,
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
-    image: "/workflows/gohappy-club-member-assistant.webp",
+    image: "/posters/gohappy-club-member-assistant.webp",
     demoUrl: "https://gohappy-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/gohappy.webp",
@@ -179,7 +179,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2024–2026",
     featured: true,
     gradient: "from-fuchsia-500/40 via-violet-500/20 to-cyan-500/30",
-    image: "/workflows/linkedin-lead-intelligence-engine.webp",
+    image: "/posters/linkedin-lead-intelligence-engine.webp",
     challenge:
       "Agency and SaaS clients were paying a significant premium per verified B2B lead and still getting 18% bounce rates. The cost of pipeline was eating their unit economics alive.",
     approach: [
@@ -211,7 +211,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Ongoing",
     year: "2024–2026",
     gradient: "from-violet-500/40 via-cyan-500/20 to-fuchsia-500/30",
-    image: "/workflows/ai-marketing-campaign-orchestrator.webp",
+    image: "/posters/ai-marketing-campaign-orchestrator.webp",
     challenge:
       "Marketing teams were spending 4–5 days per campaign on copy variants, asset cuts, sequence wiring, and reply triage. Quality varied wildly between SDRs and conversion data took weeks to make sense of.",
     approach: [
@@ -243,7 +243,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "7 weeks",
     year: "2026",
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/workflows/adfactors-pr-wire-booking.webp",
+    image: "/posters/adfactors-pr-wire-booking.webp",
     challenge:
       "Consultants hand-built every quote from dozens of regional rate-card spreadsheets, so quotes were slow, error-prone, and inconsistent between people. Partnerships had no single source of truth for rates, and updating a price meant re-sending files to the whole team.",
     approach: [
@@ -275,7 +275,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Ongoing",
     year: "2025–2026",
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
-    image: "/workflows/nuvero-outreach-engine.webp",
+    image: "/posters/nuvero-outreach-engine.webp",
     demoUrl: "https://nuvero-outreach-frontend-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/nuvero-outreach.webp",
@@ -311,7 +311,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "6 weeks",
     year: "2026",
     gradient: "from-cyan-500/40 via-violet-500/20 to-fuchsia-500/30",
-    image: "/workflows/meridian-realty-inbound-qualifier.webp",
+    image: "/posters/meridian-realty-inbound-qualifier.webp",
     challenge:
       "Meridian was losing 60% of inbound leads to slow response times. By the time an agent called back, the buyer had already toured a competitor's listing.",
     approach: [
@@ -343,7 +343,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "8 weeks",
     year: "2025",
     gradient: "from-violet-500/40 via-fuchsia-500/30 to-cyan-500/40",
-    image: "/workflows/northwind-logistics-ops-copilot.webp",
+    image: "/posters/northwind-logistics-ops-copilot.webp",
     challenge:
       "Northwind's ops team handled 4,000+ shipments a week across 17 jurisdictions. New hires took 4 months to ramp, and routing mistakes carried a significant cost per incident.",
     approach: [
@@ -375,7 +375,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "10 weeks",
     year: "2025",
     gradient: "from-fuchsia-500/40 via-cyan-500/20 to-violet-500/30",
-    image: "/workflows/lumina-studios-content-engine.webp",
+    image: "/posters/lumina-studios-content-engine.webp",
     challenge:
       "Lumina was turning down retainer expansions because their senior writers were maxed out. Hiring more was slow, expensive, and risked diluting the distinctive voice clients paid premiums for.",
     approach: [
@@ -407,7 +407,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "6 weeks",
     year: "2026",
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
-    image: "/demos/vit-chatbot.webp",
+    image: "/posters/vitopia-campus-assistant.webp",
     demoUrl: "https://vit-chatbot-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/vit-chatbot.webp",
@@ -443,7 +443,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "2 weeks",
     year: "2026",
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-cyan-500/30",
-    image: "/demos/swg-mcp.webp",
+    image: "/posters/swg-delivery-connector.webp",
     demoUrl: "https://swg-mcp-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/swg-mcp.webp",
@@ -479,7 +479,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Ongoing",
     year: "2025–2026",
     gradient: "from-fuchsia-500/40 via-cyan-500/20 to-violet-500/30",
-    image: "/demos/n8n.webp",
+    image: "/posters/nuvero-automation-workflows.webp",
     demoUrl: "https://n8n-workflows-demo-629748840531.us-central1.run.app/?k=nuvero.space",
     demoPasscode: "nuvero.space",
     snapshot: "/demos/n8n.webp",
@@ -515,7 +515,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "8 weeks",
     year: "2026",
     gradient: "from-cyan-500/40 via-teal-500/20 to-violet-500/30",
-    image: "/workflows/newish-brand-portal.webp",
+    image: "/posters/newish-brand-portal.webp",
     challenge:
       "The live product ran on one 1,616-line server.js: the brand portal's APIs returned 404 and were never built, the web portal was a 90% static shell whose few real calls all failed, and the reward engine handed out money as a side effect of an unauthenticated GET, alongside IDOR holes on user data. The mobile app in the field depended on those exact routes, so nothing could be ripped out.",
     approach: [
