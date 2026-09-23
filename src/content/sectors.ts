@@ -477,3 +477,51 @@ export const sectors: Sector[] = [
   ...sectorsBase.filter((s) => s.id === "realestate"),
   ...sectorsBase.filter((s) => s.id !== "realestate"),
 ];
+
+// ── Routing ────────────────────────────────────────────────────────────────
+// These sector/service definitions were originally only ever rendered inside
+// the home-page console, so nothing here had a URL. The helpers below give
+// every pairing a stable, readable path under /industries, which is what makes
+// them indexable as "<service> for <sector>" landing pages.
+//
+// `id` is deliberately left alone: ServicesPreview keys its icon map off it.
+// URL slugs are kept separate so the two can diverge without breaking either.
+
+const sectorSlugs: Record<string, string> = {
+  realestate: "real-estate",
+  ecommerce: "ecommerce",
+  marketing: "marketing-agencies",
+  restaurants: "restaurants",
+  b2b: "b2b-saas",
+};
+
+/** Lowercase, hyphenated, "&" spelled out so it survives a URL. */
+export const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+export const sectorSlug = (sector: Sector) => sectorSlugs[sector.id] ?? sector.id;
+
+// Derived from the service name rather than stored, so a name and its URL can
+// never drift apart. Service names are unique within a sector, so this cannot
+// collide.
+export const serviceSlug = (service: SectorService) => slugify(service.name);
+
+export const getSectorBySlug = (slug: string) =>
+  sectors.find((sector) => sectorSlug(sector) === slug);
+
+export const getServiceBySlug = (sector: Sector, slug: string) =>
+  sector.services.find((service) => serviceSlug(service) === slug);
+
+/** Every sector × service pairing, for generateStaticParams and the sitemap. */
+export const solutionPaths = sectors.flatMap((sector) =>
+  sector.services.map((service) => ({
+    sector: sectorSlug(sector),
+    service: serviceSlug(service),
+  })),
+);
+
+export const sectorPaths = sectors.map((sector) => ({ sector: sectorSlug(sector) }));

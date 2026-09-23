@@ -48,7 +48,7 @@ export function Footer() {
           </FooterColumn>
 
           <FooterColumn title="Systems">
-            <FooterLink href="/what-we-offer#realestate">Real Estate AI</FooterLink>
+            <FooterLink href="/industries">Industries</FooterLink>
             {services.slice(0, 4).map((s) => (
               <FooterLink key={s.slug} href={`/services#${s.slug}`}>
                 {outcomeLabel[s.slug] ?? s.title}

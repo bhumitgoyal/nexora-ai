@@ -48,6 +48,7 @@ export const site = {
   nav: [
     { label: "Infrastructure", href: "/what-we-offer" },
     { label: "Systems", href: "/services" },
+    { label: "Industries", href: "/industries" },
     { label: "Deployments", href: "/work" },
     { label: "Process", href: "/process" },
     { label: "About", href: "/about" },

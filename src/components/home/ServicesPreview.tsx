@@ -2,19 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Megaphone, Building2, ShoppingBag, Utensils, Boxes } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { sectors, type Sector } from "@/content/sectors";
+import { sectorIcons } from "@/content/sectorIcons";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-
-const sectorIcons: Record<string, React.ElementType> = {
-  marketing: Megaphone,
-  ecommerce: ShoppingBag,
-  realestate: Building2,
-  restaurants: Utensils,
-  b2b: Boxes,
-};
 
 // Ink console: sidebar of systems on the left, the selected system's real
 // workflow rendered as connected nodes on the right. Dark panel uses the

@@ -18,12 +18,12 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
-const plainNavItems = [
-  { label: "Infrastructure", href: "/what-we-offer" },
-  { label: "Deployments", href: "/work" },
-  { label: "Process", href: "/process" },
-  { label: "About", href: "/about" },
-];
+// Infrastructure and Systems are rendered above as their own items because they
+// carry custom markup, so this is the remainder of site.nav. Derived rather than
+// listed again: the two used to be separate arrays and had already drifted apart.
+const plainNavItems = site.nav.filter(
+  (item) => item.href !== "/what-we-offer" && item.href !== "/services",
+);
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -104,7 +104,7 @@ export function Navbar() {
               </NavigationMenuItem>
 
               {/* Remaining plain links */}
-              {plainNavItems.slice(1).map((item) => (
+              {plainNavItems.map((item) => (
                 <NavigationMenuItem key={item.href}>
                   <NavigationMenuLink asChild>
                     <Link href={item.href} className={navLinkClass(item.href)}>

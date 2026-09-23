@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
 import { caseStudies } from "@/content/caseStudies";
 import { briefings } from "@/content/briefings";
+import { sectors, sectorSlug, serviceSlug } from "@/content/sectors";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -50,5 +51,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
-  return [...routes, ...work, ...briefingPages, ...legal];
+  // Sector hubs: /industries/real-estate, /industries/ecommerce, …
+  const sectorPages = sectors.map((sector) => ({
+    url: `${site.url}/industries/${sectorSlug(sector)}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+  // Service landing pages: /industries/real-estate/lead-nurturing-agent, …
+  // These are the B1 pages meant to rank for specific "AI {service} for {industry}" queries.
+  const serviceLandingPages = sectors.flatMap((sector) =>
+    sector.services.map((service) => ({
+      url: `${site.url}/industries/${sectorSlug(sector)}/${serviceSlug(service)}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    })),
+  );
+  return [...routes, ...sectorPages, ...serviceLandingPages, ...work, ...briefingPages, ...legal];
 }
