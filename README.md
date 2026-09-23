@@ -4,7 +4,7 @@
 
 The marketing site for **Nuvero AI** — an AI consultancy by Bhumit Goyal that builds custom AI infrastructure: agentic systems trained on how a business actually works, wired into its stack to automate real workflows end to end.
 
-Live at <https://nuvero.space>.
+Live at <https://www.nuvero.space>.
 
 Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS v4**, and **Motion (Framer Motion)**.
 
@@ -93,7 +93,10 @@ Add a case study by appending to `caseStudies` — the dynamic route `/work/[slu
 3. In **Project Settings → Environment Variables**, add `NEXT_PUBLIC_WEB3FORMS_KEY`.
 4. Deploy. Future pushes to `master` deploy automatically.
 
-`site.url` in `src/content/site.ts` is set to `https://nuvero.space` — it drives canonical URLs, OG tags, and the sitemap. Change it there if the domain ever moves.
+`site.url` in `src/content/site.ts` is set to `https://www.nuvero.space` — it drives
+canonical URLs, OG tags, and the sitemap. It must match the hostname the server
+actually serves on (Vercel 308-redirects the bare domain to `www`), or every
+declared URL becomes a redirect hop. Change it there if the domain ever moves.
 
 ## Tech stack
 
