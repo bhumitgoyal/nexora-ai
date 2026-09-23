@@ -46,12 +46,13 @@ async function logoDataUri(file, box = 640) {
   return "data:image/png;base64," + buf.toString("base64");
 }
 
-// The brand-tile markup: an accent square with a white Lucide icon, OR a white
-// square holding the client's real logo (contained with padding).
-function tile({ accent, icon, logo }) {
+// The brand-tile markup: an accent square with a white Lucide icon, OR a tile
+// (white by default, or a brand colour for white-on-transparent logos) holding
+// the client's real logo (contained with padding).
+function tile({ accent, icon, logo, tileBg = "#ffffff" }) {
   if (logo) {
-    const p = 46; // padding inside the white tile
-    return `<rect x="150" y="300" width="300" height="300" rx="52" fill="#ffffff"/>
+    const p = 46; // padding inside the tile
+    return `<rect x="150" y="300" width="300" height="300" rx="52" fill="${tileBg}"/>
   <image href="${logo}" x="${150 + p}" y="${300 + p}" width="${300 - 2 * p}" height="${300 - 2 * p}" preserveAspectRatio="xMidYMid meet"/>`;
   }
   const inner = lucideInner(icon);
@@ -59,7 +60,7 @@ function tile({ accent, icon, logo }) {
   <g transform="translate(300 450) scale(6.2) translate(-12 -12)" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</g>`;
 }
 
-function poster({ slug, name, subtitle, caps, accent, icon, logo }) {
+function poster({ slug, name, subtitle, caps, accent, icon, logo, tileBg }) {
   const W = 1600, H = 900;
   const nameSize = fitSize(name, 1000, 128, 62);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
@@ -71,7 +72,7 @@ function poster({ slug, name, subtitle, caps, accent, icon, logo }) {
   </defs>
   <rect width="${W}" height="${H}" fill="#141416"/>
   <rect width="${W}" height="${H}" fill="url(#glow)"/>
-  ${tile({ accent, icon, logo })}
+  ${tile({ accent, icon, logo, tileBg })}
   <text x="524" y="${subtitle ? 400 : 470}" font-family="Helvetica, Arial, sans-serif" font-size="${nameSize}" font-weight="700" fill="#ffffff" letter-spacing="-3">${esc(name)}</text>
   <text x="528" y="486" font-family="Helvetica, Arial, sans-serif" font-size="58" font-weight="700" fill="${accent}" letter-spacing="-1">${esc(subtitle)}</text>
   <rect x="530" y="524" width="150" height="7" fill="${accent}"/>
@@ -80,13 +81,20 @@ function poster({ slug, name, subtitle, caps, accent, icon, logo }) {
   return sharp(Buffer.from(svg)).webp({ quality: 90 }).toFile(`public/posters/${slug}.webp`);
 }
 
-// Real logos on disk for these clients; accent set to each brand's real colour.
+// Real, approved client logos (sourced from each brand's official site / assets).
+// accent = the brand's real colour; tileBg defaults to white, navy for the
+// white-on-transparent VIT crest so it stays visible.
+const SWG = { file: "scripts/logos/swg.webp", accent: "#1E63A8" };
 const LOGOS = {
-  "nuvero-outreach-engine": { file: "public/deck/logo-red.png", accent: "#C1121F" },
-  "nuvero-automation-workflows": { file: "public/deck/logo-red.png", accent: "#C1121F" },
-  "adfactors-pr-wire-booking": { file: "/Users/bhumitgoyal/Downloads/Projects/AdFactors/adfactors-pr-microsite/public/adfactors-logo.svg", accent: "#E28F26" },
-  // VIT: the only logo on disk is a tiny 80x80 white silhouette that won't render
-  // crisply, so this deployment keeps its clean graduation-cap icon tile instead.
+  "southwest-gases-voice-concierge": SWG,
+  "southwest-gases-erp": SWG,
+  "southwest-gases-delivery-schedule": SWG,
+  "swg-delivery-connector": SWG,
+  "gohappy-club-member-assistant": { file: "scripts/logos/gohappy.png", accent: "#F26522" },
+  "vitopia-campus-assistant": { file: "scripts/logos/vit.webp", accent: "#2D6CDF", tileBg: "#0A1B45" },
+  "nuvero-outreach-engine": { file: "scripts/logos/nuvero.png", accent: "#C1121F" },
+  "nuvero-automation-workflows": { file: "scripts/logos/nuvero.png", accent: "#C1121F" },
+  "adfactors-pr-wire-booking": { file: "scripts/logos/adfactors.svg", accent: "#E28F26" },
 };
 
 const DEPLOYMENTS = [
@@ -109,7 +117,7 @@ const DEPLOYMENTS = [
 mkdirSync("public/posters", { recursive: true });
 const res = await Promise.all(DEPLOYMENTS.map(async (d) => {
   const L = LOGOS[d.slug];
-  const opts = L ? { ...d, accent: L.accent, logo: await logoDataUri(L.file) } : d;
+  const opts = L ? { ...d, accent: L.accent, tileBg: L.tileBg, logo: await logoDataUri(L.file) } : d;
   const i = await poster(opts);
   return `${d.slug}: ${i.width}x${i.height}${L ? "  [real logo]" : ""}`;
 }));
