@@ -1,4 +1,4 @@
-# Nexora AI — Complete Design System Report
+# Nuvero AI — Complete Design System Report
 ### For use with any LLM to generate brand-matched PDFs
 
 ---
@@ -13,7 +13,7 @@ Paste this entire document into any LLM (Claude, GPT-4o, Gemini, etc.) followed 
 
 ## 1. BRAND IDENTITY OVERVIEW
 
-**Company name:** Nexora AI  
+**Company name:** Nuvero AI  
 **Brand voice:** Direct, no-fluff, technically credible. Speaks to operators and founders. Never uses jargon without explaining it. Confident but not arrogant.  
 **Design philosophy:** 2D flat design with sharp angles. No rounded corners, no gradients, no blur effects, no drop shadows. Everything is crisp, geometric, and editorial — like a high-end printed document.  
 **Mood:** Modern industrial. Think engineering drawing meets editorial design. Clean grids, strong borders, deliberate color use.
@@ -123,7 +123,7 @@ The path reads: Start bottom-left → go straight up → diagonal to bottom-righ
 
 ### Logo Wordmark
 
-- **"Nexora"** — Space Grotesk SemiBold (600), color: `#003049` (navy)
+- **"Nuvero"** — Space Grotesk SemiBold (600), color: `#003049` (navy)
 - **" AI"** — Space Grotesk SemiBold (600), color: `#C1121F` (red)
 - Gap between icon and wordmark: ~10px at standard size.
 - The icon and wordmark always appear side by side horizontally. Never stack them vertically.
@@ -134,7 +134,7 @@ Maintain a minimum clear space of 1× the icon height on all sides of the full l
 
 ### Logo on Dark Surfaces
 
-If a PDF page requires a dark background, invert: use cream (`#FDF0D5`) for "Nexora" and keep "AI" in red. The logo mark square stays red with white icon.
+If a PDF page requires a dark background, invert: use cream (`#FDF0D5`) for "Nuvero" and keep "AI" in red. The logo mark square stays red with white icon.
 
 ---
 
@@ -308,7 +308,7 @@ This is critical to the aesthetic:
 
 ```
 [Full cream background #FDF0D5 with dot-grid texture at 40% opacity]
-[Top: Logo lockup — 32×32pt red square icon + "Nexora AI" wordmark, top-left corner]
+[Top: Logo lockup — 32×32pt red square icon + "Nuvero AI" wordmark, top-left corner]
 [48pt from top, full-width red rule — 2pt solid #C1121F]
 
 [Center of page — vertically centered block:]
@@ -410,7 +410,7 @@ This is critical to the aesthetic:
 ```
 [Background: #FDF0D5]
 [Section: centered]
-[H2: "Built by [Name]" or "About Nexora AI"]
+[H2: "Built by [Name]" or "About Nuvero AI"]
 [Sub line: role title in mono caps, 10pt, muted]
 [32pt gap]
 [2-column grid: left = photo placeholder (rectangle), right = bio text]
@@ -436,7 +436,7 @@ This is critical to the aesthetic:
   [32pt gap]
   [Primary CTA button: red, "Describe your problem →"]
   [Secondary: "bhumitgoyal.bg@gmail.com" in mono, underlined, navy]
-[Bottom: full logo lockup + "nexora-ai.vercel.app" in mono]
+[Bottom: full logo lockup + "nuvero.space" in mono]
 ```
 
 ---
@@ -493,7 +493,7 @@ Copy this, fill in the `[CONTENT]` placeholder, and send to any LLM:
 
 ```
 You are a professional PDF document designer. I will give you content to structure into a 
-well-designed PDF document that exactly matches the Nexora AI brand design system below.
+well-designed PDF document that exactly matches the Nuvero AI brand design system below.
 
 DESIGN SYSTEM:
 [paste this entire document here]
@@ -513,7 +513,7 @@ INSTRUCTIONS:
 6. Use the red square (■) as the bullet/list marker, not circles or dashes.
 7. Alternate page backgrounds between #FDF0D5 and #F5E4C0.
 8. Include page numbers in mono caps format: "/ 01", "/ 02", etc.
-9. The logo (red square icon + "Nexora AI" wordmark) goes on every page header or footer.
+9. The logo (red square icon + "Nuvero AI" wordmark) goes on every page header or footer.
 10. Any call-to-action section should use the corner accent marks decoration.
 
 Please output the content structured page by page, describing exactly what appears on 
@@ -558,7 +558,7 @@ When writing or editing copy for PDFs, follow these rules:
 - Use exclamation marks
 - Use more than 2 sentences in any bullet point
 
-**Typical Nexora AI copy patterns:**
+**Typical Nuvero AI copy patterns:**
 - Eyebrow: `■ PROBLEMS WE HAVE ALREADY SOLVED`
 - Heading: "Custom AI tools, built around your problem."
 - Sub: "Either choose from existing solved problems, or contact us for custom AI tools."
@@ -571,7 +571,7 @@ When writing or editing copy for PDFs, follow these rules:
 
 | Field | Value |
 |---|---|
-| Company | Nexora AI |
+| Company | Nuvero AI |
 | Founder | Bhumit Goyal |
 | Role | Founder & Principal AI Engineer |
 | Email | bhumitgoyal.bg@gmail.com |
@@ -581,10 +581,10 @@ When writing or editing copy for PDFs, follow these rules:
 | GitHub | github.com/bhumitgoyal |
 | Instagram | instagram.com/bhumitgoyal |
 | Location | Remote · India |
-| Website | nexora-ai-1002470110590.us-central1.run.app |
+| Website | nuvero.space |
 | Tagline | "You run it, we handle it." |
 | Sub-tagline | "Custom problems require customized software." |
 
 ---
 
-*Document version: 1.0 · Generated: June 2026 · Nexora AI Design System*
+*Document version: 1.0 · Generated: June 2026 · Nuvero AI Design System*

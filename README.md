@@ -1,10 +1,17 @@
-# Nexora AI
+# Nuvero AI
 
-> Agentic systems that run your business while you sleep.
+> The AI infrastructure your business runs on.
 
-The marketing site for **Nexora AI** — an AI consultancy by Bhumit Goyal that designs, builds, and ships agentic systems, voice agents, and AI workflows for businesses.
+The marketing site for **Nuvero AI** — an AI consultancy by Bhumit Goyal that builds custom AI infrastructure: agentic systems trained on how a business actually works, wired into its stack to automate real workflows end to end.
+
+Live at <https://nuvero.space>.
 
 Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS v4**, and **Motion (Framer Motion)**.
+
+> **Note on naming:** this repo is still named `nexora-ai` after the former brand.
+> The product, domain, and all site copy are Nuvero AI. The old name is retained
+> only as `site.formerName`, which feeds `schema.org` `alternateName` so search
+> engines treat the two names as one entity.
 
 ## Quick start
 
@@ -84,9 +91,9 @@ Add a case study by appending to `caseStudies` — the dynamic route `/work/[slu
 1. Push the repo to GitHub.
 2. Import the repo at <https://vercel.com/new>.
 3. In **Project Settings → Environment Variables**, add `NEXT_PUBLIC_WEB3FORMS_KEY`.
-4. Deploy. Future pushes to `main` deploy automatically.
+4. Deploy. Future pushes to `master` deploy automatically.
 
-Update `site.url` in `src/content/site.ts` to your real domain once you have one — it drives canonical URLs, OG tags, and the sitemap.
+`site.url` in `src/content/site.ts` is set to `https://nuvero.space` — it drives canonical URLs, OG tags, and the sitemap. Change it there if the domain ever moves.
 
 ## Tech stack
 
