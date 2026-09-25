@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2, Sparkles, Clock, TrendingUp } from "lucide-react";
 
 type Currency = "usd" | "aed" | "eur" | "gbp" | "inr";
 
@@ -14,67 +14,55 @@ const CURRENCY_SPECS: Record<
     symbol: string;
     label: string;
     hourlyRate: number;
-    buildCost: number;
     format: (amt: number) => string;
     rateLabel: string;
-    buildLabel: string;
   }
 > = {
   usd: {
     symbol: "$",
     label: "USD ($)",
     hourlyRate: 35,
-    buildCost: 9500,
     format: (amt: number) => `$${Math.round(amt).toLocaleString()}`,
     rateLabel: "$35/hr avg. loaded staff cost",
-    buildLabel: "vs $9,500 Core System build",
   },
   aed: {
     symbol: "AED",
     label: "AED (د.إ)",
     hourlyRate: 130,
-    buildCost: 35000,
     format: (amt: number) => `AED ${Math.round(amt).toLocaleString()}`,
     rateLabel: "AED 130/hr avg. loaded cost",
-    buildLabel: "vs AED 35,000 Core System build",
   },
   eur: {
     symbol: "€",
     label: "EUR (€)",
     hourlyRate: 32,
-    buildCost: 8800,
     format: (amt: number) => `€${Math.round(amt).toLocaleString()}`,
     rateLabel: "€32/hr avg. loaded cost",
-    buildLabel: "vs €8,800 Core System build",
   },
   gbp: {
     symbol: "£",
     label: "GBP (£)",
     hourlyRate: 28,
-    buildCost: 7500,
     format: (amt: number) => `£${Math.round(amt).toLocaleString()}`,
     rateLabel: "£28/hr avg. loaded cost",
-    buildLabel: "vs £7,500 Core System build",
   },
   inr: {
     symbol: "₹",
     label: "INR (₹)",
     hourlyRate: 350,
-    buildCost: 120000,
     format: (amt: number) => {
       if (amt >= 10_000_000) return `₹${(amt / 10_000_000).toFixed(1)} Cr`;
       if (amt >= 100_000) return `₹${(amt / 100_000).toFixed(1)}L`;
       return `₹${(amt / 1000).toFixed(0)}K`;
     },
     rateLabel: "₹350/hr avg. fully-loaded cost",
-    buildLabel: "vs ₹1,20,000 Core System build",
   },
 };
 
 const LEVELS = [
-  { max: 30, label: "Automation starter", desc: "Good foundation, high-ROI quick wins available." },
-  { max: 65, label: "Clear automation wins", desc: "Real bottlenecks exist. Immediate payback upon deployment." },
-  { max: 100, label: "High-impact opportunity", desc: "Significant manual drag. Autonomous infrastructure compounds fast here." },
+  { max: 30, label: "Automation starter", desc: "Good foundation, high-leverage quick wins available." },
+  { max: 65, label: "Clear automation wins", desc: "Real operational drag. High-impact workflows ready for deployment." },
+  { max: 100, label: "High-impact opportunity", desc: "Significant manual bottlenecks. Autonomous systems compound rapidly here." },
 ];
 
 function getLevel(score: number) {
@@ -103,10 +91,7 @@ export function RoiEstimator() {
   const daysPerYear = Math.round((weeklyHoursLost * 52) / 8);
   const annualCost = weeklyHoursLost * 52 * spec.hourlyRate;
   const formattedCost = spec.format(annualCost);
-
-  const paybackMonths = spec.buildCost / (annualCost / 12);
-  const roiPct = Math.round(((annualCost - spec.buildCost) / spec.buildCost) * 100);
-  const showPayback = annualCost > spec.buildCost;
+  const estimatedReclaimedHours = Math.round(weeklyHoursLost * 0.75);
 
   const score = Math.min(
     100,
@@ -135,7 +120,7 @@ export function RoiEstimator() {
         body: JSON.stringify({
           name: "Automation Audit Lead",
           email,
-          message: `Automation audit result:\n• Score: ${score}/100 (${level.label})\n• Currency: ${currency.toUpperCase()}\n• Team size: ${teamSize[0]} people\n• Manual hours/person/week: ${manualHours[0]}h\n• Weekly handoffs: ${handoffs[0]}\n• Est. annual cost: ${formattedCost}\n• Primary target: ${target}`,
+          message: `Automation audit result:\n• Score: ${score}/100 (${level.label})\n• Currency: ${currency.toUpperCase()}\n• Team size: ${teamSize[0]} people\n• Manual hours/person/week: ${manualHours[0]}h\n• Weekly handoffs: ${handoffs[0]}\n• Est. annual cost drag: ${formattedCost}\n• Est. weekly hours reclaimable: ~${estimatedReclaimedHours}h\n• Primary target: ${target}`,
         }),
       });
     } catch {
@@ -288,7 +273,7 @@ export function RoiEstimator() {
                   {gateState !== "revealed" ? (
                     <form onSubmit={handleEmailSubmit} className="flex flex-col gap-3">
                       <p className="text-xs font-semibold text-[var(--color-fg-muted)]">
-                        Enter your work email to see the full cost breakdown and payback estimate
+                        Enter your work email to see the full cost drag breakdown and reclaimed hours projection
                       </p>
                       <div className="flex gap-2">
                         <input
@@ -307,7 +292,7 @@ export function RoiEstimator() {
                           {gateState === "submitting" ? (
                             <Loader2 className="size-4 animate-spin" />
                           ) : (
-                            <>See numbers <ArrowRight className="size-3.5" /></>
+                            <>See projection <ArrowRight className="size-3.5" /></>
                           )}
                         </button>
                       </div>
@@ -318,7 +303,7 @@ export function RoiEstimator() {
                   ) : (
                     <>
                       <p className="text-[11px] text-[var(--color-fg-subtle)]">
-                        Plan sent to <span className="font-semibold text-[var(--color-fg-muted)]">{email}</span>
+                        Roadmap sent to <span className="font-semibold text-[var(--color-fg-muted)]">{email}</span>
                       </p>
 
                       {/* Annual cost */}
@@ -330,25 +315,23 @@ export function RoiEstimator() {
                         <p className="mt-1 text-[10px] text-[var(--color-fg-subtle)]">{spec.rateLabel}</p>
                       </div>
 
-                      {/* Payback + ROI */}
-                      {showPayback && (
-                        <div className="grid grid-cols-2 gap-3">
-                          <div className="border border-[var(--color-accent)] bg-[var(--color-accent)]/5 p-4">
-                            <p className="text-xs text-[var(--color-fg-muted)]">Payback period</p>
-                            <p className="mt-1 font-display text-2xl font-bold tracking-tight text-[var(--color-accent)]">
-                              ~{paybackMonths < 1 ? "<1" : paybackMonths.toFixed(1)} mo
-                            </p>
-                            <p className="mt-0.5 text-[10px] text-[var(--color-fg-subtle)]">{spec.buildLabel}</p>
-                          </div>
-                          <div className="border border-[var(--color-accent)] bg-[var(--color-accent)]/5 p-4">
-                            <p className="text-xs text-[var(--color-fg-muted)]">Est. annual ROI</p>
-                            <p className="mt-1 font-display text-2xl font-bold tracking-tight text-[var(--color-accent)]">
-                              {roiPct > 999 ? ">1000" : roiPct}%
-                            </p>
-                            <p className="mt-0.5 text-[10px] text-[var(--color-fg-subtle)]">first-year return on build cost</p>
-                          </div>
+                      {/* Reclaimed Bandwidth Highlights */}
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="border border-[var(--color-accent)] bg-[var(--color-accent)]/5 p-4">
+                          <p className="text-xs text-[var(--color-fg-muted)]">Reclaimable time</p>
+                          <p className="mt-1 font-display text-2xl font-bold tracking-tight text-[var(--color-accent)]">
+                            ~{estimatedReclaimedHours}h / wk
+                          </p>
+                          <p className="mt-0.5 text-[10px] text-[var(--color-fg-subtle)]">estimated team capacity returned</p>
                         </div>
-                      )}
+                        <div className="border border-[var(--color-accent)] bg-[var(--color-accent)]/5 p-4">
+                          <p className="text-xs text-[var(--color-fg-muted)]">Target efficiency</p>
+                          <p className="mt-1 font-display text-2xl font-bold tracking-tight text-[var(--color-accent)]">
+                            75% - 90%
+                          </p>
+                          <p className="mt-0.5 text-[10px] text-[var(--color-fg-subtle)]">routine handoff automation</p>
+                        </div>
+                      </div>
                     </>
                   )}
 

@@ -1,52 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { Check, ArrowRight, Shield, Zap, Lock, Code2 } from "lucide-react";
+import { ArrowRight, Shield, Zap, Lock, Code2 } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 import { pricingTiers, pricingPrinciples } from "@/content/pricing";
 
-type Currency = "usd" | "aed" | "eur" | "gbp" | "inr";
-
-const CURRENCIES: { key: Currency; label: string }[] = [
-  { key: "usd", label: "USD ($)" },
-  { key: "aed", label: "AED (د.إ)" },
-  { key: "eur", label: "EUR (€)" },
-  { key: "gbp", label: "GBP (£)" },
-  { key: "inr", label: "INR (₹)" },
-];
-
 export function PricingSection() {
-  const [currency, setCurrency] = useState<Currency>("usd");
-
   return (
     <section id="pricing" className="border-t-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] py-24 md:py-32">
       <div className="container-x">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeader
-            eyebrow="Transparent Engagements"
-            title="Clear pricing. Fixed scopes. Zero vendor lock-in."
-            subtitle="We build production AI systems with fixed-price certainty. Every line of code runs on your cloud account, with 100% intellectual property ownership."
-          />
-
-          {/* Currency Switcher */}
-          <div className="flex items-center gap-1 border border-[var(--color-border)] bg-[var(--color-bg)] p-1">
-            {CURRENCIES.map((c) => (
-              <button
-                key={c.key}
-                onClick={() => setCurrency(c.key)}
-                className={`px-3 py-1.5 font-mono text-xs font-semibold transition-colors ${
-                  currency === c.key
-                    ? "bg-[var(--color-brand)] text-white"
-                    : "text-[var(--color-fg-muted)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)]"
-                }`}
-              >
-                {c.label}
-              </button>
-            ))}
-          </div>
-        </div>
+        <SectionHeader
+          eyebrow="Engagement Models"
+          title="Custom fixed scopes. Tailored to your operational stack."
+          subtitle="Because every business's workflows and legacy tools are subjective, we deliver transparent, fixed-price proposals scoped specifically to your systems. Zero hourly surprises, and you own 100% of the code."
+        />
 
         {/* Pricing Cards Grid */}
         <Reveal delay={0.1}>
@@ -85,27 +53,22 @@ export function PricingSection() {
                       {tier.tagline}
                     </p>
 
-                    {/* Price */}
+                    {/* Scope Model */}
                     <div className="mt-6 border-y border-[var(--color-border)] py-4">
-                      <div className="flex items-baseline gap-1.5">
-                        <span className="font-display text-3xl font-extrabold tracking-tight text-[var(--color-fg)]">
-                          {tier.price[currency]}
+                      <div className="flex flex-col gap-1">
+                        <span className="font-display text-lg font-bold text-[var(--color-fg)]">
+                          {tier.scopeModel}
                         </span>
-                        {tier.period && (
-                          <span className="font-mono text-xs text-[var(--color-fg-subtle)]">
-                            {tier.period}
-                          </span>
-                        )}
+                        <span className="font-mono text-[11px] text-[var(--color-fg-subtle)] leading-snug">
+                          {tier.scopeBasis}
+                        </span>
                       </div>
-                      <span className="mt-1 block font-mono text-[10px] text-[var(--color-fg-subtle)]">
-                        Fixed price. No hourly overruns.
-                      </span>
                     </div>
 
                     {/* Deliverables */}
                     <div className="mt-6 flex flex-col gap-2.5">
                       <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--color-fg)]">
-                        ■ Key Inclusions:
+                        ■ Key Deliverables:
                       </span>
                       {tier.deliverables.slice(0, 4).map((d, i) => (
                         <div key={i} className="flex items-start gap-2.5 text-xs text-[var(--color-fg)] leading-snug">
@@ -158,15 +121,15 @@ export function PricingSection() {
         </Reveal>
 
         {/* View full pricing details link */}
-        <div className="mt-10 flex items-center justify-between">
+        <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-xs text-[var(--color-fg-muted)] font-mono">
-            Need a custom multi-system enterprise deployment?
+            Want to understand how we scope your exact stack and integrations?
           </p>
           <Link
             href="/pricing"
             className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[var(--color-brand)] hover:underline"
           >
-            <span>View full pricing specification and FAQs →</span>
+            <span>Learn more about our scoping process and FAQs →</span>
           </Link>
         </div>
       </div>

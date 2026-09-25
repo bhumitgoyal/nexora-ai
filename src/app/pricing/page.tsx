@@ -5,9 +5,9 @@ import { TechStackMarquee } from "@/components/home/TechStackMarquee";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
-  title: "Pricing & Engagements",
+  title: "Engagement Models & Scoping",
   description:
-    "Fixed-price AI infrastructure engagements from $3,500. Sprints, custom voice agents, CRM workflows, and full enterprise ops systems with 100% code ownership.",
+    "Tailored AI infrastructure engagements. Sprints, custom voice agents, CRM workflows, and full enterprise ops systems with 100% code ownership.",
 };
 
 export default function PricingPage() {

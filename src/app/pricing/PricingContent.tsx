@@ -1,58 +1,23 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { Check, ArrowRight, ShieldCheck, Zap, Lock, Code2, HelpCircle } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
-import { pricingTiers, pricingPrinciples, pricingFaqs } from "@/content/pricing";
-
-type Currency = "usd" | "aed" | "eur" | "gbp" | "inr";
-
-const CURRENCIES: { key: Currency; label: string }[] = [
-  { key: "usd", label: "USD ($)" },
-  { key: "aed", label: "AED (د.إ)" },
-  { key: "eur", label: "EUR (€)" },
-  { key: "gbp", label: "GBP (£)" },
-  { key: "inr", label: "INR (₹)" },
-];
+import { pricingTiers, pricingPrinciples, pricingFaqs, scopingSteps } from "@/content/pricing";
 
 export function PricingContent() {
-  const [currency, setCurrency] = useState<Currency>("usd");
-
   return (
     <>
       <section className="relative isolate overflow-hidden py-24 md:py-32">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x relative z-10">
-          <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
-            <SectionHeader
-              as="h1"
-              eyebrow="Transparent Engagements"
-              title="Fixed scopes. Guaranteed deliverables. 100% code ownership."
-              subtitle="We build AI systems the way custom engineering should be built: transparent pricing, milestone demos every 7 days, and deployment directly into your own cloud environment."
-            />
-
-            {/* Currency Selector */}
-            <div className="flex items-center gap-1 border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-1.5 shadow-[3px_3px_0_var(--color-border)]">
-              <span className="px-2 font-mono text-[10px] uppercase font-bold text-[var(--color-fg-subtle)]">
-                Currency:
-              </span>
-              {CURRENCIES.map((c) => (
-                <button
-                  key={c.key}
-                  onClick={() => setCurrency(c.key)}
-                  className={`px-3 py-1.5 font-mono text-xs font-semibold transition-colors ${
-                    currency === c.key
-                      ? "bg-[var(--color-brand)] text-white"
-                      : "text-[var(--color-fg-muted)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)]"
-                  }`}
-                >
-                  {c.label}
-                </button>
-              ))}
-            </div>
-          </div>
+          <SectionHeader
+            as="h1"
+            eyebrow="Engagement Models"
+            title="Tailored fixed scopes. Guaranteed deliverables. 100% code ownership."
+            subtitle="Because every business's workflows and systems are subjective, we deliver transparent, fixed-price proposals scoped specifically to your tools. Milestone demos every 7 days, and deployment directly into your own cloud environment."
+          />
         </div>
       </section>
 
@@ -97,20 +62,21 @@ export function PricingContent() {
                       {tier.tagline}
                     </p>
 
-                    {/* Price Block */}
+                    {/* Scope Model Block */}
                     <div className="mt-8 border-y border-[var(--color-border)] bg-[var(--color-bg-elev)] p-6">
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-display text-4xl font-extrabold tracking-tight text-[var(--color-fg)] md:text-5xl">
-                          {tier.price[currency]}
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--color-brand)]">
+                        Scope Structure:
+                      </span>
+                      <div className="mt-1 flex flex-col gap-1">
+                        <span className="font-display text-2xl font-bold tracking-tight text-[var(--color-fg)]">
+                          {tier.scopeModel}
                         </span>
-                        {tier.period && (
-                          <span className="font-mono text-sm font-semibold text-[var(--color-fg-subtle)]">
-                            {tier.period}
-                          </span>
-                        )}
+                        <p className="text-xs font-mono text-[var(--color-fg-muted)]">
+                          {tier.scopeBasis}
+                        </p>
                       </div>
-                      <p className="mt-2 text-xs font-mono text-[var(--color-fg-muted)]">
-                        Best for: {tier.target}
+                      <p className="mt-3 text-xs text-[var(--color-fg-subtle)] border-t border-[var(--color-border)] pt-2">
+                        Target: {tier.target}
                       </p>
                     </div>
 
@@ -168,8 +134,38 @@ export function PricingContent() {
         </div>
       </section>
 
-      {/* Principles & Code Ownership Section */}
+      {/* How We Scope Engagements */}
       <section className="border-t border-[var(--color-border)] bg-[var(--color-bg)] py-20 md:py-28">
+        <div className="container-x">
+          <SectionHeader
+            eyebrow="Scoping Protocol"
+            title="How we scope every project without surprises."
+            subtitle="We follow a four-step framework that ensures alignment, concrete milestones, and guaranteed deliverables before writing production code."
+          />
+
+          <div className="mt-14 grid grid-cols-1 gap-0 border border-[var(--color-border)] md:grid-cols-2 lg:grid-cols-4">
+            {scopingSteps.map((s, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col gap-3 border-b border-[var(--color-border)] p-8 md:border-b-0 md:border-r last:border-r-0 bg-[var(--color-bg-elev)]"
+              >
+                <span className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-brand)]">
+                  ■ STAGE {s.step}
+                </span>
+                <h3 className="font-display text-lg font-bold text-[var(--color-fg)]">
+                  {s.title}
+                </h3>
+                <p className="text-xs text-[var(--color-fg-muted)] leading-relaxed">
+                  {s.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Principles & Code Ownership Section */}
+      <section className="border-t border-[var(--color-border)] bg-[var(--color-bg-elev)] py-20 md:py-28">
         <div className="container-x">
           <SectionHeader
             eyebrow="The Engineering Standard"
@@ -181,7 +177,7 @@ export function PricingContent() {
             {pricingPrinciples.map((p, idx) => (
               <div
                 key={idx}
-                className="flex flex-col gap-3 border-b border-[var(--color-border)] p-8 md:border-b-0 md:border-r last:border-r-0 bg-[var(--color-bg-elev)]"
+                className="flex flex-col gap-3 border-b border-[var(--color-border)] p-8 md:border-b-0 md:border-r last:border-r-0 bg-[var(--color-bg)]"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-brand)]">
@@ -201,15 +197,15 @@ export function PricingContent() {
       </section>
 
       {/* Pricing FAQs */}
-      <section className="border-t border-[var(--color-border)] bg-[var(--color-bg-elev)] py-20 md:py-28">
+      <section className="border-t border-[var(--color-border)] bg-[var(--color-bg)] py-20 md:py-28">
         <div className="container-x">
           <SectionHeader
             eyebrow="Commercial FAQs"
             title="Frequently asked commercial questions."
-            subtitle="Everything you need to know about our billing, milestone sign-offs, and cloud architecture delivery."
+            subtitle="Everything you need to know about our custom scoping, milestone sign-offs, and cloud architecture delivery."
           />
 
-          <div className="mt-12 flex flex-col divide-y divide-[var(--color-border)] border border-[var(--color-border)] bg-[var(--color-bg)]">
+          <div className="mt-12 flex flex-col divide-y divide-[var(--color-border)] border border-[var(--color-border)] bg-[var(--color-bg-elev)]">
             {pricingFaqs.map((faq, idx) => (
               <div key={idx} className="p-6 md:p-8">
                 <h4 className="flex items-center gap-2.5 font-display text-base font-bold text-[var(--color-fg)] md:text-lg">
