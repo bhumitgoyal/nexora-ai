@@ -22,6 +22,9 @@ import { Switchboard } from "@/components/home/Switchboard";
 import { CtaBanner } from "@/components/home/CtaBanner";
 import { TrustStrip } from "@/components/home/TrustStrip";
 import { Perforation } from "@/components/shared/Perforation";
+import { InteractiveAgentDemo } from "@/components/home/InteractiveAgentDemo";
+import { FounderTrust } from "@/components/home/FounderTrust";
+import { PricingSection } from "@/components/home/PricingSection";
 
 // Below-the-fold heavy components chunked for smaller initial JS payload
 const WiringDiagram = dynamic(() => import("@/components/home/WiringDiagram").then((m) => m.WiringDiagram));
@@ -34,12 +37,14 @@ const FaqStrip = dynamic(() => import("@/components/home/FaqStrip").then((m) => 
 export default function HomePage() {
   return (
     <>
-      {/* Narrative: promise → what it takes over → live proof → what a
-          deployment is → how it wires in → your industry → the systems →
-          the difference → evidence → how we build → estimate → voices → act */}
+      {/* Narrative: promise -> what it takes over -> live proof -> interactive inspection ->
+          what a deployment is -> how it wires in -> your industry -> the systems ->
+          the difference -> evidence -> founder engineering -> how we build ->
+          transparent pricing -> estimate -> voices -> act */}
       <Hero />
       <OpsLedger />
       <Switchboard />
+      <InteractiveAgentDemo />
       <Perforation label="The record continues" />
       <AgentRoster />
       <WiringDiagram />
@@ -50,9 +55,11 @@ export default function HomePage() {
       <FromTheWorkshop />
       <StatsBar />
       <TrustStrip />
+      <FounderTrust />
       <ProcessSnapshot />
       <Governance />
       <AuditDeliverables />
+      <PricingSection />
       <RoiEstimator />
       <Testimonials />
       <GlassBox />

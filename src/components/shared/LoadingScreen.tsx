@@ -21,7 +21,7 @@ export function LoadingScreen() {
     sessionStorage.setItem("nuvero_loaded", "1");
     startRef.current = performance.now();
 
-    // Counter eases toward 100 over ~1.8s — never feels stalled, never instant.
+    // Counter eases toward 100 over ~1.8s - never feels stalled, never instant.
     const MIN_DURATION = 1800;
     let raf = 0;
     const tick = (now: number) => {
@@ -44,7 +44,7 @@ export function LoadingScreen() {
     <AnimatePresence>
       {visible && (
         <motion.div key="loader" className="fixed inset-0 z-[200]" exit={{ opacity: 0 }}>
-          {/* trailing brand panel — wipes up slightly behind the main panel */}
+          {/* trailing brand panel - wipes up slightly behind the main panel */}
           <motion.div
             aria-hidden
             className="absolute inset-0 bg-[var(--color-brand)]"
@@ -122,7 +122,7 @@ export function LoadingScreen() {
               />
             </div>
 
-            {/* big counter, bottom-right — the award-site signature */}
+            {/* big counter, bottom-right - the award-site signature */}
             <span className="absolute bottom-6 right-8 font-mono text-6xl font-bold tabular-nums tracking-tighter text-[var(--color-fg)] md:bottom-10 md:right-12 md:text-8xl">
               {progress}
               <span className="text-[var(--color-brand)]">%</span>

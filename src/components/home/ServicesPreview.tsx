@@ -11,7 +11,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 // Ink console: sidebar of systems on the left, the selected system's real
 // workflow rendered as connected nodes on the right. Dark panel uses the
-// brand ink — no off-palette colors.
+// brand ink - no off-palette colors.
 function ServiceConsole({ sector }: { sector: Sector }) {
   const [active, setActive] = useState(0);
   const svc = sector.services[active];
@@ -108,7 +108,7 @@ function ServiceConsole({ sector }: { sector: Sector }) {
             ))}
           </div>
 
-          {/* how it works — full copy preserved */}
+          {/* how it works - full copy preserved */}
           <div className="mt-7">
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--color-bg)]/40">
               How it works

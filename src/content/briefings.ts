@@ -1,4 +1,4 @@
-// Intelligence Briefings — Nuvero's thought-leadership on AI infrastructure.
+// Intelligence Briefings - Nuvero's thought-leadership on AI infrastructure.
 // Content is original analysis. The flagship grades a readiness RUBRIC the
 // reader applies to their own org, never invented grades for named vendors.
 
@@ -47,7 +47,7 @@ export const briefings: Briefing[] = [
       {
         type: "ledger",
         caption: "Infrastructure Readiness Scorecard · grade yourself L0 → L3",
-        columns: ["Dimension", "Level 0 — Absent", "Level 3 — Ready"],
+        columns: ["Dimension", "Level 0 - Absent", "Level 3 - Ready"],
         rows: [
           {
             label: "Data",

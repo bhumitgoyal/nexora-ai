@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/industries" },
   title: "Industries",
   description:
-    "The systems we build, by industry. Real estate, e-commerce, marketing agencies, restaurants, and B2B SaaS — each with the workflows we automate end to end.",
+    "The systems we build, by industry. Real estate, e-commerce, marketing agencies, restaurants, and B2B SaaS - each with the workflows we automate end to end.",
 };
 
 export default function IndustriesPage() {
@@ -40,7 +40,7 @@ export default function IndustriesPage() {
               <p className="max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
                 Every operation has a different set of workflows worth automating. These are the{" "}
                 {systemCount} systems we build most often, grouped by the industry they were shaped
-                for — each one a real workflow, wired into the tools you already run.
+                for - each one a real workflow, wired into the tools you already run.
               </p>
             </Reveal>
           </div>

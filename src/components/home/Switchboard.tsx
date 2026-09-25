@@ -66,7 +66,7 @@ export function Switchboard() {
               </span>
             </div>
 
-            {/* feed — perforated left edge */}
+            {/* feed - perforated left edge */}
             <div className="relative overflow-hidden border-l-[3px] border-dotted border-[var(--color-border)]/40 px-4 py-3 md:px-5">
               <div className="flex flex-col">
                 <AnimatePresence initial={false} mode="popLayout">

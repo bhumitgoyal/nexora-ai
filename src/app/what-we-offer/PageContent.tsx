@@ -495,7 +495,7 @@ export function WhatWeOfferContent() {
         </section>
       )}
 
-      {/* Bottom CTA — industry tab only */}
+      {/* Bottom CTA - industry tab only */}
       {tab === "industry" && (
         <section className="py-24 md:py-32">
           <div className="container-x">

@@ -10,7 +10,7 @@ export const site = {
     "Nuvero AI builds custom AI infrastructure: agentic systems trained on how your business actually works, wired into your stack to automate real workflows end to end.",
   // Must match the hostname the server actually serves on. Vercel 308-redirects
   // the bare domain to www, so canonical tags, OG urls, the sitemap and robots
-  // all have to say www too — otherwise every declared URL is a redirect hop and
+  // all have to say www too - otherwise every declared URL is a redirect hop and
   // ranking signals split across two hostnames.
   url: "https://www.nuvero.space",
   ogImage: "/og.png",
@@ -50,6 +50,7 @@ export const site = {
     { label: "Systems", href: "/services" },
     { label: "Industries", href: "/industries" },
     { label: "Deployments", href: "/work" },
+    { label: "Pricing", href: "/pricing" },
     { label: "Process", href: "/process" },
     { label: "About", href: "/about" },
   ],

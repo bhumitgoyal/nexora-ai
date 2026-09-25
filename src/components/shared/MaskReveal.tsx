@@ -12,7 +12,7 @@ type MaskRevealProps = {
 };
 
 // Award-site line mask: content slides up from behind an invisible clip edge.
-// The observer lives on the outer (unclipped) wrapper — the inner starts fully
+// The observer lives on the outer (unclipped) wrapper - the inner starts fully
 // clipped, so observing it directly would never fire. A timed fail-safe forces
 // the reveal if the element is on screen but the observer never triggered:
 // a missing heading is worse than a skipped animation.

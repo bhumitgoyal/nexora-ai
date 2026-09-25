@@ -79,7 +79,7 @@ export function SchematicBeam({
       className={cn("pointer-events-none absolute left-0 top-0", className)}
       aria-hidden
     >
-      {/* base route — dashed ink */}
+      {/* base route - dashed ink */}
       <path
         d={pathD}
         stroke="var(--color-border)"
@@ -87,7 +87,7 @@ export function SchematicBeam({
         strokeOpacity={0.35}
         strokeDasharray="4 4"
       />
-      {/* static red accent tick where the route leaves the node — identical
+      {/* static red accent tick where the route leaves the node - identical
           on every connector at every breakpoint */}
       {pathD && (
         <path

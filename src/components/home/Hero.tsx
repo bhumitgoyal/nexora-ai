@@ -37,7 +37,7 @@ const tickets = [
   { no: "531", job: "Review replies" },
 ];
 
-// Live outcome ticker — the first thing on the page is work being done,
+// Live outcome ticker - the first thing on the page is work being done,
 // not a claim. Numbers tick like a meter, never rounded.
 function LiveTicker() {
   const prefersReduced = useReducedMotion();
@@ -243,7 +243,7 @@ export function Hero() {
           </a>
         </motion.div>
 
-        {/* outcome triplet — the numbers, at the decision point */}
+        {/* outcome triplet - the numbers, at the decision point */}
         <motion.dl
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}

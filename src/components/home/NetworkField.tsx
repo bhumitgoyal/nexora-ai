@@ -9,7 +9,7 @@ type Node = {
   vy: number;
 };
 
-// Cursor-reactive node network — reads as "infrastructure", not confetti.
+// Cursor-reactive node network - reads as "infrastructure", not confetti.
 // Canvas 2D, DPR-capped, paused offscreen, disabled for reduced motion.
 export function NetworkField({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);

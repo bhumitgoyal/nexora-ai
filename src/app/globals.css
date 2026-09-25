@@ -163,7 +163,7 @@
     background-size: 24px 24px;
   }
 
-  /* tear-off perforation strip — punched holes on a continuous-feed edge */
+  /* tear-off perforation strip - punched holes on a continuous-feed edge */
   .perforation {
     height: 8px;
     background-image: radial-gradient(
@@ -177,7 +177,7 @@
     opacity: 0.45;
   }
 
-  /* outlined display text — award-site marquee treatment */
+  /* outlined display text - award-site marquee treatment */
   .text-stroke-fg {
     color: transparent;
     -webkit-text-stroke: 1.5px var(--color-fg);

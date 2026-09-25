@@ -113,7 +113,7 @@ function CommissionRecord() {
         </dl>
       </div>
 
-      {/* the system reports for itself — first-person, tied to the live count */}
+      {/* the system reports for itself - first-person, tied to the live count */}
       <div className="mt-6 border-t border-[var(--color-border)] pt-4">
         <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
           Self-report

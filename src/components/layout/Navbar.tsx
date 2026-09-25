@@ -47,7 +47,7 @@ export function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    // only touch body when the menu is actually open — writing style on
+    // only touch body when the menu is actually open - writing style on
     // mount stamps a style attribute onto <body> mid-hydration and trips
     // React's hydration mismatch warning
     if (!open) return;
