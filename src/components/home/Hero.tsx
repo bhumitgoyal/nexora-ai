@@ -16,6 +16,7 @@ import { Magnetic } from "@/components/shared/Magnetic";
 import { MaskReveal } from "@/components/shared/MaskReveal";
 import { Reveal } from "@/components/shared/Reveal";
 import { Stamp } from "@/components/shared/Stamp";
+import { Scramble } from "@/components/fx/Scramble";
 import { NetworkField } from "@/components/home/NetworkField";
 import { EASE, DURATION } from "@/lib/motion";
 import { site } from "@/content/site";
@@ -116,7 +117,7 @@ function JobTicket() {
         >
           <span className="eyebrow flex min-w-0 items-baseline gap-3 text-[var(--color-fg)]">
             <span className="shrink-0 text-[var(--color-fg-subtle)]">Nº {ticket.no}</span>
-            <span className="truncate">{ticket.job}</span>
+            <Scramble text={ticket.job} className="truncate" />
           </span>
           <span className="relative flex h-7 w-[104px] shrink-0 items-center justify-center">
             <AnimatePresence>

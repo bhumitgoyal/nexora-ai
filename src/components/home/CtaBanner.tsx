@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GlowButton } from "@/components/shared/GlowButton";
 import { site } from "@/content/site";
+import { InkDither } from "@/components/fx/InkDither";
 import { Reveal } from "@/components/shared/Reveal";
 
 export function CtaBanner() {
@@ -9,6 +10,7 @@ export function CtaBanner() {
       <div className="container-x">
         <Reveal>
           <div className="relative border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] px-6 py-14 text-center shadow-[var(--shadow-hard-lg)] sm:px-8 md:px-16 md:py-24">
+            <InkDither />
             {/* corner accents */}
             <span className="absolute left-0 top-0 block h-8 w-8 border-b-2 border-r-2 border-[var(--color-brand)] translate-x-[-2px] translate-y-[-2px]" />
             <span className="absolute right-0 top-0 block h-8 w-8 border-b-2 border-l-2 border-[var(--color-brand)] translate-x-[2px] translate-y-[-2px]" />

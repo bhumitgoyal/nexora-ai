@@ -2,6 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
 import { MaskReveal } from "./MaskReveal";
+import { SplitReveal } from "@/components/fx/SplitReveal";
 
 type SectionHeaderProps = {
   eyebrow?: string;
@@ -42,11 +43,20 @@ export function SectionHeader({
           </span>
         </Reveal>
       ) : null}
-      <MaskReveal delay={0.08} priority={priority}>
-        <Heading id={id} className={cn("text-balance font-semibold", Heading === "h1" ? "text-title-1" : "text-title-2")}>
-          {title}
-        </Heading>
-      </MaskReveal>
+      {priority ? (
+        <MaskReveal delay={0.08} priority>
+          <Heading id={id} className={cn("text-balance font-semibold", Heading === "h1" ? "text-title-1" : "text-title-2")}>
+            {title}
+          </Heading>
+        </MaskReveal>
+      ) : (
+        // below the fold: SplitText line masks, staggered per line
+        <SplitReveal delay={0.05}>
+          <Heading id={id} className={cn("text-balance font-semibold", Heading === "h1" ? "text-title-1" : "text-title-2")}>
+            {title}
+          </Heading>
+        </SplitReveal>
+      )}
       {subtitle ? (
         <Reveal delay={0.1} priority={priority}>
           <p className="text-pretty text-lead text-[var(--color-fg-muted)]">

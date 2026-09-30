@@ -6,6 +6,7 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 import { EASE } from "@/lib/motion";
 import { useLiveMotion } from "@/hooks/useMotionPreference";
+import { Scramble } from "@/components/fx/Scramble";
 
 type FeedLine = {
   time: string;
@@ -91,7 +92,7 @@ export function Switchboard() {
                           {line.tag}
                         </span>
                         <span className="min-w-0 truncate font-mono text-xs text-[var(--color-fg)] md:text-[13px]">
-                          {line.text}
+                          {isLatest && live ? <Scramble text={line.text} duration={0.9} /> : line.text}
                           {isLatest && live && (
                             <motion.span
                               aria-hidden

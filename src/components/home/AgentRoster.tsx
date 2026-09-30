@@ -145,7 +145,7 @@ export function AgentRoster() {
           </Reveal>
           <h2 className="mt-5 font-display text-[2rem] font-bold leading-[1.08] tracking-[-0.03em] sm:text-4xl md:text-6xl md:leading-[1.05]">
             <MaskReveal delay={0.08}>
-              <span>Infrastructure with</span>
+              <span>Infrastructure with{" "}</span>
             </MaskReveal>
             <MaskReveal delay={0.2}>
               <span className="text-[var(--color-brand)]">a job description.</span>
