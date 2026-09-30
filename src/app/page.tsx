@@ -6,6 +6,7 @@ import { OpsLedger } from "@/components/home/OpsLedger";
 import { Switchboard } from "@/components/home/Switchboard";
 import { InteractiveAgentDemo } from "@/components/home/InteractiveAgentDemo";
 import { AgentRoster } from "@/components/home/AgentRoster";
+import { LayerAssembly } from "@/components/home/LayerAssembly";
 import { WhatWeOffer } from "@/components/home/WhatWeOffer";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { FeaturedWork } from "@/components/home/FeaturedWork";
@@ -47,6 +48,7 @@ export default function HomePage() {
       <InteractiveAgentDemo />
       <Perforation label="The record continues" />
       <AgentRoster />
+      <LayerAssembly />
       <WiringDiagram />
       <WhatWeOffer />
       <ServicesPreview />

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { WhatWeOfferContent } from "./PageContent";
-import { LayerAssembly } from "@/components/home/LayerAssembly";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/what-we-offer" },
@@ -10,10 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function WhatWeOfferPage() {
-  return (
-    <>
-      <WhatWeOfferContent />
-      <LayerAssembly />
-    </>
-  );
+  return <WhatWeOfferContent />;
 }
