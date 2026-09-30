@@ -9,12 +9,21 @@ import { Reveal } from "@/components/shared/Reveal";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { site } from "@/content/site";
 
-const BUILD_COST = 120_000;
+type Currency = "usd" | "aed" | "eur" | "gbp" | "inr";
+
+// Loaded staff cost per hour by market. INR keeps lakh/crore units.
+const CURRENCY_SPECS: Record<Currency, { label: string; code: string; hourlyRate: number; rateLabel: string }> = {
+  usd: { label: "USD", code: "USD", hourlyRate: 35, rateLabel: "$35/hr average loaded staff cost" },
+  aed: { label: "AED", code: "AED", hourlyRate: 130, rateLabel: "AED 130/hr average loaded staff cost" },
+  eur: { label: "EUR", code: "EUR", hourlyRate: 32, rateLabel: "€32/hr average loaded staff cost" },
+  gbp: { label: "GBP", code: "GBP", hourlyRate: 28, rateLabel: "£28/hr average loaded staff cost" },
+  inr: { label: "INR", code: "INR", hourlyRate: 350, rateLabel: "₹350/hr average fully-loaded cost" },
+};
 
 const LEVELS = [
-  { max: 30, label: "Automation starter", desc: "Good foundation, with a few quick wins available." },
-  { max: 65, label: "Clear automation wins", desc: "Real bottlenecks exist. Right time to move." },
-  { max: 100, label: "High-impact opportunity", desc: "Significant manual drag. AI would compound fast here." },
+  { max: 30, label: "Automation starter", desc: "Good foundation, high-leverage quick wins available." },
+  { max: 65, label: "Clear automation wins", desc: "Real operational drag. High-impact workflows ready for deployment." },
+  { max: 100, label: "High-impact opportunity", desc: "Significant manual bottlenecks. Autonomous systems compound rapidly here." },
 ];
 
 function getLevel(score: number) {
@@ -23,25 +32,31 @@ function getLevel(score: number) {
 
 function getTarget(teamSize: number, manualHours: number, handoffs: number) {
   if (manualHours >= 12) return "Repetitive task load per person";
-  if (handoffs >= 18) return "Approval & handoff bottlenecks";
+  if (handoffs >= 18) return "Approval and handoff bottlenecks";
   if (teamSize >= 20) return "Cross-team coordination overhead";
-  return "Repetitive outreach & follow-up";
+  return "Repetitive outreach and follow-up";
 }
 
-function formatINR(amount: number): string {
-  if (amount >= 10_000_000) return `₹${(amount / 10_000_000).toFixed(1)} Cr`;
-  if (amount >= 100_000) return `₹${(amount / 100_000).toFixed(1)}L`;
-  return `₹${(amount / 1000).toFixed(0)}K`;
+function formatCost(amount: number, currency: Currency): string {
+  if (currency === "inr") {
+    if (amount >= 10_000_000) return `₹${(amount / 10_000_000).toFixed(1)} Cr`;
+    if (amount >= 100_000) return `₹${(amount / 100_000).toFixed(1)}L`;
+    return `₹${(amount / 1000).toFixed(0)}K`;
+  }
+  return new Intl.NumberFormat("en", { style: "currency", currency: CURRENCY_SPECS[currency].code, maximumFractionDigits: 0 }).format(amount);
 }
 
-// Split for NumberFlow: the number rolls, the unit (L / Cr / K) is a suffix.
-function inrParts(amount: number): { value: number; suffix: string } {
-  if (amount >= 10_000_000) return { value: +(amount / 10_000_000).toFixed(1), suffix: " Cr" };
-  if (amount >= 100_000) return { value: +(amount / 100_000).toFixed(1), suffix: "L" };
-  return { value: Math.round(amount / 1000), suffix: "K" };
+// NumberFlow parts: INR rolls the lakh/crore figure with a unit suffix; other
+// currencies roll the whole amount with Intl currency formatting.
+function costFlow(amount: number, currency: Currency) {
+  if (currency === "inr") {
+    if (amount >= 10_000_000) return { value: +(amount / 10_000_000).toFixed(1), prefix: "₹", suffix: " Cr", format: { maximumFractionDigits: 1 } };
+    if (amount >= 100_000) return { value: +(amount / 100_000).toFixed(1), prefix: "₹", suffix: "L", format: { maximumFractionDigits: 1 } };
+    return { value: Math.round(amount / 1000), prefix: "₹", suffix: "K", format: {} };
+  }
+  return { value: Math.round(amount), prefix: "", suffix: "", format: { style: "currency" as const, currency: CURRENCY_SPECS[currency].code, maximumFractionDigits: 0 } };
 }
 
-const FLOW = { format: { maximumFractionDigits: 1 } } as const;
 
 type SliderRowProps = {
   label: string;
@@ -80,6 +95,7 @@ function SliderRow({ label, value, unit, min, max, onChange }: SliderRowProps) {
 }
 
 export function RoiEstimator() {
+  const [currency, setCurrency] = useState<Currency>("usd");
   const [teamSize, setTeamSize] = useState(12);
   const [manualHours, setManualHours] = useState(8);
   const [handoffs, setHandoffs] = useState(10);
@@ -90,13 +106,11 @@ export function RoiEstimator() {
 
   const weeklyHoursLost = teamSize * manualHours;
   const daysPerYear = Math.round((weeklyHoursLost * 52) / 8);
-  const annualCostINR = weeklyHoursLost * 52 * 350;
-  const formattedCost = formatINR(annualCostINR);
-  const cost = inrParts(annualCostINR);
-
-  const paybackMonths = BUILD_COST / (annualCostINR / 12);
-  const roiPct = Math.round(((annualCostINR - BUILD_COST) / BUILD_COST) * 100);
-  const showPayback = annualCostINR > BUILD_COST;
+  const spec = CURRENCY_SPECS[currency];
+  const annualCost = weeklyHoursLost * 52 * spec.hourlyRate;
+  const formattedCost = formatCost(annualCost, currency);
+  const cost = costFlow(annualCost, currency);
+  const reclaimedHours = Math.round(weeklyHoursLost * 0.75);
 
   const score = Math.min(
     100,
@@ -123,7 +137,7 @@ export function RoiEstimator() {
         body: JSON.stringify({
           name: "Automation Audit Lead",
           email,
-          message: `Automation audit result:\n• Score: ${score}/100 (${level.label})\n• Team size: ${teamSize} people\n• Manual hours/person/week: ${manualHours}h\n• Weekly handoffs: ${handoffs}\n• Est. annual cost: ${formattedCost}\n• Primary target: ${target}`,
+          message: `Automation audit result:\n• Score: ${score}/100 (${level.label})\n• Currency: ${spec.code}\n• Team size: ${teamSize} people\n• Manual hours/person/week: ${manualHours}h\n• Weekly handoffs: ${handoffs}\n• Est. annual cost drag: ${formattedCost}\n• Est. weekly hours reclaimable: ~${reclaimedHours}h\n• Primary target: ${target}`,
         }),
       });
       setSendState(res.ok ? "sent" : "failed");
@@ -135,11 +149,31 @@ export function RoiEstimator() {
   return (
     <section id="automation-audit" className="section-y border-t border-[var(--color-border)]">
       <div className="container-x">
-        <SectionHeader
-          eyebrow="Automation audit"
-          title="How much of your week is already on autopilot?"
-          subtitle="Drag the sliders. Get an honest read on where your team's time goes and what AI would target first."
-        />
+        <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+          <SectionHeader
+            align="left"
+            eyebrow="Automation audit & ROI"
+            title="How much of your week is already on autopilot?"
+            subtitle="Drag the sliders. Get an honest read on where your team's time goes and what AI targets first."
+          />
+          <div role="radiogroup" aria-label="Currency" className="flex shrink-0 flex-wrap border-2 border-[var(--color-border)]">
+            {(Object.keys(CURRENCY_SPECS) as Currency[]).map((c) => (
+              <button
+                key={c}
+                type="button"
+                role="radio"
+                aria-checked={currency === c}
+                onClick={() => setCurrency(c)}
+                className={
+                  "eyebrow inline-flex min-h-11 min-w-14 items-center justify-center px-3 font-bold transition-colors " +
+                  (currency === c ? "bg-[var(--color-brand)] text-white" : "text-[var(--color-fg-muted)] hover:bg-[var(--color-bg-elev)] hover:text-[var(--color-fg)]")
+                }
+              >
+                {CURRENCY_SPECS[c].label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <Reveal delay={0.1}>
           <div className="mt-14 grid grid-cols-1 border border-[var(--color-border)] lg:grid-cols-2">
@@ -188,31 +222,25 @@ export function RoiEstimator() {
                   <div className="col-span-2 border-2 border-[var(--color-brand)] bg-[var(--color-bg)] p-4">
                     <dt className="text-callout text-[var(--color-fg-muted)]">Estimated annual staff cost on automatable work</dt>
                     <dd className="mt-1 font-display text-3xl font-bold tracking-tight text-[var(--color-brand)]">
-                      ≈ <NumberFlow value={cost.value} prefix="₹" suffix={cost.suffix} {...FLOW} />
+                      ≈ <NumberFlow value={cost.value} prefix={cost.prefix} suffix={cost.suffix} format={cost.format} />
                       <span className="text-base font-normal text-[var(--color-fg-subtle)]">/yr</span>
                     </dd>
-                    <p className="mt-1 text-callout text-[var(--color-fg-subtle)]">Based on ₹350/hr average fully-loaded cost</p>
+                    <p className="mt-1 text-callout text-[var(--color-fg-subtle)]">{spec.rateLabel}</p>
                   </div>
-                  {showPayback ? (
-                    <>
-                      <div className="border border-[var(--color-border)] bg-[var(--color-bg)] p-4">
-                        <dt className="text-callout text-[var(--color-fg-muted)]">Payback period</dt>
-                        <dd className="mt-1 font-display text-2xl font-bold tracking-tight text-[var(--color-accent-ink)]">
-                          {paybackMonths < 1 ? "<1 mo" : <NumberFlow value={+paybackMonths.toFixed(1)} prefix="~" suffix=" mo" {...FLOW} />}
-                        </dd>
-                        <p className="mt-0.5 text-callout text-[var(--color-fg-subtle)]">vs ₹1,20,000 build cost</p>
-                      </div>
-                      <div className="border border-[var(--color-border)] bg-[var(--color-bg)] p-4">
-                        <dt className="text-callout text-[var(--color-fg-muted)]">Est. first-year ROI</dt>
-                        <dd className="mt-1 font-display text-2xl font-bold tracking-tight text-[var(--color-accent-ink)]">
-                          {roiPct > 999 ? ">1000%" : <NumberFlow value={roiPct} suffix="%" />}
-                        </dd>
-                        <p className="mt-0.5 text-callout text-[var(--color-fg-subtle)]">return on build cost</p>
-                      </div>
-                    </>
-                  ) : null}
+                  <div className="border border-[var(--color-border)] bg-[var(--color-bg)] p-4">
+                    <dt className="text-callout text-[var(--color-fg-muted)]">Reclaimable time</dt>
+                    <dd className="mt-1 font-display text-2xl font-bold tracking-tight text-[var(--color-accent-ink)]">
+                      ~<NumberFlow value={reclaimedHours} suffix="h / wk" />
+                    </dd>
+                    <p className="mt-0.5 text-callout text-[var(--color-fg-subtle)]">team capacity returned</p>
+                  </div>
+                  <div className="border border-[var(--color-border)] bg-[var(--color-bg)] p-4">
+                    <dt className="text-callout text-[var(--color-fg-muted)]">Target efficiency</dt>
+                    <dd className="mt-1 font-display text-2xl font-bold tracking-tight text-[var(--color-accent-ink)]">75–90%</dd>
+                    <p className="mt-0.5 text-callout text-[var(--color-fg-subtle)]">routine handoff automation</p>
+                  </div>
                   <div className="col-span-2">
-                    <dt className="text-callout text-[var(--color-fg-muted)]">We&apos;d target first</dt>
+                    <dt className="text-callout text-[var(--color-fg-muted)]">We target first</dt>
                     <dd className="mt-1 font-semibold text-[var(--color-fg)]">{target}</dd>
                   </div>
                 </dl>

@@ -42,7 +42,7 @@ export function OpsLedger() {
         });
         gsap.set(tally, { opacity: 0, y: 14 });
 
-        // live hours counter — starts at 0, ticks up as each row flips to
+        // live hours counter - starts at 0, ticks up as each row flips to
         // THE LAYER, reversible on scroll-up, never double counts
         const counterEl = section.querySelector<HTMLElement>("[data-hours-counter]");
         const display = { value: 0 };

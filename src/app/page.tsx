@@ -1,5 +1,22 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/home/Hero";
+import { StatsBar } from "@/components/home/StatsBar";
+import { OpsLedger } from "@/components/home/OpsLedger";
+import { Switchboard } from "@/components/home/Switchboard";
+import { InteractiveAgentDemo } from "@/components/home/InteractiveAgentDemo";
+import { AgentRoster } from "@/components/home/AgentRoster";
+import { WhatWeOffer } from "@/components/home/WhatWeOffer";
+import { ServicesPreview } from "@/components/home/ServicesPreview";
+import { FeaturedWork } from "@/components/home/FeaturedWork";
+import { FromTheWorkshop } from "@/components/home/FromTheWorkshop";
+import { FounderTrust } from "@/components/home/FounderTrust";
+import { ProcessSnapshot } from "@/components/home/ProcessSnapshot";
+import { Governance } from "@/components/home/Governance";
+import { PricingSection } from "@/components/home/PricingSection";
+import { Testimonials } from "@/components/home/Testimonials";
+import { CtaBanner } from "@/components/home/CtaBanner";
+import { Perforation } from "@/components/shared/Perforation";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -7,20 +24,10 @@ export const metadata: Metadata = {
   description:
     "Nuvero AI builds the AI infrastructure your business runs on. Agents trained on your workflows, wired into your stack, running your operations 24/7. Any manual work, automated. You own the whole layer.",
 };
-import dynamic from "next/dynamic";
-import { OpsLedger } from "@/components/home/OpsLedger";
-import { StatsBar } from "@/components/home/StatsBar";
-import { LayerAssembly } from "@/components/home/LayerAssembly";
-import { Switchboard } from "@/components/home/Switchboard";
-import { AgentRoster } from "@/components/home/AgentRoster";
-import { WhatWeOffer } from "@/components/home/WhatWeOffer";
-import { FeaturedWork } from "@/components/home/FeaturedWork";
-import { PullQuote } from "@/components/home/PullQuote";
-import { ProcessSnapshot } from "@/components/home/ProcessSnapshot";
-import { CtaBanner } from "@/components/home/CtaBanner";
-import { Perforation } from "@/components/shared/Perforation";
 
-// Below-the-fold, interaction-heavy sections chunked out of the initial payload
+// Below-the-fold heavy components chunked for smaller initial JS payload
+const WiringDiagram = dynamic(() => import("@/components/home/WiringDiagram").then((m) => m.WiringDiagram));
+const ComparisonTable = dynamic(() => import("@/components/home/ComparisonTable").then((m) => m.ComparisonTable));
 const RoiEstimator = dynamic(() => import("@/components/home/RoiEstimator").then((m) => m.RoiEstimator));
 const GlassBox = dynamic(() => import("@/components/home/GlassBox").then((m) => m.GlassBox));
 const FaqStrip = dynamic(() => import("@/components/home/FaqStrip").then((m) => m.FaqStrip));
@@ -28,28 +35,31 @@ const FaqStrip = dynamic(() => import("@/components/home/FaqStrip").then((m) => 
 export default function HomePage() {
   return (
     <>
-      {/* One argument, one question per section (HIG "Purpose": every section
-          costs attention). What is it → proof → why care → how it works →
-          what it prints → what you get → your industry → has it worked →
-          what happens next → is it safe → is it worth it → anything else → act.
-          Moved off home: ComparisonTable + WiringDiagram → /what-we-offer,
-          Governance + AuditDeliverables → /process. Retired: the testimonial
-          marquee (one PullQuote here, the rest on /reviews), ServicesPreview
-          (duplicated /services), FromTheWorkshop (duplicated /briefings) and
-          TrustStrip (covered by GlassBox). */}
+      {/* promise → proof → what it takes over → live feed → inspect it →
+          what a deployment is → how it wires in → your industry → the systems →
+          the difference → evidence → our own stack → who builds it → how →
+          controls → pricing → estimate → voices → safety → questions → act.
+          Off home: TrustStrip (GlassBox covers it), AuditDeliverables (/process). */}
       <Hero />
       <StatsBar />
       <OpsLedger />
-      <LayerAssembly />
       <Switchboard />
+      <InteractiveAgentDemo />
       <Perforation label="The record continues" />
       <AgentRoster />
+      <WiringDiagram />
       <WhatWeOffer />
+      <ServicesPreview />
+      <ComparisonTable />
       <FeaturedWork />
-      <PullQuote />
+      <FromTheWorkshop />
+      <FounderTrust />
       <ProcessSnapshot />
-      <GlassBox />
+      <Governance />
+      <PricingSection />
       <RoiEstimator />
+      <Testimonials />
+      <GlassBox />
       <FaqStrip />
       <CtaBanner />
     </>

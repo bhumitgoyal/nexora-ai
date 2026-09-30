@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 //
 // The Person node is deliberately a first-class entity with its own @id and
 // sameAs list, not a bare name nested under Organization.founder. A nested
-// `{"@type":"Person","name":"Bhumit Goyal"}` is just a string to a crawler —
+// `{"@type":"Person","name":"Bhumit Goyal"}` is just a string to a crawler -
 // there is nothing tying it to the GitHub/LinkedIn profiles, so the name stays
 // ambiguous against every other Bhumit Goyal on the web. Giving the Person an
 // @id and pointing sameAs at the profiles is what lets search engines resolve

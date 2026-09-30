@@ -484,7 +484,7 @@ export const sectors: Sector[] = [
 // every pairing a stable, readable path under /industries, which is what makes
 // them indexable as "<service> for <sector>" landing pages.
 //
-// `id` is deliberately left alone: other components key icon maps off it.
+// `id` is deliberately left alone: ServicesPreview keys its icon map off it.
 // URL slugs are kept separate so the two can diverge without breaking either.
 
 const sectorSlugs: Record<string, string> = {

@@ -2,7 +2,7 @@ type PerforationProps = {
   label?: string;
 };
 
-// Tear-off perforation between sections — punched holes on a feed edge.
+// Tear-off perforation between sections - punched holes on a feed edge.
 export function Perforation({ label }: PerforationProps) {
   return (
     <div aria-hidden className="relative flex h-8 items-center overflow-hidden">

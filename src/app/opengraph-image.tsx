@@ -5,7 +5,7 @@ import { site } from "@/content/site";
 // file convention wires this into og:image / twitter:image automatically, so
 // every share (LinkedIn, X, WhatsApp, Slack) gets a real preview with no
 // external asset to maintain. Uses the built-in font (no fetch) on purpose.
-export const alt = `${site.name} — ${site.tagline}`;
+export const alt = `${site.name} - ${site.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

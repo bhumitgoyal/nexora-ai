@@ -49,7 +49,7 @@ const PLATES: Plate[] = [
   },
 ];
 
-// Trust as an outcome: black-box AI asks for faith — the layer shows its work.
+// Trust as an outcome: black-box AI asks for faith - the layer shows its work.
 export function GlassBox() {
   return (
     <section id="security" className="relative scroll-mt-24 border-t border-[var(--color-border)] py-24 md:py-32">
