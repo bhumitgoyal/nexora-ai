@@ -6,7 +6,7 @@ import { Reveal } from "@/components/shared/Reveal";
 
 export function FaqStrip() {
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="section-y relative ">
       <div className="container-x">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <div className="flex flex-col gap-6">
@@ -22,7 +22,7 @@ export function FaqStrip() {
               </p>
               <Link
                 href="/contact"
-                className="mt-3 inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
+                className="mt-3 inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
               >
                 Ask anything
               </Link>

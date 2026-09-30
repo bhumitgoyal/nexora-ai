@@ -39,7 +39,7 @@ function ToolNode({
       className="relative z-10 flex items-center gap-2 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2"
     >
       <Icon className="size-3.5 shrink-0 text-[var(--color-fg-muted)]" />
-      <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--color-fg)]">
+      <span className="eyebrow font-bold text-[var(--color-fg)]">
         {label}
       </span>
     </div>
@@ -56,7 +56,7 @@ export function WiringDiagram() {
   const toolRefs = useRef(TOOLS.map(() => createRef<HTMLDivElement>()));
 
   return (
-    <section className="relative overflow-hidden border-t border-[var(--color-border)] py-24 md:py-32">
+    <section className="section-y relative overflow-hidden border-t border-[var(--color-border)] ">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 grid-bg opacity-50" />
       <div className="container-x">
         <SectionHeader
@@ -82,13 +82,13 @@ export function WiringDiagram() {
               ref={layerRef}
               className="relative z-10 flex flex-col items-center gap-1 border-2 border-[var(--color-brand)] bg-[var(--color-bg)] px-8 py-6 shadow-[5px_5px_0_rgba(193,18,31,0.25)]"
             >
-              <span className="font-mono text-[9px] uppercase tracking-[0.26em] text-[var(--color-fg-subtle)]">
+              <span className="eyebrow text-[var(--color-fg-muted)]">
                 Nuvero
               </span>
               <span className="font-display text-xl font-bold tracking-tight text-[var(--color-brand)] md:text-2xl">
                 THE LAYER
               </span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+              <span className="eyebrow text-[var(--color-fg-muted)]">
                 Runs the work
               </span>
             </div>
@@ -100,10 +100,10 @@ export function WiringDiagram() {
             >
               <Users className="size-4 shrink-0 text-[var(--color-fg-muted)]" />
               <div className="flex flex-col">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--color-fg)]">
+                <span className="eyebrow font-bold text-[var(--color-fg)]">
                   Your team
                 </span>
-                <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-fg-subtle)]">
+                <span className="eyebrow text-[var(--color-fg-muted)]">
                   Gets the outcome
                 </span>
               </div>
@@ -130,7 +130,7 @@ export function WiringDiagram() {
         </Reveal>
 
         <Reveal delay={0.2}>
-          <p className="mx-auto mt-12 max-w-md text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+          <p className="eyebrow mx-auto mt-12 max-w-md text-center text-[var(--color-fg-muted)]">
             + Slack, Notion, Calendly, HubSpot, Stripe & your internal APIs
           </p>
         </Reveal>

@@ -20,24 +20,24 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden py-24 md:py-32">
+      <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
 
         <div className="container-x relative z-10">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
             <div className="flex flex-col gap-6">
-              <Reveal>
-                <span className="inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+              <Reveal priority>
+                <span className="eyebrow inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-[var(--color-fg-muted)]">
                   <span className="size-1.5 bg-[var(--color-brand)]" />
                   About Nuvero
                 </span>
               </Reveal>
-              <Reveal delay={0.05}>
-                <h1 className="text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+              <Reveal priority delay={0.05}>
+                <h1 className="text-balance font-display font-semibold text-title-1">
                   We build the <span className="text-[var(--color-brand)]">AI infrastructure</span> businesses run on.
                 </h1>
               </Reveal>
-              <Reveal delay={0.1}>
+              <Reveal priority delay={0.1}>
                 <p className="max-w-2xl text-pretty text-base leading-relaxed text-[var(--color-fg-muted)] md:text-lg">
                   Nuvero AI was founded on a simple belief: businesses don't need another
                   AI product or another vendor. They need an intelligence layer underneath
@@ -45,7 +45,7 @@ export default function AboutPage() {
                   a small senior team that builds that layer end-to-end. That's what we do.
                 </p>
               </Reveal>
-              <Reveal delay={0.15}>
+              <Reveal priority delay={0.15}>
                 <div className="flex flex-wrap gap-3 pt-3">
                   <GlowButton href="/contact" size="md" withArrow>
                     Work with us
@@ -57,17 +57,17 @@ export default function AboutPage() {
               </Reveal>
             </div>
 
-            <Reveal delay={0.2}>
+            <Reveal priority delay={0.2}>
               {/* personnel file */}
               <div className="relative mx-auto w-full max-w-sm border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[6px_6px_0_var(--color-brand)]">
                 <span
                   aria-hidden
-                  className="absolute -right-2 -top-3 rotate-6 border-2 border-[var(--color-brand)] bg-[var(--color-bg)] px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand)]"
+                  className="eyebrow absolute -right-2 -top-3 rotate-6 border-2 border-[var(--color-brand)] bg-[var(--color-bg)] px-2 py-0.5 font-bold text-[var(--color-brand)]"
                 >
                   On record
                 </span>
                 <div className="border-b-2 border-[var(--color-border)] px-5 py-2.5">
-                  <span className="font-mono text-[9px] font-bold uppercase tracking-[0.24em] text-[var(--color-fg-subtle)]">
+                  <span className="eyebrow font-bold text-[var(--color-fg-muted)]">
                     Nuvero · Personnel file
                   </span>
                 </div>
@@ -84,20 +84,20 @@ export default function AboutPage() {
                   </div>
                   <div className="grid w-full grid-cols-2 gap-x-4 gap-y-3 border-t border-[var(--color-border)]/60 pt-5">
                     <div className="col-span-2">
-                      <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">Name</p>
+                      <p className="eyebrow text-[var(--color-fg-muted)]">Name</p>
                       <p className="mt-0.5 font-display text-lg font-semibold tracking-tight">{site.founder.name}</p>
                     </div>
                     <div>
-                      <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">Role</p>
+                      <p className="eyebrow text-[var(--color-fg-muted)]">Role</p>
                       <p className="mt-0.5 font-mono text-xs text-[var(--color-fg)]">Founder · Principal AI Engineer</p>
                     </div>
                     <div>
-                      <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">Station</p>
+                      <p className="eyebrow text-[var(--color-fg-muted)]">Station</p>
                       <p className="mt-0.5 font-mono text-xs text-[var(--color-fg)]">{site.founder.location}</p>
                     </div>
                   </div>
                   <div className="flex w-full items-center justify-between border-t border-[var(--color-border)]/60 pt-4">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+                    <span className="eyebrow text-[var(--color-fg-muted)]">
                       Channels
                     </span>
                     <div className="flex gap-2">
@@ -119,7 +119,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="container-x py-20 md:py-28">
+      <section className="section-y container-x ">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
           <SectionHeader
             eyebrow="Founder note"
@@ -150,14 +150,14 @@ export default function AboutPage() {
                   href={`mailto:${site.contact.email}`}
                   className="inline-flex items-center gap-2 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2 text-sm text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)]"
                 >
-                  <Mail className="size-4 text-[var(--color-accent)]" />
+                  <Mail className="size-4 text-[var(--color-accent-ink)]" />
                   {site.contact.email}
                 </a>
                 <a
                   href={`tel:${site.contact.phoneRaw}`}
                   className="inline-flex items-center gap-2 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2 text-sm text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)]"
                 >
-                  <Phone className="size-4 text-[var(--color-accent)]" />
+                  <Phone className="size-4 text-[var(--color-accent-ink)]" />
                   {site.contact.phone}
                 </a>
               </div>
@@ -166,7 +166,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="container-x py-20 md:py-28">
+      <section className="section-y container-x ">
         <SectionHeader eyebrow="By the numbers" title="A few stats from the last 24 months." />
         <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
           {aboutStats.map((s, i) => {
@@ -187,7 +187,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="container-x py-20 md:py-28">
+      <section className="section-y container-x ">
         <SectionHeader
           eyebrow="What we believe"
           title="Four principles that shape every engagement."
@@ -196,7 +196,7 @@ export default function AboutPage() {
           {principles.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.06}>
               <div className="flex flex-col gap-3 card-surface p-7">
-                <span className="font-mono text-xs text-[var(--color-accent)]">
+                <span className="font-mono text-xs text-[var(--color-accent-ink)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-display text-xl font-semibold tracking-tight">
@@ -229,7 +229,7 @@ function SocialPill({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex size-9 items-center justify-center border-[1.5px] border-[var(--color-border)] text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+      className="inline-flex size-9 items-center justify-center border-[1.5px] border-[var(--color-border)] text-[var(--color-fg-muted)] transition hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
     >
       {children}
     </a>

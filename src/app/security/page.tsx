@@ -46,14 +46,14 @@ const pillars = [
 export default function SecurityPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden py-24 md:py-32">
+      <section className="section-y relative isolate overflow-hidden ">
         <GridBackground interactive={false} />
         <div className="container-x relative z-10 max-w-3xl mx-auto text-center">
           <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
             <span className="size-1.5 bg-[var(--color-brand)]" />
             Security &amp; Data
           </span>
-          <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+          <h1 className="mt-6 font-display font-semibold text-title-1">
             Your data stays yours. Full stop.
           </h1>
           <p className="mt-4 text-base text-[var(--color-fg-muted)]">
@@ -107,7 +107,7 @@ export default function SecurityPage() {
           </div>
           <Link
             href="/contact"
-            className="shrink-0 inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
+            className="shrink-0 inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
           >
             Talk to us
           </Link>

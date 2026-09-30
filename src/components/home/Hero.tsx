@@ -114,7 +114,7 @@ function JobTicket() {
           transition={{ duration: DURATION.fast, ease: EASE }}
           className="absolute inset-0 flex items-center justify-between gap-3 border-[1.5px] border-dashed border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4"
         >
-          <span className="flex min-w-0 items-baseline gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--color-fg)]">
+          <span className="eyebrow flex min-w-0 items-baseline gap-3 text-[var(--color-fg)]">
             <span className="shrink-0 text-[var(--color-fg-subtle)]">Nº {ticket.no}</span>
             <span className="truncate">{ticket.job}</span>
           </span>

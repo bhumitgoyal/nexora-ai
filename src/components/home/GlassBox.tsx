@@ -70,7 +70,7 @@ export function GlassBox() {
                     <span className="inline-flex size-9 items-center justify-center border-[1.5px] border-[var(--color-brand)] text-[var(--color-brand)]">
                       <Icon className="size-4" />
                     </span>
-                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+                    <span className="eyebrow text-[var(--color-fg-muted)]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -87,7 +87,7 @@ export function GlassBox() {
         </div>
 
         <Reveal delay={0.2}>
-          <p className="mx-auto mt-8 max-w-md text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+          <p className="eyebrow mx-auto mt-8 max-w-md text-center text-[var(--color-fg-muted)]">
             Questions on data handling? Ask before kickoff and we&apos;ll put it in writing.
           </p>
         </Reveal>

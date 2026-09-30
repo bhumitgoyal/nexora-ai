@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/work" },
   title: "Deployments",
   description:
-    "45 systems deployed across energy, wellness, e-commerce, real estate, and more, with the real metrics each one moved.",
+    "AI systems deployed across energy, wellness, e-commerce, real estate, and more, with the real metrics each one moved.",
 };
 
 export default async function WorkPage() {
@@ -16,7 +16,7 @@ export default async function WorkPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden py-24 md:py-32">
+      <section className="relative isolate overflow-hidden pb-8 pt-14 md:pb-10 md:pt-20">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
 
         <div className="container-x relative z-10">
@@ -29,7 +29,7 @@ export default async function WorkPage() {
         </div>
       </section>
 
-      <section className="container-x pb-24 pt-12">
+      <section className="container-x pb-24">
         <WorkGrid caseStudies={deployments} />
       </section>
 

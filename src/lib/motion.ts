@@ -26,3 +26,7 @@ export const SPRING = {
 } as const;
 
 export const STAGGER = 0.06;
+
+// Must match the `pin` custom variant in globals.css.
+export const PIN_QUERY = "(min-width: 1024px) and (min-height: 700px) and (prefers-reduced-motion: no-preference)";
+export const NO_PIN_QUERY = "(max-width: 1023px), (max-height: 699px), (prefers-reduced-motion: reduce)";

@@ -87,7 +87,7 @@ export function Switchboard() {
                         <span className="shrink-0 font-mono text-[11px] tabular-nums text-[var(--color-fg-subtle)] md:text-xs">
                           {line.time}
                         </span>
-                        <span className="hidden shrink-0 border border-[var(--color-border)]/60 px-1 py-px font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-fg-subtle)] sm:inline">
+                        <span className="eyebrow hidden shrink-0 border border-[var(--color-border)]/60 px-1 py-px font-bold text-[var(--color-fg-muted)] sm:inline">
                           {line.tag}
                         </span>
                         <span className="min-w-0 truncate font-mono text-xs text-[var(--color-fg)] md:text-[13px]">
@@ -110,10 +110,10 @@ export function Switchboard() {
 
             {/* footer strip */}
             <div className="flex items-center justify-between border-t-2 border-[var(--color-border)] bg-[var(--color-bg)] px-4 py-2 md:px-5">
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+              <span className="eyebrow text-[var(--color-fg-muted)]">
                 24 / 7 · no shifts, no backlog
               </span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+              <span className="eyebrow text-[var(--color-fg-muted)]">
                 Every line auditable
               </span>
             </div>

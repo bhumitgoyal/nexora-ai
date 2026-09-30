@@ -16,7 +16,7 @@ export default async function ReviewsPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden py-24 md:py-28">
+      <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x relative z-10">
           <div className="flex flex-col gap-6">
@@ -52,12 +52,12 @@ export default async function ReviewsPage() {
 
       <section className="container-x pb-24 md:pb-32">
         <div className="mb-10 flex items-center justify-between gap-4">
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+          <span className="eyebrow text-[var(--color-fg-muted)]">
             {reviews.length} {reviews.length === 1 ? "review" : "reviews"}
           </span>
           <Link
             href="/contact"
-            className="press group inline-flex min-h-11 items-center gap-2 border-2 border-[var(--color-border)] px-5 text-callout font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+            className="press group inline-flex min-h-11 items-center gap-2 border-2 border-[var(--color-border)] px-5 text-callout font-semibold text-[var(--color-fg)] transition hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
           >
             Work with us
           </Link>

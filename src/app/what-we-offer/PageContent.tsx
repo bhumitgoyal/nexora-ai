@@ -215,13 +215,13 @@ export function WhatWeOfferContent() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)]"
+                className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-strong)]"
               >
                 {site.cta.primary} <ArrowRight className="size-4" />
               </Link>
               <Link
                 href="/work"
-                className="inline-flex items-center gap-2 border-2 border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+                className="inline-flex items-center gap-2 border-2 border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-fg)] transition hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
               >
                 {site.cta.secondary}
               </Link>
@@ -308,7 +308,7 @@ export function WhatWeOfferContent() {
                         <div className="mt-4">
                           <Link
                             href="/contact"
-                            className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)]"
+                            className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-strong)]"
                           >
                             Build custom AI for {section.id === "b2b" ? "B2B & SaaS teams" : section.label.toLowerCase()} <ArrowRight className="size-4" />
                           </Link>
@@ -319,7 +319,7 @@ export function WhatWeOfferContent() {
                     <Reveal delay={0.08}>
                       <div className="overflow-hidden border border-[var(--color-border)]">
                         <div className="border-b border-[var(--color-border)] bg-[var(--color-bg-elev)] px-5 py-3">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
                             Problems already solved
                           </p>
                         </div>
@@ -343,7 +343,7 @@ export function WhatWeOfferContent() {
                       </div>
                       {ctaItem && (
                         <Link href="/contact" className="mt-3 block">
-                          <div className="group flex items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-6 transition-all duration-200 hover:bg-[var(--color-brand)]">
+                          <div className="group flex items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-6 transition duration-200 hover:bg-[var(--color-brand)]">
                             <Sparkles className="mt-0.5 size-5 shrink-0 text-[var(--color-brand)] transition-colors group-hover:text-white" />
                             <div className="flex flex-col gap-1">
                               <span className="font-display text-lg font-semibold tracking-tight text-[var(--color-brand)] transition-colors group-hover:text-white">
@@ -401,7 +401,7 @@ export function WhatWeOfferContent() {
                             href={service.overviewUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--color-fg-muted)] hover:text-[var(--color-brand)]"
+                            className="eyebrow inline-flex items-center gap-1.5 font-semibold text-[var(--color-fg-muted)] hover:text-[var(--color-brand)]"
                           >
                             <ExternalLink className="size-3" /> See it in action
                           </a>
@@ -416,7 +416,7 @@ export function WhatWeOfferContent() {
             {/* Custom solution card */}
             <Reveal delay={0.1}>
               <Link href="/contact" className="mt-8 block">
-                <div className="group flex flex-col items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-8 transition-all duration-200 hover:bg-[var(--color-brand)] md:flex-row md:items-center md:justify-between md:p-10">
+                <div className="group flex flex-col items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-8 transition duration-200 hover:bg-[var(--color-brand)] md:flex-row md:items-center md:justify-between md:p-10">
                   <div className="flex items-start gap-4">
                     <Sparkles className="mt-0.5 size-6 shrink-0 text-[var(--color-brand)] transition-colors group-hover:text-white" />
                     <div className="flex flex-col gap-1.5">
@@ -428,7 +428,7 @@ export function WhatWeOfferContent() {
                       </span>
                     </div>
                   </div>
-                  <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-brand)] transition-colors group-hover:text-white">
+                  <span className="eyebrow inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-bold text-[var(--color-brand)] transition-colors group-hover:text-white">
                     {site.cta.primary} <ArrowRight className="size-4" />
                   </span>
                 </div>
@@ -453,7 +453,7 @@ export function WhatWeOfferContent() {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)]"
+                  className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-7 py-3.5 text-base font-semibold text-white transition hover:bg-[var(--color-brand-strong)]"
                 >
                   {site.cta.primary} <ArrowRight className="size-4" />
                 </Link>

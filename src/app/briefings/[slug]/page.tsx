@@ -24,21 +24,27 @@ function fmt(date: string) {
   return new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 }
 
-function BlockView({ block }: { block: Block }) {
+function BlockView({ block, section }: { block: Block; section?: number }) {
   switch (block.type) {
     case "h":
       return (
-        <h2 className="mt-12 font-display text-2xl font-semibold tracking-tight text-[var(--color-fg)] md:text-3xl">
-          {block.text}
+        <h2 className="mt-12 flex items-baseline gap-4 font-display text-title-2 font-semibold text-[var(--color-fg)]">
+          {section ? (
+            <span aria-hidden className="font-mono text-base font-bold text-[var(--color-brand)]">
+              {String(section).padStart(2, "0")}
+            </span>
+          ) : null}
+          <span>{block.text}</span>
         </h2>
       );
     case "p":
-      return <p className="text-pretty text-base leading-relaxed text-[var(--color-fg-muted)] md:text-lg">{block.text}</p>;
+      // ~68ch measure, 1.7 leading: long-form reading rhythm, not UI rhythm
+      return <p className="max-w-[68ch] text-pretty text-body leading-[1.7] text-[var(--color-fg)] md:text-lg">{block.text}</p>;
     case "list":
       return (
         <ul className="flex flex-col gap-3">
           {block.items.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-base leading-relaxed text-[var(--color-fg-muted)]">
+            <li key={item} className="flex max-w-[68ch] items-start gap-3 text-body leading-[1.7] text-[var(--color-fg)]">
               <span className="mt-2.5 size-1.5 shrink-0 bg-[var(--color-brand)]" />
               {item}
             </li>
@@ -61,7 +67,7 @@ function BlockView({ block }: { block: Block }) {
                   {block.columns.map((col, i) => (
                     <th
                       key={col}
-                      className={`border-b-2 border-[var(--color-border)] px-4 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg)] ${
+                      className={`border-b-2 border-[var(--color-border)] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-fg)] ${
                         i > 0 ? "border-l border-[var(--color-border)]" : ""
                       }`}
                     >
@@ -77,7 +83,7 @@ function BlockView({ block }: { block: Block }) {
                       scope="row"
                       className="bg-[var(--color-bg-elev)] px-4 py-4 align-top font-display text-sm font-semibold tracking-tight text-[var(--color-fg)]"
                     >
-                      <span className="mb-1 block font-mono text-[9px] font-normal uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+                      <span className="eyebrow mb-1 block font-normal text-[var(--color-fg-muted)]">
                         {row.score}
                       </span>
                       {row.label}
@@ -96,7 +102,7 @@ function BlockView({ block }: { block: Block }) {
             </table>
           </div>
           {block.caption ? (
-            <figcaption className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+            <figcaption className="eyebrow text-[var(--color-fg-muted)]">
               {block.caption}
             </figcaption>
           ) : null}
@@ -114,10 +120,10 @@ export default async function BriefingPage({ params }: { params: Promise<{ slug:
     <article className="py-20 md:py-28">
       <div className="container-x">
         <div className="mx-auto max-w-3xl">
-          <Reveal>
+          <Reveal priority>
             <Link
               href="/briefings"
-              className="inline-flex w-fit items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--color-fg-subtle)] transition-colors hover:text-[var(--color-brand)]"
+              className="eyebrow inline-flex min-h-11 w-fit items-center gap-1.5 text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
             >
               <ArrowLeft className="size-3.5" />
               All briefings
@@ -125,15 +131,15 @@ export default async function BriefingPage({ params }: { params: Promise<{ slug:
           </Reveal>
 
           <div className="mt-8 flex items-center gap-3">
-            <span className="border border-[var(--color-border)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--color-fg-muted)]">
+            <span className="eyebrow border border-[var(--color-border)] px-2 py-0.5 text-[var(--color-fg-muted)]">
               {b.category}
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+            <span className="eyebrow text-[var(--color-fg-muted)]">
               {fmt(b.date)} · {b.readMins} min read
             </span>
           </div>
 
-          <h1 className="mt-5 text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight text-[var(--color-fg)] md:text-5xl">
+          <h1 className="mt-5 text-balance font-display text-title-1 font-semibold text-[var(--color-fg)]">
             {b.title}
           </h1>
           <p className="mt-5 text-pretty text-lg leading-relaxed text-[var(--color-fg-muted)] md:text-xl">
@@ -146,7 +152,11 @@ export default async function BriefingPage({ params }: { params: Promise<{ slug:
         {/* wider column so the ledger table can breathe */}
         <div className="mx-auto mt-10 flex max-w-3xl flex-col gap-6">
           {b.body.map((block, i) => (
-            <BlockView key={i} block={block} />
+            <BlockView
+              key={i}
+              block={block}
+              section={block.type === "h" ? b.body.slice(0, i + 1).filter((x) => x.type === "h").length : undefined}
+            />
           ))}
         </div>
 
@@ -154,14 +164,14 @@ export default async function BriefingPage({ params }: { params: Promise<{ slug:
           <p className="font-display text-xl font-semibold tracking-tight text-[var(--color-fg)]">
             Want this graded for your own stack?
           </p>
-          <p className="mt-2 text-sm text-[var(--color-fg-muted)]">
+          <p className="mt-2 text-callout text-[var(--color-fg-muted)]">
             A systems audit runs your operation against exactly these dimensions and hands you the report.
           </p>
           <Link
             href="/#automation-audit"
-            className="mt-5 inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
+            className="press mt-5 inline-flex min-h-12 items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 text-[15px] font-semibold text-white shadow-[var(--shadow-hard-sm)] transition-colors hover:border-[var(--color-brand-strong)] hover:bg-[var(--color-brand-strong)]"
           >
-            Request a systems audit
+            Run the automation audit
           </Link>
         </div>
       </div>

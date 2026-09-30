@@ -53,13 +53,13 @@ function CommissionRecord() {
       {/* stamped corner */}
       <span
         aria-hidden
-        className="absolute -right-2 -top-3 rotate-6 border-2 border-[var(--color-brand)] bg-[var(--color-bg)] px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand)] md:-right-3"
+        className="eyebrow absolute -right-2 -top-3 rotate-6 border-2 border-[var(--color-brand)] bg-[var(--color-bg)] px-2 py-0.5 font-bold text-[var(--color-brand)] md:-right-3"
       >
         In production
       </span>
 
       {/* header */}
-      <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[var(--color-fg-subtle)]">
+      <span className="eyebrow text-[var(--color-fg-muted)]">
         Commissioning record
       </span>
 
@@ -85,7 +85,7 @@ function CommissionRecord() {
           ["Coverage", "24 / 7"],
         ].map(([k, v]) => (
           <div key={k}>
-            <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">{k}</p>
+            <p className="eyebrow text-[var(--color-fg-muted)]">{k}</p>
             <p className="mt-1 font-mono text-sm text-[var(--color-fg)]">{v}</p>
           </div>
         ))}
@@ -93,7 +93,7 @@ function CommissionRecord() {
 
       {/* live metrics */}
       <div className="mt-6 border-t border-[var(--color-border)] pt-5">
-        <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+        <p className="eyebrow text-[var(--color-fg-muted)]">
           Running total · Last 30 days
         </p>
         <dl className="mt-3 flex flex-col">
@@ -107,7 +107,7 @@ function CommissionRecord() {
               key={k}
               className="flex items-baseline justify-between gap-3 border-b border-[var(--color-border)]/40 py-2.5 last:border-b-0"
             >
-              <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">{k}</dt>
+              <dt className="eyebrow text-[var(--color-fg-muted)]">{k}</dt>
               <dd className="font-mono text-base font-bold tabular-nums text-[var(--color-fg)] md:text-lg">{v}</dd>
             </div>
           ))}
@@ -116,7 +116,7 @@ function CommissionRecord() {
 
       {/* the system reports for itself — first-person, tied to the live count */}
       <div className="mt-6 border-t border-[var(--color-border)] pt-4">
-        <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+        <p className="eyebrow text-[var(--color-fg-muted)]">
           Self-report
         </p>
         <p className="mt-2 text-sm leading-relaxed text-[var(--color-fg)]">
@@ -134,12 +134,12 @@ function CommissionRecord() {
 
 export function AgentRoster() {
   return (
-    <section className="relative py-20 md:py-32">
+    <section className="section-y relative ">
       <div className="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
         {/* copy */}
         <div>
           <Reveal>
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-[var(--color-brand)]">
+            <p className="eyebrow font-bold text-[var(--color-brand)]">
               What a deployment is
             </p>
           </Reveal>

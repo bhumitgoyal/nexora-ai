@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* One definition of "this screen can hold a pinned scroll scene": wide, tall
+   enough that nothing sits below the fold while pinned, motion allowed.
+   JS pins use the same string (PIN_QUERY in src/lib/motion.ts). */
+@custom-variant pin (@media (min-width: 1024px) and (min-height: 700px) and (prefers-reduced-motion: no-preference));
+
 @theme {
   --color-bg: #FDF0D5;
   --color-bg-elev: #F5E4C0;
@@ -89,16 +94,6 @@
   --animate-accordion-down: accordion-down 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   --animate-accordion-up: accordion-up 0.15s cubic-bezier(0.22, 1, 0.36, 1);
   --animate-tab-fade-in: tab-fade-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@property --beam-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
-@keyframes beam-spin {
-  to { --beam-angle: 360deg; }
 }
 
 @keyframes marquee {
@@ -237,38 +232,6 @@
     color: transparent;
     -webkit-text-stroke: 1.5px var(--color-brand);
   }
-
-  /* animated beam tracing the element border */
-  .border-beam {
-    position: relative;
-  }
-
-  .border-beam::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    padding: 2px;
-    pointer-events: none;
-    background: conic-gradient(
-      from var(--beam-angle, 0deg),
-      transparent 0deg 300deg,
-      var(--color-brand) 330deg,
-      transparent 360deg
-    );
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: beam-spin 5s linear infinite;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .border-beam::before {
-      display: none;
-    }
-  }
-
 
   /* flat glass no blur, just solid surface */
   .glass {
@@ -415,6 +378,58 @@ html.nv-first-visit .nv-fade-in {
   animation-delay: calc(var(--nv-delay, 0s) + 1.15s);
 }
 
+/* OpsLedger: on desktop the pinned scrub starts from "your team still does
+   this" — render that state in CSS so the finished ledger never flashes before
+   GSAP takes over (inline GSAP transforms override these). */
+@media (min-width: 1024px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {
+  .ops-ledger [data-strike] { transform: scaleX(0); }
+  .ops-ledger [data-layer],
+  .ops-ledger [data-ledger-tally] { opacity: 0; }
+}
+
+/* Page-to-page view transitions (React <ViewTransition>): one ease, short.
+   /work poster → case-study hero is the shared-element morph. Reduced motion
+   gets an instant swap. */
+::view-transition-group(*) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Page scroll progress: a compositor-only scaleX driven by the page's own
+   scroll timeline. Browsers without scroll-driven animations simply don't show it. */
+.reading-progress { display: none; }
+@supports (animation-timeline: scroll()) {
+  .reading-progress {
+    display: block;
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 60;
+    height: 2px;
+    background: var(--color-brand);
+    transform-origin: left;
+    animation: nv-read linear both;
+    animation-timeline: scroll(root);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reading-progress { display: none; }
+  }
+  @keyframes nv-read {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+}
+
 /* First-visit preloader is gated before paint by an inline script in <head>. */
 html:not(.nv-first-visit) .nv-loader {
   display: none;
@@ -450,9 +465,8 @@ html:not(.nv-first-visit) .nv-loader {
   color: var(--color-fg);
   border-radius: 0;
   box-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.04) inset,
-    0 40px 120px -40px rgba(0, 0, 0, 0.2),
-    0 0 0 1.5px var(--color-border);
+    0 0 0 1.5px var(--color-border),
+    8px 8px 0 1.5px var(--color-border);
   break-after: page;
   page-break-after: always;
   isolation: isolate;

@@ -8,7 +8,7 @@ import { processSteps } from "@/content/process";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 import { Badge } from "@/components/ui/badge";
-import { EASE, useIsomorphicLayoutEffect } from "@/lib/motion";
+import { EASE, useIsomorphicLayoutEffect, PIN_QUERY, NO_PIN_QUERY } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +24,7 @@ function PinnedProcess() {
 
     const mm = gsap.matchMedia();
     mm.add(
-      "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+      PIN_QUERY,
       () => {
         const st = ScrollTrigger.create({
           trigger: section,
@@ -52,7 +52,7 @@ function PinnedProcess() {
   const step = processSteps[active];
 
   return (
-    <div ref={sectionRef} className="hidden md:flex min-h-screen flex-col justify-center pt-16 pb-28">
+    <div ref={sectionRef} className="hidden min-h-screen flex-col justify-center pb-24 pt-16 pin:flex">
       <div className="container-x">
         <SectionHeader
           eyebrow="How infrastructure gets built"
@@ -60,7 +60,15 @@ function PinnedProcess() {
           subtitle="Scroll through it. Five phases, weekly demos, KPI-instrumented from day one."
         />
 
-        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-[1fr_1.6fr] items-center gap-16">
+        {/* The crossfading stage shows one phase at a time — screen readers get all five. */}
+        <ol className="sr-only">
+          {processSteps.map((s) => (
+            <li key={s.number}>
+              {s.number}. {s.title} ({s.duration}): {s.summary}
+            </li>
+          ))}
+        </ol>
+        <div aria-hidden className="mx-auto mt-12 grid max-w-5xl grid-cols-[1fr_1.6fr] items-center gap-16">
           {/* giant chapter number */}
           <div className="relative flex items-center justify-center">
             <AnimatePresence mode="popLayout">
@@ -96,7 +104,7 @@ function PinnedProcess() {
               >
                 <Badge
                   variant="outline"
-                  className="w-fit rounded-none border-[var(--color-border)] font-mono text-[10px] uppercase tracking-wider text-[var(--color-fg-subtle)]"
+                  className="w-fit rounded-none border-[var(--color-border)] font-mono text-[11px] uppercase tracking-wider text-[var(--color-fg-muted)]"
                 >
                   {step.duration}
                 </Badge>
@@ -121,7 +129,7 @@ function PinnedProcess() {
 
         {/* progress rail */}
         <div className="mx-auto mt-10 max-w-5xl">
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+          <div aria-hidden className="eyebrow flex items-center justify-between text-[var(--color-fg-muted)]">
             {processSteps.map((s, i) => (
               <span key={s.number} className={i === active ? "text-[var(--color-brand)]" : ""}>
                 {s.title}
@@ -137,7 +145,7 @@ function PinnedProcess() {
   );
 }
 
-function StackedProcess({ className = "md:hidden" }: { className?: string }) {
+function StackedProcess({ className = "pin:hidden" }: { className?: string }) {
   return (
     <div className={`container-x ${className}`}>
       <SectionHeader
@@ -146,22 +154,22 @@ function StackedProcess({ className = "md:hidden" }: { className?: string }) {
         subtitle="No theatre, no decks-as-deliverables. We map the manual work, build the layer that absorbs it, and ship working systems every week."
       />
       <div className="relative mt-16">
-        <div className="grid grid-cols-1 gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           {processSteps.map((step, i) => (
             <Reveal key={step.number} delay={i * 0.08}>
-              <div className="relative flex h-full flex-col border border-[var(--color-border)] border-b-0 last:border-b p-6 transition-all hover:bg-[var(--color-bg-elev)] hover:border-[var(--color-brand)]">
+              <div className="relative flex h-full flex-col -mb-px -mr-px border border-[var(--color-border)] p-6 transition-colors hover:bg-[var(--color-bg-elev)]">
                 <div className="mb-4 flex items-start justify-between">
                   <span className="font-mono text-4xl font-bold leading-none text-[var(--color-brand)]">
                     {step.number}
                   </span>
-                  <Badge variant="outline" className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-fg-subtle)] border-[var(--color-border)] rounded-none">
+                  <Badge variant="outline" className="font-mono text-[11px] uppercase tracking-wider text-[var(--color-fg-muted)] border-[var(--color-border)] rounded-none">
                     {step.duration}
                   </Badge>
                 </div>
                 <h3 className="font-display text-xl font-semibold tracking-tight">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[var(--color-fg-muted)]">
+                <p className="mt-3 text-callout leading-relaxed text-[var(--color-fg-muted)]">
                   {step.summary}
                 </p>
               </div>
@@ -174,20 +182,9 @@ function StackedProcess({ className = "md:hidden" }: { className?: string }) {
 }
 
 export function ProcessSnapshot() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
-
-  if (reduced) {
-    return (
-      <section className="relative border-t border-[var(--color-border)] py-24">
-        <StackedProcess className="" />
-      </section>
-    );
-  }
+  // CSS decides which one shows (the `pin` variant) — no post-hydration swap.
   return (
-    <section className="relative border-t border-[var(--color-border)] py-24 md:py-0">
+    <section className="section-y relative border-t border-[var(--color-border)] pin:py-0">
       <PinnedProcess />
       <StackedProcess />
     </section>

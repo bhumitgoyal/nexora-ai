@@ -45,7 +45,7 @@ const rows = [
 
 export function ComparisonTable() {
   return (
-    <section className="border-t border-[var(--color-border)] py-24 md:py-32">
+    <section className="section-y border-t border-[var(--color-border)] ">
       <div className="container-x">
         <SectionHeader
           eyebrow="The difference"
@@ -66,7 +66,7 @@ export function ComparisonTable() {
                 <div className="flex items-start gap-2.5 px-4 py-3">
                   <X className="mt-0.5 size-3.5 shrink-0 text-[var(--color-danger)]" />
                   <div className="flex flex-col gap-0.5">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+                    <span className="eyebrow text-[var(--color-fg-muted)]">
                       Without Nuvero
                     </span>
                     <span className="text-sm text-[var(--color-fg-muted)]">{row.without}</span>
@@ -75,7 +75,7 @@ export function ComparisonTable() {
                 <div className="flex items-start gap-2.5 border-t border-[var(--color-border)] bg-[var(--color-brand)]/5 px-4 py-3">
                   <Check className="mt-0.5 size-3.5 shrink-0 text-[var(--color-brand)]" />
                   <div className="flex flex-col gap-0.5">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--color-brand)]">
+                    <span className="eyebrow text-[var(--color-brand)]">
                       With Nuvero
                     </span>
                     <span className="text-sm font-medium text-[var(--color-fg)]">{row.with}</span>

@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { DM_Sans, Space_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ChromeShell } from "@/components/layout/ChromeShell";
 import { LoadingScreen } from "@/components/shared/LoadingScreen";
 import { SmoothScroll } from "@/components/shared/SmoothScroll";
-import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar";
 import { ClientOverlays } from "@/components/layout/ClientOverlays";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { Toaster } from "@/components/ui/sonner";
@@ -92,13 +92,14 @@ export default async function RootLayout({
       className={`${dmSans.variable} ${spaceMono.variable}`}
       suppressHydrationWarning
     >
-      <head>
-        {/* Runs before first paint: restores the pause-motion preference and
-            decides whether the first-visit preloader shows at all, so it can
-            never flash for returning visitors, reduced motion, or no-JS. */}
-        <script dangerouslySetInnerHTML={{ __html: PREPAINT }} />
-      </head>
       <body className="relative min-h-screen antialiased">
+        {/* Runs before first paint (beforeInteractive is inlined into <head>):
+            restores the pause-motion preference and decides whether the
+            first-visit preloader shows at all, so it can never flash for
+            returning visitors, reduced motion, or no-JS. */}
+        <Script id="nv-prepaint" strategy="beforeInteractive">
+          {PREPAINT}
+        </Script>
         <a href="#main" className="skip-link">
           Skip to content
         </a>
@@ -109,7 +110,8 @@ export default async function RootLayout({
         <DotGridWrapper />
         <MotionProvider>
         <TooltipProvider delayDuration={300}>
-          <ScrollProgressBar />
+          {/* scroll progress — CSS scroll-driven timeline, zero JS */}
+          <div aria-hidden className="reading-progress" />
           <LoadingScreen />
           <ChromeShell navbar={<Navbar />} footer={<Footer />}>
             {children}

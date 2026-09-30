@@ -20,23 +20,23 @@ export default function IndustriesPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden py-24 md:py-28">
+      <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x relative z-10">
           <div className="flex flex-col gap-6">
-            <Reveal>
-              <span className="inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+            <Reveal priority>
+              <span className="eyebrow inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-[var(--color-fg-muted)]">
                 <span className="size-1.5 bg-[var(--color-brand)]" />
                 Industries
               </span>
             </Reveal>
-            <Reveal delay={0.05}>
-              <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+            <Reveal priority delay={0.05}>
+              <h1 className="max-w-3xl text-balance font-display font-semibold text-title-1">
                 The same layer, built for{" "}
                 <span className="text-[var(--color-brand)]">your industry</span>.
               </h1>
             </Reveal>
-            <Reveal delay={0.1}>
+            <Reveal priority delay={0.1}>
               <p className="max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
                 Every operation has a different set of workflows worth automating. These are the{" "}
                 {systemCount} systems we build most often, grouped by the industry they were shaped
@@ -81,7 +81,7 @@ export default function IndustriesPage() {
 
                       <Link
                         href={`/industries/${slug}`}
-                        className="inline-flex w-fit shrink-0 items-center gap-1.5 border-2 border-[var(--color-border)] px-4 py-2 font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+                        className="eyebrow inline-flex w-fit shrink-0 items-center gap-1.5 border-2 border-[var(--color-border)] px-4 py-2 text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
                       >
                         All {sector.services.length} systems
                         <ArrowUpRight className="size-3.5" />

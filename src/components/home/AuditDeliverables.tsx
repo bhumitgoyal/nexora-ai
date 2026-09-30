@@ -27,7 +27,7 @@ const deliverables = [
 
 export function AuditDeliverables() {
   return (
-    <section className="border-t border-[var(--color-border)] py-24 md:py-32">
+    <section className="section-y border-t border-[var(--color-border)] ">
       <div className="container-x">
         <SectionHeader
           eyebrow="Audit log / Form N-01"
@@ -39,10 +39,10 @@ export function AuditDeliverables() {
           <div className="mx-auto mt-14 max-w-4xl border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[6px_6px_0_var(--color-border)]">
             {/* docket header row */}
             <div className="flex items-center justify-between border-b-2 border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg)]">
+              <span className="eyebrow text-[var(--color-fg)]">
                 Nuvero AI · Systems Audit · Deliverables
               </span>
-              <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)] sm:inline">
+              <span className="eyebrow hidden text-[var(--color-fg-muted)] sm:inline">
                 No charge · ~15 min
               </span>
             </div>
@@ -60,7 +60,7 @@ export function AuditDeliverables() {
                   </span>
                   <div className="flex flex-1 flex-col gap-1">
                     <div className="flex items-baseline gap-2.5">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+                      <span className="eyebrow text-[var(--color-fg-muted)]">
                         {d.form}
                       </span>
                       <h3 className="font-display text-base font-semibold tracking-tight text-[var(--color-fg)] md:text-lg">
@@ -78,7 +78,7 @@ export function AuditDeliverables() {
 
             <a
               href="/#automation-audit"
-              className="flex items-center justify-center gap-2 border-t-2 border-[var(--color-border)] bg-[var(--color-brand)] px-5 py-4 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[var(--color-brand-strong)]"
+              className="eyebrow flex items-center justify-center gap-2 border-t-2 border-[var(--color-border)] bg-[var(--color-brand)] px-5 py-4 font-semibold text-white transition-colors hover:bg-[var(--color-brand-strong)]"
             >
               Book your systems audit
             </a>

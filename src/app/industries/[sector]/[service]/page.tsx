@@ -92,17 +92,17 @@ export default async function ServicePage({ params }: { params: Params }) {
         <div className="container-x">
           {/* ── Header ─────────────────────────────────────────────── */}
           <div className="mx-auto max-w-3xl">
-            <Reveal>
+            <Reveal priority>
               <Link
                 href={`/industries/${sectorParam}`}
-                className="inline-flex w-fit items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--color-fg-subtle)] transition-colors hover:text-[var(--color-brand)]"
+                className="eyebrow inline-flex w-fit items-center gap-1.5 text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
               >
                 <ArrowLeft className="size-3.5" />
                 {sector.label}
               </Link>
             </Reveal>
 
-            <h1 className="mt-8 text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight text-[var(--color-fg)] md:text-5xl">
+            <h1 className="mt-8 text-balance font-display text-title-1 font-semibold text-[var(--color-fg)]">
               {service.name} for{" "}
               <span className="text-[var(--color-brand)]">{sector.label}</span>
             </h1>
@@ -112,7 +112,7 @@ export default async function ServicePage({ params }: { params: Params }) {
             </p>
 
             {service.stat ? (
-              <span className="mt-6 inline-flex w-fit items-center gap-2 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-fg)]">
+              <span className="eyebrow mt-6 inline-flex w-fit items-center gap-2 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1.5 text-[var(--color-fg)]">
                 <span className="size-1.5 bg-[var(--color-brand)]" />
                 {service.stat}
               </span>
@@ -158,7 +158,7 @@ export default async function ServicePage({ params }: { params: Params }) {
                     <p className="font-display text-base font-semibold tracking-tight text-[var(--color-fg)]">
                       {step.name}
                     </p>
-                    <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+                    <p className="eyebrow mt-0.5 text-[var(--color-fg-muted)]">
                       {step.sub}
                     </p>
                   </div>
@@ -187,7 +187,7 @@ export default async function ServicePage({ params }: { params: Params }) {
           {/* ── Related ────────────────────────────────────────────── */}
           {related.length > 0 ? (
             <div className="mx-auto mt-16 max-w-3xl">
-              <h2 className="font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+              <h2 className="eyebrow text-[var(--color-fg-muted)]">
                 Also built for {sector.label}
               </h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">

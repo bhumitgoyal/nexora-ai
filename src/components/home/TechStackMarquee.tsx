@@ -26,7 +26,7 @@ export function TechStackMarquee() {
   const rowB = techStack.slice(12);
 
   return (
-    <section className="relative border-t border-[var(--color-border)] py-24 md:py-32">
+    <section className="section-y relative border-t border-[var(--color-border)] ">
       <div className="container-x">
         <SectionHeader
           eyebrow="What runs on the layer"
@@ -49,7 +49,7 @@ export function TechStackMarquee() {
       </div>
 
       <div className="mt-16 border-t border-[var(--color-border)] pt-12">
-        <p className="container-x mb-6 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+        <p className="container-x mb-6 text-center text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
           Integration platforms
         </p>
         <Marquee pauseOnHover={false}>
@@ -77,7 +77,7 @@ function IntegrationChip({ name, category }: { name: string; category: string })
       <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--color-fg)]">
         {name}
       </span>
-      <span className="rounded-sm bg-[var(--color-bg-elev)] px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[var(--color-fg-subtle)]">
+      <span className=" bg-[var(--color-bg-elev)] px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-[var(--color-fg-subtle)]">
         {category}
       </span>
     </span>

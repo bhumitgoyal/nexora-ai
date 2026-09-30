@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { useIsomorphicLayoutEffect } from "@/lib/motion";
+import { useIsomorphicLayoutEffect, PIN_QUERY, NO_PIN_QUERY } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,7 +29,7 @@ export function OpsLedger() {
 
     const mm = gsap.matchMedia();
     mm.add(
-      "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+      PIN_QUERY,
       () => {
         const rows = section.querySelectorAll<HTMLElement>("[data-ledger-row]");
         const tally = section.querySelector<HTMLElement>("[data-ledger-tally]");
@@ -113,7 +113,7 @@ export function OpsLedger() {
     );
 
     // Mobile / reduced motion: ledger shown fully taken-over, no pin.
-    mm.add("(max-width: 767px), (prefers-reduced-motion: reduce)", () => {
+    mm.add(NO_PIN_QUERY, () => {
       const rows = section.querySelectorAll<HTMLElement>("[data-ledger-row]");
       const tally = section.querySelector<HTMLElement>("[data-ledger-tally]");
       const counterEl = section.querySelector<HTMLElement>("[data-hours-counter]");
@@ -131,27 +131,25 @@ export function OpsLedger() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col justify-start overflow-hidden border-t border-[var(--color-border)] py-20 md:min-h-screen md:pb-16 md:pt-28"
+      className="ops-ledger relative flex flex-col justify-center overflow-hidden border-t border-[var(--color-border)] py-20 lg:min-h-screen lg:py-12"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-40" />
 
-      <div className="container-x w-full">
+      {/* two columns from lg so the whole sheet + tally fits a 768px-tall screen while pinned */}
+      <div className="container-x grid w-full items-center gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14">
         <SectionHeader
+          align="left"
           eyebrow="The day sheet"
           title="A normal Tuesday, off your team's plate."
           subtitle="Scroll the ledger. Every line is a real workflow the layer runs today, with the hours it hands back each week."
         />
 
         {/* the ledger */}
-        <div className="mx-auto mt-10 w-full max-w-3xl border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] md:mt-8">
+        <div className="w-full border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[var(--shadow-hard)]">
           {/* sheet header */}
           <div className="flex items-center justify-between border-b-2 border-[var(--color-border)] px-4 py-2.5 md:px-6">
-            <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)] md:text-[10px]">
-              Ops ledger · Daily
-            </span>
-            <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-fg-subtle)] md:text-[10px]">
-              Handled by
-            </span>
+            <span className="eyebrow text-[var(--color-fg-muted)]">Ops ledger · Daily</span>
+            <span className="eyebrow text-[var(--color-fg-muted)]">Handled by</span>
           </div>
 
           {LEDGER.map((row) => (
@@ -160,10 +158,10 @@ export function OpsLedger() {
               data-ledger-row
               data-hours={row.hrs}
               data-flipped="false"
-              className="flex items-center justify-between gap-3 border-b border-[var(--color-border)]/50 px-4 py-3 last:border-b-0 md:px-6 md:py-[13px]"
+              className="flex items-center justify-between gap-3 border-b border-[var(--color-border)]/50 px-4 py-3 last:border-b-0 md:px-6 [@media(max-height:820px)]:py-2.5"
             >
               <div className="flex min-w-0 items-baseline gap-3 md:gap-4">
-                <span className="shrink-0 font-mono text-[10px] tabular-nums text-[var(--color-fg-subtle)] md:text-xs">
+                <span className="shrink-0 font-mono text-[11px] tabular-nums text-[var(--color-fg-subtle)] md:text-xs">
                   {row.time}
                 </span>
                 <span className="truncate text-sm font-medium text-[var(--color-fg)] md:text-base">
@@ -171,7 +169,7 @@ export function OpsLedger() {
                 </span>
               </div>
               <div className="flex shrink-0 items-center gap-2 md:gap-3">
-                <span className="relative font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)] md:text-xs">
+                <span className="eyebrow relative text-[var(--color-fg-muted)]">
                   <span className="md:hidden">You</span>
                   <span className="hidden md:inline">Your team</span>
                   <span
@@ -182,7 +180,7 @@ export function OpsLedger() {
                 </span>
                 <span
                   data-layer
-                  className="border border-[var(--color-brand)] px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-[var(--color-brand)] md:text-[10px]"
+                  className="eyebrow border border-[var(--color-brand)] px-1.5 py-0.5 font-bold text-[var(--color-brand)]"
                 >
                   <span className="md:hidden">Layer</span>
                   <span className="hidden md:inline">The layer</span>
@@ -196,7 +194,7 @@ export function OpsLedger() {
             data-ledger-tally
             className="flex items-center justify-between border-t-2 border-[var(--color-border)] bg-[var(--color-bg)] px-4 py-4 md:px-6"
           >
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-fg)] md:text-xs">
+            <span className="eyebrow font-bold text-[var(--color-fg)]">
               Hours returned to your team
             </span>
             <span className="font-display text-2xl font-bold text-[var(--color-brand)] md:text-3xl">
@@ -204,7 +202,7 @@ export function OpsLedger() {
               <span data-hours-counter className="inline-block min-w-[4ch] text-right tabular-nums">
                 31.5
               </span>
-              <span className="ml-1 font-mono text-xs font-normal text-[var(--color-fg-subtle)]">/wk</span>
+              <span className="ml-1 font-mono text-xs font-normal text-[var(--color-fg-muted)]">/wk</span>
             </span>
           </div>
         </div>

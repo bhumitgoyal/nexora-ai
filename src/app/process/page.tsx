@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function ProcessPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden py-24 md:py-32">
+      <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x relative z-10">
           <SectionHeader

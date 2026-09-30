@@ -22,10 +22,10 @@ export function BuildSheet() {
       {/* traveler header */}
       <Reveal>
         <div className="mx-auto flex max-w-3xl items-center justify-between border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2.5 md:px-6">
-          <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--color-fg)] md:text-[10px]">
+          <span className="eyebrow font-bold text-[var(--color-fg)]">
             Build sheet · Rev 2026
           </span>
-          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)] md:text-[10px]">
+          <span className="eyebrow text-[var(--color-fg-muted)]">
             Scope: your workflow
           </span>
         </div>
@@ -62,10 +62,10 @@ export function BuildSheet() {
                 {/* spec row */}
                 <div className="border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] transition-colors hover:border-[var(--color-brand)]">
                   <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--color-border)]/60 px-5 py-3 md:px-7">
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--color-brand)]">
+                    <span className="eyebrow font-bold text-[var(--color-brand)]">
                       Phase {step.number}
                     </span>
-                    <span className="border border-[var(--color-border)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+                    <span className="eyebrow border border-[var(--color-border)] px-2 py-0.5 text-[var(--color-fg-muted)]">
                       {step.duration}
                     </span>
                   </div>
@@ -94,10 +94,10 @@ export function BuildSheet() {
         {/* sign-off */}
         <Reveal delay={0.1}>
           <div className="ml-12 mt-8 flex items-center justify-between border-2 border-dashed border-[var(--color-border)] px-5 py-4 md:ml-16 md:px-7">
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-fg)]">
+            <span className="eyebrow font-bold text-[var(--color-fg)]">
               Sign-off: working system, in production
             </span>
-            <span className="rotate-[-3deg] border-2 border-[var(--color-success)] px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-[var(--color-success)]">
+            <span className="eyebrow rotate-[-3deg] border-2 border-[var(--color-success)] px-2 py-0.5 font-bold text-[var(--color-success)]">
               Shipped
             </span>
           </div>

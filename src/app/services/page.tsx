@@ -20,13 +20,13 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden py-24 md:py-32">
+      <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
 
         <div className="container-x relative z-10">
           <Link
             href="/what-we-offer"
-            className="mb-8 inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
+            className="eyebrow mb-8 inline-flex items-center gap-2 font-semibold text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
           >
             <ArrowLeft className="size-4" /> Back to Infrastructure
           </Link>
@@ -58,7 +58,7 @@ export default function ServicesPage() {
                   className="relative grid scroll-mt-24 grid-cols-1 gap-8 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] p-6 transition-colors hover:border-[var(--color-brand)] md:grid-cols-[1fr_1.4fr] md:gap-12 md:p-12"
                 >
                   {/* catalogue plate */}
-                  <span className="absolute -top-3 left-5 border-2 border-[var(--color-border)] bg-[var(--color-bg)] px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand)] md:left-11">
+                  <span className="eyebrow absolute -top-3 left-5 border-2 border-[var(--color-border)] bg-[var(--color-bg)] px-2 py-0.5 font-bold text-[var(--color-brand)] md:left-11">
                     {sysNo}
                   </span>
 
@@ -74,7 +74,7 @@ export default function ServicesPage() {
                         {service.tagline}
                       </p>
                       <div className="flex flex-col gap-2 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg)] p-4">
-                        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+                        <span className="eyebrow text-[var(--color-fg-muted)]">
                           The problem
                         </span>
                         <p className="text-sm leading-relaxed text-[var(--color-fg)]">
@@ -86,7 +86,7 @@ export default function ServicesPage() {
                           <Badge
                             key={t}
                             variant="outline"
-                            className="rounded-none font-mono text-[10px] uppercase tracking-wider text-[var(--color-fg-subtle)] border-[var(--color-border)]"
+                            className="rounded-none font-mono text-[11px] uppercase tracking-wider text-[var(--color-fg-subtle)] border-[var(--color-border)]"
                           >
                             {t}
                           </Badge>
@@ -101,7 +101,7 @@ export default function ServicesPage() {
                             href={service.overviewUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
+                            className="eyebrow inline-flex items-center gap-1.5 font-semibold text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
                           >
                             <ExternalLink className="size-3.5" /> See it in action
                           </a>
@@ -113,7 +113,7 @@ export default function ServicesPage() {
                   <div className={flip ? "md:order-1" : ""}>
                     <div className="grid grid-cols-1 gap-6">
                       <div className="flex flex-col gap-3">
-                        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-brand)]">
+                        <span className="eyebrow text-[var(--color-brand)]">
                           How the layer runs it
                         </span>
                         <ul className="flex flex-col gap-2.5">
@@ -126,7 +126,7 @@ export default function ServicesPage() {
                         </ul>
                       </div>
                       <div className="flex flex-col gap-3 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg)] p-5">
-                        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+                        <span className="eyebrow text-[var(--color-fg-muted)]">
                           What you get
                         </span>
                         <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -148,7 +148,7 @@ export default function ServicesPage() {
           {/* Custom solution card */}
           <Reveal>
             <Link href="/contact" className="block">
-              <div className="group flex flex-col items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-8 transition-all duration-200 hover:bg-[var(--color-brand)] md:flex-row md:items-center md:justify-between md:p-10">
+              <div className="group flex flex-col items-start gap-4 border-2 border-dashed border-[var(--color-brand)] p-8 transition duration-200 hover:bg-[var(--color-brand)] md:flex-row md:items-center md:justify-between md:p-10">
                 <div className="flex items-start gap-4">
                   <Sparkles className="mt-0.5 size-6 shrink-0 text-[var(--color-brand)] transition-colors group-hover:text-white" />
                   <div className="flex flex-col gap-1.5">
@@ -160,8 +160,8 @@ export default function ServicesPage() {
                     </span>
                   </div>
                 </div>
-                <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-brand)] transition-colors group-hover:text-white">
-                  Book a free 30-min call <ArrowRight className="size-4" />
+                <span className="eyebrow inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-bold text-[var(--color-brand)] transition-colors group-hover:text-white">
+                  Book a 30-min call <ArrowRight className="size-4" />
                 </span>
               </div>
             </Link>

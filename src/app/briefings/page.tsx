@@ -20,22 +20,22 @@ export default function BriefingsPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden py-24 md:py-28">
+      <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x relative z-10">
           <div className="flex flex-col gap-6">
-            <Reveal>
-              <span className="inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+            <Reveal priority>
+              <span className="eyebrow inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-[var(--color-fg-muted)]">
                 <span className="size-1.5 bg-[var(--color-brand)]" />
                 Intelligence briefings
               </span>
             </Reveal>
-            <Reveal delay={0.05}>
-              <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+            <Reveal priority delay={0.05}>
+              <h1 className="max-w-3xl text-balance font-display font-semibold text-title-1">
                 Notes from the <span className="text-[var(--color-brand)]">infrastructure</span> layer.
               </h1>
             </Reveal>
-            <Reveal delay={0.1}>
+            <Reveal priority delay={0.1}>
               <p className="max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
                 Rubrics, field notes, and positions on what it actually takes to run AI in
                 production. Written for the people who have to own the result.
@@ -48,10 +48,10 @@ export default function BriefingsPage() {
       <section className="container-x pb-24 md:pb-32">
         <div className="border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[6px_6px_0_var(--color-border)]">
           <div className="flex items-center justify-between border-b-2 border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg)]">
+            <span className="eyebrow text-[var(--color-fg)]">
               Briefing log
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg-subtle)]">
+            <span className="eyebrow text-[var(--color-fg-muted)]">
               {sorted.length} entries
             </span>
           </div>
@@ -64,10 +64,10 @@ export default function BriefingsPage() {
                   className="group flex flex-col gap-3 px-5 py-6 transition-colors hover:bg-[var(--color-surface)] md:flex-row md:items-center md:gap-6"
                 >
                   <div className="flex shrink-0 items-center gap-3 md:w-56">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+                    <span className="eyebrow text-[var(--color-fg-muted)]">
                       {fmt(b.date)}
                     </span>
-                    <span className="border border-[var(--color-border)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--color-fg-muted)]">
+                    <span className="eyebrow border border-[var(--color-border)] px-2 py-0.5 text-[var(--color-fg-muted)]">
                       {b.category}
                     </span>
                   </div>
@@ -75,7 +75,7 @@ export default function BriefingsPage() {
                     <h2 className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-[var(--color-fg)] md:text-xl">
                       {b.title}
                       {b.featured ? (
-                        <span className="border border-[var(--color-brand)] px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em] text-[var(--color-brand)]">
+                        <span className="eyebrow border border-[var(--color-brand)] px-1.5 py-0.5 text-[var(--color-brand)]">
                           Flagship
                         </span>
                       ) : null}
@@ -83,7 +83,7 @@ export default function BriefingsPage() {
                     <p className="text-sm leading-relaxed text-[var(--color-fg-muted)]">{b.dek}</p>
                   </div>
                   <div className="flex shrink-0 items-center gap-3">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+                    <span className="eyebrow text-[var(--color-fg-muted)]">
                       {b.readMins} min
                     </span>
                     <ArrowUpRight className="size-4 text-[var(--color-fg-subtle)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--color-brand)]" />

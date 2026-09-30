@@ -121,11 +121,15 @@ export function NetworkField({ className }: { className?: string }) {
     resize();
     seed();
 
+    const paused = () => document.documentElement.dataset.motion === "paused";
     const io = new IntersectionObserver(
-      ([entry]) => (entry.isIntersecting ? start() : stop()),
+      ([entry]) => (entry.isIntersecting && !paused() ? start() : stop()),
       { threshold: 0 }
     );
     io.observe(canvas);
+    // the footer "Pause motion" switch
+    const mo = new MutationObserver(() => (paused() ? stop() : start()));
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-motion"] });
 
     const onMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
@@ -136,9 +140,12 @@ export function NetworkField({ className }: { className?: string }) {
       mouse.x = -9999;
       mouse.y = -9999;
     };
+    // Mobile browsers fire resize when the address bar collapses (height only)
+    // — re-seeding then made every node jump. Only a width change re-seeds.
     const onResize = () => {
+      const prevWidth = width;
       resize();
-      seed();
+      if (Math.abs(width - prevWidth) > 1) seed();
     };
 
     window.addEventListener("resize", onResize);
@@ -148,6 +155,7 @@ export function NetworkField({ className }: { className?: string }) {
     return () => {
       stop();
       io.disconnect();
+      mo.disconnect();
       window.removeEventListener("resize", onResize);
       canvas.parentElement?.removeEventListener("mousemove", onMove);
       canvas.parentElement?.removeEventListener("mouseleave", onLeave);

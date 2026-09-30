@@ -30,7 +30,7 @@ const controls = [
 
 export function Governance() {
   return (
-    <section className="border-t border-[var(--color-border)] py-24 md:py-32">
+    <section className="section-y border-t border-[var(--color-border)] ">
       <div className="container-x">
         <SectionHeader
           eyebrow="Inspection & compliance"
@@ -43,7 +43,7 @@ export function Governance() {
             <Reveal key={c.ticket} delay={i * 0.08}>
               <div className="flex h-full flex-col border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[5px_5px_0_var(--color-border)]">
                 <div className="flex items-center justify-between border-b-2 border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2.5">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg)]">
+                  <span className="eyebrow text-[var(--color-fg)]">
                     Ticket {c.ticket}
                   </span>
                   <c.icon className="size-4 text-[var(--color-brand)]" strokeWidth={2} />
@@ -57,7 +57,7 @@ export function Governance() {
                     {c.checks.map((check) => (
                       <li
                         key={check}
-                        className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--color-fg-muted)]"
+                        className="eyebrow flex items-center gap-2 text-[var(--color-fg-muted)]"
                       >
                         <ShieldCheck className="size-3.5 shrink-0 text-[var(--color-brand)]" strokeWidth={2} />
                         {check}

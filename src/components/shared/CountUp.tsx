@@ -1,54 +1,49 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "motion/react";
+import NumberFlow from "@number-flow/react";
+import { useInView } from "motion/react";
 
 type CountUpProps = {
   value: number;
+  /** kept for API compatibility — NumberFlow owns the timing now */
   duration?: number;
   prefix?: string;
   suffix?: string;
   decimals?: number;
 };
 
-export function CountUp({
-  value,
-  duration = 1.6,
-  prefix = "",
-  suffix = "",
-  decimals = 0,
-}: CountUpProps) {
+// The server HTML carries the real number (crawlers and no-JS readers never see
+// "0"). Only if the figure starts offscreen does it drop to zero, invisibly, and
+// roll up when scrolled into view. NumberFlow keeps digits tabular, exposes the
+// final value to screen readers, and honours prefers-reduced-motion itself.
+export function CountUp({ value, prefix = "", suffix = "", decimals = 0 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const prefersReduced = useReducedMotion();
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value);
+  const armed = useRef(false);
 
   useEffect(() => {
-    if (!inView) return;
-    if (prefersReduced) {
-      setDisplay(value);
-      return;
-    }
-    const start = performance.now();
-    let raf = 0;
-    const tick = (now: number) => {
-      const t = Math.min((now - start) / (duration * 1000), 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setDisplay(value * eased);
-      if (t < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, value, duration, prefersReduced]);
+    const el = ref.current;
+    if (!el || armed.current) return;
+    armed.current = true;
+    if (el.getBoundingClientRect().top > window.innerHeight) setDisplay(0);
+  }, []);
+
+  useEffect(() => {
+    if (inView) setDisplay(value);
+  }, [inView, value]);
 
   return (
     <span ref={ref}>
-      {prefix}
-      {display.toLocaleString("en-IN", {
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals,
-      })}
-      {suffix}
+      <NumberFlow
+        value={display}
+        prefix={prefix}
+        suffix={suffix}
+        locales="en-IN"
+        format={{ minimumFractionDigits: decimals, maximumFractionDigits: decimals }}
+        transformTiming={{ duration: 900, easing: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+      />
     </span>
   );
 }

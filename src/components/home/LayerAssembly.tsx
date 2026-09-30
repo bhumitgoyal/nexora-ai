@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, Users, Sheet, Phone, Database, CalendarDays, type LucideIcon } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { useIsomorphicLayoutEffect } from "@/lib/motion";
+import { useIsomorphicLayoutEffect, PIN_QUERY, NO_PIN_QUERY } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,12 +16,12 @@ type Plate = { no: string; label: string; icon: LucideIcon; /** scattered offset
 // Scroll pulls them out of the scatter into one stack under THE LAYER — the
 // Apple-style "product assembles itself" scrub, reinterpreted as a job-sheet.
 const PLATES: Plate[] = [
-  { no: "01", label: "Inbox", icon: Mail, dx: -0.36, dy: -0.34, rot: -7 },
-  { no: "02", label: "CRM", icon: Users, dx: 0.34, dy: -0.3, rot: 5 },
-  { no: "03", label: "Sheets", icon: Sheet, dx: -0.4, dy: 0.06, rot: 4 },
-  { no: "04", label: "Phone line", icon: Phone, dx: 0.38, dy: 0.1, rot: -5 },
-  { no: "05", label: "ERP", icon: Database, dx: -0.3, dy: 0.36, rot: -3 },
-  { no: "06", label: "Calendar", icon: CalendarDays, dx: 0.3, dy: 0.38, rot: 7 },
+  { no: "01", label: "Inbox", icon: Mail, dx: -0.2, dy: -0.36, rot: -7 },
+  { no: "02", label: "CRM", icon: Users, dx: 0.2, dy: -0.28, rot: 5 },
+  { no: "03", label: "Sheets", icon: Sheet, dx: -0.22, dy: 0.02, rot: 4 },
+  { no: "04", label: "Phone line", icon: Phone, dx: 0.22, dy: 0.1, rot: -5 },
+  { no: "05", label: "ERP", icon: Database, dx: -0.18, dy: 0.3, rot: -3 },
+  { no: "06", label: "Calendar", icon: CalendarDays, dx: 0.2, dy: 0.36, rot: 7 },
 ];
 
 const STEPS = [
@@ -41,7 +41,7 @@ export function LayerAssembly() {
     if (!section || !stage) return;
 
     const mm = gsap.matchMedia();
-    mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+    mm.add(PIN_QUERY, () => {
       const plates = gsap.utils.toArray<HTMLElement>("[data-plate]", stage);
       const bar = stage.querySelector<HTMLElement>("[data-bar]");
       const ticks = gsap.utils.toArray<HTMLElement>("[data-tick]", stage);
@@ -70,6 +70,7 @@ export function LayerAssembly() {
           x: (i) => PLATES[i].dx * stage.clientWidth,
           y: (i) => PLATES[i].dy * stage.clientHeight,
           rotate: (i) => PLATES[i].rot,
+          scale: 0.82,
           ease: "power2.inOut",
           duration: 0.5,
           stagger: 0.02,
@@ -90,7 +91,7 @@ export function LayerAssembly() {
   }, []);
 
   return (
-    <section aria-labelledby="layer-title" className="relative border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+    <section aria-labelledby="layer-title" className="relative overflow-x-clip border-t border-[var(--color-border)] bg-[var(--color-bg)]">
       <div ref={sectionRef} className="flex min-h-screen flex-col justify-center py-20 md:py-16">
         <div className="container-x grid items-center gap-10 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-14">
           <div className="flex flex-col gap-8">
@@ -162,7 +163,7 @@ export function LayerAssembly() {
               <span
                 data-stamp
                 aria-hidden
-                className="absolute -bottom-6 -right-6 rotate-[-6deg] border-[3px] border-[var(--color-brand)] bg-[var(--color-bg)] px-4 py-2 font-mono text-base font-bold uppercase tracking-[0.2em] text-[var(--color-brand)] shadow-[var(--shadow-hard-sm)] md:-right-10"
+                className="absolute -bottom-12 -right-4 rotate-[-6deg] border-[3px] border-[var(--color-brand)] bg-[var(--color-bg)] px-4 py-2 font-mono text-base font-bold uppercase tracking-[0.2em] text-[var(--color-brand)] shadow-[var(--shadow-hard-sm)] md:-right-10"
               >
                 Automated
               </span>

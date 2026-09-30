@@ -35,13 +35,13 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
 
   return (
     <>
-      <section className="relative isolate overflow-hidden py-20 md:py-24">
+      <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x relative z-10">
-          <Reveal>
+          <Reveal priority>
             <Link
               href="/industries"
-              className="inline-flex w-fit items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--color-fg-subtle)] transition-colors hover:text-[var(--color-brand)]"
+              className="eyebrow inline-flex w-fit items-center gap-1.5 text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
             >
               <ArrowLeft className="size-3.5" />
               All industries
@@ -49,19 +49,19 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
           </Reveal>
 
           <div className="mt-8 flex flex-col gap-6">
-            <Reveal delay={0.05}>
-              <span className="inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+            <Reveal priority delay={0.05}>
+              <span className="eyebrow inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-[var(--color-fg-muted)]">
                 {Icon ? <Icon className="size-3 text-[var(--color-brand)]" /> : null}
                 {sector.label}
               </span>
             </Reveal>
-            <Reveal delay={0.1}>
-              <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
+            <Reveal priority delay={0.1}>
+              <h1 className="max-w-3xl text-balance font-display font-semibold text-title-1">
                 AI automation for{" "}
                 <span className="text-[var(--color-brand)]">{sector.label}</span>.
               </h1>
             </Reveal>
-            <Reveal delay={0.15}>
+            <Reveal priority delay={0.15}>
               <p className="max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
                 {sector.description}
               </p>
@@ -73,7 +73,7 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
       <section className="pb-24 md:pb-28">
         <div className="container-x">
           <Reveal>
-            <h2 className="font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+            <h2 className="eyebrow text-[var(--color-fg-muted)]">
               {sector.services.length} systems we build for {sector.label}
             </h2>
           </Reveal>
@@ -97,7 +97,7 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
                   </p>
 
                   {service.stat ? (
-                    <span className="mt-5 inline-flex w-fit items-center border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg)]">
+                    <span className="eyebrow mt-5 inline-flex w-fit items-center border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-2.5 py-1 text-[var(--color-fg)]">
                       {service.stat}
                     </span>
                   ) : null}

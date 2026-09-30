@@ -42,18 +42,18 @@ export default function ContactPage() {
 
         <div className="container-x relative z-10">
           <div className="flex flex-col gap-6">
-            <Reveal>
-              <span className="inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+            <Reveal priority>
+              <span className="eyebrow inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-[var(--color-fg-muted)]">
                 <span className="size-1.5 animate-pulse bg-[var(--color-success)]" />
                 Booking discovery calls
               </span>
             </Reveal>
-            <Reveal delay={0.05}>
-              <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+            <Reveal priority delay={0.05}>
+              <h1 className="max-w-3xl text-balance font-display font-semibold text-title-1">
                 Open a <span className="text-[var(--color-brand)]">work order</span>.
               </h1>
             </Reveal>
-            <Reveal delay={0.1}>
+            <Reveal priority delay={0.1}>
               <p className="max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
                 Tell us about the workflow you want AI to own. We'll reply within one
                 business day with a no-fluff perspective on whether and how we can help.
@@ -86,7 +86,7 @@ export default function ContactPage() {
                             <Icon className="size-4" />
                           </span>
                           <div className="flex flex-col">
-                            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+                            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
                               {c.label}
                             </span>
                             <span className="text-sm text-[var(--color-fg)] group-hover:text-[var(--color-brand)]">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { ViewTransition } from "react";
 import { ArrowLeft, ArrowRight, Calendar, Building2, MonitorPlay, KeyRound, Coins } from "lucide-react";
 import { getDeployments } from "@/lib/deployments";
 import { caseStudies as curatedStudies } from "@/content/caseStudies";
@@ -69,7 +70,10 @@ export default async function CaseStudyPage({
   const demoDisplayUrl = demoUrl ? demoUrl.split("?")[0] : "";
   // Show the poster (workflow diagram) beside the challenge, unless it is the same
   // image as the demo snapshot (the 3 demo-only studies), which would just repeat it.
-  const posterToShow = study.image && study.image !== snapshot ? study.image : null;
+  // The poster now leads the hero (it's the shared element the /work card morphs
+  // into), so the challenge section no longer repeats it.
+  const heroPoster = study.image ?? null;
+  const posterToShow = null as string | null;
 
   return (
     <>
@@ -87,7 +91,7 @@ export default async function CaseStudyPage({
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="/work" className="hover:text-[var(--color-fg)]">Work</Link>
+                  <Link href="/work" className="hover:text-[var(--color-fg)]">Deployments</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
@@ -98,10 +102,24 @@ export default async function CaseStudyPage({
           </Breadcrumb>
         </div>
 
-        <div className="container-x relative z-10 py-16 md:py-20">
+        <div className="container-x relative z-10 py-10 md:py-14">
           <div className="flex flex-col gap-6">
-            <Reveal>
-              <div className="flex flex-wrap items-center gap-3 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
+            {heroPoster ? (
+              <ViewTransition name={`work-poster-${study.slug}`}>
+                <div className="relative aspect-[16/9] w-full overflow-hidden border-2 border-[var(--color-border)] bg-[var(--color-brand)] shadow-[var(--shadow-hard)] md:aspect-[21/9] lg:aspect-[3/1]">
+                  <Image
+                    src={heroPoster}
+                    alt={`${study.client} · workflow built by Nuvero AI`}
+                    fill
+                    priority
+                    sizes="(min-width: 1280px) 1200px, 100vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+              </ViewTransition>
+            ) : null}
+            <Reveal priority>
+              <div className="eyebrow flex flex-wrap items-center gap-3 text-[var(--color-fg-muted)]">
                 <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1">
                   <Building2 className="size-3" /> {study.industry}
                 </span>
@@ -110,33 +128,33 @@ export default async function CaseStudyPage({
                 </span>
               </div>
             </Reveal>
-            <Reveal delay={0.05}>
-              <p className="font-mono text-sm text-[var(--color-brand)]">{study.client}</p>
+            <Reveal priority delay={0.05}>
+              <p className="font-mono text-sm font-bold text-[var(--color-brand)]">{study.client}</p>
             </Reveal>
-            <Reveal delay={0.1}>
-              <h1 className="max-w-4xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+            <Reveal priority delay={0.1}>
+              <h1 className="max-w-4xl text-balance font-display text-title-1 font-semibold">
                 {study.title}
               </h1>
             </Reveal>
-            <Reveal delay={0.15}>
-              <p className="max-w-3xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
+            <Reveal priority delay={0.15}>
+              <p className="max-w-3xl text-pretty text-lead text-[var(--color-fg-muted)]">
                 {study.summary}
               </p>
             </Reveal>
             {demoUrl ? (
-              <Reveal delay={0.2}>
+              <Reveal priority delay={0.2}>
                 <div className="flex flex-col gap-2">
                   <a
                     href={demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex w-fit items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
+                    className="press group inline-flex min-h-12 w-fit items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 text-[15px] font-semibold text-white shadow-[var(--shadow-hard-sm)] transition-colors hover:border-[var(--color-brand-strong)] hover:bg-[var(--color-brand-strong)]"
                   >
                     <MonitorPlay className="size-4" />
                     Open the live demo
                     <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </a>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-fg-subtle)]">
+                  <span className="eyebrow text-[var(--color-fg-muted)]">
                     Passcode <span className="text-[var(--color-fg-muted)]">{passcode}</span> · runs on sample data
                   </span>
                 </div>
@@ -172,7 +190,7 @@ export default async function CaseStudyPage({
 
                 <div className="flex flex-col justify-between gap-6 p-6 md:p-8">
                   <div className="flex flex-col gap-4">
-                    <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-fg)]">
+                    <span className="eyebrow inline-flex items-center gap-2 text-[var(--color-fg)]">
                       <span className="size-1.5 animate-pulse bg-[var(--color-brand)]" />
                       Live demo · sample data only
                     </span>
@@ -181,7 +199,7 @@ export default async function CaseStudyPage({
                       data behind a passcode, so nothing here is a real customer record.
                     </p>
                     {runningCost ? (
-                      <span className="inline-flex w-fit items-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+                      <span className="eyebrow inline-flex w-fit items-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1.5 text-[var(--color-fg-muted)]">
                         <Coins className="size-3.5" /> Approx. running cost {runningCost}
                       </span>
                     ) : null}
@@ -191,13 +209,13 @@ export default async function CaseStudyPage({
                       href={demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex w-fit items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)] hover:border-[var(--color-brand-strong)]"
+                      className="press group inline-flex min-h-12 w-fit items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 text-[15px] font-semibold text-white shadow-[var(--shadow-hard-sm)] transition-colors hover:border-[var(--color-brand-strong)] hover:bg-[var(--color-brand-strong)]"
                     >
                       <MonitorPlay className="size-4" />
                       Open the live demo
                       <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                     </a>
-                    <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-fg-muted)]">
+                    <span className="eyebrow inline-flex items-center gap-2 text-[var(--color-fg-muted)]">
                       <KeyRound className="size-4 text-[var(--color-brand)]" />
                       Passcode <span className="font-semibold text-[var(--color-fg)]">{passcode}</span>
                     </span>
@@ -214,7 +232,7 @@ export default async function CaseStudyPage({
         </section>
       ) : null}
 
-      <section className="container-x py-20 md:py-28">
+      <section className="section-y container-x ">
         <Reveal>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {study.results.map((r) => {
@@ -254,7 +272,7 @@ export default async function CaseStudyPage({
               </div>
             </Reveal>
             <div className="flex flex-col gap-4">
-              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-accent)]">
+              <span className="eyebrow text-[var(--color-accent-ink)]">
                 The challenge
               </span>
               <h2 className="font-display text-2xl font-semibold md:text-3xl">
@@ -270,7 +288,7 @@ export default async function CaseStudyPage({
         ) : (
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
             <div className="flex flex-col gap-3">
-              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-accent)]">
+              <span className="eyebrow text-[var(--color-accent-ink)]">
                 The challenge
               </span>
               <h2 className="font-display text-2xl font-semibold md:text-3xl">
@@ -289,7 +307,7 @@ export default async function CaseStudyPage({
       <section className="container-x pb-20 md:pb-28">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
           <div className="flex flex-col gap-3">
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-brand-strong)]">
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--color-brand-strong)]">
               Our approach
             </span>
             <h2 className="font-display text-2xl font-semibold md:text-3xl">
@@ -316,7 +334,7 @@ export default async function CaseStudyPage({
       <section className="container-x pb-20 md:pb-28">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
           <div className="flex flex-col gap-3">
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-accent)]">
+            <span className="eyebrow text-[var(--color-accent-ink)]">
               The solution
             </span>
             <h2 className="font-display text-2xl font-semibold md:text-3xl">
@@ -339,7 +357,7 @@ export default async function CaseStudyPage({
       <section className="container-x pb-24 md:pb-32">
         <Reveal>
           <div className="flex flex-col gap-5 card-surface p-7 md:p-10">
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
               Tech stack
             </span>
             <div className="flex flex-wrap gap-2">
@@ -363,22 +381,22 @@ export default async function CaseStudyPage({
             className="group flex items-center justify-between gap-4 card-surface p-6"
           >
             <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+              <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
                 Previous
               </span>
               <span className="font-display text-base font-semibold tracking-tight md:text-lg">
                 {prev.client}
               </span>
             </div>
-            <ArrowLeft className="size-5 text-[var(--color-fg-muted)] transition-all group-hover:-translate-x-0.5 group-hover:text-[var(--color-fg)]" />
+            <ArrowLeft className="size-5 text-[var(--color-fg-muted)] transition group-hover:-translate-x-0.5 group-hover:text-[var(--color-fg)]" />
           </Link>
           <Link
             href={`/work/${next.slug}`}
             className="group flex items-center justify-between gap-4 card-surface p-6 text-right"
           >
-            <ArrowRight className="size-5 order-2 text-[var(--color-fg-muted)] transition-all group-hover:translate-x-0.5 group-hover:text-[var(--color-fg)]" />
+            <ArrowRight className="size-5 order-2 text-[var(--color-fg-muted)] transition group-hover:translate-x-0.5 group-hover:text-[var(--color-fg)]" />
             <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+              <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
                 Next
               </span>
               <span className="font-display text-base font-semibold tracking-tight md:text-lg">

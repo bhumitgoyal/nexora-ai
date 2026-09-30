@@ -23,19 +23,22 @@ export function SmoothScroll() {
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
-    // Keep anchor links working through Lenis
+    // Keep in-page anchor links working through Lenis: "#id" on any page,
+    // "/#id" only when already on home. The skip link stays native so focus
+    // moves into <main> exactly as the browser does it.
     const onClick = (e: MouseEvent) => {
       const anchor = (e.target as HTMLElement).closest?.('a[href^="#"], a[href^="/#"]');
       if (!anchor) return;
       const href = anchor.getAttribute("href") ?? "";
+      if (href === "#main") return;
+      if (href.startsWith("/#") && window.location.pathname !== "/") return;
       const id = href.replace("/#", "#");
-      if (id.startsWith("#") && window.location.pathname === "/") {
-        const el = document.querySelector(id);
-        if (el) {
-          e.preventDefault();
-          lenis.scrollTo(el as HTMLElement, { offset: -80 });
-        }
-      }
+      if (id.length < 2) return;
+      const el = document.getElementById(decodeURIComponent(id.slice(1)));
+      if (!el) return;
+      e.preventDefault();
+      lenis.scrollTo(el, { offset: -88 });
+      history.replaceState(null, "", id);
     };
     document.addEventListener("click", onClick);
 
