@@ -1,17 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  Mail,
-  Phone,
-  Globe,
-  Linkedin,
-  Github,
-  Instagram,
-  Twitter,
-  MessageCircle,
-  Sparkles,
-} from "lucide-react";
+import { Mail, Phone, Globe, MessageCircle, Sparkles } from "lucide-react";
+import { Linkedin, Github, Instagram, Twitter } from "@/components/shared/brand-icons";
 import { site } from "@/content/site";
 import { Poster } from "@/components/booklet/Poster";
 import { PosterDecor } from "@/components/booklet/PosterDecor";

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Linkedin, Github, Instagram, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
+import { Linkedin, Github, Instagram } from "@/components/shared/brand-icons";
 import { site } from "@/content/site";
 import { principles, aboutStats } from "@/content/techStack";
 import { Reveal } from "@/components/shared/Reveal";

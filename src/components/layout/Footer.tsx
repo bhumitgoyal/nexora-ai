@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Github, Linkedin, Instagram, Twitter, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
+import { Github, Linkedin, Instagram, Twitter } from "@/components/shared/brand-icons";
 import { site } from "@/content/site";
 import { services } from "@/content/services";
 import { Logo } from "./Logo";

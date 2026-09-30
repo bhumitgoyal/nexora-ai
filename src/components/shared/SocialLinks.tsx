@@ -1,6 +1,6 @@
 "use client";
 
-import { Linkedin, Github, Instagram } from "lucide-react";
+import { Linkedin, Github, Instagram } from "@/components/shared/brand-icons";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { site } from "@/content/site";
 
