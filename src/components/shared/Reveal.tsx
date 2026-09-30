@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "motion/react";
-import type { ReactNode } from "react";
+import { motion, type Variants } from "motion/react";
+import type { CSSProperties, ReactNode } from "react";
+import { DURATION, EASE } from "@/lib/motion";
 
 type RevealProps = {
   children: ReactNode;
@@ -11,6 +12,12 @@ type RevealProps = {
   scale?: boolean;
   className?: string;
   as?: "div" | "section" | "article" | "li" | "span";
+  /**
+   * Above the fold: reveal with a CSS animation that starts on first paint
+   * instead of waiting for hydration + an IntersectionObserver. Use for page
+   * heroes / anything that can be the LCP element.
+   */
+  priority?: boolean;
 };
 
 export function Reveal({
@@ -21,27 +28,31 @@ export function Reveal({
   scale = false,
   className,
   as = "div",
+  priority = false,
 }: RevealProps) {
-  const prefersReduced = useReducedMotion();
-  const Component = motion[as];
+  if (priority) {
+    const Tag = as;
+    return (
+      <Tag
+        className={`nv-fade-in ${className ?? ""}`}
+        style={{ "--nv-delay": `${delay}s` } as CSSProperties}
+      >
+        {children}
+      </Tag>
+    );
+  }
 
+  const Component = motion[as];
+  // MotionConfig reducedMotion="user" (layout) drops the transform and keeps the
+  // fade — HIG: replace movement with fades rather than removing feedback.
   const variants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: prefersReduced ? 0 : y,
-      x: prefersReduced ? 0 : x,
-      scale: scale && !prefersReduced ? 0.96 : 1,
-    },
+    hidden: { opacity: 0, y, x, scale: scale ? 0.96 : 1 },
     show: {
       opacity: 1,
       y: 0,
       x: 0,
       scale: 1,
-      transition: {
-        duration: 0.55,
-        ease: [0.22, 1, 0.36, 1],
-        delay,
-      },
+      transition: { duration: DURATION.base, ease: EASE, delay },
     },
   };
 

@@ -10,6 +10,10 @@ type SectionHeaderProps = {
   align?: "left" | "center";
   className?: string;
   as?: "h1" | "h2";
+  /** id on the heading, for aria-labelledby on the section */
+  id?: string;
+  /** page hero: reveal with CSS from first paint (it may be the LCP element) */
+  priority?: boolean;
 };
 
 export function SectionHeader({
@@ -19,6 +23,8 @@ export function SectionHeader({
   align = "center",
   className,
   as: Heading = "h2",
+  id,
+  priority = Heading === "h1",
 }: SectionHeaderProps) {
   return (
     <div
@@ -29,21 +35,21 @@ export function SectionHeader({
       )}
     >
       {eyebrow ? (
-        <Reveal>
-          <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
-            <span className="size-1.5 bg-[var(--color-brand)]" />
+        <Reveal priority={priority}>
+          <span className="eyebrow inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1.5 text-[var(--color-fg-muted)]">
+            <span aria-hidden className="size-1.5 bg-[var(--color-brand)]" />
             {eyebrow}
           </span>
         </Reveal>
       ) : null}
-      <MaskReveal delay={0.08}>
-        <Heading className="text-balance text-3xl font-semibold tracking-[-0.03em] md:text-5xl">
+      <MaskReveal delay={0.08} priority={priority}>
+        <Heading id={id} className={cn("text-balance font-semibold", Heading === "h1" ? "text-title-1" : "text-title-2")}>
           {title}
         </Heading>
       </MaskReveal>
       {subtitle ? (
-        <Reveal delay={0.1}>
-          <p className="text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
+        <Reveal delay={0.1} priority={priority}>
+          <p className="text-pretty text-lead text-[var(--color-fg-muted)]">
             {subtitle}
           </p>
         </Reveal>

@@ -5,7 +5,6 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight, Calendar, Building2, MonitorPlay, KeyRound, Coins } from "lucide-react";
 import { getDeployments } from "@/lib/deployments";
 import { caseStudies as curatedStudies } from "@/content/caseStudies";
-import { GradientOrb } from "@/components/shared/GradientOrb";
 import { GridBackground } from "@/components/shared/GridBackground";
 import { Reveal } from "@/components/shared/Reveal";
 import { CtaBanner } from "@/components/home/CtaBanner";
@@ -76,8 +75,6 @@ export default async function CaseStudyPage({
     <>
       <section className="relative isolate overflow-hidden">
         <GridBackground interactive={false} />
-        <GradientOrb tone="brand" size={560} className="left-[-160px] top-[-100px]" />
-        <GradientOrb tone="accent" size={460} className="right-[-120px] top-[10%]" />
 
         <div className="container-x relative z-10 pt-12 md:pt-16">
           <Breadcrumb>

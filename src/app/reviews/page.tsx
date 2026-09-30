@@ -20,27 +20,27 @@ export default async function ReviewsPage() {
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x relative z-10">
           <div className="flex flex-col gap-6">
-            <Reveal>
+            <Reveal priority>
               <Link
                 href="/"
-                className="inline-flex w-fit items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--color-fg-subtle)] transition-colors hover:text-[var(--color-brand)]"
+                className="eyebrow inline-flex min-h-11 w-fit items-center gap-1.5 text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
               >
                 <ArrowLeft className="size-3.5" />
                 Back home
               </Link>
             </Reveal>
-            <Reveal delay={0.05}>
-              <span className="inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
+            <Reveal priority delay={0.05}>
+              <span className="eyebrow inline-flex w-fit items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1.5 text-[var(--color-fg-muted)]">
                 <span className="size-1.5 bg-[var(--color-brand)]" />
                 What clients say
               </span>
             </Reveal>
-            <Reveal delay={0.1}>
-              <h1 className="max-w-3xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+            <Reveal priority delay={0.1}>
+              <h1 className="max-w-3xl text-balance font-display text-title-1 font-semibold">
                 Every <span className="text-[var(--color-brand)]">review</span>, in one place.
               </h1>
             </Reveal>
-            <Reveal delay={0.15}>
+            <Reveal priority delay={0.15}>
               <p className="max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
                 The unfiltered feedback from teams running their operations on our
                 infrastructure, straight from the businesses we&apos;ve shipped with.
@@ -57,7 +57,7 @@ export default async function ReviewsPage() {
           </span>
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 border-2 border-[var(--color-border)] px-5 py-2.5 text-sm font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+            className="press group inline-flex min-h-11 items-center gap-2 border-2 border-[var(--color-border)] px-5 text-callout font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
           >
             Work with us
           </Link>
@@ -70,7 +70,7 @@ export default async function ReviewsPage() {
               className="flex flex-col gap-4 bg-[var(--color-bg)] p-6 md:flex-row md:gap-6 md:p-8"
             >
               <div className="flex items-center gap-3 md:w-56 md:shrink-0 md:flex-col md:items-start md:gap-4">
-                <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-[var(--color-brand)] font-display text-sm font-semibold text-white">
+                <span className="inline-flex size-11 shrink-0 items-center justify-center bg-[var(--color-brand)] font-display text-sm font-semibold text-white">
                   {t.initials}
                 </span>
                 <div className="flex flex-col">

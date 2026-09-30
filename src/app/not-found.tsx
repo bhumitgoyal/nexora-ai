@@ -1,5 +1,4 @@
 ﻿import Link from "next/link";
-import { GradientOrb } from "@/components/shared/GradientOrb";
 import { GridBackground } from "@/components/shared/GridBackground";
 import { GlowButton } from "@/components/shared/GlowButton";
 
@@ -7,11 +6,9 @@ export default function NotFound() {
   return (
     <section className="relative isolate flex min-h-[70vh] items-center overflow-hidden py-24">
       <GridBackground />
-      <GradientOrb tone="brand" size={520} className="left-[-160px] top-[-100px]" />
-      <GradientOrb tone="accent" size={420} className="right-[-100px] bottom-[-100px]" />
 
       <div className="container-x relative z-10 flex flex-col items-center gap-6 text-center">
-        <span className="font-mono text-sm tracking-[0.22em] text-[var(--color-accent)]">
+        <span className="font-mono text-sm tracking-[0.22em] text-[var(--color-accent-ink)]">
           404 · ROUTE_NOT_FOUND
         </span>
         <h1 className="text-balance font-display text-5xl font-semibold leading-none tracking-tight md:text-7xl">

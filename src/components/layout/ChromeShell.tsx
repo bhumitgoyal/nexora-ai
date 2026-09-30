@@ -18,13 +18,13 @@ export function ChromeShell({ navbar, footer, children }: ChromeShellProps) {
   const bare = pathname?.startsWith("/booklet") ?? false;
 
   if (bare) {
-    return <main className="relative z-10">{children}</main>;
+    return <main id="main" tabIndex={-1} className="relative z-10 outline-none">{children}</main>;
   }
 
   return (
     <>
       {navbar}
-      <main className="relative z-10 pt-16 md:pt-20">{children}</main>
+      <main id="main" tabIndex={-1} className="relative z-10 pt-header outline-none lg:pt-header-lg">{children}</main>
       {footer}
     </>
   );

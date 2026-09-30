@@ -20,7 +20,8 @@ export function Magnetic({ children, strength = 0.3, className }: MagneticProps)
 
   const onMouseMove = useCallback(
     (e: React.MouseEvent) => {
-      if (prefersReduced || !ref.current) return;
+      // mouse only — taps on touch screens fire synthetic mousemove too
+      if (prefersReduced || !ref.current || !window.matchMedia("(pointer: fine)").matches) return;
       const rect = ref.current.getBoundingClientRect();
       x.set((e.clientX - rect.left - rect.width / 2) * strength);
       y.set((e.clientY - rect.top - rect.height / 2) * strength);

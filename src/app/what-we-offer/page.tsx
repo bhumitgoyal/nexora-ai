@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { WhatWeOfferContent } from "./PageContent";
+import { WiringDiagram } from "@/components/home/WiringDiagram";
+import { ComparisonTable } from "@/components/home/ComparisonTable";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/what-we-offer" },
@@ -9,5 +11,11 @@ export const metadata: Metadata = {
 };
 
 export default function WhatWeOfferPage() {
-  return <WhatWeOfferContent />;
+  return (
+    <>
+      <WhatWeOfferContent />
+      <WiringDiagram />
+      <ComparisonTable />
+    </>
+  );
 }

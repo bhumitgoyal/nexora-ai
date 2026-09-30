@@ -8,12 +8,19 @@
   --color-border-strong: #780000;
   --color-fg: #003049;
   --color-fg-muted: #1a4a66;
-  --color-fg-subtle: #4a6a80;
+  /* tertiary text — ≥5:1 on every surface (was #4a6a80, 4.07:1 on surface) */
+  --color-fg-subtle: #3b5b72;
   --color-brand: #C1121F;
   --color-brand-strong: #780000;
+  /* steel blue is decorative only (2.7:1 on cream) — never text or icons */
   --color-accent: #669BBC;
-  --color-accent-strong: #4A7FA0;
-  --color-success: #2D7A4F;
+  --color-accent-strong: #35607c;
+  /* steel blue for text/icons: 6.7:1 on bg, 5.4:1 on surface */
+  --color-accent-ink: #2f5873;
+  --color-success: #236B43;
+  /* secondary text on ink panels: cream @ 75% = 7.5:1 */
+  --color-on-ink: #FDF0D5;
+  --color-on-ink-muted: rgb(253 240 213 / 0.75);
   --color-danger: #C1121F;
 
   /* shadcn/ui compatibility mapped to existing design tokens */
@@ -40,6 +47,38 @@
   --font-display: var(--font-dm-sans), system-ui, sans-serif;
   --font-mono: var(--font-space-mono), ui-monospace, monospace;
 
+  /* hard offset shadows — the only elevation language */
+  --shadow-hard-sm: 3px 3px 0 var(--color-border);
+  --shadow-hard: 5px 5px 0 var(--color-border);
+  --shadow-hard-lg: 8px 8px 0 var(--color-border);
+  --shadow-hard-brand: 5px 5px 0 var(--color-brand);
+
+  /* type scale — Apple HIG hierarchy: order, spacing, contrast. Nothing below 11px. */
+  --text-display: clamp(2.75rem, 1.2rem + 6.4vw, 6rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.035em;
+  --text-title-1: clamp(2.25rem, 1.4rem + 3.6vw, 4rem);
+  --text-title-1--line-height: 1.04;
+  --text-title-1--letter-spacing: -0.03em;
+  --text-title-2: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem);
+  --text-title-2--line-height: 1.1;
+  --text-title-2--letter-spacing: -0.025em;
+  --text-title-3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --text-title-3--line-height: 1.25;
+  --text-title-3--letter-spacing: -0.01em;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --text-lead--line-height: 1.5;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-callout: 0.9375rem;
+  --text-callout--line-height: 1.5;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.3;
+  --text-label--letter-spacing: 0.16em;
+
+  --spacing-header: 4rem;
+  --spacing-header-lg: 4.5rem;
+
   --shadow-glow-brand: 0 0 0 2px #C1121F;
   --shadow-glow-accent: 0 0 0 2px #669BBC;
 
@@ -47,9 +86,9 @@
   --animate-marquee-reverse: marquee-reverse 40s linear infinite;
   --animate-shimmer: shimmer 3s linear infinite;
   --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-tab-fade-in: tab-fade-in 0.25s ease-out;
+  --animate-accordion-down: accordion-down 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-accordion-up: accordion-up 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-tab-fade-in: tab-fade-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @property --beam-angle {
@@ -82,14 +121,15 @@
   50% { opacity: 1; transform: scale(1.05); }
 }
 
+/* accordions reveal content with opacity/transform only — never animate height */
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--radix-accordion-content-height); }
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); }
-  to { height: 0; }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 @keyframes tab-fade-in {
@@ -113,8 +153,9 @@
     background: transparent;
     color: var(--color-fg);
     font-family: var(--font-sans);
-    line-height: 1.65;
-    overflow-x: hidden;
+    font-size: var(--text-body);
+    line-height: 1.6;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -129,10 +170,19 @@
     line-height: 1.08;
   }
 
-  *:focus-visible {
-    outline: 2px solid var(--color-brand);
+  /* hard, square focus ring — also on inputs (utilities' outline-none can't remove it) */
+  *:not([tabindex="-1"]):focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-brand) !important;
     outline-offset: 3px;
     border-radius: 0;
+  }
+
+  /* hover effects only where hover exists — no sticky hover on touch */
+  @media (hover: none) {
+    .card-surface:hover { box-shadow: none; border-color: var(--color-border); }
   }
 
   button, a {
@@ -285,6 +335,89 @@
   .container-x {
     @apply mx-auto w-full max-w-7xl px-6 md:px-10;
   }
+
+  /* one section rhythm for the whole site */
+  .section-y {
+    padding-block: clamp(4.5rem, 3rem + 6vw, 8rem);
+  }
+
+  /* mono eyebrow / metadata label — the one eyebrow style */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    line-height: 1.3;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* tactile press: the element drops into its own hard shadow */
+  .press {
+    transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .press:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 transparent !important;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 16px;
+    top: 12px;
+    z-index: 100;
+    transform: translateY(-160%);
+    padding: 12px 18px;
+    background: var(--color-fg);
+    color: var(--color-bg);
+    font-weight: 600;
+    box-shadow: var(--shadow-hard-brand);
+  }
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+}
+
+/* User paused motion (footer toggle): stop every CSS loop. JS loops read the same flag. */
+html[data-motion="paused"] *,
+html[data-motion="paused"] *::before,
+html[data-motion="paused"] *::after {
+  animation-play-state: paused !important;
+}
+
+/* Increased contrast: tertiary text becomes secondary, hairlines get heavier. */
+@media (prefers-contrast: more) {
+  :root {
+    --color-fg-subtle: #1a4a66;
+    --color-fg-muted: #003049;
+  }
+}
+
+/* Above-the-fold reveals run in CSS from first paint — they never wait for
+   hydration, and fill-mode "both" means a failed script can't leave them hidden.
+   Under the first-visit preloader they start after it lifts. */
+@keyframes nv-mask-up {
+  from { transform: translateY(105%); }
+  to { transform: translateY(0); }
+}
+@keyframes nv-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nv-mask-in {
+  animation: nv-mask-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--nv-delay, 0s);
+}
+.nv-fade-in {
+  animation: nv-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--nv-delay, 0s);
+}
+html.nv-first-visit .nv-mask-in,
+html.nv-first-visit .nv-fade-in {
+  animation-delay: calc(var(--nv-delay, 0s) + 1.15s);
+}
+
+/* First-visit preloader is gated before paint by an inline script in <head>. */
+html:not(.nv-first-visit) .nv-loader {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

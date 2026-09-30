@@ -1,29 +1,28 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
+import * as Dialog from "@radix-ui/react-dialog";
 import { Menu, X, FileText, Search } from "lucide-react";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
+import { DURATION, EASE, STAGGER } from "@/lib/motion";
 import { GlowButton } from "@/components/shared/GlowButton";
 import { Magnetic } from "@/components/shared/Magnetic";
 import { Logo } from "./Logo";
-import { Kbd } from "@/components/ui/kbd";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
 
-// Infrastructure and Systems are rendered above as their own items because they
-// carry custom markup, so this is the remainder of site.nav. Derived rather than
-// listed again: the two used to be separate arrays and had already drifted apart.
-const plainNavItems = site.nav.filter(
-  (item) => item.href !== "/what-we-offer" && item.href !== "/services",
+const headerNav = site.nav.filter((item) =>
+  (site.headerNav as readonly string[]).includes(item.href),
 );
+
+const isActive = (pathname: string, href: string) =>
+  pathname === href || pathname.startsWith(href + "/");
+
+function openCommandPalette() {
+  document.dispatchEvent(new CustomEvent("nuvero:command-palette"));
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,201 +34,167 @@ export function Navbar() {
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     setScrolled(latest > 24);
-    if (latest > previous && latest > 200) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
+    setHidden(latest > previous && latest > 200);
   });
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  useEffect(() => {
-    // only touch body when the menu is actually open — writing style on
-    // mount stamps a style attribute onto <body> mid-hydration and trips
-    // React's hydration mismatch warning
-    if (!open) return;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.removeProperty("overflow");
-    };
-  }, [open]);
-
-  const navLinkClass = (href: string) => {
-    const active = pathname === href || pathname.startsWith(href + "/");
-    return cn(
-      "relative px-4 py-2 text-sm font-medium transition-colors",
-      active
-        ? "bg-[var(--color-brand)] text-white"
-        : "text-[var(--color-fg-muted)] hover:text-[var(--color-fg)] hover:bg-[var(--color-bg-elev)]",
-    );
-  };
-
   return (
     <>
       <motion.header
-        animate={{ y: hidden ? -120 : 0 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        animate={{ y: hidden && !open ? "-100%" : 0 }}
+        transition={{ duration: DURATION.fast, ease: EASE }}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-200",
+          "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200",
           scrolled
-            ? "border-b border-[var(--color-border)] bg-[var(--color-bg)]"
-            : "bg-transparent",
+            ? "border-[var(--color-border)] bg-[var(--color-bg)]"
+            : "border-transparent bg-transparent",
         )}
       >
-        <div className="container-x flex h-16 items-center justify-between md:h-18">
-          <Logo />
+        <div className="container-x flex h-header items-center justify-between gap-6 lg:h-header-lg">
+          <Logo className="shrink-0" />
 
-          {/* Desktop nav NavigationMenu */}
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList className="gap-0 space-x-0">
-              {/* Infrastructure */}
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/what-we-offer" className={navLinkClass("/what-we-offer")}>
-                    Infrastructure
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
-              {/* Systems plain link */}
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/services" className={navLinkClass("/services")}>
-                    Systems
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
-              {/* Remaining plain links */}
-              {plainNavItems.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink asChild>
-                    <Link href={item.href} className={navLinkClass(item.href)}>
+          <nav aria-label="Primary" className="hidden lg:block">
+            <ul className="flex items-center">
+              {headerNav.map((item) => {
+                const active = isActive(pathname, item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "inline-flex min-h-11 items-center px-3.5 text-[15px] font-medium transition-colors xl:px-4",
+                        active
+                          ? "bg-[var(--color-brand)] text-white"
+                          : "text-[var(--color-fg-muted)] hover:bg-[var(--color-bg-elev)] hover:text-[var(--color-fg)]",
+                      )}
+                    >
                       {item.label}
                     </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
 
-          <div className="hidden items-center gap-2 md:flex">
-            {/* CMD+K search hint */}
+          <div className="hidden shrink-0 items-center gap-2 lg:flex">
             <button
-              onClick={() => {
-                const e = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
-                document.dispatchEvent(e);
-              }}
-              className="inline-flex h-11 w-36 items-center justify-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-bg-elev)] text-xs text-[var(--color-fg-subtle)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
-              aria-label="Open command palette"
+              type="button"
+              onClick={openCommandPalette}
+              className="inline-flex size-11 items-center justify-center border border-[var(--color-border)] bg-[var(--color-bg-elev)] text-[var(--color-fg-muted)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+              aria-label="Search the site"
+              title="Search (⌘K / Ctrl K)"
             >
-              <Search className="size-3.5" />
-              <Kbd className="text-[10px]">⌘K</Kbd>
+              <Search className="size-4" strokeWidth={2.25} />
             </button>
             <Magnetic>
-              <Link
-                href="/booklet"
-                className="inline-flex h-11 w-36 items-center justify-center gap-1.5 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] text-sm font-semibold text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
-              >
-                <FileText className="size-3.5 text-[var(--color-accent)]" />
-                Booklet
-              </Link>
-            </Magnetic>
-            <Magnetic>
-              <GlowButton href="/contact" size="sm" withArrow className="!h-11 !w-36 !px-0">
-                Book a free call
+              <GlowButton href="/contact" size="sm" withArrow className="!h-11">
+                {site.cta.primary}
               </GlowButton>
             </Magnetic>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-[var(--color-border)] text-[var(--color-fg)] md:hidden"
-          >
-            <Menu className="size-5" />
-          </button>
+          <Dialog.Root open={open} onOpenChange={setOpen}>
+            <Dialog.Trigger asChild>
+              <button
+                type="button"
+                aria-label="Open menu"
+                className="inline-flex size-11 items-center justify-center border border-[var(--color-border)] text-[var(--color-fg)] lg:hidden"
+              >
+                <Menu className="size-5" />
+              </button>
+            </Dialog.Trigger>
+            <AnimatePresence>
+              {open ? <MobileMenu pathname={pathname} onClose={() => setOpen(false)} /> : null}
+            </AnimatePresence>
+          </Dialog.Root>
         </div>
       </motion.header>
-
-      <AnimatePresence>
-        {open ? <MobileMenu onClose={() => setOpen(false)} /> : null}
-      </AnimatePresence>
     </>
   );
 }
 
-function MobileMenu({ onClose }: { onClose: () => void }) {
+function MobileMenu({ pathname, onClose }: { pathname: string; onClose: () => void }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: "100%" }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: "100%" }}
-      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 z-[60] flex flex-col bg-[var(--color-bg)] md:hidden"
-    >
-      <div className="container-x flex h-16 items-center justify-between border-b border-[var(--color-border)]">
-        <Logo />
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close menu"
-          className="inline-flex size-10 items-center justify-center border border-[var(--color-border)] text-[var(--color-fg)]"
-        >
-          <X className="size-5" />
-        </button>
-      </div>
-
-      <nav className="container-x flex flex-1 flex-col justify-center gap-0 py-12">
-        {site.nav.map((item, i) => (
-          <motion.div
-            key={item.href}
-            initial={{ opacity: 0, x: -16 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.05 + i * 0.04, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Link
-              href={item.href}
-              onClick={onClose}
-              className="block border-b border-[var(--color-border)] py-4 font-display text-3xl font-semibold tracking-tight text-[var(--color-fg)] hover:text-[var(--color-brand)]"
-            >
-              {item.label}
-            </Link>
-          </motion.div>
-        ))}
-
+    <Dialog.Portal forceMount>
+      <Dialog.Content forceMount asChild aria-describedby={undefined}>
         <motion.div
-          initial={{ opacity: 0, x: -16 }}
+          initial={{ opacity: 0, x: "100%" }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mt-10 flex flex-col gap-3"
+          exit={{ opacity: 0, x: "100%" }}
+          transition={{ duration: DURATION.fast, ease: EASE }}
+          className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-[var(--color-bg)] lg:hidden"
         >
-          <GlowButton href="/contact" size="lg" withArrow>
-            Book a call
-          </GlowButton>
-          <Link
-            href="/booklet"
-            onClick={onClose}
-            className="inline-flex items-center gap-2 self-start border border-[var(--color-border)] px-4 py-2 text-sm font-medium text-[var(--color-fg-muted)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
-          >
-            <FileText className="size-4 text-[var(--color-accent)]" />
-            Open services booklet
-          </Link>
-        </motion.div>
-      </nav>
+          <Dialog.Title className="sr-only">Menu</Dialog.Title>
+          <div className="container-x flex h-header shrink-0 items-center justify-between border-b border-[var(--color-border)]">
+            <Logo />
+            <Dialog.Close asChild>
+              <button
+                type="button"
+                aria-label="Close menu"
+                className="inline-flex size-11 items-center justify-center border border-[var(--color-border)] text-[var(--color-fg)]"
+              >
+                <X className="size-5" />
+              </button>
+            </Dialog.Close>
+          </div>
 
-      <div className="container-x flex flex-col gap-3 border-t border-[var(--color-border)] pb-10 pt-6 text-sm text-[var(--color-fg-muted)]">
-        <a href={`mailto:${site.contact.email}`} className="hover:text-[var(--color-fg)]">
-          {site.contact.email}
-        </a>
-        <a href={`tel:${site.contact.phoneRaw}`} className="hover:text-[var(--color-fg)]">
-          {site.contact.phone}
-        </a>
-      </div>
-    </motion.div>
+          <nav aria-label="Primary" className="container-x flex flex-1 flex-col justify-center py-10">
+            <ul>
+              {site.nav.map((item, i) => {
+                const active = isActive(pathname, item.href);
+                return (
+                  <motion.li
+                    key={item.href}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * STAGGER, duration: DURATION.fast, ease: EASE }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={onClose}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "flex min-h-11 items-center justify-between border-b border-[var(--color-border)] py-3.5 font-display text-3xl font-semibold tracking-tight",
+                        active ? "text-[var(--color-brand)]" : "text-[var(--color-fg)] hover:text-[var(--color-brand)]",
+                      )}
+                    >
+                      {item.label}
+                      <span className="eyebrow text-[var(--color-fg-subtle)]">{String(i + 1).padStart(2, "0")}</span>
+                    </Link>
+                  </motion.li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-10 flex flex-col gap-3">
+              <GlowButton href="/contact" size="lg" withArrow>
+                {site.cta.primary}
+              </GlowButton>
+              <Link
+                href="/booklet"
+                onClick={onClose}
+                className="inline-flex min-h-11 items-center gap-2 self-start border border-[var(--color-border)] px-4 text-sm font-medium text-[var(--color-fg-muted)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+              >
+                <FileText className="size-4 text-[var(--color-accent-ink)]" />
+                Open the infrastructure booklet
+              </Link>
+            </div>
+          </nav>
+
+          <div className="container-x flex flex-col border-t border-[var(--color-border)] pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-4 text-sm text-[var(--color-fg-muted)]">
+            <a href={`mailto:${site.contact.email}`} className="inline-flex min-h-11 items-center hover:text-[var(--color-fg)]">
+              {site.contact.email}
+            </a>
+            <a href={`tel:${site.contact.phoneRaw}`} className="inline-flex min-h-11 items-center hover:text-[var(--color-fg)]">
+              {site.contact.phone}
+            </a>
+          </div>
+        </motion.div>
+      </Dialog.Content>
+    </Dialog.Portal>
   );
 }

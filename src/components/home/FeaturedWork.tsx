@@ -1,10 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Mic, Bot, Megaphone, Truck, Target, Search, Boxes, FileText, Send } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight, Mic, Bot, Megaphone, Truck, Target, Search, Boxes, FileText, Send } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { Marquee } from "@/components/shared/Marquee";
 
 type WorkItem = {
   no: string;
@@ -13,7 +12,7 @@ type WorkItem = {
   headline: string;
   highlights: string[];
   impact: { metric: string; label: string }[];
-  gradient: string;
+  href: string;
   icon: React.ElementType;
   openSource?: boolean;
 };
@@ -21,6 +20,7 @@ type WorkItem = {
 const workItems: WorkItem[] = [
   {
     no: "01",
+    href: "/work/southwest-gases-voice-concierge",
     client: "Southwest Gases",
     industry: "Energy & Utilities",
     headline: "Every inbound call answered in <60s · every new lead followed up in <5 min",
@@ -36,10 +36,10 @@ const workItems: WorkItem[] = [
       { metric: "100%", label: "follow-up consistency" },
       { metric: "0", label: "manual call notes entered" },
     ],
-    gradient: "from-violet-500/35 via-fuchsia-500/20 to-cyan-500/25",
   },
   {
     no: "02",
+    href: "/work/gohappy-club-member-assistant",
     client: "GoHappy Club",
     industry: "Senior Wellness · D2C",
     headline: "92% of queries self-served in 6 languages · LLM cost down ~60%",
@@ -55,10 +55,10 @@ const workItems: WorkItem[] = [
       { metric: "~60%", label: "lower LLM inference cost" },
       { metric: "<50ms", label: "response time on cached queries" },
     ],
-    gradient: "from-cyan-500/35 via-teal-500/20 to-violet-500/25",
   },
   {
     no: "03",
+    href: "/work/ai-marketing-campaign-orchestrator",
     client: "Marketrz Agency",
     industry: "Marketing & Media",
     headline: "Full campaign kit in <15 min · down from 2 days, across 6+ channels",
@@ -74,10 +74,10 @@ const workItems: WorkItem[] = [
       { metric: "6+", label: "channels covered from one brief" },
       { metric: "100%", label: "consistent brand voice, every time" },
     ],
-    gradient: "from-violet-500/30 via-cyan-500/20 to-fuchsia-500/25",
   },
   {
     no: "04",
+    href: "/work/southwest-gases-delivery-schedule",
     client: "Southwest Gases",
     industry: "Energy & Utilities",
     headline: "Zero daily ops calls · 100% route visibility, full audit trail",
@@ -93,10 +93,10 @@ const workItems: WorkItem[] = [
       { metric: "100%", label: "route visibility in real time" },
       { metric: "Full", label: "audit trail of every change made" },
     ],
-    gradient: "from-fuchsia-500/25 via-violet-500/20 to-cyan-500/20",
   },
   {
     no: "05",
+    href: "/work/southwest-gases-erp",
     client: "Southwest Gases",
     industry: "Energy & Utilities",
     headline: "Month-end from days to minutes · every invoice reconciled to QuickBooks on its own",
@@ -112,10 +112,10 @@ const workItems: WorkItem[] = [
       { metric: "0", label: "prices or balances shown to any driver" },
       { metric: "100%", label: "of invoices reconciled to QuickBooks" },
     ],
-    gradient: "from-violet-500/30 via-cyan-500/20 to-fuchsia-500/25",
   },
   {
     no: "06",
+    href: "/work/linkedin-lead-intelligence-engine",
     client: "Multi-Client Deployment",
     industry: "B2B SaaS & Agencies",
     headline: "100% automated top-of-funnel · near-zero marginal lead cost, zero manual research",
@@ -131,10 +131,10 @@ const workItems: WorkItem[] = [
       { metric: "Zero", label: "manual prospect research hours" },
       { metric: "94%", label: "lower lead cost vs. prior vendors" },
     ],
-    gradient: "from-cyan-500/25 via-fuchsia-500/20 to-violet-500/25",
   },
   {
     no: "07",
+    href: "/work",
     client: "SBA.gov Research Workflow",
     industry: "Government & SMB Data",
     headline: "1,000s of hidden SMBs found per run · hours of research collapsed to minutes",
@@ -150,11 +150,11 @@ const workItems: WorkItem[] = [
       { metric: "1000s", label: "of SMBs found per automated run" },
       { metric: "$0", label: "recurring tool or data cost" },
     ],
-    gradient: "from-teal-500/30 via-cyan-500/20 to-violet-500/20",
     openSource: true,
   },
   {
     no: "08",
+    href: "/work/adfactors-pr-wire-booking",
     client: "Adfactors PR",
     industry: "PR & Communications",
     headline: "178 wire rate cards to a client-ready PDF quote in minutes, not hours",
@@ -170,10 +170,10 @@ const workItems: WorkItem[] = [
       { metric: "Minutes", label: "to a client-ready quote, was hours" },
       { metric: "1", label: "source of truth, edited in real time" },
     ],
-    gradient: "from-violet-500/30 via-fuchsia-500/20 to-cyan-500/25",
   },
   {
     no: "09",
+    href: "/work/nuvero-outreach-engine",
     client: "Nuvero AI",
     industry: "Sales & Outreach",
     headline: "A full outreach pipeline reviewed in ~10 minutes a day, with a human gating every send",
@@ -189,112 +189,116 @@ const workItems: WorkItem[] = [
       { metric: "0", label: "emails sent without human approval" },
       { metric: "100%", label: "of contacts carry provenance" },
     ],
-    gradient: "from-cyan-500/30 via-teal-500/20 to-violet-500/25",
   },
 ];
 
 function WorkCard({ item }: { item: WorkItem }) {
   return (
-    <div className="relative flex w-[340px] h-[430px] shrink-0 flex-col overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-elev)] transition-colors hover:border-[var(--color-brand)] cursor-pointer select-none">
+    <Link
+      href={item.href}
+      className="group relative flex h-full w-[min(340px,82vw)] shrink-0 snap-start flex-col overflow-hidden border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] transition-[border-color,box-shadow] duration-200 hover:border-[var(--color-brand)] hover:shadow-[var(--shadow-hard-brand)]"
+    >
       <div className="relative h-[110px] overflow-hidden bg-[var(--color-brand)]">
-        <div className="absolute inset-0 grid-bg opacity-20" />
+        <div aria-hidden className="absolute inset-0 grid-bg opacity-20" />
         <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-4">
           <div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/70">
-              {item.industry}
-            </span>
-            <div className="mt-0.5 font-display text-sm font-semibold text-white">
-              {item.client}
-            </div>
+            <span className="eyebrow text-white">{item.industry}</span>
+            <div className="mt-0.5 font-display text-base font-semibold text-white">{item.client}</div>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="font-mono text-[10px] font-semibold text-white/60">
-              {item.no}
-            </span>
-          </div>
+          <span className="font-mono text-xs font-semibold text-white">{item.no}</span>
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-5 p-5 overflow-hidden">
+      <div className="flex flex-1 flex-col gap-5 p-5">
         <div className="flex items-start gap-2.5">
-          <span className="mt-0.5 shrink-0 text-[var(--color-brand)]">
-            <item.icon className="size-4" />
-          </span>
-          <p className="font-display text-base font-semibold leading-snug tracking-tight text-[var(--color-fg)]">
+          <item.icon aria-hidden className="mt-0.5 size-4 shrink-0 text-[var(--color-brand)]" />
+          <h3 className="font-display text-base font-semibold leading-snug tracking-tight text-[var(--color-fg)]">
             {item.headline}
-          </p>
+          </h3>
         </div>
 
         <ul className="flex flex-col gap-2 border-t border-[var(--color-border)] pt-4">
           {item.highlights.map((h) => (
-            <li key={h} className="flex items-start gap-2 text-[12px] leading-snug text-[var(--color-fg-muted)]">
-              <span className="mt-1.5 size-1 shrink-0 bg-[var(--color-brand)]" />
+            <li key={h} className="flex items-start gap-2 text-callout leading-snug text-[var(--color-fg-muted)]">
+              <span aria-hidden className="mt-2 size-1 shrink-0 bg-[var(--color-brand)]" />
               {h}
             </li>
           ))}
         </ul>
 
-        <div className="mt-auto grid grid-cols-3 gap-2 border-t border-[var(--color-border)] pt-4">
+        <dl className="mt-auto grid grid-cols-3 gap-2 border-t border-[var(--color-border)] pt-4">
           {item.impact.map((r) => (
-            <div key={r.label} className="flex flex-col gap-0.5">
-              <span className="font-display text-base font-semibold leading-none text-[var(--color-brand)]">
-                {r.metric}
-              </span>
-              <span className="text-[9.5px] leading-tight text-[var(--color-fg-subtle)]">
-                {r.label}
-              </span>
+            <div key={r.label} className="flex flex-col gap-1">
+              <dd className="order-1 font-display text-lg font-semibold leading-none text-[var(--color-brand)]">{r.metric}</dd>
+              <dt className="order-2 text-[11px] leading-tight text-[var(--color-fg-subtle)]">{r.label}</dt>
             </div>
           ))}
-        </div>
+        </dl>
+        <span className="eyebrow inline-flex items-center gap-1 text-[var(--color-fg)] group-hover:text-[var(--color-brand)]">
+          Read the deployment <ArrowUpRight aria-hidden className="size-3.5" />
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }
 
+// A rail the reader drives — no auto-scroll (HIG: no time-limited UI; show
+// partial content at the edge so it's obvious there's more).
 export function FeaturedWork() {
-  const [paused, setPaused] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const railRef = useRef<HTMLUListElement>(null);
+  const [edge, setEdge] = useState({ start: true, end: false });
 
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      if (carouselRef.current && !carouselRef.current.contains(e.target as Node)) {
-        setPaused(false);
-      }
-    };
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  const update = () => {
+    const el = railRef.current;
+    if (!el) return;
+    setEdge({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth > el.scrollWidth - 8 });
+  };
+  useEffect(update, []);
+
+  const page = (dir: 1 | -1) => {
+    const el = railRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  };
 
   return (
-    <section className="relative border-t border-[var(--color-border)] py-24 md:py-32">
-      <div className="container-x mb-12">
+    <section aria-labelledby="featured-work-title" className="section-y relative border-t border-[var(--color-border)]">
+      <div className="container-x mb-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <SectionHeader
-          eyebrow="Selected work"
+          id="featured-work-title"
+          align="left"
+          eyebrow="Deployments"
           title="Systems we've shipped that moved real business metrics."
           subtitle="Every engagement starts with a number we're trying to move and ends with the proof we moved it."
         />
+        <div className="flex shrink-0 gap-2">
+          <button type="button" onClick={() => page(-1)} disabled={edge.start} aria-label="Previous deployments" className="press inline-flex size-12 items-center justify-center border-2 border-[var(--color-border)] bg-[var(--color-bg)] shadow-[var(--shadow-hard-sm)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)] disabled:pointer-events-none disabled:opacity-40">
+            <ArrowLeft className="size-5" />
+          </button>
+          <button type="button" onClick={() => page(1)} disabled={edge.end} aria-label="Next deployments" className="press inline-flex size-12 items-center justify-center border-2 border-[var(--color-border)] bg-[var(--color-bg)] shadow-[var(--shadow-hard-sm)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)] disabled:pointer-events-none disabled:opacity-40">
+            <ArrowRight className="size-5" />
+          </button>
+        </div>
       </div>
 
-      <div ref={carouselRef} onClick={() => setPaused(true)}>
-        <Marquee pauseOnHover={false} paused={paused}>
-          {workItems.map((item) => (
-            <WorkCard key={item.no} item={item} />
-          ))}
-        </Marquee>
-      </div>
+      <ul
+        ref={railRef}
+        onScroll={update}
+        className="scrollbar-hide flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain scroll-px-6 px-6 pb-3 md:scroll-px-10 md:px-10 xl:scroll-px-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] xl:px-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]"
+      >
+        {workItems.map((item) => (
+          <li key={item.no} className="flex">
+            <WorkCard item={item} />
+          </li>
+        ))}
+      </ul>
 
-      {paused && (
-        <p className="mt-4 text-center text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-          Paused click outside to resume
-        </p>
-      )}
-
-      <div className="mt-10 flex justify-center">
+      <div className="container-x mt-10 flex">
         <Link
           href="/work"
-          className="inline-flex items-center gap-2 border-2 border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+          className="press inline-flex min-h-12 items-center gap-2 border-2 border-[var(--color-border)] px-6 text-callout font-semibold text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
         >
-          See our work
+          All deployments
           <ArrowUpRight className="size-4" />
         </Link>
       </div>

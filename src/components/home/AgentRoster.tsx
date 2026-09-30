@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useReducedMotion } from "motion/react";
+import { useLiveMotion } from "@/hooks/useMotionPreference";
 import { Reveal } from "@/components/shared/Reveal";
 import { MaskReveal } from "@/components/shared/MaskReveal";
 
@@ -27,28 +27,29 @@ const TRAITS = [
 ];
 
 // Live-ticking counters make the record feel like a working system, not a mockup.
-function useLiveCount(start: number, maxStep: number, intervalMs: number) {
-  const prefersReduced = useReducedMotion();
+function useLiveCount(start: number, maxStep: number, intervalMs: number, live: boolean) {
   const [value, setValue] = useState(start);
 
   useEffect(() => {
-    if (prefersReduced) return;
+    if (!live) return;
     const iv = setInterval(
       () => setValue((v) => v + Math.floor(Math.random() * (maxStep + 1))),
       intervalMs
     );
     return () => clearInterval(iv);
-  }, [prefersReduced, maxStep, intervalMs]);
+  }, [live, maxStep, intervalMs]);
 
   return value;
 }
 
 function CommissionRecord() {
-  const calls = useLiveCount(5204, 3, 1400);
-  const leads = useLiveCount(1318, 1, 2600);
+  const recordRef = useRef<HTMLDivElement>(null);
+  const live = useLiveMotion(recordRef);
+  const calls = useLiveCount(5204, 3, 1400, live);
+  const leads = useLiveCount(1318, 1, 2600, live);
 
   return (
-    <div className="relative border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] p-5 shadow-[6px_6px_0_var(--color-brand)] md:p-8">
+    <div ref={recordRef} className="relative border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] p-5 shadow-[6px_6px_0_var(--color-brand)] md:p-8">
       {/* stamped corner */}
       <span
         aria-hidden

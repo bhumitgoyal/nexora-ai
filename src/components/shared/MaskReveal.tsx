@@ -2,13 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { EASE } from "@/lib/motion";
 
 type MaskRevealProps = {
   children: ReactNode;
   delay?: number;
   className?: string;
+  /** Above the fold: CSS-driven, starts on first paint (see Reveal). */
+  priority?: boolean;
 };
 
 // Award-site line mask: content slides up from behind an invisible clip edge.
@@ -16,7 +18,20 @@ type MaskRevealProps = {
 // clipped, so observing it directly would never fire. A timed fail-safe forces
 // the reveal if the element is on screen but the observer never triggered:
 // a missing heading is worse than a skipped animation.
-export function MaskReveal({ children, delay = 0, className }: MaskRevealProps) {
+export function MaskReveal({ children, delay = 0, className, priority = false }: MaskRevealProps) {
+  if (priority) {
+    return (
+      <span className={`block overflow-hidden ${className ?? ""}`}>
+        <span className="nv-mask-in block" style={{ "--nv-delay": `${delay}s` } as CSSProperties}>
+          {children}
+        </span>
+      </span>
+    );
+  }
+  return <ObservedMaskReveal delay={delay} className={className}>{children}</ObservedMaskReveal>;
+}
+
+function ObservedMaskReveal({ children, delay = 0, className }: Omit<MaskRevealProps, "priority">) {
   const prefersReduced = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
   const [forced, setForced] = useState(false);

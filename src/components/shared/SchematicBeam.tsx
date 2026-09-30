@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, type RefObject } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useLiveMotion } from "@/hooks/useMotionPreference";
 import { cn } from "@/lib/utils";
 
 type SchematicBeamProps = {
@@ -24,7 +25,7 @@ export function SchematicBeam({
   delay = 0,
   duration = 2.4,
 }: SchematicBeamProps) {
-  const prefersReduced = useReducedMotion();
+  const live = useLiveMotion(containerRef);
   const [pathD, setPathD] = useState("");
   const [size, setSize] = useState({ width: 0, height: 0 });
 
@@ -99,7 +100,7 @@ export function SchematicBeam({
         />
       )}
       {/* travelling pulse */}
-      {!prefersReduced && pathD && (
+      {live && pathD && (
         <motion.path
           d={pathD}
           pathLength={100}

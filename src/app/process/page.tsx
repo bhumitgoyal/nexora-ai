@@ -3,6 +3,8 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { BuildSheet } from "@/components/process/BuildSheet";
 import { TechStackMarquee } from "@/components/home/TechStackMarquee";
 import { CtaBanner } from "@/components/home/CtaBanner";
+import { Governance } from "@/components/home/Governance";
+import { AuditDeliverables } from "@/components/home/AuditDeliverables";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/process" },
@@ -27,7 +29,8 @@ export default function ProcessPage() {
       </section>
 
       <BuildSheet />
-
+      <AuditDeliverables />
+      <Governance />
       <TechStackMarquee />
       <CtaBanner />
     </>

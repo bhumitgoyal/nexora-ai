@@ -45,6 +45,15 @@ export const site = {
     instagram: "https://www.instagram.com/nuvero.ai/",
     twitter: "https://twitter.com/bhumitgoyal",
   },
+  // One CTA lexicon everywhere (Apple HIG Writing: verb-first, consistent).
+  cta: {
+    primary: "Book a 30-min call",
+    primaryShort: "Book a call",
+    secondary: "See deployments",
+  },
+  // Header shows ≤5 destinations (HIG: nav is for navigation, ≤3 groups).
+  // Process lives in the mobile menu, footer and the home process section.
+  headerNav: ["/what-we-offer", "/services", "/industries", "/work", "/about"],
   nav: [
     { label: "Infrastructure", href: "/what-we-offer" },
     { label: "Systems", href: "/services" },

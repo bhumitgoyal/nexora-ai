@@ -17,3 +17,12 @@ export const DURATION = {
   base: 0.6,
   slow: 1.1,
 } as const;
+
+// Springs (Apple HIG / "Designing Fluid Interfaces"): start critically damped —
+// no overshoot. Bounce only when a gesture handed the element momentum.
+export const SPRING = {
+  settle: { type: "spring", duration: 0.5, bounce: 0 },
+  fling: { type: "spring", duration: 0.6, bounce: 0.15 },
+} as const;
+
+export const STAGGER = 0.06;

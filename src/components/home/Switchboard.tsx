@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 import { EASE } from "@/lib/motion";
+import { useLiveMotion } from "@/hooks/useMotionPreference";
 
 type FeedLine = {
   time: string;
@@ -30,14 +31,15 @@ const VISIBLE = 6;
 // Continuous-feed printout: operations print themselves line by line,
 // timestamped and tagged, like a telex on the wall of a print shop.
 export function Switchboard() {
-  const prefersReduced = useReducedMotion();
+  const feedRef = useRef<HTMLDivElement>(null);
+  const live = useLiveMotion(feedRef);
   const [head, setHead] = useState(VISIBLE);
 
   useEffect(() => {
-    if (prefersReduced) return;
-    const iv = setInterval(() => setHead((h) => h + 1), 1800);
+    if (!live) return;
+    const iv = setInterval(() => setHead((h) => h + 1), 2400);
     return () => clearInterval(iv);
-  }, [prefersReduced]);
+  }, [live]);
 
   const lines = Array.from({ length: VISIBLE }, (_, i) => {
     const idx = (head - VISIBLE + i + FEED.length * 1000) % FEED.length;
@@ -45,7 +47,7 @@ export function Switchboard() {
   });
 
   return (
-    <section className="relative border-t border-[var(--color-border)] py-24 md:py-32">
+    <section className="section-y relative border-t border-[var(--color-border)]">
       <div className="container-x">
         <SectionHeader
           eyebrow="The switchboard"
@@ -57,17 +59,17 @@ export function Switchboard() {
           <div className="mx-auto mt-14 max-w-2xl border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[6px_6px_0_var(--color-border)]">
             {/* header strip */}
             <div className="flex items-center justify-between border-b-2 border-[var(--color-border)] px-4 py-2.5 md:px-5">
-              <span className="font-mono text-[9px] font-bold uppercase tracking-[0.24em] text-[var(--color-fg)] md:text-[10px]">
+              <span className="eyebrow font-bold text-[var(--color-fg)]">
                 Nuvero · Switchboard
               </span>
-              <span className="flex items-center gap-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand)] md:text-[10px]">
+              <span className="eyebrow flex items-center gap-1.5 font-bold text-[var(--color-brand)]">
                 <span className="size-1.5 animate-pulse bg-[var(--color-brand)]" />
                 Printing
               </span>
             </div>
 
             {/* feed — perforated left edge */}
-            <div className="relative overflow-hidden border-l-[3px] border-dotted border-[var(--color-border)]/40 px-4 py-3 md:px-5">
+            <div ref={feedRef} role="log" aria-live="off" aria-label="Live operations feed" className="relative overflow-hidden border-l-[3px] border-dotted border-[var(--color-border)]/40 px-4 py-3 md:px-5">
               <div className="flex flex-col">
                 <AnimatePresence initial={false} mode="popLayout">
                   {lines.map((line, i) => {
@@ -76,21 +78,21 @@ export function Switchboard() {
                       <motion.div
                         key={line.key}
                         layout
-                        initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 14 }}
-                        animate={{ opacity: isLatest ? 1 : 0.45 + i * 0.09, y: 0 }}
+                        initial={{ opacity: 0, y: 14 }}
+                        animate={{ opacity: isLatest ? 1 : 0.7 + i * 0.05, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.35, ease: EASE }}
                         className="flex items-baseline gap-2.5 py-[7px] md:gap-4"
                       >
-                        <span className="shrink-0 font-mono text-[10px] tabular-nums text-[var(--color-fg-subtle)] md:text-xs">
+                        <span className="shrink-0 font-mono text-[11px] tabular-nums text-[var(--color-fg-subtle)] md:text-xs">
                           {line.time}
                         </span>
-                        <span className="hidden shrink-0 border border-[var(--color-border)]/60 px-1 py-px font-mono text-[8px] font-bold uppercase tracking-[0.14em] text-[var(--color-fg-subtle)] sm:inline">
+                        <span className="hidden shrink-0 border border-[var(--color-border)]/60 px-1 py-px font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-fg-subtle)] sm:inline">
                           {line.tag}
                         </span>
-                        <span className="min-w-0 truncate font-mono text-[11px] text-[var(--color-fg)] md:text-[13px]">
+                        <span className="min-w-0 truncate font-mono text-xs text-[var(--color-fg)] md:text-[13px]">
                           {line.text}
-                          {isLatest && !prefersReduced && (
+                          {isLatest && live && (
                             <motion.span
                               aria-hidden
                               className="ml-1 inline-block h-[1em] w-[7px] translate-y-[2px] bg-[var(--color-brand)]"

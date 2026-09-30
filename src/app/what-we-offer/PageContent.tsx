@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -38,6 +35,8 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { services } from "@/content/services";
+import { site } from "@/content/site";
+import { InfrastructureViews } from "./InfrastructureViews";
 
 type SolvedItem = {
   task: string;
@@ -188,136 +187,82 @@ const industryJumpIcons: Record<string, LucideIcon> = {
 };
 
 export function WhatWeOfferContent() {
-  const [tab, setTab] = useState<"industry" | "service">("industry");
-
-  // A link like /what-we-offer#service-conversational-ai-chatbots only resolves once the
-  // "By service" tab is active, since that's the only place the matching id renders. The
-  // browser's own anchor-scroll fires once on load and gives up before this state flips,
-  // so switch the tab first, then scroll to the target ourselves once it exists.
-  useEffect(() => {
-    const hash = window.location.hash.slice(1);
-    if (!hash.startsWith("service-")) return;
-    setTab("service");
-    const raf = requestAnimationFrame(() => {
-      document.getElementById(hash)?.scrollIntoView({ block: "start" });
-    });
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
   return (
     <>
-      <section className="relative border-b border-[var(--color-border)] py-24 md:py-32">
+      <section className="section-y relative">
         <div className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x">
-          <Reveal>
-            <span className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-muted)]">
+          <Reveal priority>
+            <span className="eyebrow inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1.5 text-[var(--color-fg-muted)]">
               <span className="size-1.5 bg-[var(--color-brand)]" />
               The infrastructure
             </span>
           </Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="mt-6 max-w-4xl text-balance font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+          <Reveal priority delay={0.05}>
+            <h1 className="mt-6 max-w-4xl text-balance font-display text-title-1 font-semibold">
               AI infrastructure, shaped to{" "}
               <span className="text-[var(--color-brand)]">your</span> operation.
             </h1>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-5 max-w-2xl text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
+          <Reveal priority delay={0.1}>
+            <p className="mt-5 max-w-2xl text-pretty text-lead text-[var(--color-fg-muted)]">
               We don&apos;t sell tools off a shelf. We go deep on your industry, map how the work
               actually flows, and build the intelligence layer that absorbs it: agents that
               know your workflows, your systems, and your edge cases.
             </p>
           </Reveal>
-          <Reveal delay={0.15}>
+          <Reveal priority delay={0.15}>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)]"
               >
-                Book a free 30-min call <ArrowRight className="size-4" />
+                {site.cta.primary} <ArrowRight className="size-4" />
               </Link>
               <Link
                 href="/work"
                 className="inline-flex items-center gap-2 border-2 border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-fg)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
               >
-                See deployed systems
+                {site.cta.secondary}
               </Link>
             </div>
           </Reveal>
 
-          {/* Tab toggle */}
-          <Reveal delay={0.18}>
-            <div className="mt-10 inline-flex border border-[var(--color-border)] p-1 gap-1">
-              <button
-                onClick={() => setTab("industry")}
-                className={`px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
-                  tab === "industry"
-                    ? "bg-[var(--color-brand)] text-white"
-                    : "text-[var(--color-fg-muted)] hover:text-[var(--color-fg)]"
-                }`}
-              >
-                By Industry
-              </button>
-              <button
-                onClick={() => setTab("service")}
-                className={`px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
-                  tab === "service"
-                    ? "bg-[var(--color-brand)] text-white"
-                    : "text-[var(--color-fg-muted)] hover:text-[var(--color-fg)]"
-                }`}
-              >
-                By Service
-              </button>
-            </div>
-          </Reveal>
-
-          {/* Quick jump nav - industry tab */}
-          {tab === "industry" && (
-            <Reveal delay={0.2}>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {orderedSections.map((s) => {
+        </div>
+      </section>
+      <InfrastructureViews
+        industryJump={<>
+          {orderedSections.map((s) => {
                   const Icon = industryJumpIcons[s.id] ?? Megaphone;
                   return (
                     <a
                       key={s.id}
                       href={`#${s.id}`}
-                      className="inline-flex items-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2 text-xs font-semibold text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+                      className="inline-flex min-h-11 shrink-0 items-center gap-1.5 whitespace-nowrap border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 text-callout font-semibold text-[var(--color-fg-muted)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
                     >
                       <Icon className="size-3.5" />
                       {s.label}
                     </a>
                   );
                 })}
-              </div>
-            </Reveal>
-          )}
-
-          {/* Quick jump nav - service tab */}
-          {tab === "service" && (
-            <Reveal delay={0.2}>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {services.map((service) => {
+        </>}
+        serviceJump={<>
+          {services.map((service) => {
                   const Icon = service.icon;
                   return (
                     <a
                       key={service.slug}
                       href={`#service-${service.slug}`}
-                      className="inline-flex items-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 py-2 text-xs font-semibold text-[var(--color-fg-muted)] transition-all hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+                      className="inline-flex min-h-11 shrink-0 items-center gap-1.5 whitespace-nowrap border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-4 text-callout font-semibold text-[var(--color-fg-muted)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
                     >
                       <Icon className="size-3.5" />
                       {service.title}
                     </a>
                   );
                 })}
-              </div>
-            </Reveal>
-          )}
-        </div>
-      </section>
-
-      {/* BY INDUSTRY */}
-      {tab === "industry" && (
-        <>
+        </>}
+        industry={
+      <>
           {orderedSections.map((section, idx) => {
             const Icon = section.icon;
             const regularItems = section.solved.filter((a) => !a.isNew);
@@ -326,7 +271,7 @@ export function WhatWeOfferContent() {
               <section
                 key={section.id}
                 id={section.id}
-                className="border border-[var(--color-border)] border-t-0 py-24 md:py-32"
+                className="section-y scroll-mt-32 border-t border-[var(--color-border)]"
                 style={{ background: idx % 2 === 1 ? "var(--color-bg-elev)" : "var(--color-bg)" }}
               >
                 <div className="container-x">
@@ -386,7 +331,7 @@ export function WhatWeOfferContent() {
                               className="flex gap-4 border-b border-[var(--color-border)] p-5 last:border-b-0 transition-colors hover:bg-[var(--color-bg-elev)]"
                             >
                               {ItemIcon && (
-                                <ItemIcon className="mt-0.5 size-4 shrink-0 text-[var(--color-accent)]" />
+                                <ItemIcon className="mt-0.5 size-4 shrink-0 text-[var(--color-accent-ink)]" />
                               )}
                               <div className="flex flex-col gap-1">
                                 <span className="text-sm font-semibold text-[var(--color-fg)]">{a.task}</span>
@@ -402,13 +347,13 @@ export function WhatWeOfferContent() {
                             <Sparkles className="mt-0.5 size-5 shrink-0 text-[var(--color-brand)] transition-colors group-hover:text-white" />
                             <div className="flex flex-col gap-1">
                               <span className="font-display text-lg font-semibold tracking-tight text-[var(--color-brand)] transition-colors group-hover:text-white">
-                                Your Problem Next?
+                                Your workflow next?
                               </span>
                               <span className="text-sm text-[var(--color-fg-muted)] transition-colors group-hover:text-white/80">
                                 {ctaItem.detail}
                               </span>
                               <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-brand)] transition-colors group-hover:text-white">
-                                Book a free 30-min call <ArrowRight className="size-3" />
+                                {site.cta.primary} <ArrowRight className="size-3" />
                               </span>
                             </div>
                           </div>
@@ -421,11 +366,9 @@ export function WhatWeOfferContent() {
             );
           })}
         </>
-      )}
-
-      {/* BY SERVICE */}
-      {tab === "service" && (
-        <section className="border-t border-[var(--color-border)] py-24 md:py-32">
+        }
+        service={
+        <section className="section-y border-t border-[var(--color-border)]">
           <div className="container-x">
             <div className="grid grid-cols-1 gap-px bg-[var(--color-border)] border border-[var(--color-border)] md:grid-cols-2">
               {services.map((service) => {
@@ -478,7 +421,7 @@ export function WhatWeOfferContent() {
                     <Sparkles className="mt-0.5 size-6 shrink-0 text-[var(--color-brand)] transition-colors group-hover:text-white" />
                     <div className="flex flex-col gap-1.5">
                       <span className="font-display text-xl font-semibold tracking-tight text-[var(--color-brand)] transition-colors group-hover:text-white md:text-2xl">
-                        Solution to your custom problem
+                        A system for your exact workflow
                       </span>
                       <span className="max-w-xl text-sm text-[var(--color-fg-muted)] transition-colors group-hover:text-white/80 md:text-base">
                         Have a workflow, bottleneck, or internal process that doesn&apos;t fit standard systems? We engineer custom AI agents tailored to your exact stack, tools, and operations.
@@ -486,18 +429,16 @@ export function WhatWeOfferContent() {
                     </div>
                   </div>
                   <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-brand)] transition-colors group-hover:text-white">
-                    Book a free 30-min call <ArrowRight className="size-4" />
+                    {site.cta.primary} <ArrowRight className="size-4" />
                   </span>
                 </div>
               </Link>
             </Reveal>
           </div>
         </section>
-      )}
-
-      {/* Bottom CTA — industry tab only */}
-      {tab === "industry" && (
-        <section className="py-24 md:py-32">
+        }
+      />
+        <section className="section-y">
           <div className="container-x">
             <Reveal>
               <div className="flex flex-col items-center gap-6 border-2 border-dashed border-[var(--color-border)] bg-[var(--color-bg-elev)] p-10 text-center md:p-16">
@@ -514,13 +455,12 @@ export function WhatWeOfferContent() {
                   href="/contact"
                   className="inline-flex items-center gap-2 border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-[var(--color-brand-strong)]"
                 >
-                  Book a free 30-min call <ArrowRight className="size-4" />
+                  {site.cta.primary} <ArrowRight className="size-4" />
                 </Link>
               </div>
             </Reveal>
           </div>
         </section>
-      )}
     </>
   );
 }

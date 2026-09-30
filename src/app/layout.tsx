@@ -3,11 +3,11 @@ import { DM_Sans, Space_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ChromeShell } from "@/components/layout/ChromeShell";
-import { NoiseOverlay } from "@/components/shared/NoiseOverlay";
 import { LoadingScreen } from "@/components/shared/LoadingScreen";
 import { SmoothScroll } from "@/components/shared/SmoothScroll";
 import { ScrollProgressBar } from "@/components/layout/ScrollProgressBar";
 import { ClientOverlays } from "@/components/layout/ClientOverlays";
+import { MotionProvider } from "@/components/layout/MotionProvider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DotGridWrapper } from "@/components/shared/DotGridWrapper";
@@ -15,10 +15,12 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/content/site";
+import { getSearchIndex } from "@/lib/searchIndex";
 import "./globals.css";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-dm-sans",
   display: "swap",
 });
@@ -76,30 +78,43 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+const PREPAINT = `try{var d=document.documentElement;if(localStorage.getItem("nuvero_motion")==="paused")d.dataset.motion="paused";if(!sessionStorage.getItem("nuvero_loaded")&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&!location.pathname.startsWith("/booklet"))d.classList.add("nv-first-visit")}catch(e){}`;
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const searchIndex = await getSearchIndex();
   return (
     <html
       lang="en"
       className={`${dmSans.variable} ${spaceMono.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        {/* Runs before first paint: restores the pause-motion preference and
+            decides whether the first-visit preloader shows at all, so it can
+            never flash for returning visitors, reduced motion, or no-JS. */}
+        <script dangerouslySetInnerHTML={{ __html: PREPAINT }} />
+      </head>
       <body className="relative min-h-screen antialiased">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <JsonLd />
         <Analytics />
         <SpeedInsights />
         <SmoothScroll />
         <DotGridWrapper />
+        <MotionProvider>
         <TooltipProvider delayDuration={300}>
           <ScrollProgressBar />
           <LoadingScreen />
-          <NoiseOverlay />
           <ChromeShell navbar={<Navbar />} footer={<Footer />}>
             {children}
           </ChromeShell>
-          <ClientOverlays />
+          <ClientOverlays searchIndex={searchIndex} />
           <Toaster
             position="bottom-right"
             toastOptions={{
@@ -114,6 +129,7 @@ export default function RootLayout({
             }}
           />
         </TooltipProvider>
+        </MotionProvider>
       </body>
     </html>
   );

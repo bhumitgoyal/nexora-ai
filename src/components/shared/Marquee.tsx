@@ -30,12 +30,15 @@ export function Marquee({
         className={cn(
           "flex shrink-0 items-center gap-8 pr-8",
           reverse ? "animate-[marquee-reverse_40s_linear_infinite]" : "animate-[marquee_40s_linear_infinite]",
-          pauseOnHover && "group-hover:[animation-play-state:paused]",
+          pauseOnHover && "group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]",
         )}
         style={paused ? { animationPlayState: "paused" } : undefined}
       >
-        {children}
-        {children}
+        <div className="flex shrink-0 items-center gap-8">{children}</div>
+        {/* loop copy — visual only, so screen readers hear the list once */}
+        <div aria-hidden className="flex shrink-0 items-center gap-8">
+          {children}
+        </div>
       </div>
     </div>
   );

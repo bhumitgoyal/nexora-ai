@@ -1,21 +1,47 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import type { SearchEntry } from "@/lib/searchIndex";
 
+// The palette (cmdk + dialog) is only downloaded the first time someone asks
+// for it — ⌘K / Ctrl K, or the header search button.
 const CommandPalette = dynamic(
   () => import("@/components/shared/CommandPalette").then((m) => m.CommandPalette),
-  { ssr: false }
+  { ssr: false },
 );
 
 const QuickContact = dynamic(
   () => import("@/components/shared/QuickContact").then((m) => m.QuickContact),
-  { ssr: false }
+  { ssr: false },
 );
 
-export function ClientOverlays() {
+export function ClientOverlays({ searchIndex }: { searchIndex: SearchEntry[] }) {
+  const [open, setOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const toggle = () => {
+      setLoaded(true);
+      setOpen((o) => !o);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        toggle();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("nuvero:command-palette", toggle);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("nuvero:command-palette", toggle);
+    };
+  }, []);
+
   return (
     <>
-      <CommandPalette />
+      {loaded ? <CommandPalette open={open} onOpenChange={setOpen} entries={searchIndex} /> : null}
       <QuickContact />
     </>
   );
