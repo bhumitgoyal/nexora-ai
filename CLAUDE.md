@@ -21,3 +21,4 @@ Before touching any UI, follow `.claude/skills/frontend-design/SKILL.md` (invoke
 ## MCPs (project-scoped in `.mcp.json`)
 - `shadcn` — registry search/view/add
 - `magic` (21st.dev) — component generation; needs `TWENTYFIRST_API_KEY` env var
+- `motion` (motion.dev, hosted) — Motion docs/example search, CSS spring & bounce generation, transition preview; no account needed

@@ -16,6 +16,10 @@
       "env": {
         "API_KEY": "${TWENTYFIRST_API_KEY}"
       }
+    },
+    "motion": {
+      "type": "http",
+      "url": "https://mcp.motion.dev"
     }
   }
 }
