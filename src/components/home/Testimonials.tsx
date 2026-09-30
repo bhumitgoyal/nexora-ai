@@ -6,7 +6,7 @@ import { Marquee } from "@/components/shared/Marquee";
 
 export function Testimonials() {
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="section-y relative ">
       <div className="container-x">
         <SectionHeader
           eyebrow="What clients say"
@@ -26,7 +26,7 @@ export function Testimonials() {
                 "{t.quote}"
               </p>
               <div className="mt-auto flex items-center gap-3 border-t border-[var(--color-border)] pt-4">
-                <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-brand)] font-display text-sm font-semibold text-white">
+                <span className="inline-flex size-10 shrink-0 items-center justify-center bg-[var(--color-brand)] font-display text-sm font-semibold text-white">
                   {t.initials}
                 </span>
                 <div className="flex flex-col">
@@ -46,7 +46,7 @@ export function Testimonials() {
       <div className="container-x mt-8 flex justify-end">
         <Link
           href="/reviews"
-          className="group inline-flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
+          className="eyebrow group inline-flex items-center gap-1.5 text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
         >
           View all reviews
           <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

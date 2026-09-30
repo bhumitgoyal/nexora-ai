@@ -68,7 +68,7 @@ export function FounderTrust() {
                   </div>
 
                   <div className="mt-6 border-t border-[var(--color-border)] pt-4">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-fg-subtle)]">
+                    <span className="eyebrow text-[var(--color-fg-muted)]">
                       ■ Standard Operating Protocol
                     </span>
                   </div>
@@ -85,7 +85,7 @@ export function FounderTrust() {
               <div className="md:col-span-8 flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <span className="size-2 bg-[var(--color-brand)]" />
-                  <span className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-brand)]">
+                  <span className="eyebrow font-bold text-[var(--color-brand)]">
                     Principal AI Engineer & Founder
                   </span>
                 </div>
@@ -104,7 +104,7 @@ export function FounderTrust() {
                 </div>
                 <Link
                   href="/about"
-                  className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-brand)] hover:underline"
+                  className="eyebrow flex items-center gap-2 font-bold text-[var(--color-brand)] hover:underline"
                 >
                   <span>Read our engineering manifesto →</span>
                 </Link>

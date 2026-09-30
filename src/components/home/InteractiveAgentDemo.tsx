@@ -6,6 +6,8 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
 import { GlowButton } from "@/components/shared/GlowButton";
 import Link from "next/link";
+import { AnimatePresence, motion } from "motion/react";
+import { DURATION, EASE } from "@/lib/motion";
 
 type Scenario = {
   id: string;
@@ -242,12 +244,16 @@ export function InteractiveAgentDemo() {
 
         <Reveal delay={0.1}>
           {/* Scenario Tabs */}
-          <div className="mt-12 flex flex-wrap gap-0 border border-[var(--color-border)] bg-[var(--color-bg-elev)]">
+          <div role="tablist" aria-label="Production scenarios" className="mt-12 flex flex-wrap gap-0 border border-[var(--color-border)] bg-[var(--color-bg-elev)]">
             {SCENARIOS.map((s) => {
               const active = s.id === activeTab;
               return (
                 <button
                   key={s.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  aria-controls="agent-demo-panel"
                   onClick={() => handleSelectTab(s.id)}
                   className={`flex flex-1 min-w-[160px] items-center justify-between gap-3 border-r border-b md:border-b-0 border-[var(--color-border)] px-5 py-4 text-left transition-colors last:border-r-0 ${
                     active
@@ -256,8 +262,8 @@ export function InteractiveAgentDemo() {
                   }`}
                 >
                   <div className="flex flex-col">
-                    <span className={`text-[10px] font-mono font-semibold uppercase tracking-[0.18em] ${
-                      active ? "text-white/80" : "text-[var(--color-fg-subtle)]"
+                    <span className={`text-[11px] font-mono font-semibold uppercase tracking-[0.18em] ${
+                      active ? "text-white" : "text-[var(--color-fg-muted)]"
                     }`}>
                       {s.tag.split("·")[0]}
                     </span>
@@ -274,7 +280,7 @@ export function InteractiveAgentDemo() {
           </div>
 
           {/* Main Inspection Grid */}
-          <div className="mt-0 grid grid-cols-1 border-x border-b border-[var(--color-border)] lg:grid-cols-12 bg-[var(--color-bg-elev)]">
+          <div id="agent-demo-panel" role="tabpanel" className="mt-0 grid grid-cols-1 border-x border-b border-[var(--color-border)] lg:grid-cols-12 bg-[var(--color-bg-elev)]">
             
             {/* Conversation Log (7 cols) */}
             <div className="flex flex-col justify-between border-b border-[var(--color-border)] p-6 md:p-8 lg:col-span-7 lg:border-b-0 lg:border-r">
@@ -282,28 +288,34 @@ export function InteractiveAgentDemo() {
                 {/* Header bar */}
                 <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-4">
                   <div className="flex items-center gap-2">
-                    <span className="inline-block size-2.5 bg-[#2D7A4F] animate-pulse" />
-                    <span className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-fg)]">
-                      LIVE DIALOGUE TRACE · {scenario.caller}
+                    <span className="inline-block size-2.5 bg-[var(--color-success)] animate-pulse" />
+                    <span className="eyebrow font-semibold text-[var(--color-fg)]">
+                      Dialogue trace · {scenario.caller}
                     </span>
                   </div>
                   <button
+                    type="button"
                     onClick={handleReplay}
-                    className="flex items-center gap-1.5 border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-1 font-mono text-xs text-[var(--color-fg)] transition-colors hover:bg-[var(--color-surface)]"
+                    disabled={isPlaying}
+                    className="press flex min-h-11 items-center gap-1.5 border-2 border-[var(--color-border)] bg-[var(--color-bg)] px-3 font-mono text-xs font-bold text-[var(--color-fg)] shadow-[var(--shadow-hard-sm)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)] disabled:cursor-progress"
                   >
-                    {isPlaying ? <Activity className="size-3 text-[var(--color-brand)] animate-spin" /> : <RotateCcw className="size-3" />}
-                    <span>{isPlaying ? "Streaming..." : "Replay Sequence"}</span>
+                    {isPlaying ? <Activity className="size-3.5 text-[var(--color-brand)]" /> : <RotateCcw className="size-3.5" />}
+                    <span>{isPlaying ? "Streaming…" : "Replay the call"}</span>
                   </button>
                 </div>
 
                 {/* Dialog Messages */}
-                <div className="flex flex-col gap-4 py-2">
+                <div aria-live="polite" className="flex flex-col gap-4 py-2">
+                  <AnimatePresence initial={false}>
                   {scenario.turns.slice(0, activeTurnIndex + 1).map((turn, idx) => {
                     const isAgent = turn.speaker === "agent";
                     return (
-                      <div
-                        key={idx}
-                        className={`flex flex-col gap-1.5 p-4 border transition-all ${
+                      <motion.div
+                        key={`${scenario.id}-${idx}`}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: DURATION.fast, ease: EASE }}
+                        className={`flex flex-col gap-1.5 p-4 border transition ${
                           isAgent
                             ? "border-[var(--color-brand)] bg-[var(--color-bg)] shadow-[3px_3px_0_var(--color-brand)]"
                             : "border-[var(--color-border)] bg-[var(--color-surface)]"
@@ -312,20 +324,21 @@ export function InteractiveAgentDemo() {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <span className={`size-2 ${isAgent ? "bg-[var(--color-brand)]" : "bg-[var(--color-fg-muted)]"}`} />
-                            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-fg)]">
+                            <span className="eyebrow font-bold text-[var(--color-fg)]">
                               {isAgent ? "Nuvero Agent" : "Customer / Inbound"}
                             </span>
                           </div>
-                          <span className="font-mono text-[10px] text-[var(--color-fg-subtle)]">
+                          <span className="font-mono text-[11px] text-[var(--color-fg-muted)]">
                             {turn.timestamp}
                           </span>
                         </div>
-                        <p className="text-sm leading-relaxed text-[var(--color-fg)]">
+                        <p className="text-callout leading-relaxed text-[var(--color-fg)]">
                           {turn.text}
                         </p>
-                      </div>
+                      </motion.div>
                     );
                   })}
+                  </AnimatePresence>
                 </div>
               </div>
 
@@ -344,23 +357,23 @@ export function InteractiveAgentDemo() {
             <div className="flex flex-col justify-between p-6 md:p-8 lg:col-span-5 bg-[var(--color-bg)]">
               <div className="flex flex-col gap-6">
                 <div>
-                  <h4 className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                    ■ System Telemetry & Tool Call
+                  <h4 className="eyebrow font-semibold text-[var(--color-fg-muted)]">
+                    System telemetry & tool call
                   </h4>
                   <p className="mt-1 font-display text-base font-semibold text-[var(--color-fg)]">
-                    Autonomous Database Mutation
+                    Autonomous database write
                   </p>
                 </div>
 
                 {/* Model and guardrail specs */}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3">
-                    <span className="block font-mono text-[10px] uppercase text-[var(--color-fg-subtle)]">Engine</span>
+                    <span className="block font-mono text-[11px] uppercase text-[var(--color-fg-subtle)]">Engine</span>
                     <span className="mt-1 block font-mono text-xs font-bold text-[var(--color-fg)]">{scenario.model}</span>
                   </div>
                   <div className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] p-3">
-                    <span className="block font-mono text-[10px] uppercase text-[var(--color-fg-subtle)]">Guardrails</span>
-                    <span className="mt-1 flex items-center gap-1.5 font-mono text-xs font-bold text-[#2D7A4F]">
+                    <span className="block font-mono text-[11px] uppercase text-[var(--color-fg-subtle)]">Guardrails</span>
+                    <span className="mt-1 flex items-center gap-1.5 font-mono text-xs font-bold text-[var(--color-success)]">
                       <ShieldCheck className="size-3.5" /> Deterministic
                     </span>
                   </div>
@@ -372,24 +385,24 @@ export function InteractiveAgentDemo() {
                     <span className="font-mono text-[11px] font-bold text-[var(--color-brand)]">
                       EXEC: {scenario.toolCall.name}
                     </span>
-                    <span className="font-mono text-[10px] bg-[#2D7A4F]/15 text-[#2D7A4F] px-2 py-0.5 font-bold">
+                    <span className="font-mono text-[11px] bg-[var(--color-success)] text-white px-2 py-0.5 font-bold">
                       200 OK
                     </span>
                   </div>
 
                   {/* Code / JSON inspection */}
-                  <div className="border border-[var(--color-border)] bg-[#003049] p-3 text-[11px] font-mono text-[#FDF0D5] leading-relaxed overflow-x-auto">
-                    <div className="text-[var(--color-accent)] font-semibold">// Payload dispatched to CRM/ERP</div>
-                    <div className="text-[#EDD89D] mt-1">{scenario.toolCall.payload}</div>
-                    <div className="mt-2 text-[#2D7A4F] font-semibold">// Server response received</div>
-                    <div className="text-white/80 mt-1">{scenario.toolCall.result}</div>
+                  <div className="border border-[var(--color-border)] bg-[var(--color-fg)] p-3 text-xs font-mono text-[var(--color-bg)] leading-relaxed overflow-x-auto">
+                    <div className="font-semibold text-[var(--color-accent)]">{"// Payload dispatched to CRM/ERP"}</div>
+                    <div className="mt-1 text-[var(--color-surface)]">{scenario.toolCall.payload}</div>
+                    <div className="mt-2 font-semibold text-[var(--color-accent)]">{"// Server response received"}</div>
+                    <div className="mt-1 text-[var(--color-on-ink-muted)]">{scenario.toolCall.result}</div>
                   </div>
                 </div>
 
                 {/* Real-world impact block */}
                 <div className="border-l-2 border-[var(--color-brand)] bg-[var(--color-bg-elev)] p-4">
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--color-brand)]">
-                    Operational Guarantee
+                  <span className="eyebrow font-bold text-[var(--color-brand)]">
+                    Operational guarantee
                   </span>
                   <p className="mt-1 text-xs text-[var(--color-fg-muted)] leading-relaxed">
                     Trained directly on your SOPs, edge-case trees, and brand voice. Every transaction logs full auditable state to your database.
@@ -401,7 +414,7 @@ export function InteractiveAgentDemo() {
               <div className="mt-8 border-t border-[var(--color-border)] pt-5">
                 <Link
                   href="/contact"
-                  className="flex items-center justify-between border border-[var(--color-border)] bg-[var(--color-brand)] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-brand-strong)]"
+                  className="press flex min-h-12 items-center justify-between border-2 border-[var(--color-brand)] bg-[var(--color-brand)] px-5 text-[15px] font-semibold text-white shadow-[var(--shadow-hard-sm)] transition-colors hover:bg-[var(--color-brand-strong)]"
                 >
                   <span>Build an agent for your stack</span>
                   <ArrowRight className="size-4" />

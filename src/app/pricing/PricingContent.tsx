@@ -9,7 +9,7 @@ import { pricingTiers, pricingPrinciples, pricingFaqs, scopingSteps } from "@/co
 export function PricingContent() {
   return (
     <>
-      <section className="relative isolate overflow-hidden py-24 md:py-32">
+      <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x relative z-10">
           <SectionHeader
@@ -30,7 +30,7 @@ export function PricingContent() {
               return (
                 <div
                   key={tier.id}
-                  className={`relative flex flex-col justify-between border-2 p-8 md:p-10 transition-all ${
+                  className={`relative flex flex-col justify-between border-2 p-8 md:p-10 transition ${
                     isFeatured
                       ? "border-[var(--color-brand)] bg-[var(--color-bg)] shadow-[8px_8px_0_var(--color-brand)]"
                       : "border-[var(--color-border)] bg-[var(--color-bg)] hover:border-[var(--color-brand)] hover:shadow-[6px_6px_0_var(--color-brand)]"
@@ -38,7 +38,7 @@ export function PricingContent() {
                 >
                   {/* Badge */}
                   {tier.badge && (
-                    <div className="absolute -top-3.5 right-8 bg-[var(--color-brand)] px-4 py-1 font-mono text-xs font-bold uppercase tracking-[0.16em] text-white">
+                    <div className="eyebrow absolute -top-3.5 right-8 bg-[var(--color-brand)] px-4 py-1 font-bold text-white">
                       {tier.badge}
                     </div>
                   )}
@@ -46,7 +46,7 @@ export function PricingContent() {
                   <div>
                     {/* Header */}
                     <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-4">
-                      <span className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[var(--color-brand)]">
+                      <span className="eyebrow font-bold text-[var(--color-brand)]">
                         TIMELINE: {tier.timeline}
                       </span>
                       <span className="font-mono text-xs text-[var(--color-fg-subtle)]">
@@ -64,7 +64,7 @@ export function PricingContent() {
 
                     {/* Scope Model Block */}
                     <div className="mt-8 border-y border-[var(--color-border)] bg-[var(--color-bg-elev)] p-6">
-                      <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--color-brand)]">
+                      <span className="eyebrow font-bold text-[var(--color-brand)]">
                         Scope Structure:
                       </span>
                       <div className="mt-1 flex flex-col gap-1">
@@ -82,7 +82,7 @@ export function PricingContent() {
 
                     {/* Full Deliverables List */}
                     <div className="mt-8 flex flex-col gap-3">
-                      <h4 className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-fg)]">
+                      <h4 className="eyebrow font-bold text-[var(--color-fg)]">
                         ■ Complete Deliverables:
                       </h4>
                       <ul className="flex flex-col gap-2.5">
@@ -97,7 +97,7 @@ export function PricingContent() {
 
                     {/* Highlights / Delivery Guarantees */}
                     <div className="mt-8 border-t border-[var(--color-border)] pt-6">
-                      <h4 className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand)]">
+                      <h4 className="eyebrow font-bold text-[var(--color-brand)]">
                         ■ Deployment Guarantees:
                       </h4>
                       <div className="mt-3 flex flex-wrap gap-2">
@@ -135,7 +135,7 @@ export function PricingContent() {
       </section>
 
       {/* How We Scope Engagements */}
-      <section className="border-t border-[var(--color-border)] bg-[var(--color-bg)] py-20 md:py-28">
+      <section className="section-y border-t border-[var(--color-border)] bg-[var(--color-bg)] ">
         <div className="container-x">
           <SectionHeader
             eyebrow="Scoping Protocol"
@@ -149,7 +149,7 @@ export function PricingContent() {
                 key={idx}
                 className="flex flex-col gap-3 border-b border-[var(--color-border)] p-8 md:border-b-0 md:border-r last:border-r-0 bg-[var(--color-bg-elev)]"
               >
-                <span className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-brand)]">
+                <span className="eyebrow font-bold text-[var(--color-brand)]">
                   ■ STAGE {s.step}
                 </span>
                 <h3 className="font-display text-lg font-bold text-[var(--color-fg)]">
@@ -165,7 +165,7 @@ export function PricingContent() {
       </section>
 
       {/* Principles & Code Ownership Section */}
-      <section className="border-t border-[var(--color-border)] bg-[var(--color-bg-elev)] py-20 md:py-28">
+      <section className="section-y border-t border-[var(--color-border)] bg-[var(--color-bg-elev)] ">
         <div className="container-x">
           <SectionHeader
             eyebrow="The Engineering Standard"
@@ -180,7 +180,7 @@ export function PricingContent() {
                 className="flex flex-col gap-3 border-b border-[var(--color-border)] p-8 md:border-b-0 md:border-r last:border-r-0 bg-[var(--color-bg)]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-brand)]">
+                  <span className="eyebrow font-bold text-[var(--color-brand)]">
                     ■ PRINCIPLE 0{idx + 1}
                   </span>
                 </div>
@@ -197,7 +197,7 @@ export function PricingContent() {
       </section>
 
       {/* Pricing FAQs */}
-      <section className="border-t border-[var(--color-border)] bg-[var(--color-bg)] py-20 md:py-28">
+      <section className="section-y border-t border-[var(--color-border)] bg-[var(--color-bg)] ">
         <div className="container-x">
           <SectionHeader
             eyebrow="Commercial FAQs"

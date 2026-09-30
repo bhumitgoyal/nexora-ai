@@ -24,7 +24,7 @@ export function PricingSection() {
               return (
                 <div
                   key={tier.id}
-                  className={`relative flex flex-col justify-between border-2 p-7 transition-all ${
+                  className={`relative flex flex-col justify-between border-2 p-7 transition ${
                     isFeatured
                       ? "border-[var(--color-brand)] bg-[var(--color-bg)] shadow-[6px_6px_0_var(--color-brand)]"
                       : "border-[var(--color-border)] bg-[var(--color-bg)] hover:border-[var(--color-brand)] hover:shadow-[4px_4px_0_var(--color-brand)]"
@@ -32,7 +32,7 @@ export function PricingSection() {
                 >
                   {/* Badge */}
                   {tier.badge && (
-                    <div className="absolute -top-3.5 right-6 bg-[var(--color-brand)] px-3 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-white">
+                    <div className="eyebrow absolute -top-3.5 right-6 bg-[var(--color-brand)] px-3 py-0.5 font-bold text-white">
                       {tier.badge}
                     </div>
                   )}
@@ -40,7 +40,7 @@ export function PricingSection() {
                   <div>
                     {/* Header */}
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand)]">
+                      <span className="eyebrow font-bold text-[var(--color-brand)]">
                         {tier.timeline}
                       </span>
                     </div>
@@ -67,7 +67,7 @@ export function PricingSection() {
 
                     {/* Deliverables */}
                     <div className="mt-6 flex flex-col gap-2.5">
-                      <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--color-fg)]">
+                      <span className="eyebrow font-bold text-[var(--color-fg)]">
                         ■ Key Deliverables:
                       </span>
                       {tier.deliverables.slice(0, 4).map((d, i) => (
@@ -106,7 +106,7 @@ export function PricingSection() {
                 key={idx}
                 className="flex flex-col gap-2 border-b border-[var(--color-border)] p-6 md:border-b-0 md:border-r last:border-r-0 md:p-8"
               >
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-brand)]">
+                <span className="eyebrow font-bold text-[var(--color-brand)]">
                   ■ 0{idx + 1}
                 </span>
                 <h4 className="font-display text-sm font-bold text-[var(--color-fg)]">

@@ -50,11 +50,11 @@ function SystemCard({ system }: { system: System }) {
     <div className="flex flex-col border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] shadow-[6px_6px_0_var(--color-border)]">
       {/* commissioning header */}
       <div className="flex items-center justify-between border-b-2 border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3">
-        <span className="flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg)]">
+        <span className="eyebrow flex items-center gap-2.5 text-[var(--color-fg)]">
           <system.icon className="size-4 text-[var(--color-brand)]" strokeWidth={2} />
           {system.code}
         </span>
-        <span className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
+        <span className="eyebrow inline-flex items-center gap-1.5 text-[var(--color-fg-muted)]">
           <span className="size-1.5 animate-pulse bg-[var(--color-brand)]" />
           {system.status}
         </span>
@@ -71,7 +71,7 @@ function SystemCard({ system }: { system: System }) {
           {system.log.map((line, i) => (
             <span
               key={i}
-              className="flex items-center gap-2 font-mono text-[10px] text-[var(--color-fg-subtle)]"
+              className="flex items-center gap-2 font-mono text-[11px] text-[var(--color-fg-subtle)]"
             >
               <span className="text-[var(--color-brand)]">›</span>
               {line}
@@ -85,7 +85,7 @@ function SystemCard({ system }: { system: System }) {
               <span className="font-display text-base font-bold tabular-nums leading-none text-[var(--color-brand)]">
                 {m.value}
               </span>
-              <span className="text-[9.5px] leading-tight text-[var(--color-fg-subtle)]">
+              <span className="text-[11px] leading-tight text-[var(--color-fg-subtle)]">
                 {m.label}
               </span>
             </div>
@@ -98,7 +98,7 @@ function SystemCard({ system }: { system: System }) {
 
 export function FromTheWorkshop() {
   return (
-    <section className="border-t border-[var(--color-border)] py-24 md:py-32">
+    <section className="section-y border-t border-[var(--color-border)] ">
       <div className="container-x">
         <SectionHeader
           eyebrow="From the workshop"
