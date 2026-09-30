@@ -17,10 +17,29 @@ Nuvero sells **AI infrastructure — the intelligence layer a business runs on**
 - Identity concept: **living print-shop** — job tickets, day-sheet ledgers, commissioning records, rubber-stamp moments. Never imitate reference sites' motifs (eclipse rings, serif italics, verb stacks); reinterpret ideas through this print/ledger language.
 - Icons: Lucide only. Never emoji as icons.
 
+## Apple HIG discipline (added Oct 2026 — see docs/apple-hig-upgrade-plan.md)
+
+The look stays brutalist; these rules hold it to Apple's craft bar. Check every change against them.
+
+- **Hierarchy**: one dominant element per viewport, one primary CTA per section. Secondary actions differ by *style* (outline vs filled), never size.
+- **Type tokens only**: `text-display` (home H1), `text-title-1` (page H1), `text-title-2` (section H2), `text-title-3`, `text-lead`, `text-body` (17px), `text-callout`, and `.eyebrow` for every mono label. **Nothing below 11px.**
+- **Colour roles**: `--color-accent` (steel blue) is decorative only — text/icons use `--color-accent-ink`. `--color-fg-subtle` is the tertiary text floor (≥5:1 everywhere). Cream on ink ≥ 75% opacity. Red = action / emphasis / stamp.
+- **Hit targets**: every link/button/input ≥ 44px (`min-h-11`). Buttons use `GlowButton` or the `.press` class (tactile press into the hard shadow).
+- **Shadows**: `--shadow-hard-sm | --shadow-hard | --shadow-hard-lg | --shadow-hard-brand`. No blur, ever.
+- **Section rhythm**: `.section-y` — don't hand-write `py-24 md:py-32`.
+- **Above the fold**: pass `priority` to `Reveal` / `MaskReveal` / `SectionHeader` (h1 does it automatically) — CSS reveal from first paint, never waits for hydration. The LCP element must never be hidden in SSR.
+- **Looping / ambient motion**: gate with `useAmbientMotion()` or `useLiveMotion(ref)` (`src/hooks/useMotionPreference.ts`) — respects reduced motion, the footer "Pause motion" switch, and sleeps offscreen. CSS loops are paused by `html[data-motion="paused"]`. No auto-advancing carousels — rails are user-driven scroll-snap.
+- **Pins**: only where the `pin:` variant / `PIN_QUERY` matches (≥1024 wide, ≥700 tall, motion allowed). Render the non-pinned layout with `pin:hidden` / the pinned one with `hidden pin:flex` — never swap after hydration.
+- **Springs**: `SPRING.settle` (no overshoot) by default; `SPRING.fling` only after a drag/momentum gesture.
+- **Writing**: CTA lexicon lives in `site.cta` (`primary` = "Book a 30-min call"). Verb-first buttons, sentence case, errors next to the field saying how to fix, no "oops", placeholders show format only.
+- **Floating UI** never covers content at rest (QuickContact appears after the hero). Dialogs = Radix Dialog (focus trap, Esc, focus return).
+- **Not adopted, on purpose**: Liquid Glass / translucency, capsules, concentric radii, blur.
+
 ## Motion direction — cinematic, one rhythm
 
 Single source of truth: `src/lib/motion.ts` — `EASE = [0.22, 1, 0.36, 1]`, `DURATION = { fast: 0.3, base: 0.6, slow: 1.1 }`. Import these; never invent new curves.
 
+- Page-to-page: React `<ViewTransition name=…>` (stable in React 19.3, no Next config). /work card poster ↔ case-study hero share `work-poster-${slug}`.
 - Micro-interactions 150–300ms; section reveals ~0.6–0.9s; page transitions ≤1.1s.
 - Stagger children 50–80ms.
 - **Everything must respect `prefers-reduced-motion`** (use `useReducedMotion()` from motion/react, or the media query in vanilla/GSAP code) and degrade on `(pointer: coarse)`.
@@ -37,13 +56,16 @@ Single source of truth: `src/lib/motion.ts` — `EASE = [0.22, 1, 0.36, 1]`, `DU
 | `shared/Marquee.tsx` | Infinite horizontal scroll strips |
 | `shared/SmoothScroll.tsx` | Lenis + GSAP ScrollTrigger (mounted once in layout — don't remount) |
 | `home/NetworkField.tsx` | Cursor-reactive node-network canvas |
-| `shared/LoadingScreen.tsx` | First-visit preloader (counter + wipe) |
-| CSS `.border-beam` | Animated border light on feature cards |
+| `shared/LoadingScreen.tsx` | First-visit preloader — gated pre-paint by `html.nv-first-visit` (inline script in layout), ~1.1s, skippable |
+| `shared/Stamp.tsx` | The one rubber-stamp moment (hero ticket, contact "RECEIVED") |
+| `home/LayerAssembly.tsx` | Pinned scrub: six tool plates assemble into THE LAYER, stamp lands |
+| `home/PullQuote.tsx` | Single large testimonial (replaces the quote marquee) |
+| `layout/MotionToggle.tsx` | Footer "Pause motion" switch (WCAG 2.2.2) |
 | CSS `.text-stroke-fg` / `.text-stroke-brand` | Outlined display text |
 | `home/OpsLedger.tsx` | Pinned day-sheet ledger (the layer takes over each row on scroll) |
 | `home/AgentRoster.tsx` | Commissioning-record card with live-ticking counters + stamp |
 | Hero `JobTicket` | Cycling work-order chip stamped "AUTOMATED" |
-| `home/Switchboard.tsx` | Telex-style live ops feed (timestamped lines print themselves) |
+| `home/Switchboard.tsx` | Telex-style live ops feed (timestamped lines print themselves; `useLiveMotion`) |
 | `home/WiringDiagram.tsx` | Blueprint schematic — tools wired into THE LAYER |
 | `shared/SchematicBeam.tsx` | Ref-measured 90° elbow connector with travelling red pulse |
 | `shared/Perforation.tsx` + CSS `.perforation` | Tear-off divider strip between sections |
