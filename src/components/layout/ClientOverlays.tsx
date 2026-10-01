@@ -26,7 +26,9 @@ export function ClientOverlays({ searchIndex }: { searchIndex: SearchEntry[] }) 
       setOpen((o) => !o);
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key.toLowerCase() === "k" && (e.metaKey || e.ctrlKey)) {
+      // e.key is typed as string but is undefined for some synthesized keydowns
+      // (browser autofill, IME composition, certain extensions) - guard it.
+      if (e.key?.toLowerCase() === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         toggle();
       }

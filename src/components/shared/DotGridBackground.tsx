@@ -82,6 +82,10 @@ export function DotGridBackground({
     let isLooping = false;
 
     const draw = () => {
+      // Before first layout the canvas has 0 offsetWidth/Height, so the offscreen
+      // `rest` canvas is 0x0 and drawImage() throws. The ResizeObserver re-runs
+      // draw() once a real size arrives, so just skip until then.
+      if (w <= 0 || h <= 0 || rest.width === 0 || rest.height === 0) return;
       ctx.clearRect(0, 0, w, h);
       ctx.drawImage(rest, 0, 0, w, h);
 
