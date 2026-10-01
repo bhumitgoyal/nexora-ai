@@ -45,79 +45,59 @@ export function PricingContent() {
 
                   <div>
                     {/* Header */}
-                    <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-4">
-                      <span className="eyebrow font-bold text-[var(--color-brand)]">
-                        TIMELINE: {tier.timeline}
-                      </span>
-                      <span className="font-mono text-xs text-[var(--color-fg-subtle)]">
-                        TIER // {tier.id.toUpperCase()}
-                      </span>
-                    </div>
+                    <span className="block font-display text-4xl font-bold tracking-tight text-[var(--color-brand)]">{tier.timeline}</span>
 
-                    <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-[var(--color-fg)] md:text-3xl">
+                    <h2 className="mt-1 font-display text-title-2 font-bold text-[var(--color-fg)]">
                       {tier.name}
                     </h2>
 
-                    <p className="mt-3 text-sm text-[var(--color-fg-muted)] leading-relaxed">
-                      {tier.tagline}
-                    </p>
+                    <p className="mt-2 text-callout text-[var(--color-fg-muted)]">{tier.tagline}</p>
 
                     {/* Scope Model Block */}
-                    <div className="mt-8 border-y border-[var(--color-border)] bg-[var(--color-bg-elev)] p-6">
-                      <span className="eyebrow font-bold text-[var(--color-brand)]">
-                        Scope Structure:
-                      </span>
-                      <div className="mt-1 flex flex-col gap-1">
-                        <span className="font-display text-2xl font-bold tracking-tight text-[var(--color-fg)]">
-                          {tier.scopeModel}
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {tier.guarantees.map((g, i) => (
+                        <span key={i} className="eyebrow border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1.5 font-bold text-[var(--color-fg)]">
+                          ✓ {g}
                         </span>
-                        <p className="text-xs font-mono text-[var(--color-fg-muted)]">
-                          {tier.scopeBasis}
-                        </p>
-                      </div>
-                      <p className="mt-3 text-xs text-[var(--color-fg-subtle)] border-t border-[var(--color-border)] pt-2">
-                        Target: {tier.target}
-                      </p>
+                      ))}
                     </div>
 
                     {/* Full Deliverables List */}
-                    <div className="mt-8 flex flex-col gap-3">
-                      <h4 className="eyebrow font-bold text-[var(--color-fg)]">
-                        ■ Complete Deliverables:
-                      </h4>
-                      <ul className="flex flex-col gap-2.5">
-                        {tier.deliverables.map((d, i) => (
-                          <li key={i} className="flex items-start gap-3 text-xs md:text-sm text-[var(--color-fg)] leading-relaxed">
-                            <span className="mt-1.5 size-1.5 shrink-0 bg-[var(--color-brand)]" />
-                            <span>{d}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <ul className="mt-6 flex flex-col gap-2.5">
+                      {tier.deliverables.slice(0, 3).map((d, i) => (
+                        <li key={i} className="flex items-start gap-3 text-callout leading-snug text-[var(--color-fg)]">
+                          <span aria-hidden className="mt-2 size-1.5 shrink-0 bg-[var(--color-brand)]" />
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                    {/* Highlights / Delivery Guarantees */}
-                    <div className="mt-8 border-t border-[var(--color-border)] pt-6">
-                      <h4 className="eyebrow font-bold text-[var(--color-brand)]">
-                        ■ Deployment Guarantees:
-                      </h4>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {tier.guarantees.map((g, i) => (
-                          <span
-                            key={i}
-                            className="border border-[var(--color-border)] bg-[var(--color-bg-elev)] px-3 py-1 font-mono text-[11px] text-[var(--color-fg)]"
-                          >
-                            ✓ {g}
-                          </span>
-                        ))}
+                    <details className="group mt-6 border-t border-[var(--color-border)] pt-2">
+                      <summary className="eyebrow flex min-h-11 cursor-pointer list-none items-center gap-2 font-bold text-[var(--color-fg)] [&::-webkit-details-marker]:hidden">
+                        <span aria-hidden className="inline-block text-base text-[var(--color-brand)] transition-transform group-open:rotate-45">+</span>
+                        Scope, fit &amp; everything included
+                      </summary>
+                      <div className="mt-3 flex flex-col gap-4 text-callout text-[var(--color-fg-muted)]">
+                        <p><span className="font-semibold text-[var(--color-fg)]">{tier.scopeModel}.</span> {tier.scopeBasis}.</p>
+                        <p><span className="font-semibold text-[var(--color-fg)]">Best for:</span> {tier.target}</p>
+                        <ul className="flex flex-col gap-2">
+                          {[...tier.deliverables.slice(3), ...tier.deliverableBullets].map((d, i) => (
+                            <li key={i} className="flex items-start gap-3">
+                              <span aria-hidden className="mt-2 size-1.5 shrink-0 bg-[var(--color-brand)]" />
+                              <span>{d}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    </div>
+                    </details>
+
                   </div>
 
                   {/* CTA button */}
                   <div className="mt-10 border-t border-[var(--color-border)] pt-6">
                     <Link
                       href={tier.ctaHref}
-                      className={`flex w-full items-center justify-between px-6 py-4 text-sm font-bold uppercase tracking-[0.14em] transition-colors ${
+                      className={`press flex min-h-12 w-full items-center justify-between px-6 text-[15px] font-bold transition-colors ${
                         isFeatured
                           ? "bg-[var(--color-brand)] text-white hover:bg-[var(--color-brand-strong)]"
                           : "border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] text-[var(--color-fg)] hover:bg-[var(--color-brand)] hover:text-white"

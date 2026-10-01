@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { WorkGrid } from "@/components/work/WorkGrid";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { CtaBanner } from "@/components/home/CtaBanner";
 import { getDeployments } from "@/lib/deployments";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/work" },
-  title: "Deployments",
+export const metadata: Metadata = pageMetadata({
+  title: "Deployments: AI Systems in Production",
   description:
-    "AI systems deployed across energy, wellness, e-commerce, real estate, and more, with the real metrics each one moved.",
-};
+    "AI systems Nuvero has deployed across energy, wellness, e-commerce, real estate, PR and logistics, with the real metrics each one moved and live demos to try.",
+  path: "/work",
+});
 
 export default async function WorkPage() {
   const deployments = await getDeployments();

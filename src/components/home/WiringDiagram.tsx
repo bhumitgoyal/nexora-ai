@@ -62,7 +62,7 @@ export function WiringDiagram() {
         <SectionHeader
           eyebrow="The wiring"
           title="Wired into the tools you already run."
-          subtitle="No new dashboard to live in. The layer connects to your stack, does the work where it already happens, and hands your team the outcome."
+          subtitle="No new dashboard. The work happens where it already lives."
         />
 
         <Reveal delay={0.1}>

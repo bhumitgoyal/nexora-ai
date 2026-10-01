@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: `Healthcare & Clinics Booklet · ${site.name}`,
+  // absolute: the root template would otherwise append the brand a second time.
+  title: { absolute: `Healthcare & Clinics Booklet · ${site.name}` },
   description:
     "A printable AI booklet for doctors, clinics, and healthcare operators. Appointment automation, patient intake, reminders, and AI-driven care workflows from Nuvero AI.",
   robots: { index: false, follow: false },

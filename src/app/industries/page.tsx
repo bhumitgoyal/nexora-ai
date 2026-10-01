@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
@@ -8,12 +9,12 @@ import { sectorIcons } from "@/content/sectorIcons";
 // This route used to redirect straight to /what-we-offer, which meant nothing
 // linked to it and it had no reason to exist. It is now the hub: the one page
 // that connects to every sector and every sector-service landing page.
-export const metadata: Metadata = {
-  alternates: { canonical: "/industries" },
-  title: "Industries",
+export const metadata: Metadata = pageMetadata({
+  title: "AI Infrastructure by Industry",
   description:
-    "The systems we build, by industry. Real estate, e-commerce, marketing agencies, restaurants, and B2B SaaS - each with the workflows we automate end to end.",
-};
+    "AI systems built for real estate, e-commerce, marketing agencies, restaurants and B2B SaaS, each mapped to the workflows we automate end to end in your stack.",
+  path: "/industries",
+});
 
 export default function IndustriesPage() {
   const systemCount = sectors.reduce((total, sector) => total + sector.services.length, 0);

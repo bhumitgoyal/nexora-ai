@@ -20,32 +20,32 @@ const PLATES: Plate[] = [
   {
     icon: KeyRound,
     title: "You own everything",
-    body: "Code, prompts, data, and models, all handed over with runbooks at every milestone. No vendor lock-in, no per-seat tax.",
+    body: "Code, prompts, data, models. No lock-in.",
   },
   {
     icon: Server,
     title: "Your data never leaves your stack",
-    body: "The layer deploys inside your cloud accounts. Customer data stays where it already lives.",
+    body: "Deployed inside your own cloud.",
   },
   {
     icon: ScrollText,
     title: "Every action logged",
-    body: "The switchboard isn't a metaphor. Every call, message, and decision is timestamped and auditable.",
+    body: "Every call and decision, timestamped.",
   },
   {
     icon: UserCheck,
     title: "Humans stay in the loop",
-    body: "High-stakes actions wait for a signature. You decide where the layer stops and your team starts.",
+    body: "High-stakes actions wait for your sign-off.",
   },
   {
     icon: Lock,
     title: "Encrypted end to end",
-    body: "In transit and at rest, with least-privilege access from day one. Built with SOC 2 / GDPR / HIPAA considerations where relevant.",
+    body: "In transit and at rest. Least-privilege access.",
   },
   {
     icon: FileSignature,
     title: "DPA & NDA on request",
-    body: "Signed before kickoff when you need it. Paperwork should never be the blocker.",
+    body: "Signed before kickoff, if you need it.",
   },
 ];
 
@@ -57,7 +57,7 @@ export function GlassBox() {
         <SectionHeader
           eyebrow="Glass box, not black box"
           title="Infrastructure you can read."
-          subtitle="Black-box AI asks for trust. The layer shows its work: every decision inspectable, every outcome auditable, and all of it yours."
+          subtitle="Every decision inspectable. Every outcome auditable. All of it yours."
         />
 
         <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-px border border-[var(--color-border)] bg-[var(--color-border)] sm:grid-cols-2 lg:grid-cols-3">

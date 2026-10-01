@@ -103,7 +103,7 @@ export function FromTheWorkshop() {
         <SectionHeader
           eyebrow="From the workshop"
           title="We build the infrastructure we run on."
-          subtitle="Before we ship a system to a client, it earns its place inside our own operation. These two run Nuvero every day."
+          subtitle="Every system runs inside Nuvero first. These two run us daily."
         />
 
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">

@@ -286,25 +286,26 @@ export function WhatWeOfferContent() {
                             {section.eyebrow}
                           </span>
                         </div>
-                        <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
+                        <h2 className="font-display text-title-2 font-semibold">
                           {section.headline}
                         </h2>
-                        <p className="text-base leading-relaxed text-[var(--color-fg-muted)]">
+                        <p className="text-lead text-[var(--color-fg-muted)]">
                           {section.description}
                         </p>
-                        <div className="mt-2 border-t border-[var(--color-border)] pt-6">
-                          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-fg-subtle)]">
-                            Common pain points we solve
-                          </p>
-                          <ul className="flex flex-col gap-3">
+                        <details className="group border-t border-[var(--color-border)] pt-2">
+                          <summary className="eyebrow flex min-h-11 cursor-pointer list-none items-center gap-2 font-bold text-[var(--color-fg)] [&::-webkit-details-marker]:hidden">
+                            <span aria-hidden className="inline-block text-base text-[var(--color-brand)] transition-transform group-open:rotate-45">+</span>
+                            Pain points we fix ({section.painPoints.length})
+                          </summary>
+                          <ul className="mt-2 flex flex-col gap-2.5">
                             {section.painPoints.map((p) => (
-                              <li key={p} className="flex items-start gap-3 text-sm text-[var(--color-fg-muted)]">
-                                <span className="mt-1.5 size-1.5 shrink-0 bg-[var(--color-brand)]" />
+                              <li key={p} className="flex items-start gap-3 text-callout text-[var(--color-fg-muted)]">
+                                <span aria-hidden className="mt-2 size-1.5 shrink-0 bg-[var(--color-brand)]" />
                                 {p}
                               </li>
                             ))}
                           </ul>
-                        </div>
+                        </details>
                         <div className="mt-4">
                           <Link
                             href="/contact"
@@ -326,18 +327,17 @@ export function WhatWeOfferContent() {
                         {regularItems.map((a) => {
                           const ItemIcon = a.icon;
                           return (
-                            <div
+                            <details
                               key={a.task}
-                              className="flex gap-4 border-b border-[var(--color-border)] p-5 last:border-b-0 transition-colors hover:bg-[var(--color-bg-elev)]"
+                              className="group border-b border-[var(--color-border)] last:border-b-0 open:bg-[var(--color-bg-elev)]"
                             >
-                              {ItemIcon && (
-                                <ItemIcon className="mt-0.5 size-4 shrink-0 text-[var(--color-accent-ink)]" />
-                              )}
-                              <div className="flex flex-col gap-1">
-                                <span className="text-sm font-semibold text-[var(--color-fg)]">{a.task}</span>
-                                <span className="text-sm text-[var(--color-fg-muted)]">{a.detail}</span>
-                              </div>
-                            </div>
+                              <summary className="flex min-h-14 cursor-pointer list-none items-center gap-4 px-5 transition-colors hover:bg-[var(--color-bg-elev)] [&::-webkit-details-marker]:hidden">
+                                {ItemIcon && <ItemIcon aria-hidden className="size-4 shrink-0 text-[var(--color-accent-ink)]" />}
+                                <span className="flex-1 text-callout font-semibold text-[var(--color-fg)]">{a.task}</span>
+                                <span aria-hidden className="font-mono text-base text-[var(--color-brand)] transition-transform group-open:rotate-45">+</span>
+                              </summary>
+                              <p className="px-5 pb-4 pl-[3.25rem] text-callout text-[var(--color-fg-muted)]">{a.detail}</p>
+                            </details>
                           );
                         })}
                       </div>

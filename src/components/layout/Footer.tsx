@@ -5,6 +5,8 @@ import { site } from "@/content/site";
 import { services } from "@/content/services";
 import { Logo } from "./Logo";
 import { MotionToggle } from "./MotionToggle";
+import { FooterWordmark } from "./FooterWordmark";
+import { RollText } from "@/components/fx/RollText";
 
 const outcomeLabel: Record<string, string> = {
   "custom-ai-workflows": "Workflow automation",
@@ -16,8 +18,8 @@ export function Footer() {
   return (
     <footer className="relative mt-20 border-t-2 border-[var(--color-border)] bg-[var(--color-bg-elev)]">
       <div className="container-x py-16">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
-          <div className="col-span-2 flex flex-col gap-5 md:col-span-1">
+        <div className="grid grid-cols-2 gap-10 lg:grid-cols-4">
+          <div className="col-span-2 flex flex-col gap-5 lg:col-span-1">
             <Logo />
             <p className="max-w-xs text-callout text-[var(--color-fg-muted)]">
               {site.tagline}
@@ -92,6 +94,7 @@ export function Footer() {
           </nav>
         </div>
       </div>
+      <FooterWordmark />
     </footer>
   );
 }
@@ -112,7 +115,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
         href={href}
         className="inline-flex min-h-11 items-center text-callout text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-brand)]"
       >
-        {children}
+        {typeof children === "string" ? <RollText>{children}</RollText> : children}
       </Link>
     </li>
   );

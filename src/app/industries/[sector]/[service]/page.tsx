@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata, fitTitle, fitDescription } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
@@ -29,16 +30,24 @@ async function resolve(params: Params) {
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const found = await resolve(params);
-  if (!found) return { title: "System not found" };
+  if (!found) return { title: "System not found", robots: { index: false, follow: true } };
   const { sector, service, sectorParam, serviceParam } = found;
 
-  return {
+  return pageMetadata({
     // The title carries the sector because that pairing is the search this page
     // is meant to answer, e.g. "AI Lead Nurturing Agent for Real Estate".
-    title: `${service.name} for ${sector.label}`,
-    description: service.tagline,
-    alternates: { canonical: `/industries/${sectorParam}/${serviceParam}` },
-  };
+    title: fitTitle(`${service.name} for ${sector.label}`),
+    description: fitDescription(
+      service.tagline,
+      `A Nuvero AI system for ${sector.label}, trained on your workflows and wired into your stack.`,
+      "You own the code.",
+    ),
+    path: `/industries/${sectorParam}/${serviceParam}`,
+    image: {
+      url: `/industries/${sectorParam}/${serviceParam}/opengraph-image`,
+      alt: `${service.name} for ${sector.label}`,
+    },
+  });
 }
 
 export default async function ServicePage({ params }: { params: Params }) {
@@ -68,14 +77,15 @@ export default async function ServicePage({ params }: { params: Params }) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Industries", item: `${site.url}/industries` },
+          { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+          { "@type": "ListItem", position: 2, name: "Industries", item: `${site.url}/industries` },
           {
             "@type": "ListItem",
-            position: 2,
+            position: 3,
             name: sector.label,
             item: `${site.url}/industries/${sectorParam}`,
           },
-          { "@type": "ListItem", position: 3, name: service.name, item: pageUrl },
+          { "@type": "ListItem", position: 4, name: service.name, item: pageUrl },
         ],
       },
     ],

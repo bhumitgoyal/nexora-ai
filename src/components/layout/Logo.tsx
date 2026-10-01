@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({ className, priority = false }: { className?: string; priority?: boolean }) {
   return (
     <Link
       href="/"
@@ -16,7 +16,7 @@ export function Logo({ className }: { className?: string }) {
         alt=""
         width={448}
         height={440}
-        priority
+        priority={priority}
         sizes="32px"
         className="h-8 w-auto"
       />

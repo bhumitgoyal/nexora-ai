@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowLeft, Quote } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { getReviews } from "@/lib/reviews";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/reviews" },
+export const metadata: Metadata = pageMetadata({
   title: "Client Reviews",
   description:
-    "Every piece of feedback from the businesses running on Nuvero AI infrastructure, in one place.",
-};
+    "What operators say about running their business on Nuvero AI infrastructure: voice agents, assistants and workflow systems in production, in their own words.",
+  path: "/reviews",
+});
 
 export default async function ReviewsPage() {
   const reviews = await getReviews();

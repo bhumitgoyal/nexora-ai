@@ -9,21 +9,21 @@ const controls = [
     ticket: "GOV-01",
     icon: ClipboardCheck,
     title: "Deployment Audits",
-    body: "Every system is signed off against a written checklist before and after it goes live.",
+    body: "Signed off against a checklist, before and after launch.",
     checks: ["Access scope reviewed", "Failure modes mapped", "Escalation path defined"],
   },
   {
     ticket: "GOV-02",
     icon: ShieldCheck,
     title: "Agent Integrity Monitoring",
-    body: "Agents are watched in production for drift and out-of-policy actions, with a human alerted the moment confidence drops.",
+    body: "Watched live. A human is alerted the moment confidence drops.",
     checks: ["Drift + hallucination checks", "Confidence thresholds", "Human alerted on breach"],
   },
   {
     ticket: "GOV-03",
     icon: Lock,
     title: "Infrastructure Hardening",
-    body: "Least-privilege access, secrets in vaults, encryption at rest and in transit, so the layer is safe against real customer data.",
+    body: "Least privilege, vaulted secrets, encrypted everywhere.",
     checks: ["Least-privilege keys", "Secrets vaulted", "Full audit trail"],
   },
 ];
@@ -35,7 +35,7 @@ export function Governance() {
         <SectionHeader
           eyebrow="Inspection & compliance"
           title="Governance built into every deployment."
-          subtitle="An agent in production is only as good as the controls around it. Every Nuvero system ships with these, not as an add-on."
+          subtitle="Every system ships with these controls. Not as an add-on."
         />
 
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">

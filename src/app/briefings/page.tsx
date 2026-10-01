@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { briefings } from "@/content/briefings";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/briefings" },
-  title: "Intelligence Briefings",
+export const metadata: Metadata = pageMetadata({
+  title: "Intelligence Briefings on AI Infrastructure",
   description:
-    "Nuvero AI's briefings on AI infrastructure: readiness rubrics, field notes, and positions on building the intelligence layer your business runs on.",
-};
+    "Nuvero's briefings on AI infrastructure: readiness rubrics, field notes and positions on building, running and owning the layer your business runs on.",
+  path: "/briefings",
+});
 
 function fmt(date: string) {
   return new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });

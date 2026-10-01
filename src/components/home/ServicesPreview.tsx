@@ -28,7 +28,7 @@ function ServiceConsole({ sector }: { sector: Sector }) {
             className={`shrink-0 border px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] transition-colors ${
               i === active
                 ? "border-[var(--color-brand)] bg-[var(--color-brand)] text-white"
-                : "border-[var(--color-bg)]/25 text-[var(--color-bg)]/60"
+                : "border-[var(--color-bg)]/25 text-[var(--color-on-ink-muted)]"
             }`}
           >
             {s.name}
@@ -48,7 +48,7 @@ function ServiceConsole({ sector }: { sector: Sector }) {
                 className={`flex w-full items-center justify-between gap-2 border-l-2 px-4 py-3 text-left text-sm transition-colors ${
                   isActive
                     ? "border-[var(--color-brand)] bg-[var(--color-bg)]/5 font-semibold text-[var(--color-bg)]"
-                    : "border-transparent text-[var(--color-bg)]/50 hover:border-[var(--color-bg)]/30 hover:text-[var(--color-bg)]"
+                    : "border-transparent text-[var(--color-on-ink-muted)] hover:border-[var(--color-bg)]/30 hover:text-[var(--color-bg)]"
                 }`}
               >
                 <span className="min-w-0 flex-1">{s.name}</span>
@@ -65,7 +65,7 @@ function ServiceConsole({ sector }: { sector: Sector }) {
         {/* workflow panel */}
         <div className="min-w-0 p-5 md:p-7">
           {/* header line */}
-          <p className="eyebrow text-[var(--color-bg)]/50">
+          <p className="eyebrow text-[var(--color-on-ink-muted)]">
             <span className="font-bold text-[var(--color-bg)]">{svc.name}</span>
             {svc.stat && (
               <>
@@ -76,10 +76,10 @@ function ServiceConsole({ sector }: { sector: Sector }) {
 
           {/* diagram label row */}
           <div className="mt-6 flex items-center justify-between gap-4 border-b border-[var(--color-bg)]/15 pb-2">
-            <p className="eyebrow min-w-0 truncate text-[var(--color-bg)]/40">
+            <p className="eyebrow min-w-0 truncate text-[var(--color-on-ink-muted)]">
               Real workflow diagram · {svc.steps.map((s) => s.name).join(" · ")}
             </p>
-            <span className="eyebrow flex shrink-0 items-center gap-1.5 text-[var(--color-bg)]/60">
+            <span className="eyebrow flex shrink-0 items-center gap-1.5 text-[var(--color-on-ink-muted)]">
               <span className="size-1.5 animate-pulse bg-[var(--color-brand)]" />
               live
             </span>
@@ -91,10 +91,10 @@ function ServiceConsole({ sector }: { sector: Sector }) {
               <div key={step.name} className="contents">
                 <div className="flex min-w-0 flex-1 flex-col gap-0.5 border border-[var(--color-bg)]/25 bg-[var(--color-bg)]/5 px-3 py-2.5">
                   <span className="truncate text-sm font-bold text-[var(--color-bg)]">{step.name}</span>
-                  <span className="truncate font-mono text-[11px] text-[var(--color-bg)]/45">{step.sub}</span>
+                  <span className="truncate font-mono text-[11px] text-[var(--color-on-ink-muted)]">{step.sub}</span>
                 </div>
                 {i < svc.steps.length - 1 && (
-                  <span className="relative flex shrink-0 items-center justify-center self-center px-1 font-mono text-sm text-[var(--color-bg)]/40 md:px-1.5">
+                  <span className="relative flex shrink-0 items-center justify-center self-center px-1 font-mono text-sm text-[var(--color-on-ink-muted)] md:px-1.5">
                     <span className="hidden md:inline">→</span>
                     <span className="md:hidden">↓</span>
                     {i === chipIndex && (
@@ -108,15 +108,14 @@ function ServiceConsole({ sector }: { sector: Sector }) {
             ))}
           </div>
 
-          {/* how it works - full copy preserved */}
-          <div className="mt-7">
-            <p className="eyebrow font-bold text-[var(--color-bg)]/40">
+          {/* progressive disclosure: the diagram is the explanation; prose on demand */}
+          <details className="group mt-7 border-t border-[var(--color-bg)]/20 pt-3">
+            <summary className="eyebrow flex min-h-11 cursor-pointer list-none items-center gap-2 font-bold text-[var(--color-bg)] [&::-webkit-details-marker]:hidden">
+              <span aria-hidden className="inline-block transition-transform group-open:rotate-45">+</span>
               How it works
-            </p>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-bg)]/60">
-              {svc.how}
-            </p>
-          </div>
+            </summary>
+            <p className="mt-1 max-w-2xl text-callout leading-relaxed text-[var(--color-on-ink-muted)]">{svc.how}</p>
+          </details>
 
           <Link
             href="/work"
@@ -137,7 +136,7 @@ export function ServicesPreview() {
         <SectionHeader
           eyebrow="Outcomes in production"
           title="Results already running, mapped to your workflows."
-          subtitle="Every entry below is an outcome a real business collects today: carts recovered, calls answered, books closed. Start from a proven one, or bring us a workflow no one has automated yet."
+          subtitle="Proven outcomes, already running. Start from one, or bring your own."
         />
 
         <Reveal delay={0.12}>

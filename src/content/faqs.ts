@@ -47,6 +47,6 @@ export const faqs: Faq[] = [
   {
     question: "Can you work alongside our existing engineering team?",
     answer:
-      "Absolutely we often do. We can lead, co-build, or hand off cleanly with full documentation. Our preference is whatever moves your business fastest.",
+      "Absolutely, we often do. We can lead, co-build, or hand off cleanly with full documentation. Our preference is whatever moves your business fastest.",
   },
 ];

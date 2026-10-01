@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUpRight, ArrowLeft, ArrowRight, Mic, Bot, Megaphone, Truck, Target, Search, Boxes, FileText, Send } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
+import { Tilt } from "@/components/fx/Tilt";
 
 type WorkItem = {
   no: string;
@@ -196,6 +197,7 @@ function WorkCard({ item }: { item: WorkItem }) {
   return (
     <Link
       href={item.href}
+      data-cursor="Open"
       className="group relative flex h-full w-[min(340px,82vw)] shrink-0 snap-start flex-col overflow-hidden border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] transition-[border-color,box-shadow] duration-200 hover:border-[var(--color-brand)] hover:shadow-[var(--shadow-hard-brand)]"
     >
       <div className="relative h-[110px] overflow-hidden bg-[var(--color-brand)]">
@@ -217,20 +219,12 @@ function WorkCard({ item }: { item: WorkItem }) {
           </h3>
         </div>
 
-        <ul className="flex flex-col gap-2 border-t border-[var(--color-border)] pt-4">
-          {item.highlights.map((h) => (
-            <li key={h} className="flex items-start gap-2 text-callout leading-snug text-[var(--color-fg-muted)]">
-              <span aria-hidden className="mt-2 size-1 shrink-0 bg-[var(--color-brand)]" />
-              {h}
-            </li>
-          ))}
-        </ul>
-
-        <dl className="mt-auto grid grid-cols-3 gap-2 border-t border-[var(--color-border)] pt-4">
+        {/* the numbers are the story — big, three of them, one line each */}
+        <dl className="mt-auto flex flex-col border-t-2 border-[var(--color-border)]">
           {item.impact.map((r) => (
-            <div key={r.label} className="flex flex-col gap-1">
-              <dd className="order-1 font-display text-lg font-semibold leading-none text-[var(--color-brand)]">{r.metric}</dd>
-              <dt className="order-2 text-[11px] leading-tight text-[var(--color-fg-subtle)]">{r.label}</dt>
+            <div key={r.label} className="flex items-baseline justify-between gap-4 border-b border-[var(--color-border)]/25 py-3 last:border-b-0">
+              <dt className="text-callout text-[var(--color-fg-muted)]">{r.label}</dt>
+              <dd className="shrink-0 font-display text-2xl font-bold tabular-nums leading-none text-[var(--color-brand)]">{r.metric}</dd>
             </div>
           ))}
         </dl>
@@ -269,7 +263,7 @@ export function FeaturedWork() {
           align="left"
           eyebrow="Deployments"
           title="Systems we've shipped that moved real business metrics."
-          subtitle="Every engagement starts with a number we're trying to move and ends with the proof we moved it."
+          subtitle="Every deployment starts with a number. Here is where it landed."
         />
         <div className="flex shrink-0 gap-2">
           <button type="button" onClick={() => page(-1)} disabled={edge.start} aria-label="Previous deployments" className="press inline-flex size-12 items-center justify-center border-2 border-[var(--color-border)] bg-[var(--color-bg)] shadow-[var(--shadow-hard-sm)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)] disabled:pointer-events-none disabled:opacity-40">
@@ -283,12 +277,15 @@ export function FeaturedWork() {
 
       <ul
         ref={railRef}
+        data-cursor="Drag"
         onScroll={update}
         className="scrollbar-hide flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain scroll-px-6 px-6 pb-3 md:scroll-px-10 md:px-10 xl:scroll-px-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] xl:px-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]"
       >
         {workItems.map((item) => (
           <li key={item.no} className="flex">
-            <WorkCard item={item} />
+            <Tilt className="flex">
+              <WorkCard item={item} />
+            </Tilt>
           </li>
         ))}
       </ul>

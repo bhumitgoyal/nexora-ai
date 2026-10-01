@@ -73,6 +73,7 @@ export function Testimonials() {
 
       <div
         ref={viewportRef}
+        data-cursor="Drag"
         tabIndex={0}
         onKeyDown={onKeyDown}
         aria-label="Client testimonials — use the arrow keys to move"
@@ -88,7 +89,7 @@ export function Testimonials() {
             >
               <figure className="flex h-full flex-col gap-6 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] p-6 md:p-8">
                 <span aria-hidden className="font-display text-5xl leading-none text-[var(--color-brand)]">“</span>
-                <blockquote className="text-pretty text-body leading-relaxed text-[var(--color-fg)]">{t.quote}</blockquote>
+                <Quote text={t.quote} />
                 <figcaption className="mt-auto flex items-center gap-3 border-t border-[var(--color-border)] pt-4">
                   <span aria-hidden className="inline-flex size-10 shrink-0 items-center justify-center bg-[var(--color-brand)] font-display text-sm font-semibold text-white">
                     {t.initials}
@@ -116,5 +117,28 @@ export function Testimonials() {
         </Link>
       </div>
     </section>
+  );
+}
+
+// Long quotes clamp to four lines; "Read more" expands in place.
+function Quote({ text }: { text: string }) {
+  const [open, setOpen] = useState(false);
+  const long = text.length > 220;
+  return (
+    <div className="flex flex-col items-start gap-2">
+      <blockquote className={"text-pretty text-body leading-relaxed text-[var(--color-fg)] " + (long && !open ? "line-clamp-4" : "")}>
+        {text}
+      </blockquote>
+      {long ? (
+        <button
+          type="button"
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+          className="eyebrow inline-flex min-h-11 items-center font-bold text-[var(--color-brand)] hover:underline"
+        >
+          {open ? "Show less" : "Read more"}
+        </button>
+      ) : null}
+    </div>
   );
 }

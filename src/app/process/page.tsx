@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { BuildSheet } from "@/components/process/BuildSheet";
 import { TechStackMarquee } from "@/components/home/TechStackMarquee";
@@ -6,12 +7,12 @@ import { CtaBanner } from "@/components/home/CtaBanner";
 import { Governance } from "@/components/home/Governance";
 import { AuditDeliverables } from "@/components/home/AuditDeliverables";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/process" },
-  title: "Process",
+export const metadata: Metadata = pageMetadata({
+  title: "Process: How We Build AI Infrastructure",
   description:
-    "How Nuvero ships in 6 weeks: a 5-phase engagement model with weekly demos, KPIs tracked from day one, and no deliverable without a metric attached.",
-};
+    "How Nuvero ships AI infrastructure in 6 weeks: a five-phase build sheet with weekly demos, KPIs instrumented from day one and sign-off only when it runs.",
+  path: "/process",
+});
 
 export default function ProcessPage() {
   return (

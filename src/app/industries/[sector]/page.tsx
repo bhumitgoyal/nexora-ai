@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageMetadata, fitTitle, fitDescription } from "@/lib/seo";
+import { SectorJsonLd } from "@/components/seo/schemas";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
@@ -17,13 +19,24 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { sector: slug } = await params;
   const sector = getSectorBySlug(slug);
-  if (!sector) return { title: "Industry not found" };
+  if (!sector) return { title: "Industry not found", robots: { index: false, follow: true } };
 
-  return {
-    title: `AI Automation for ${sector.label}`,
-    description: sector.description,
-    alternates: { canonical: `/industries/${slug}` },
-  };
+  // Skip system names containing "tools"/"services" (positioning rule: copy says
+  // systems/infrastructure, never tools or services).
+  const systems = sector.services
+    .map((s) => s.name.replace(/^AI /, ""))
+    .filter((name) => !/\b(tools?|services?)\b/i.test(name))
+    .slice(0, 3);
+  return pageMetadata({
+    title: fitTitle(`AI Infrastructure for ${sector.label}`, `AI Automation for ${sector.label}`),
+    description: fitDescription(
+      `AI infrastructure for ${sector.label}: ${systems.join(", ")} and more.`,
+      "Agents trained on your workflows, wired into your stack, owned by you.",
+      "Built and shipped in weeks.",
+    ),
+    path: `/industries/${slug}`,
+    image: { url: `/industries/${slug}/opengraph-image`, alt: `AI infrastructure for ${sector.label}` },
+  });
 }
 
 export default async function SectorPage({ params }: { params: Promise<{ sector: string }> }) {
@@ -35,6 +48,7 @@ export default async function SectorPage({ params }: { params: Promise<{ sector:
 
   return (
     <>
+      <SectorJsonLd sector={sector} />
       <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
         <div className="container-x relative z-10">

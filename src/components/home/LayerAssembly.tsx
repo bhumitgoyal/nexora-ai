@@ -104,7 +104,7 @@ export function LayerAssembly() {
                   Your tools, pulled into <span className="text-[var(--color-brand)]">one layer</span>.
                 </>
               }
-              subtitle="No rip-and-replace. The layer sits on top of the systems you already pay for and does the work between them."
+              subtitle="No rip-and-replace. It works across the tools you already pay for."
             />
             <ol className="flex flex-col border-t-2 border-[var(--color-border)]">
               {STEPS.map((s, i) => (

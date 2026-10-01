@@ -141,7 +141,7 @@ export function OpsLedger() {
           align="left"
           eyebrow="The day sheet"
           title="A normal Tuesday, off your team's plate."
-          subtitle="Scroll the ledger. Every line is a real workflow the layer runs today, with the hours it hands back each week."
+          subtitle="Scroll it. Every line is a real workflow, and the hours it returns."
         />
 
         {/* the ledger */}

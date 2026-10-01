@@ -79,7 +79,7 @@ export function LoadingScreen() {
             <div className="pointer-events-none absolute inset-0 dot-bg opacity-40" />
 
             <div className="relative mb-6 flex size-16 items-center justify-center">
-              <Image src="/brand/mark-red.png" alt="" width={448} height={440} priority sizes="56px" className="size-14" />
+              <Image src="/brand/mark-red.png" alt="" width={448} height={440} sizes="56px" className="size-14" />
             </div>
 
             <div className="flex items-baseline gap-2 font-display text-2xl font-semibold tracking-tight">

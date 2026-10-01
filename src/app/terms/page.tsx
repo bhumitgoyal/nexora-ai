@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GridBackground } from "@/components/shared/GridBackground";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/terms" },
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Service",
   description:
-    "Terms governing your use of the Nuvero AI website and the conditions under which we deliver AI automation services.",
-};
+    "The terms governing your use of the Nuvero AI website and the conditions under which we scope, build and hand over AI infrastructure engagements for clients.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

@@ -8,6 +8,7 @@ import { ArrowUpRight } from "lucide-react";
 import { type CaseStudy } from "@/content/caseStudies";
 import { cn } from "@/lib/utils";
 import { DURATION, EASE } from "@/lib/motion";
+import { Tilt } from "@/components/fx/Tilt";
 
 // 13 industries for ~15 deployments meant almost every chip matched one card.
 // Group into a handful of sectors a buyer actually self-identifies with.
@@ -76,7 +77,9 @@ export function WorkGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
               exit={{ opacity: 0 }}
               transition={{ duration: DURATION.fast, ease: EASE }}
             >
-              <WorkCard study={c} />
+              <Tilt max={3}>
+                <WorkCard study={c} />
+              </Tilt>
             </motion.li>
           ))}
         </AnimatePresence>
@@ -89,6 +92,7 @@ function WorkCard({ study }: { study: CaseStudy }) {
   return (
     <Link
       href={`/work/${study.slug}`}
+      data-cursor="Open"
       className="group relative flex h-full flex-col overflow-hidden card-surface"
     >
       {/* shared element: morphs into the case-study hero (React <ViewTransition>) */}
@@ -97,7 +101,7 @@ function WorkCard({ study }: { study: CaseStudy }) {
           {study.image ? (
             <Image
               src={study.image}
-              alt=""
+              alt={`${study.client} workflow diagram`}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 620px"
               className="object-cover object-top"

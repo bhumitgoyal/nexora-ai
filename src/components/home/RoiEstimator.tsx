@@ -154,7 +154,7 @@ export function RoiEstimator() {
             align="left"
             eyebrow="Automation audit & ROI"
             title="How much of your week is already on autopilot?"
-            subtitle="Drag the sliders. Get an honest read on where your team's time goes and what AI targets first."
+            subtitle="Drag the sliders. See where your team's week goes."
           />
           <div role="radiogroup" aria-label="Currency" className="flex shrink-0 flex-wrap border-2 border-[var(--color-border)]">
             {(Object.keys(CURRENCY_SPECS) as Currency[]).map((c) => (

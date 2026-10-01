@@ -57,7 +57,7 @@ function PinnedProcess() {
         <SectionHeader
           eyebrow="How infrastructure gets built"
           title="From workflow map to a system that runs itself."
-          subtitle="Scroll through it. Five phases, weekly demos, KPI-instrumented from day one."
+          subtitle="Five phases. A demo every week."
         />
 
         {/* The crossfading stage shows one phase at a time — screen readers get all five. */}
@@ -151,7 +151,7 @@ function StackedProcess({ className = "pin:hidden" }: { className?: string }) {
       <SectionHeader
         eyebrow="How infrastructure gets built"
         title="From workflow map to a system that runs itself."
-        subtitle="No theatre, no decks-as-deliverables. We map the manual work, build the layer that absorbs it, and ship working systems every week."
+        subtitle="Map the work. Build the layer. Ship every week."
       />
       <div className="relative mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2">

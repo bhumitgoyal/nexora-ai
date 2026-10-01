@@ -8,6 +8,8 @@ import { LoadingScreen } from "@/components/shared/LoadingScreen";
 import { SmoothScroll } from "@/components/shared/SmoothScroll";
 import { ClientOverlays } from "@/components/layout/ClientOverlays";
 import { MotionProvider } from "@/components/layout/MotionProvider";
+import { InkCursor } from "@/components/fx/InkCursor";
+import { SectionIndex } from "@/components/fx/SectionIndex";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DotGridWrapper } from "@/components/shared/DotGridWrapper";
@@ -35,10 +37,11 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} ${site.tagline}`,
+    default: `${site.name} · ${site.tagline}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  applicationName: site.name,
   keywords: [
     "AI infrastructure",
     "agentic infrastructure",
@@ -50,26 +53,35 @@ export const metadata: Metadata = {
     "marketing automation AI",
     "LinkedIn lead generation",
     "RAG chatbots",
-    "AI strategy consulting",
+    "AI infrastructure for business",
     "Bhumit Goyal",
   ],
-  authors: [{ name: site.founder.name }],
+  authors: [{ name: site.founder.name, url: `${site.url}/about` }],
   creator: site.founder.name,
+  publisher: site.name,
+  category: "technology",
+  // Fallbacks only: every route overrides openGraph/twitter via pageMetadata()
+  // in src/lib/seo.ts (Next merges these objects shallowly, so a page that
+  // doesn't would otherwise inherit the homepage's og:url and title).
   openGraph: {
     type: "website",
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} ${site.tagline}`,
+    title: `${site.name} · ${site.tagline}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} ${site.tagline}`,
+    title: `${site.name} · ${site.tagline}`,
     description: site.description,
     creator: "@bhumitgoyal",
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
 };
 
 export const viewport: Viewport = {
@@ -117,6 +129,8 @@ export default async function RootLayout({
             {children}
           </ChromeShell>
           <ClientOverlays searchIndex={searchIndex} />
+          <SectionIndex />
+          <InkCursor />
           <Toaster
             position="bottom-right"
             toastOptions={{

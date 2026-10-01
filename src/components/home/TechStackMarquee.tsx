@@ -1,5 +1,5 @@
 ﻿import { techStack } from "@/content/techStack";
-import { Marquee } from "@/components/shared/Marquee";
+import { VelocityMarquee } from "@/components/fx/VelocityMarquee";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 
 const integrationPartners = [
@@ -31,32 +31,32 @@ export function TechStackMarquee() {
         <SectionHeader
           eyebrow="What runs on the layer"
           title="Manual work we've already made disappear."
-          subtitle="From sales follow-ups to invoice processing, once a workflow moves onto the infrastructure, your team never touches it again."
+          subtitle="Once a workflow moves onto the layer, nobody touches it again."
         />
       </div>
 
       <div className="mt-16 flex flex-col gap-4">
-        <Marquee>
+        <VelocityMarquee baseVelocity={-1.4}>
           {rowA.map((t) => (
             <ServiceChip key={t.name} name={t.name} />
           ))}
-        </Marquee>
-        <Marquee reverse>
+        </VelocityMarquee>
+        <VelocityMarquee baseVelocity={1.4}>
           {rowB.map((t) => (
             <ServiceChip key={t.name} name={t.name} />
           ))}
-        </Marquee>
+        </VelocityMarquee>
       </div>
 
       <div className="mt-16 border-t border-[var(--color-border)] pt-12">
         <p className="container-x mb-6 text-center text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--color-fg-subtle)]">
           Integration platforms
         </p>
-        <Marquee pauseOnHover={false}>
+        <VelocityMarquee baseVelocity={-1}>
           {integrationPartners.map((p) => (
             <IntegrationChip key={p.name} name={p.name} category={p.category} />
           ))}
-        </Marquee>
+        </VelocityMarquee>
       </div>
     </section>
   );

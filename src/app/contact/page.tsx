@@ -1,16 +1,17 @@
 ﻿import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Mail, Phone, MessageCircle, MapPin, Clock } from "lucide-react";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/shared/Reveal";
 import { ContactForm } from "@/components/shared/ContactForm";
 import { SocialLinks } from "@/components/shared/SocialLinks";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/contact" },
-  title: "Contact",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact: Book a 30-Minute Scoping Call",
   description:
-    "Tell us your workflow problem. We'll scope an AI solution, estimate the time savings, and tell you if it's the right fit. All in a 30-minute call.",
-};
+    "Tell us the workflow you want automated. In a 30-minute call we scope the AI system, estimate the hours it saves and tell you honestly if it is the right fit.",
+  path: "/contact",
+});
 
 const channels = [
   {

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { AboutPageJsonLd } from "@/components/seo/schemas";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 import { Linkedin, Github, Instagram } from "@/components/shared/brand-icons";
@@ -10,16 +12,17 @@ import { CountUp } from "@/components/shared/CountUp";
 import { GlowButton } from "@/components/shared/GlowButton";
 import { CtaBanner } from "@/components/home/CtaBanner";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/about" },
-  title: "About",
+export const metadata: Metadata = pageMetadata({
+  title: "About the Team & Founder Bhumit Goyal",
   description:
-    "Nuvero AI is led by Bhumit Goyal. We build the AI infrastructure businesses run on: 45 systems deployed, 92% client retention, 11 industries. Learn how we work and why clients keep coming back.",
-};
+    "Nuvero AI is led by founder Bhumit Goyal. We build the AI infrastructure businesses run on: agentic systems across 11 industries, in your stack, owned by you.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <>
+      <AboutPageJsonLd />
       <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
 

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageMetadata, fitDescription, deploymentTitle } from "@/lib/seo";
+import { CaseStudyJsonLd } from "@/components/seo/schemas";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -39,12 +41,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const deployments = await getDeployments();
   const study = deployments.find((c) => c.slug === slug);
-  if (!study) return {};
-  return {
-    title: `${study.client} · ${study.industry}`,
-    description: study.summary,
-    alternates: { canonical: `/work/${slug}` },
-  };
+  if (!study) return { robots: { index: false, follow: true } };
+  return pageMetadata({
+    title: deploymentTitle(study.slug, study.client),
+    description: fitDescription(
+      study.summary,
+      `An AI system deployed by Nuvero for ${study.industry}, with the metrics it moved.`,
+    ),
+    path: `/work/${slug}`,
+    type: "article",
+    image: { url: `/work/${slug}/opengraph-image`, alt: `${study.client}: ${study.title}` },
+  });
 }
 
 export default async function CaseStudyPage({
@@ -77,6 +84,7 @@ export default async function CaseStudyPage({
 
   return (
     <>
+      <CaseStudyJsonLd study={study} />
       <section className="relative isolate overflow-hidden">
         <GridBackground interactive={false} />
 

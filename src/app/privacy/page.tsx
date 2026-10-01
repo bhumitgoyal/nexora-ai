@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { GridBackground } from "@/components/shared/GridBackground";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/privacy" },
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
   description:
-    "How Nuvero AI collects, uses, and protects information submitted through our website and contact forms.",
-};
+    "How Nuvero AI collects, uses, stores and protects the information you submit through this website and its contact forms, and the rights you have over that data.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

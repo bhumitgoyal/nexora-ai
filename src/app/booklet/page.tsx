@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/booklet" },
-  title: `Select Agency ${site.name}`,
+  title: { absolute: `Select a Booklet · ${site.name}` },
   robots: { index: false, follow: false },
 };
 

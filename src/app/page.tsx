@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { FaqJsonLd } from "@/components/seo/schemas";
+import { faqs } from "@/content/faqs";
+import { pageMetadata } from "@/lib/seo";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/home/Hero";
 import { StatsBar } from "@/components/home/StatsBar";
@@ -19,12 +22,12 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { CtaBanner } from "@/components/home/CtaBanner";
 import { Perforation } from "@/components/shared/Perforation";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-  title: "AI Infrastructure for Your Business",
+export const metadata: Metadata = pageMetadata({
+  title: { absolute: "Nuvero AI · AI Infrastructure for Your Business" },
   description:
-    "Nuvero AI builds the AI infrastructure your business runs on. Agents trained on your workflows, wired into your stack, running your operations 24/7. Any manual work, automated. You own the whole layer.",
-};
+    "Nuvero AI builds the AI infrastructure your business runs on: agents trained on your workflows, wired into your stack, running operations 24/7. You own it all.",
+  path: "/",
+});
 
 // Below-the-fold heavy components chunked for smaller initial JS payload
 const WiringDiagram = dynamic(() => import("@/components/home/WiringDiagram").then((m) => m.WiringDiagram));
@@ -36,6 +39,7 @@ const FaqStrip = dynamic(() => import("@/components/home/FaqStrip").then((m) => 
 export default function HomePage() {
   return (
     <>
+      <FaqJsonLd items={faqs.slice(0, 6)} path="/" />
       {/* promise → proof → what it takes over → live feed → inspect it →
           what a deployment is → how it wires in → your industry → the systems →
           the difference → evidence → our own stack → who builds it → how →

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SystemsCatalogJsonLd } from "@/components/seo/schemas";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Check, ArrowLeft, ArrowRight, Sparkles, ExternalLink } from "lucide-react";
 import { services } from "@/content/services";
@@ -10,16 +12,17 @@ import { Perforation } from "@/components/shared/Perforation";
 import { CtaBanner } from "@/components/home/CtaBanner";
 import { Badge } from "@/components/ui/badge";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/services" },
-  title: "Systems",
+export const metadata: Metadata = pageMetadata({
+  title: "AI Systems: Voice, Chat, Workflows & Knowledge",
   description:
-    "The systems that make up Nuvero's AI infrastructure: voice agents, conversational AI, workflow orchestration, lead engines, and knowledge layers. Built into your stack, instrumented for measurable impact, owned by you.",
-};
+    "The systems Nuvero composes your AI infrastructure from: voice agents, conversational AI, workflow orchestration, lead engines and knowledge layers you own.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
     <>
+      <SystemsCatalogJsonLd />
       <section className="section-y relative isolate overflow-hidden ">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 dot-bg opacity-50" />
 
@@ -67,20 +70,12 @@ export default function ServicesPage() {
                       <span className="inline-flex size-12 items-center justify-center border-2 border-[var(--color-brand)] text-[var(--color-brand)]">
                         <Icon className="size-5" />
                       </span>
-                      <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
+                      <h2 className="font-display text-title-2 font-semibold">
                         {service.title}
                       </h2>
-                      <p className="text-pretty text-base text-[var(--color-fg-muted)] md:text-lg">
+                      <p className="text-pretty text-lead text-[var(--color-fg-muted)]">
                         {service.tagline}
                       </p>
-                      <div className="flex flex-col gap-2 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg)] p-4">
-                        <span className="eyebrow text-[var(--color-fg-muted)]">
-                          The problem
-                        </span>
-                        <p className="text-sm leading-relaxed text-[var(--color-fg)]">
-                          {service.problem}
-                        </p>
-                      </div>
                       <div className="flex flex-wrap gap-1.5">
                         {service.tech.map((t) => (
                           <Badge
@@ -111,34 +106,50 @@ export default function ServicesPage() {
                   </div>
 
                   <div className={flip ? "md:order-1" : ""}>
-                    <div className="grid grid-cols-1 gap-6">
-                      <div className="flex flex-col gap-3">
-                        <span className="eyebrow text-[var(--color-brand)]">
-                          How the layer runs it
-                        </span>
-                        <ul className="flex flex-col gap-2.5">
-                          {service.solution.map((point) => (
-                            <li key={point} className="flex items-start gap-2.5 text-sm text-[var(--color-fg)]">
-                              <Check className="mt-0.5 size-4 shrink-0 text-[var(--color-brand)]" />
-                              <span className="leading-relaxed">{point}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="flex flex-col gap-3 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg)] p-5">
-                        <span className="eyebrow text-[var(--color-fg-muted)]">
-                          What you get
-                        </span>
-                        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    {/* three-step flow instead of paragraphs; full spec on demand */}
+                    <span className="eyebrow text-[var(--color-brand)]">How the layer runs it</span>
+                    <ol className="mt-3 flex flex-col">
+                      {service.solution.slice(0, 3).map((point, idx) => (
+                        <li key={point} className="relative flex gap-4 pb-6 last:pb-0">
+                          {idx < 2 ? <span aria-hidden className="absolute left-[19px] top-10 h-[calc(100%-2.5rem)] w-0.5 bg-[var(--color-border)]/30" /> : null}
+                          <span className="relative z-10 inline-flex size-10 shrink-0 items-center justify-center border-2 border-[var(--color-border)] bg-[var(--color-bg)] font-mono text-sm font-bold text-[var(--color-brand)] shadow-[var(--shadow-hard-sm)]">
+                            {String(idx + 1).padStart(2, "0")}
+                          </span>
+                          <span className="pt-2 text-callout leading-snug text-[var(--color-fg)]">{point}</span>
+                        </li>
+                      ))}
+                    </ol>
+
+                    <details className="group mt-6 border-t-2 border-[var(--color-border)] pt-2">
+                      <summary className="eyebrow flex min-h-11 cursor-pointer list-none items-center gap-2 font-bold text-[var(--color-fg)] [&::-webkit-details-marker]:hidden">
+                        <span aria-hidden className="inline-block text-base text-[var(--color-brand)] transition-transform group-open:rotate-45">+</span>
+                        Full spec: problem, method, deliverables
+                      </summary>
+                      <div className="mt-3 flex flex-col gap-5">
+                        <p className="text-callout leading-relaxed text-[var(--color-fg-muted)]">
+                          <span className="font-semibold text-[var(--color-fg)]">The problem. </span>
+                          {service.problem}
+                        </p>
+                        {service.solution.length > 3 ? (
+                          <ul className="flex flex-col gap-2">
+                            {service.solution.slice(3).map((point) => (
+                              <li key={point} className="flex items-start gap-2.5 text-callout text-[var(--color-fg)]">
+                                <Check className="mt-0.5 size-4 shrink-0 text-[var(--color-brand)]" />
+                                {point}
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
+                        <ul className="grid grid-cols-1 gap-2 border-[1.5px] border-[var(--color-border)] bg-[var(--color-bg)] p-4 sm:grid-cols-2">
                           {service.deliverables.map((d) => (
-                            <li key={d} className="flex items-start gap-2 text-sm text-[var(--color-fg-muted)]">
-                              <span className="mt-1.5 size-1.5 shrink-0 bg-[var(--color-brand)]" />
+                            <li key={d} className="flex items-start gap-2 text-callout text-[var(--color-fg-muted)]">
+                              <span aria-hidden className="mt-2 size-1.5 shrink-0 bg-[var(--color-brand)]" />
                               {d}
                             </li>
                           ))}
                         </ul>
                       </div>
-                    </div>
+                    </details>
                   </div>
                 </article>
               </Reveal>

@@ -394,10 +394,6 @@ html.nv-first-visit .nv-fade-in {
   animation-duration: 0.45s;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.25s;
-}
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-old(*),
@@ -428,6 +424,42 @@ html.nv-first-visit .nv-fade-in {
     from { transform: scaleX(0); }
     to { transform: scaleX(1); }
   }
+}
+
+/* Rolling link label: hover rolls the text up to its (aria-hidden) twin. */
+.roll { position: relative; display: inline-flex; flex-direction: column; overflow: hidden; line-height: 1.25; }
+.roll-a, .roll-b { display: block; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.roll-b { position: absolute; inset: 0; transform: translateY(100%); }
+@media (hover: hover) {
+  :where(a, button):hover > .roll .roll-a,
+  :where(a, button):hover .roll .roll-a,
+  .roll:hover .roll-a { transform: translateY(-100%); }
+  :where(a, button):hover .roll .roll-b,
+  .roll:hover .roll-b { transform: translateY(0); }
+}
+
+/* Footer wordmark: outline + an ink copy revealed bottom-up by a view timeline. */
+.footer-wordmark .wm-outline { color: transparent; -webkit-text-stroke: 2px var(--color-fg); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .footer-wordmark .wm-fill {
+      animation: nv-ink-fill linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 55%;
+    }
+    @keyframes nv-ink-fill {
+      from { clip-path: inset(100% 0 0 0); }
+      to { clip-path: inset(0 0 0 0); }
+    }
+  }
+}
+
+/* Page transitions: old page fades, new page rises 16px into place. */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) { animation: 0.2s cubic-bezier(0.22, 1, 0.36, 1) both nv-vt-out; }
+  ::view-transition-new(root) { animation: 0.35s cubic-bezier(0.22, 1, 0.36, 1) both nv-vt-in; }
+  @keyframes nv-vt-out { to { opacity: 0; } }
+  @keyframes nv-vt-in { from { opacity: 0; transform: translateY(16px); } }
 }
 
 /* First-visit preloader is gated before paint by an inline script in <head>. */

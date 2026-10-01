@@ -53,7 +53,7 @@ export function Switchboard() {
         <SectionHeader
           eyebrow="The switchboard"
           title="What the layer printed this morning."
-          subtitle="The work as it happens, every line timestamped, logged, and auditable. This is what running on infrastructure looks like."
+          subtitle="Every line timestamped, logged and auditable."
         />
 
         <Reveal delay={0.1}>

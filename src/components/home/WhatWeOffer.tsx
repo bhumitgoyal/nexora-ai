@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { useId, useState, type KeyboardEvent } from "react";
 import { DURATION, EASE } from "@/lib/motion";
 import { site } from "@/content/site";
 import { ArrowUpRight, Building2, Megaphone, ShoppingBag, UtensilsCrossed, Stethoscope, Boxes, type LucideIcon } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
+import { cn } from "@/lib/utils";
 
 type Offering = {
   icon: LucideIcon;
@@ -127,123 +128,130 @@ const orderedOfferings = [
   ...offerings.filter((o) => o.label !== "Real Estate & Property"),
 ];
 
-function AnimatedYour() {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-
-  return (
-    <span ref={ref} className="relative inline-block">
-      Your
-      <motion.span
-        aria-hidden
-        className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-[var(--color-brand)]"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: isInView ? 1 : 0 }}
-        transition={{ duration: DURATION.base, ease: EASE, delay: 0.4 }}
-      />
-    </span>
-  );
-}
-
-function OfferingCard({ item, index }: { item: Offering; index: number }) {
+// One industry at a time instead of six text-heavy cards: pick your industry,
+// see the promise in one line and the systems already running as a numbered
+// ledger. (Progressive disclosure — the detail lives on /what-we-offer.)
+export function WhatWeOffer() {
+  const [active, setActive] = useState(0);
+  const uid = useId();
+  const item = orderedOfferings[active];
   const Icon = item.icon;
 
-  return (
-    <Reveal delay={index * 0.08}>
-      <div className="group relative flex h-full flex-col bg-[var(--color-bg)] p-6 transition-colors hover:z-10 hover:bg-[var(--color-bg-elev)] hover:ring-1 hover:ring-inset hover:ring-[var(--color-brand)] sm:p-8">
+  const onKey = (e: KeyboardEvent) => {
+    const n = orderedOfferings.length;
+    const next =
+      e.key === "ArrowDown" || e.key === "ArrowRight" ? (active + 1) % n :
+      e.key === "ArrowUp" || e.key === "ArrowLeft" ? (active - 1 + n) % n : null;
+    if (next === null) return;
+    e.preventDefault();
+    setActive(next);
+    document.getElementById(`${uid}-tab-${next}`)?.focus();
+  };
 
-        <div className="mb-6 flex items-start justify-between">
-          <span className={`inline-flex size-12 items-center justify-center border-2 ${item.accentClass}`}>
-            <Icon className="size-5" />
-          </span>
-          <Link
-            href={item.href}
-            aria-label={`${item.label}: see the infrastructure`}
-            className="inline-flex size-11 items-center justify-center border border-[var(--color-border)] text-[var(--color-fg-muted)] transition-colors group-hover:border-[var(--color-brand)] group-hover:text-[var(--color-brand)]"
-          >
-            <ArrowUpRight className="size-4" />
-          </Link>
-        </div>
-
-        <h3 className="font-display text-title-3 font-semibold">
-          {item.label}
-        </h3>
-        <p className="mt-1 text-callout font-medium text-[var(--color-fg)]">
-          {item.tagline}
-        </p>
-        <p className="mt-4 text-callout leading-relaxed text-[var(--color-fg-muted)]">
-          {item.description}
-        </p>
-
-        <div className="mt-6 border-t border-[var(--color-border)] pt-6">
-          <p className="eyebrow mb-3 text-[var(--color-fg-muted)]">
-            Systems already running in production
-          </p>
-          <ul className="flex flex-col gap-2">
-            {item.solved.map((a, idx) => (
-              <li key={idx} className="flex items-center gap-2.5 text-callout text-[var(--color-fg-muted)]">
-                <span className="size-1.5 shrink-0 bg-[var(--color-brand)]" />
-                {a}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-auto pt-6">
-          <Link href="/contact" className="block">
-            <div className="group/cta border-2 border-dashed border-[var(--color-border)] p-5 transition-colors duration-200 hover:border-[var(--color-brand)] hover:bg-[var(--color-bg)]">
-              <p className="font-display text-xl font-semibold tracking-tight text-[var(--color-fg)] transition-colors group-hover/cta:text-[var(--color-brand)]">
-                <AnimatedYour />{" "}workflow next?
-              </p>
-              <p className="mt-1 text-callout text-[var(--color-fg-muted)]">
-                If a human does it manually today, we can build the system that runs it.
-              </p>
-              <span className="mt-3 inline-flex items-center gap-1 text-callout font-semibold text-[var(--color-brand)]">
-                {site.cta.primary} <ArrowUpRight className="size-3.5" />
-              </span>
-            </div>
-          </Link>
-        </div>
-      </div>
-    </Reveal>
-  );
-}
-
-export function WhatWeOffer() {
   return (
     <section className="section-y relative border-t border-[var(--color-border)]">
       <div className="container-x">
         <SectionHeader
           eyebrow="The infrastructure"
           title={<>One <span className="text-[var(--color-brand)]">AI layer</span>, shaped to how your industry works.</>}
-          subtitle="We don't sell tools. We build the intelligence layer under your operations: agents that learn your workflows, your systems, and your edge cases, so the manual work in your industry simply stops being manual."
+          subtitle="Pick your industry. See what's already running."
         />
 
-        {/* Mobile: horizontal scroll */}
-        <ul className="scrollbar-hide -mx-6 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-4 md:hidden">
-          {orderedOfferings.map((item, i) => (
-            <li key={item.label} className="w-[84vw] shrink-0 snap-start border border-[var(--color-border)] bg-[var(--color-bg)]">
-              <OfferingCard item={item} index={i} />
-            </li>
-          ))}
-        </ul>
-
-        {/* Desktop: grid */}
-        <div className="mt-16 hidden md:grid grid-cols-2 gap-px bg-[var(--color-border)] border border-[var(--color-border)]">
-          {orderedOfferings.map((item, i) => (
-            <OfferingCard key={item.label} item={item} index={i} />
-          ))}
-        </div>
-
-        <Reveal delay={0.2}>
-          <div className="mt-10 flex justify-center">
-            <Link
-              href="/what-we-offer"
-              className="press inline-flex min-h-12 items-center gap-2 border-2 border-[var(--color-border)] px-6 text-callout font-semibold text-[var(--color-fg)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+        <Reveal delay={0.1}>
+          <div className="mt-12 grid border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
+            <div
+              role="tablist"
+              aria-label="Industries"
+              aria-orientation="vertical"
+              onKeyDown={onKey}
+              className="scrollbar-hide flex overflow-x-auto border-b-2 border-[var(--color-border)] lg:flex-col lg:overflow-visible lg:border-b-0 lg:border-r-2"
             >
-              See the full infrastructure map per industry
-              <ArrowUpRight className="size-4" />
-            </Link>
+              {orderedOfferings.map((o, i) => {
+                const TabIcon = o.icon;
+                const selected = i === active;
+                return (
+                  <button
+                    key={o.label}
+                    id={`${uid}-tab-${i}`}
+                    type="button"
+                    role="tab"
+                    aria-selected={selected}
+                    aria-controls={`${uid}-panel`}
+                    tabIndex={selected ? 0 : -1}
+                    onClick={() => setActive(i)}
+                    className={cn(
+                      "relative flex min-h-14 shrink-0 items-center gap-3 px-5 text-left font-display text-base font-semibold transition-colors lg:border-b lg:border-[var(--color-border)]/30 lg:last:border-b-0",
+                      selected ? "text-white" : "text-[var(--color-fg)] hover:bg-[var(--color-bg)]",
+                    )}
+                  >
+                    {selected ? (
+                      <motion.span layoutId={`${uid}-active`} className="absolute inset-0 bg-[var(--color-brand)]" transition={{ type: "spring", duration: 0.4, bounce: 0 }} />
+                    ) : null}
+                    <TabIcon aria-hidden className="relative size-4 shrink-0" />
+                    <span className="relative whitespace-nowrap">{o.label}</span>
+                    <span aria-hidden className={cn("relative ml-auto hidden font-mono text-xs lg:inline", selected ? "text-white" : "text-[var(--color-fg-subtle)]")}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div id={`${uid}-panel`} role="tabpanel" aria-labelledby={`${uid}-tab-${active}`} className="relative min-h-[26rem] bg-[var(--color-bg)] p-6 sm:p-8 md:p-10">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: DURATION.fast, ease: EASE }}
+                  className="flex h-full flex-col gap-6"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="inline-flex size-14 shrink-0 items-center justify-center border-2 border-[var(--color-brand)] bg-[var(--color-bg-elev)] text-[var(--color-brand)] shadow-[var(--shadow-hard-sm)]">
+                      <Icon aria-hidden className="size-6" />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-title-3 font-semibold">{item.label}</h3>
+                      <p className="mt-1 text-lead text-[var(--color-fg-muted)]">{item.tagline}</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="eyebrow mb-2 text-[var(--color-fg-muted)]">Running in production</p>
+                    <ol className="grid border-t-2 border-[var(--color-border)] sm:grid-cols-2 sm:gap-x-6">
+                      {item.solved.map((a, idx) => (
+                        <motion.li
+                          key={a}
+                          initial={{ opacity: 0, x: -8 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: DURATION.fast, ease: EASE, delay: 0.04 * idx }}
+                          className="flex min-h-12 items-center gap-3 border-b border-[var(--color-border)]/30 py-2 text-callout"
+                        >
+                          <span className="font-mono text-xs font-bold text-[var(--color-brand)]">{String(idx + 1).padStart(2, "0")}</span>
+                          <span className="text-[var(--color-fg)]">{a}</span>
+                        </motion.li>
+                      ))}
+                    </ol>
+                  </div>
+
+                  <div className="mt-auto flex flex-wrap items-center gap-3 pt-2">
+                    <Link
+                      href={item.href}
+                      className="press inline-flex min-h-12 items-center gap-2 border-2 border-[var(--color-border)] px-5 text-callout font-semibold transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+                    >
+                      See the {item.label.toLowerCase()} map <ArrowUpRight aria-hidden className="size-4" />
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="inline-flex min-h-12 items-center gap-1 text-callout font-semibold text-[var(--color-brand)] underline-offset-4 hover:underline"
+                    >
+                      {site.cta.primary} <ArrowUpRight aria-hidden className="size-4" />
+                    </Link>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </Reveal>
       </div>

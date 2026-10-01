@@ -239,7 +239,7 @@ export function InteractiveAgentDemo() {
         <SectionHeader
           eyebrow="Interactive System Inspection"
           title="See how our agents think, route, and execute in real time."
-          subtitle="Inspect real production dialogues across our voice, triage, and dispatch systems. Zero slide-ware: sub-second latency, deterministic guardrails, and live tool calls."
+          subtitle="Real production calls. Replay one and watch the tool calls fire."
         />
 
         <Reveal delay={0.1}>
@@ -295,6 +295,7 @@ export function InteractiveAgentDemo() {
                   </div>
                   <button
                     type="button"
+                    data-cursor="Play"
                     onClick={handleReplay}
                     disabled={isPlaying}
                     className="press flex min-h-11 items-center gap-1.5 border-2 border-[var(--color-border)] bg-[var(--color-bg)] px-3 font-mono text-xs font-bold text-[var(--color-fg)] shadow-[var(--shadow-hard-sm)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)] disabled:cursor-progress"

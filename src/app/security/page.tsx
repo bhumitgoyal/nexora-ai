@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ShieldCheck, Lock, Database, FileText, RefreshCw, Users } from "lucide-react";
 import { GridBackground } from "@/components/shared/GridBackground";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/security" },
-  title: "Security & Data",
+export const metadata: Metadata = pageMetadata({
+  title: "Security & Data Ownership",
   description:
-    "How Nuvero AI handles your data: encryption, ownership, access controls, and compliance. You own everything we build.",
-};
+    "How Nuvero AI handles your data: encryption at rest and in transit, least-privilege access, compliance support, and full ownership of everything we build.",
+  path: "/security",
+});
 
 const pillars = [
   {

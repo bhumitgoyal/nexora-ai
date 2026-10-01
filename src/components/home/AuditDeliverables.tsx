@@ -32,7 +32,7 @@ export function AuditDeliverables() {
         <SectionHeader
           eyebrow="Audit log / Form N-01"
           title="What a systems audit puts in your hands."
-          subtitle="Before a line of code, you leave with a written read on where intelligence pays off, what your stack is ready for, and where to start."
+          subtitle="Before any code: where AI pays off, and where to start."
         />
 
         <Reveal delay={0.1}>

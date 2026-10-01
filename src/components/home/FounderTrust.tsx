@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Check, ShieldCheck, Terminal, Cpu, Clock, Layers } from "lucide-react";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Reveal } from "@/components/shared/Reveal";
@@ -9,23 +10,23 @@ import { site } from "@/content/site";
 const PILLARS = [
   {
     icon: Terminal,
-    title: "Direct Founder Engineering",
-    description: "You partner directly with Bhumit Goyal. The person on your discovery call is the engineer writing the prompts, wiring the APIs, and deploying the cloud infrastructure. Zero translation layers.",
+    title: "Founder-built",
+    description: "The person on your call is the engineer who ships it.",
   },
   {
     icon: Clock,
-    title: "7-Day Milestone Demos",
-    description: "We ship working software every single week. You inspect working code and live agent dialogues on day 7, not slide decks at the end of the month.",
+    title: "Demo every week",
+    description: "Working software every 7 days. Never slide decks.",
   },
   {
     icon: ShieldCheck,
-    title: "Full Code Sovereignty",
-    description: "100% of your software runs in your own Google Cloud, AWS, or Azure environment. You own all Git repositories, container configurations, and database schemas with zero vendor lock-in.",
+    title: "You own the code",
+    description: "Runs in your cloud. Every repo is yours. No lock-in.",
   },
   {
     icon: Layers,
-    title: "Production Battle-Tested",
-    description: "Over 45 systems actively running in production across 11 industries. Every pattern we build has been hardened against real-world edge cases and carrier rate limits.",
+    title: "Battle-tested",
+    description: "45+ systems live across 11 industries.",
   },
 ];
 
@@ -34,9 +35,9 @@ export function FounderTrust() {
     <section id="founder-engineering" className="border-t-2 border-[var(--color-border)] bg-[var(--color-bg)] py-24 md:py-32">
       <div className="container-x">
         <SectionHeader
-          eyebrow="The Engineering Model"
+          eyebrow="The engineering model"
           title="No account managers. No junior handoffs. Direct founder engineering."
-          subtitle="Large agencies sell you with senior partners and pass your build to junior subcontractors. Nuvero is built on direct founder-led engineering: technical precision, sub-second latency, and unmatched velocity."
+          subtitle="One engineer, start to finish. Nothing lost in handoffs."
         />
 
         <Reveal delay={0.1}>
@@ -58,20 +59,15 @@ export function FounderTrust() {
                       </span>
                     </div>
 
-                    <h3 className="font-display text-lg font-bold text-[var(--color-fg)]">
+                    <h3 className="font-display text-title-3 font-bold text-[var(--color-fg)]">
                       {pillar.title}
                     </h3>
 
-                    <p className="text-xs text-[var(--color-fg-muted)] leading-relaxed">
+                    <p className="text-callout leading-snug text-[var(--color-fg-muted)]">
                       {pillar.description}
                     </p>
                   </div>
 
-                  <div className="mt-6 border-t border-[var(--color-border)] pt-4">
-                    <span className="eyebrow text-[var(--color-fg-muted)]">
-                      ■ Standard Operating Protocol
-                    </span>
-                  </div>
                 </div>
               );
             })}
@@ -82,7 +78,11 @@ export function FounderTrust() {
         <Reveal delay={0.2}>
           <div className="mt-10 border-2 border-[var(--color-border)] bg-[var(--color-bg-elev)] p-8 md:p-10 shadow-[6px_6px_0_var(--color-border)]">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-center">
-              <div className="md:col-span-8 flex flex-col gap-3">
+              <div className="md:col-span-8 flex items-center gap-6">
+                <div className="relative size-24 shrink-0 overflow-hidden border-2 border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-hard-brand)] md:size-28">
+                  <Image src="/bhumit.webp" alt={`${site.founder.name}, founder of Nuvero AI`} fill sizes="112px" className="object-cover grayscale" />
+                </div>
+                <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <span className="size-2 bg-[var(--color-brand)]" />
                   <span className="eyebrow font-bold text-[var(--color-brand)]">
@@ -92,21 +92,22 @@ export function FounderTrust() {
                 <h3 className="font-display text-2xl font-bold text-[var(--color-fg)] md:text-3xl">
                   {site.founder.name}
                 </h3>
-                <p className="text-sm text-[var(--color-fg-muted)] leading-relaxed">
-                  {site.founder.bio}
+                <p className="text-callout text-[var(--color-fg-muted)]">
+                  Ships agentic systems that move real business metrics.
                 </p>
+                </div>
               </div>
 
               <div className="md:col-span-4 flex flex-col items-start gap-4 border-t border-[var(--color-border)] pt-6 md:border-t-0 md:border-l md:pl-8 md:pt-0">
                 <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[11px] text-[var(--color-fg-subtle)] uppercase">Verified Deployments</span>
+                  <span className="eyebrow text-[var(--color-fg-muted)]">Verified deployments</span>
                   <span className="font-display text-2xl font-bold text-[var(--color-fg)]">45+ Live Systems</span>
                 </div>
                 <Link
                   href="/about"
                   className="eyebrow flex items-center gap-2 font-bold text-[var(--color-brand)] hover:underline"
                 >
-                  <span>Read our engineering manifesto →</span>
+                  <span>About the engineer →</span>
                 </Link>
               </div>
             </div>

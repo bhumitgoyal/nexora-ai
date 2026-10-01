@@ -1,32 +1,76 @@
-# Nuvero AI — llms.txt
-# https://nuvero.space
+# Nuvero AI
 
-## Who we are
-Nuvero AI is a custom AI automation studio based in India, building and shipping production-ready AI systems for businesses. We are a small, senior team — not a tool, not a platform.
+> Nuvero AI (formerly Nexora AI) builds AI infrastructure: the intelligence layer a business runs on. Agents trained on how a company actually works, wired into the tools it already uses, running its manual workflows end to end. Every system is deployed in the client's own stack and the client owns all of the code.
 
-## What we build
-- AI voice agents (inbound + outbound, built on Vapi / Twilio / ElevenLabs)
-- Conversational AI & chatbots (WhatsApp, web, Instagram, in-app)
-- Custom AI workflows & integrations (n8n, Make, Zapier, LangChain)
-- AI-powered lead generation engines
-- AI marketing automation systems
-- AI content production pipelines
-- Internal knowledge copilots (RAG over Notion, Drive, Slack, Confluence)
-- Sales operations copilots
+Nuvero is led by founder and principal AI engineer Bhumit Goyal and works remotely from India with clients worldwide. Engagements are fixed-price and scoped per workflow; typical builds go from kickoff to production in 6 to 8 weeks, with weekly working demos.
 
-## Key facts
-- 45+ AI systems shipped; clients own 100% of the code
-- 1.4M+ AI interactions handled per month across deployments
-- 92% client retention rate
-- 11 industries automated end-to-end
-- Built in 6 weeks · shipped in your stack · you own it forever
-- We never retain your operational data or train on it without explicit written consent
+Key facts:
+- AI infrastructure, not a product subscription or hourly engagement: clients get a working systems layer they own outright (source code, runbooks, architecture docs).
+- Deployed in the client's cloud accounts; no vendor lock-in; third-party API costs billed to the client at raw cost.
+- 1.4M+ AI interactions handled per month across deployments; systems running across 11 industries.
+- Security: encryption in transit and at rest, least-privilege access, DPA available; built with SOC 2 / GDPR / HIPAA considerations when relevant.
+- Contact: contact@nuvero.space · https://www.nuvero.space/contact
 
-## Industries served
-Marketing agencies, e-commerce / D2C brands, real estate & property, restaurants & hospitality, healthcare & clinics, energy & utilities, B2B SaaS
+## Main pages
 
-## Trust & security
-AES-256 encryption at rest; TLS 1.2+ in transit. NDA + DPA available on request. BAA available for HIPAA clients. No vendor lock-in.
+- [Home](https://www.nuvero.space/): what Nuvero's AI infrastructure is and what it takes over
+- [Infrastructure](https://www.nuvero.space/what-we-offer): the intelligence layer, by business type
+- [Systems](https://www.nuvero.space/services): the systems the infrastructure is composed from (voice agents, conversational AI, workflow orchestration, lead engines, knowledge copilots, operations systems)
+- [Industries](https://www.nuvero.space/industries): systems mapped to specific industries
+- [Deployments](https://www.nuvero.space/work): production case studies with the metrics each system moved and live demos
+- [Pricing](https://www.nuvero.space/pricing): engagement models (Audit & Architecture Sprint, Core System Deployment, Full Ops Infrastructure, SLA & Maintenance) and how scoping works
+- [Process](https://www.nuvero.space/process): the five-phase build sheet
+- [Security & Data](https://www.nuvero.space/security): data handling, ownership and compliance
+- [About](https://www.nuvero.space/about): the team and founder Bhumit Goyal
+- [Client reviews](https://www.nuvero.space/reviews)
+- [Contact](https://www.nuvero.space/contact): book a 30-minute scoping call
 
-## Contact
-hello@nuvero.space | https://nuvero.space/contact
+## Industries
+
+- [Marketing Agencies](https://www.nuvero.space/industries/marketing-agencies)
+- [E-commerce](https://www.nuvero.space/industries/ecommerce)
+- [Real Estate](https://www.nuvero.space/industries/real-estate)
+- [Restaurants](https://www.nuvero.space/industries/restaurants)
+- [B2B & SaaS](https://www.nuvero.space/industries/b2b-saas)
+
+## Deployments
+
+- [Southwest Gases: ERP](https://www.nuvero.space/work/southwest-gases-erp) (Energy & Utilities): A custom operations system for a packaged and bulk gas distributor: order entry, a drag-and-drop delivery and pickup board, cylinder rent ledgers, and invoices that generate on delivery and sync straight to QuickBooks, with…
+- [Newish: Brand Portal](https://www.nuvero.space/work/newish-brand-portal) (Creator Economy · Payments): Newish pays creators to post. We took a fragile single-file backend, with the brand portal's APIs never built and money-touching routes wide open, and rebuilt it into a secure, audited platform: brand top-ups in and automated…
+- [Nuvero AI: Outreach Engine](https://www.nuvero.space/work/nuvero-outreach-engine) (Sales & Outreach): Nuvero's own end-to-end outreach engine: it discovers leads across sources, dedupes and scores them, resolves verified contacts with provenance, drafts a personalized email for each under strict no-invented-facts rules, holds…
+- [Adfactors PR: Wire Booking](https://www.nuvero.space/work/adfactors-pr-wire-booking) (PR & Communications): An internal platform for PR consultants to browse domestic and international press-release wire rate cards, build a single-window booking request, and generate a client-ready PDF quote, with a backend console where Partnerships…
+- [Marketrz Agency: AI Marketing Campaign Orchestrator](https://www.nuvero.space/work/ai-marketing-campaign-orchestrator) (Marketing Agencies · DTC): An AI-powered campaign engine that drafts copy, generates assets, handles replies, and continuously A/B tests across email, LinkedIn, and SMS turning a week of campaign setup into an afternoon.
+- [GoHappy Club: Member Assistant](https://www.nuvero.space/work/gohappy-club-member-assistant) (Senior Wellness · D2C): A multilingual conversational AI for a senior-citizen membership club, delivering tailored answers across WhatsApp and in-app, with memory, tone-matching, and clean escalation to humans for finance and medical questions.
+- [Southwest Gases: Delivery Schedule](https://www.nuvero.space/work/southwest-gases-delivery-schedule) (Energy & Utilities): A live delivery schedule the office and drivers share in real time, plus a read-only AI connector so anyone can ask ChatGPT or Claude whether an order is on the board or a delivery is done, and get the answer straight from the…
+- [Lumina Studios: Content Engine](https://www.nuvero.space/work/lumina-studios-content-engine) (Marketing & Media): An end-to-end AI content pipeline for a boutique creative agency blog posts, video scripts, ad creative, and social cuts shipped in brand voice, with human editors orchestrating instead of typing.
+- [Southwest Gases: Voice Concierge](https://www.nuvero.space/work/southwest-gases-voice-concierge) (Energy & Utilities): A natural-language voice agent that fields every customer call, navigates account-specific data, and runs outbound campaigns for the marketing team without ever sounding like a bot.
+- [Northwind Logistics: Ops Copilot](https://www.nuvero.space/work/northwind-logistics-ops-copilot) (Logistics & Supply Chain): A retrieval-augmented copilot that ingests SOPs, vendor contracts, and tariff schedules, then answers ops questions in Slack with citations slashing onboarding time and reducing costly routing errors.
+- [Meridian Realty: Inbound Qualifier](https://www.nuvero.space/work/meridian-realty-inbound-qualifier) (Real Estate): A voice + chat hybrid that responds to inbound property inquiries the moment they land, qualifies budget and timeline, and books site visits directly into agent calendars.
+- [Multi-tenant: LinkedIn Lead Intelligence Engine](https://www.nuvero.space/work/linkedin-lead-intelligence-engine) (B2B SaaS & Agencies): A custom lead-gen system that scrapes targeted LinkedIn audiences, enriches via 6 data sources, cascades email verification across cheap APIs, and outputs personalized openers all in one script tailored per client.
+- [VITopia (VIT): Campus Assistant](https://www.nuvero.space/work/vitopia-campus-assistant) (Education · Student Services): A retrieval-grounded assistant for VIT students that answers questions on FFCS, grading, hostel, faculty, and exams in plain language across English and Hindi, pulling only from a curated campus knowledge base so it never makes…
+- [Southwest Gases: Delivery Connector](https://www.nuvero.space/work/swg-delivery-connector) (Energy & Utilities · AI Connector): A hosted MCP connector for the Southwest Gases delivery schedule, so anyone on the team can ask ChatGPT or Claude whether an order is on the board or a delivery is done and get the answer live, without opening the app or seeing…
+- [Nuvero AI: Automation Workflows](https://www.nuvero.space/work/nuvero-automation-workflows) (Automation · Workflows): A library of n8n automations Nuvero builds and runs: AI content generation, omnichannel distribution, lead intake, and payment follow-ups, each wired end to end so recurring manual work simply stops being manual.
+
+## Briefings
+
+- [The Infrastructure Readiness Report](https://www.nuvero.space/briefings/infrastructure-readiness-report): A five-dimension rubric to grade how ready your business actually is to run AI in production, and where the layer breaks first.
+- [Why your AI pilot never shipped](https://www.nuvero.space/briefings/why-your-pilot-didnt-ship): The gap between a demo that works and a system that runs is not the model. It is the four things nobody scoped.
+- [Own the layer](https://www.nuvero.space/briefings/own-the-layer): Renting your intelligence by the seat is fine until it is the thing your business runs on. Then it is a liability.
+- [Accuracy is the wrong metric](https://www.nuvero.space/briefings/accuracy-is-the-wrong-metric): An agent that is right most of the time and unpredictable the rest of the time is not a good agent. It is an unmanaged one.
+- [What to refuse first](https://www.nuvero.space/briefings/what-to-refuse-first): Scoping a first AI system is mostly an exercise in saying no, and the things you refuse decide whether the thing you build ever ships.
+- [Why retrieval projects stall](https://www.nuvero.space/briefings/why-rag-stalls): Retrieval is not a vector database problem. It is a content problem, and most teams discover that after they have bought the database.
+- [Where the handoff belongs](https://www.nuvero.space/briefings/where-the-handoff-belongs): Human-in-the-loop is not a safety blanket you add at the end. It is a design decision that determines whether the system saves anyone any time.
+- [The real cost of running agents](https://www.nuvero.space/briefings/the-real-cost-of-agents): Token spend is the line item everyone models and the smallest one that matters. The costs that decide the business case sit somewhere else entirely.
+- [Agents need least privilege more than people do](https://www.nuvero.space/briefings/least-privilege-for-agents): You would not give a new hire admin credentials on their first day. Most agent deployments do exactly that, and call it an integration.
+- [Start inside the building](https://www.nuvero.space/briefings/start-inside-the-building): The highest-return first deployment is almost never the customer-facing one, and the reason has nothing to do with caution.
+- [What trained on your business actually requires](https://www.nuvero.space/briefings/trained-on-your-business): The phrase gets used to mean fine-tuning, and it almost never should. What most businesses need is context engineering, and it is a different budget.
+- [Observability when the system is not deterministic](https://www.nuvero.space/briefings/observability-for-non-deterministic-systems): Traditional monitoring asks whether the system responded. Agentic systems fail while responding perfectly, which is why most teams find out from a customer.
+- [The latency budget is the product](https://www.nuvero.space/briefings/the-latency-budget): Voice agents do not fail on comprehension. They fail on timing, and the budget is smaller than almost every architecture assumes.
+- [Most multi-agent systems should be one agent](https://www.nuvero.space/briefings/when-orchestration-is-overhead): Orchestration is presented as an architecture and is usually a workaround for a context problem that would be cheaper to solve directly.
+- [Build, buy, or assemble](https://www.nuvero.space/briefings/build-buy-or-assemble): The build-versus-buy question is the wrong shape for the intelligence layer, because the real decision is which parts you can afford to have someone else own.
+
+## Optional
+
+- [Sitemap](https://www.nuvero.space/sitemap.xml)
+- [Privacy policy](https://www.nuvero.space/privacy)
+- [Terms of service](https://www.nuvero.space/terms)

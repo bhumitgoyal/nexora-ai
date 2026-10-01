@@ -12,6 +12,7 @@ import { DURATION, EASE, STAGGER } from "@/lib/motion";
 import { GlowButton } from "@/components/shared/GlowButton";
 import { Magnetic } from "@/components/shared/Magnetic";
 import { Logo } from "./Logo";
+import { RollText } from "@/components/fx/RollText";
 
 const headerNav = site.nav.filter((item) =>
   (site.headerNav as readonly string[]).includes(item.href),
@@ -54,7 +55,7 @@ export function Navbar() {
         )}
       >
         <div className="container-x flex h-header items-center justify-between gap-6 lg:h-header-lg">
-          <Logo className="shrink-0" />
+          <Logo className="shrink-0" priority />
 
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center">
@@ -72,7 +73,7 @@ export function Navbar() {
                           : "text-[var(--color-fg-muted)] hover:bg-[var(--color-bg-elev)] hover:text-[var(--color-fg)]",
                       )}
                     >
-                      {item.label}
+                      <RollText>{item.label}</RollText>
                     </Link>
                   </li>
                 );

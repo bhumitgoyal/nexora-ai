@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { WhatWeOfferContent } from "./PageContent";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/what-we-offer" },
-  title: "Infrastructure",
+export const metadata: Metadata = pageMetadata({
+  title: "AI Infrastructure for Your Operations",
   description:
-    "AI infrastructure for marketing agencies, e-commerce brands, real estate operators, hospitality businesses, and healthcare clinics. Agents trained on your exact workflows, wired into your stack, running your manual work 24/7.",
-};
+    "AI infrastructure for agencies, e-commerce, real estate, hospitality and clinics: agents trained on your workflows, wired into your stack, doing manual work.",
+  path: "/what-we-offer",
+});
 
 export default function WhatWeOfferPage() {
   return <WhatWeOfferContent />;

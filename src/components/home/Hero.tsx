@@ -11,7 +11,8 @@ import {
 } from "motion/react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Marquee } from "@/components/shared/Marquee";
+import { VelocityMarquee } from "@/components/fx/VelocityMarquee";
+import { InkUnderline } from "@/components/fx/InkUnderline";
 import { Magnetic } from "@/components/shared/Magnetic";
 import { MaskReveal } from "@/components/shared/MaskReveal";
 import { Reveal } from "@/components/shared/Reveal";
@@ -165,7 +166,7 @@ export function Hero() {
         <h1 className="mt-8 flex max-w-5xl flex-col items-center font-display text-display font-bold text-[var(--color-fg)]">
           <MaskReveal priority delay={0.1}>
             <span>
-              The <span className="text-[var(--color-brand)]">AI infrastructure</span>
+              The <span className="relative inline-block text-[var(--color-brand)]">AI infrastructure<InkUnderline /></span>
             </span>
           </MaskReveal>
           <MaskReveal priority delay={0.22}>
@@ -175,9 +176,8 @@ export function Hero() {
 
         <Reveal priority delay={0.45}>
           <p className="mt-6 max-w-xl text-pretty text-lead text-[var(--color-fg-muted)]">
-            Agents trained on how your company actually works, answering your
-            customers in under 60 seconds and handing your team back 30+ hours
-            a week. Manual work disappears. You own the whole layer.
+            Agents trained on how your company works. Customers answered in
+            60 seconds. 30+ hours a week back to your team.
           </p>
         </Reveal>
 
@@ -224,7 +224,7 @@ export function Hero() {
             Businesses running on Nuvero infrastructure
           </h2>
           <div className="w-full">
-            <Marquee>
+            <VelocityMarquee baseVelocity={-1.6}>
               {trustLogos.map((logo) => (
                 <span key={logo.name} className="flex items-center gap-5">
                   <span className="whitespace-nowrap font-display text-base font-semibold tracking-tight text-[var(--color-fg)]">
@@ -233,7 +233,7 @@ export function Hero() {
                   <span aria-hidden className="size-1.5 shrink-0 bg-[var(--color-brand)]" />
                 </span>
               ))}
-            </Marquee>
+            </VelocityMarquee>
           </div>
         </Reveal>
       </motion.div>

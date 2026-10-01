@@ -50,8 +50,8 @@ export const principles = [
 ];
 
 export const aboutStats = [
-  { metric: "47+", label: "AI systems shipped to production" },
+  { metric: "45+", label: "AI systems shipped to production" },
   { metric: "1.4M+", label: "AI interactions handled monthly" },
   { metric: "11", label: "industries served" },
-  { metric: "94%", label: "client retention rate" },
+  { metric: "92%", label: "client retention rate" },
 ];

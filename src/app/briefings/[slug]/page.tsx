@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata, fitTitle, fitDescription } from "@/lib/seo";
+import { BriefingJsonLd } from "@/components/seo/schemas";
 import Link from "next/link";
+import { site } from "@/content/site";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
@@ -16,8 +19,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const b = getBriefing(slug);
-  if (!b) return { title: "Briefing not found" };
-  return { title: b.title, description: b.dek, alternates: { canonical: `/briefings/${slug}` } };
+  if (!b) return { title: "Briefing not found", robots: { index: false, follow: true } };
+  return pageMetadata({
+    title: fitTitle(b.title),
+    description: fitDescription(
+      b.dek,
+      `A Nuvero AI briefing on building, running and owning AI infrastructure. ${b.readMins} min read.`,
+    ),
+    path: `/briefings/${slug}`,
+    type: "article",
+    image: { url: `/briefings/${slug}/opengraph-image`, alt: b.title },
+    article: { publishedTime: b.date, section: b.category, tags: ["AI infrastructure", b.category] },
+  });
 }
 
 function fmt(date: string) {
@@ -118,6 +131,7 @@ export default async function BriefingPage({ params }: { params: Promise<{ slug:
 
   return (
     <article className="py-20 md:py-28">
+      <BriefingJsonLd briefing={b} />
       <div className="container-x">
         <div className="mx-auto max-w-3xl">
           <Reveal priority>
@@ -135,7 +149,7 @@ export default async function BriefingPage({ params }: { params: Promise<{ slug:
               {b.category}
             </span>
             <span className="eyebrow text-[var(--color-fg-muted)]">
-              {fmt(b.date)} · {b.readMins} min read
+              By {site.founder.name} · {fmt(b.date)} · {b.readMins} min read
             </span>
           </div>
 
