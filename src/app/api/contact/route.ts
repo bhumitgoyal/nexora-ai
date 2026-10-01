@@ -1,16 +1,39 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-function getResend() {
-  return new Resend(process.env.RESEND_API_KEY);
-}
+// Nodemailer opens real SMTP sockets, so this route must run on the Node.js
+// runtime (not Edge).
+export const runtime = "nodejs";
 
-// Where enquiries land. Override in the environment once the domain is live.
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "bhumit@nuvero.space";
-// Must be an address on a domain verified at resend.com/domains.
-// Falls back to Resend's shared test sender only if nothing is configured.
+// Hostinger SMTP. Host/port have safe defaults; the mailbox login and password
+// MUST come from the environment and are never committed. SMTP_USER is the real
+// mailbox that authenticates (bhumit@nuvero.space); mail is sent *from* the
+// contact@ alias on that mailbox via CONTACT_FROM_EMAIL.
+const SMTP_HOST = process.env.SMTP_HOST || "smtp.hostinger.com";
+const SMTP_PORT = Number(process.env.SMTP_PORT || 465);
+const SMTP_USER = process.env.SMTP_USER || "";
+const SMTP_PASS = process.env.SMTP_PASS || "";
+
+// Where enquiries land, and the visible sender. Both default to the public
+// contact@ address (an alias that forwards into the SMTP_USER mailbox).
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "contact@nuvero.space";
 const FROM_EMAIL =
-  process.env.CONTACT_FROM_EMAIL || "Nuvero AI <noreply@nuvero.space>";
+  process.env.CONTACT_FROM_EMAIL || "Nuvero AI <contact@nuvero.space>";
+
+// Reuse one transporter (and its connection pool) across invocations on a warm
+// serverless instance instead of reconnecting on every submission.
+let transporter: ReturnType<typeof nodemailer.createTransport> | null = null;
+function getTransporter() {
+  if (!transporter) {
+    transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_PORT === 465, // SSL on 465, STARTTLS otherwise
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+    });
+  }
+  return transporter;
+}
 
 // Simple in-memory rate limiter: max 5 requests per IP per 5 minutes
 const rateMap = new Map<string, { count: number; resetAt: number }>();
@@ -104,8 +127,25 @@ export async function POST(req: NextRequest) {
 </div>
 `;
 
-  if (!process.env.RESEND_API_KEY) {
-    console.error("Contact form: RESEND_API_KEY is not set in this environment.");
+  // Plain-text alternative (user input is inert in text/plain, so no escaping).
+  const text = [
+    "New contact form submission",
+    "",
+    `Name:    ${name}`,
+    `Email:   ${email}`,
+    phone ? `Phone:   ${phone}` : "",
+    company ? `Company: ${company}` : "",
+    service ? `Service: ${service}` : "",
+    budget ? `Budget:  ${budget}` : "",
+    "",
+    "Message:",
+    message,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  if (!SMTP_USER || !SMTP_PASS) {
+    console.error("Contact form: SMTP_USER / SMTP_PASS are not set in this environment.");
     return NextResponse.json(
       { error: "Email is not configured. Please try again later." },
       { status: 500 },
@@ -113,22 +153,20 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { error } = await getResend().emails.send({
+    // replyTo is the submitter, so replying from the contact@ inbox goes
+    // straight back to the lead.
+    await getTransporter().sendMail({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       replyTo: email,
       subject: `New enquiry from ${name}${company ? ` (${company})` : ""}`,
       html,
+      text,
     });
-
-    if (error) {
-      console.error("Resend send error:", error);
-      return NextResponse.json({ error: "Failed to send email. Please try again." }, { status: 500 });
-    }
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Resend error:", err);
+    console.error("SMTP send error:", err);
     return NextResponse.json({ error: "Failed to send email. Please try again." }, { status: 500 });
   }
 }
