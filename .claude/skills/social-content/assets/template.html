@@ -1,0 +1,79 @@
+<!doctype html>
+<!-- Nuvero slide template. Copy to content/<slug>/slide-N.html and delete the
+     blocks you don't use. Keep the ICONS marker in the body — render.sh swaps
+     it for the Lucide sprite at render time.
+     Background variants: class="slide", "slide slide--ink", "slide slide--brand". -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../.claude/skills/social-content/assets/deck.css">
+</head>
+<body>
+<!--ICONS-->
+
+<div class="slide">
+
+  <!-- chrome ------------------------------------------------------------- -->
+  <div class="top">
+    <div class="eyebrow">Nuvero AI</div>
+    <div class="page-no">01 / 04</div>
+  </div>
+
+  <!-- HERO: oversized headline. Keep to 6 words. ------------------------- -->
+  <h1 class="h1">Your inbox<br><span class="red">is a job</span></h1>
+
+  <div class="spacer"></div>
+
+  <!-- BLOCK A — icon step rows (max 4). The mechanism slide. -------------- -->
+  <div class="rows">
+    <div class="row">
+      <svg class="row__ico"><use href="#i-radar"/></svg>
+      <div>
+        <div class="row__txt">It finds the lead</div>
+        <div class="row__sub">optional second line, 30px</div>
+      </div>
+    </div>
+    <div class="row row--brand">
+      <svg class="row__ico"><use href="#i-pen-line"/></svg>
+      <div class="row__txt">It writes the email</div>
+    </div>
+    <div class="row">
+      <svg class="row__ico"><use href="#i-send"/></svg>
+      <div class="row__txt">It sends and follows up</div>
+    </div>
+  </div>
+
+  <!-- BLOCK B — two-up icon cards
+  <div class="grid2">
+    <div class="card">
+      <svg class="card__ico"><use href="#i-moon"/></svg>
+      <div class="card__txt">Works nights</div>
+    </div>
+    <div class="card">
+      <svg class="card__ico"><use href="#i-repeat"/></svg>
+      <div class="card__txt">Never forgets</div>
+    </div>
+  </div> -->
+
+  <!-- BLOCK C — stat slab
+  <div class="stat">
+    <div class="stat__no red">40s</div>
+    <div class="body">from reply to booked call</div>
+  </div> -->
+
+  <!-- BLOCK D — rubber stamp
+  <div class="stamp"><svg class="ico"><use href="#i-check-check"/></svg> Deployed</div> -->
+
+  <!-- footer: exactly one CTA, last slide only --------------------------- -->
+  <div class="foot">
+    <div class="foot__brand">nuvero.space</div>
+    <div class="cta">Book a build <svg class="ico"><use href="#i-arrow-right"/></svg></div>
+  </div>
+
+  <!-- swipe hint: every slide except the last
+  <div class="swipe">Swipe <svg class="ico"><use href="#i-arrow-right"/></svg></div> -->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+/* ============================================================================
+   Nuvero social deck — flat editorial brutalism, sized for a phone screen.
+   Canvas: 1080 x 1350 (Instagram 4:5). Every size below is tuned so the slide
+   is still readable as a 160px-wide thumbnail in the feed.
+   Palette + type mirror src/app/globals.css. Never introduce another accent.
+   ========================================================================== */
+
+:root {
+  --cream: #FDF0D5;
+  --brand: #C1121F;
+  --ink: #003049;
+  --steel: #669BBC;
+  --ink-12: rgba(0, 48, 73, 0.12);
+  --ink-55: rgba(0, 48, 73, 0.55);
+
+  --pad: 72px;          /* outer safe margin — never place content outside it */
+  --border: 3px;        /* hairlines read as mush on a phone; 3px minimum */
+  --shadow: 10px 10px 0 var(--ink);
+  --shadow-brand: 10px 10px 0 var(--brand);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: #d8d8d8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- canvas ---------------------------------------------------------------- */
+
+.slide {
+  position: relative;
+  width: 1080px;
+  height: 1350px;
+  background: var(--cream);
+  color: var(--ink);
+  padding: var(--pad);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.slide--ink  { background: var(--ink);  color: var(--cream); }
+.slide--brand{ background: var(--brand);color: var(--cream); }
+
+/* Faint print-shop grid. Decoration only — never let it fight the text. */
+.slide::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, var(--ink-12) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ink-12) 1px, transparent 1px);
+  background-size: 90px 90px;
+  opacity: .5;
+  pointer-events: none;
+}
+.slide--ink::before, .slide--brand::before { opacity: .16; }
+.slide > * { position: relative; z-index: 1; }
+
+/* --- chrome: eyebrow row + page number ------------------------------------- */
+
+.top {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; margin-bottom: 56px;
+}
+
+.eyebrow {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 26px;                 /* FLOOR. Nothing on a slide goes below 26px. */
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 16px;
+}
+.eyebrow::before {
+  content: ""; width: 20px; height: 20px; background: var(--brand); flex: none;
+}
+.slide--brand .eyebrow::before, .slide--ink .eyebrow::before { background: var(--cream); }
+
+.page-no {
+  font-family: "Space Mono", monospace; font-weight: 700; font-size: 26px;
+  letter-spacing: .1em;
+  border: var(--border) solid currentColor;
+  padding: 10px 20px;
+}
+
+/* --- type scale ------------------------------------------------------------ */
+
+.h1 { font-size: 150px; line-height: .86; font-weight: 700; letter-spacing: -.045em; text-transform: uppercase; }
+.h2 { font-size: 106px; line-height: .92; font-weight: 700; letter-spacing: -.035em; text-transform: uppercase; }
+.h3 { font-size: 72px;  line-height: 1;   font-weight: 700; letter-spacing: -.02em; }
+
+.lead { font-size: 46px; line-height: 1.28; font-weight: 500; max-width: 20ch; }
+.body { font-size: 40px; line-height: 1.32; font-weight: 500; }
+.tag  { font-family: "Space Mono", monospace; font-size: 28px; font-weight: 700;
+        letter-spacing: .1em; text-transform: uppercase; }
+
+.red   { color: var(--brand); }
+.steel { color: var(--steel); }
+.slide--ink .red, .slide--brand .red { color: var(--cream); -webkit-text-stroke: 3px var(--cream); }
+.outline { color: transparent; -webkit-text-stroke: 3px var(--ink); }
+.slide--ink .outline, .slide--brand .outline { -webkit-text-stroke-color: var(--cream); }
+
+.spacer { flex: 1 1 auto; }
+
+/* --- icons ----------------------------------------------------------------- */
+/* Every point on a slide gets an icon. Minimum drawn size 64px; a 20px stroke
+   box at thumbnail scale is what makes the slide readable before it's read.  */
+
+.ico { width: 68px; height: 68px; flex: none; stroke-width: 2.1; }
+.ico--lg { width: 96px; height: 96px; }
+
+.ico-tile {
+  width: 124px; height: 124px; flex: none;
+  display: grid; place-items: center;
+  border: var(--border) solid var(--ink);
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 8px 8px 0 var(--brand);
+}
+.ico-tile--brand { background: var(--brand); color: var(--cream); border-color: var(--ink); }
+.ico-tile--ink   { background: var(--ink);   color: var(--cream); box-shadow: 8px 8px 0 var(--brand); }
+.slide--ink .ico-tile, .slide--brand .ico-tile { border-color: var(--cream); box-shadow: 8px 8px 0 var(--cream); }
+
+/* --- blocks ---------------------------------------------------------------- */
+
+/* Numbered / icon step rows — the workhorse layout. Max 4 rows per slide. */
+.rows { display: flex; flex-direction: column; gap: 28px; }
+
+.row {
+  display: flex; align-items: center; gap: 32px;
+  border: var(--border) solid var(--ink);
+  background: var(--cream);
+  color: var(--ink);            /* cream fill => never inherit the slide's colour */
+  padding: 26px 32px;
+  box-shadow: 8px 8px 0 var(--ink);
+}
+.row--brand { box-shadow: 8px 8px 0 var(--brand); }
+.slide--ink .row, .slide--brand .row { border-color: var(--cream); box-shadow: 8px 8px 0 var(--cream); }
+
+.row__ico { width: 76px; height: 76px; flex: none; color: var(--brand); stroke-width: 2.2; }
+.row__txt { font-size: 42px; line-height: 1.16; font-weight: 700; }
+.row__sub { font-size: 30px; line-height: 1.2; font-weight: 500; color: var(--ink-55); margin-top: 8px; }
+.row__no  { font-family: "Space Mono", monospace; font-size: 40px; font-weight: 700; color: var(--brand); flex: none; }
+
+/* Two-up icon cards */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.card {
+  border: var(--border) solid var(--ink);
+  background: var(--cream);
+  color: var(--ink);            /* same trap as .row */
+  padding: 36px 32px;
+  box-shadow: 10px 10px 0 var(--brand);
+  display: flex; flex-direction: column; gap: 20px;
+}
+.slide--ink .card   { box-shadow: 10px 10px 0 var(--brand); }
+.slide--brand .card { border-color: var(--ink); box-shadow: 10px 10px 0 var(--ink); }
+.card__ico { width: 84px; height: 84px; color: var(--brand); stroke-width: 2.2; }
+.card__txt { font-size: 40px; line-height: 1.14; font-weight: 700; }
+
+/* Stat slab */
+.stat { border: var(--border) solid currentColor; padding: 36px 40px; display: flex;
+        align-items: center; gap: 32px; }
+.stat__no { font-size: 128px; line-height: .9; font-weight: 700; letter-spacing: -.04em; }
+
+/* Rubber-stamp moment */
+.stamp {
+  display: inline-flex; align-items: center; gap: 20px;
+  border: 5px solid var(--brand); color: var(--brand);
+  font-family: "Space Mono", monospace; font-weight: 700;
+  font-size: 40px; letter-spacing: .14em; text-transform: uppercase;
+  padding: 18px 32px; transform: rotate(-3deg);
+}
+.stamp .ico { width: 48px; height: 48px; }
+
+/* Footer lockup: handle + CTA. Every deck ends with exactly one CTA. */
+.foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  border-top: var(--border) solid currentColor; padding-top: 28px; margin-top: 44px;
+}
+.foot__brand { font-family: "Space Mono", monospace; font-size: 30px; font-weight: 700;
+               letter-spacing: .12em; text-transform: uppercase; }
+
+.cta {
+  display: inline-flex; align-items: center; gap: 20px;
+  background: var(--brand); color: var(--cream);
+  font-size: 44px; font-weight: 700; letter-spacing: -.01em;
+  padding: 26px 40px; border: var(--border) solid var(--ink);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+.slide--ink .cta   { border-color: var(--cream); box-shadow: 10px 10px 0 var(--cream); }
+.slide--brand .cta { background: var(--ink); border-color: var(--cream);
+                     box-shadow: 10px 10px 0 var(--cream); }
+
+/* Swipe affordance — put it on every slide except the last. */
+.swipe {
+  position: absolute; right: var(--pad); bottom: var(--pad);
+  display: flex; align-items: center; gap: 14px;
+  font-family: "Space Mono", monospace; font-size: 26px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; opacity: .75;
+}
+.swipe .ico { width: 34px; height: 34px; }
+
+/* Inline swipe hint, for slides where the absolute one would collide with content. */
+.swipe--inline { position: static; margin-left: auto; }
