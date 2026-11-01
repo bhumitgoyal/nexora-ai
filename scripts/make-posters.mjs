@@ -3,23 +3,14 @@
 // client wordmark, a subtitle, an accent underline, and a mono capability line.
 // Renders 1600x900 webp into public/posters/<slug>.webp via sharp.
 import sharp from "sharp";
-import { readFileSync } from "node:fs";
 import { mkdirSync } from "node:fs";
 
 const ICON_DIR = "node_modules/lucide-react/dist/esm/icons";
 
-// Pull a Lucide icon's inner SVG markup (white stroke) from its react module.
-function lucideInner(name) {
-  const src = readFileSync(`${ICON_DIR}/${name}.js`, "utf8");
-  const start = src.indexOf("[", src.indexOf("createLucideIcon("));
-  // find matching bracket for the children array
-  let depth = 0, end = -1;
-  for (let i = start; i < src.length; i++) {
-    if (src[i] === "[") depth++;
-    else if (src[i] === "]") { depth--; if (depth === 0) { end = i; break; } }
-  }
-  const arr = eval("(" + src.slice(start, end + 1) + ")");
-  return arr.map(([tag, attrs]) => {
+// A Lucide icon's inner SVG markup (white stroke), read from its module's icon data.
+async function lucideInner(name) {
+  const { __iconData } = await import(`../${ICON_DIR}/${name}.mjs`);
+  return __iconData.node.map(([tag, attrs]) => {
     const a = Object.entries(attrs)
       .filter(([k]) => k !== "key")
       .map(([k, v]) => `${k}="${v}"`)
@@ -49,18 +40,18 @@ async function logoDataUri(file, box = 640) {
 // The brand-tile markup: an accent square with a white Lucide icon, OR a tile
 // (white by default, or a brand colour for white-on-transparent logos) holding
 // the client's real logo (contained with padding).
-function tile({ accent, icon, logo, tileBg = "#ffffff" }) {
+async function tile({ accent, icon, logo, tileBg = "#ffffff" }) {
   if (logo) {
     const p = 46; // padding inside the tile
     return `<rect x="150" y="300" width="300" height="300" rx="52" fill="${tileBg}"/>
   <image href="${logo}" x="${150 + p}" y="${300 + p}" width="${300 - 2 * p}" height="${300 - 2 * p}" preserveAspectRatio="xMidYMid meet"/>`;
   }
-  const inner = lucideInner(icon);
+  const inner = await lucideInner(icon);
   return `<rect x="150" y="300" width="300" height="300" rx="52" fill="${accent}"/>
   <g transform="translate(300 450) scale(6.2) translate(-12 -12)" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</g>`;
 }
 
-function poster({ slug, name, subtitle, caps, accent, icon, logo, tileBg }) {
+async function poster({ slug, name, subtitle, caps, accent, icon, logo, tileBg }) {
   const W = 1600, H = 900;
   const nameSize = fitSize(name, 1000, 128, 62);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
@@ -72,7 +63,7 @@ function poster({ slug, name, subtitle, caps, accent, icon, logo, tileBg }) {
   </defs>
   <rect width="${W}" height="${H}" fill="#141416"/>
   <rect width="${W}" height="${H}" fill="url(#glow)"/>
-  ${tile({ accent, icon, logo, tileBg })}
+  ${await tile({ accent, icon, logo, tileBg })}
   <text x="524" y="${subtitle ? 400 : 470}" font-family="Helvetica, Arial, sans-serif" font-size="${nameSize}" font-weight="700" fill="#ffffff" letter-spacing="-3">${esc(name)}</text>
   <text x="528" y="486" font-family="Helvetica, Arial, sans-serif" font-size="58" font-weight="700" fill="${accent}" letter-spacing="-1">${esc(subtitle)}</text>
   <rect x="530" y="524" width="150" height="7" fill="${accent}"/>
@@ -111,11 +102,15 @@ const DEPLOYMENTS = [
   { slug: "lumina-studios-content-engine", name: "Lumina Studios", subtitle: "Content Engine", caps: "DRAFT  ·  REPURPOSE  ·  SHIP", accent: "#DB2777", icon: "pen-tool" },
   { slug: "vitopia-campus-assistant", name: "VITopia", subtitle: "Campus Assistant", caps: "FFCS  ·  EXAMS  ·  HOSTEL", accent: "#0D9488", icon: "graduation-cap" },
   { slug: "swg-delivery-connector", name: "Southwest Gases", subtitle: "AI Connector (MCP)", caps: "READ-ONLY  ·  CHATGPT  ·  CLAUDE", accent: "#6366F1", icon: "plug" },
+  { slug: "digital-protection-desk", name: "Protection Desk", subtitle: "Takedown Infrastructure", caps: "DETECT  ·  PROVE  ·  REPORT", accent: "#C1121F", icon: "shield-check" },
   { slug: "nuvero-automation-workflows", name: "Nuvero AI", subtitle: "Automation Workflows", caps: "CONTENT  ·  DISTRIBUTION  ·  FOLLOW-UPS", accent: "#DB2777", icon: "workflow" },
 ];
 
 mkdirSync("public/posters", { recursive: true });
-const res = await Promise.all(DEPLOYMENTS.map(async (d) => {
+// `node scripts/make-posters.mjs <slug> ...` renders only those posters.
+const only = process.argv.slice(2);
+const targets = only.length ? DEPLOYMENTS.filter((d) => only.includes(d.slug)) : DEPLOYMENTS;
+const res = await Promise.all(targets.map(async (d) => {
   const L = LOGOS[d.slug];
   const opts = L ? { ...d, accent: L.accent, tileBg: L.tileBg, logo: await logoDataUri(L.file) } : d;
   const i = await poster(opts);

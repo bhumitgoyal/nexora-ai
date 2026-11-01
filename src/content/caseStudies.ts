@@ -537,6 +537,38 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ["Node.js", "Express", "MongoDB", "JWT", "Razorpay / RazorpayX", "React", "Vite", "Cloudinary", "Render"],
   },
+  {
+    slug: "digital-protection-desk",
+    client: "Public Institution",
+    industry: "Brand & Reputation Protection",
+    title: "A protection desk that finds every fake page, copied reel and scam site using an institution's name, and hands staff a finished complaint for each one.",
+    summary:
+      "A large public institution with millions of followers was being copied faster than anyone could report it: impersonator accounts, re-uploaded reels, look-alike websites asking for payments, and misleading videos. We built the infrastructure that watches for all of it, proves what is theirs, and turns every finding into a ready-to-file complaint routed to the right platform, registrar or authority.",
+    duration: "6 weeks",
+    year: "2026",
+    gradient: "from-red-500/40 via-orange-500/20 to-amber-500/30",
+    image: "/posters/digital-protection-desk.webp",
+    challenge:
+      "Fake accounts used the institution's registered logo, scam websites copied its official text and collected payments from followers, and edited reels spread faster than staff could find them. Each platform wanted a different form, different evidence and a different legal basis, so most problems were never reported at all, and the few that were often came back rejected.",
+    approach: [
+      "Registered every original photo and video with picture and sound fingerprints, so a cropped, flipped or re-voiced re-upload still matches its source.",
+      "Set up early warning: newly registered domains, live certificate feeds, ads using the name, and nightly checks of around 3,200 look-alike spellings, each site scored on logo use, copied text, payment requests and claims to be official.",
+      "Mapped every takedown route (Meta IP reports, platform forms, registrars, hosts, payment apps, domain disputes, cybercrime, legal notices) to the evidence and wording each one accepts.",
+      "Added a paste-a-link investigation: AI reads the post, decides what kind of problem it is, and drafts the report, while staff keep the final say on every filing.",
+    ],
+    solution: [
+      "One case desk: every finding becomes a case with hashed evidence, the best reporting route picked for it, and a single 'Report it' card with every field already filled in.",
+      "Copy, impersonation and look-alike finders across video platforms, social accounts, search, reverse image search and new websites, scored and matched to the originals.",
+      "Scam-network linking: the same phone number, payment ID or site across fakes is joined into one stronger complaint, with a printable 'check before you pay' poster for the public.",
+      "Tracking to the outcome, follow-up reminders and escalations, a daily summary and a monthly report, with 24 scheduled jobs running the watch on their own.",
+    ],
+    results: [
+      { metric: "3,200+", label: "look-alike domains checked every night" },
+      { metric: "24", label: "watch jobs running without anyone pressing a button" },
+      { metric: "1 card", label: "per problem: the route, the evidence and the filled-in complaint" },
+    ],
+    tech: ["Python", "Claude", "Gemini", "Meta IP Reporting", "YouTube Data API", "CertStream", "ffmpeg", "Tesseract", "Headless Chrome", "Google Cloud Run"],
+  },
 ];
 
 export const featuredCaseStudies = caseStudies.filter((c) => c.featured);
